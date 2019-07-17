@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,15 +19,15 @@ namespace ISNogometniStadion.WebAPI.Database
 
         }
 
-        public DbSet<Drzave> Drzave { get; set; }
-        public DbSet<Gradovi> Gradovi { get; set; }
-        public DbSet<Korisnici> Korisnici { get; set; }
-        public DbSet<Sjedala> Sjedala { get; set; }
-        public DbSet<Stadion> Stadioni { get; set; }
-        public DbSet<Timovi> Timovi { get; set; }
-        public DbSet<Tribine> Tribine { get; set; }
-        public DbSet<Ulaznice> Ulaznice { get; set; }
-        public DbSet<Utakmice> Utakmice { get; set; }
+        public virtual DbSet<Drzave> Drzave { get; set; }
+        public virtual DbSet<Gradovi> Gradovi { get; set; }
+        public virtual DbSet<Korisnici> Korisnici { get; set; }
+        public virtual DbSet<Sjedala> Sjedala { get; set; }
+        public virtual DbSet<Stadioni> Stadioni { get; set; }
+        public virtual DbSet<Timovi> Timovi { get; set; }
+        public virtual DbSet<Tribine> Tribine { get; set; }
+        public virtual DbSet<Ulaznice> Ulaznice { get; set; }
+        public virtual DbSet<Utakmice> Utakmice { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -40,15 +41,19 @@ namespace ISNogometniStadion.WebAPI.Database
                 .WithOne(ad => ad.sjedalo)
                 .HasForeignKey<Ulaznice>(ad => ad.SjedaloID);
 
-            modelBuilder.Entity<Ulaznice>()
-              .HasKey(c => new { c.UlaznicaID, c.UtakmicaID,c.SjedaloID });
-            modelBuilder.Entity<Ulaznice>()
-                .HasOne(s => s.utakmica)
-                .WithMany()
-                .HasPrincipalKey(y => y.UtakmicaID);
+            //modelBuilder.Entity<Ulaznice>()
+            //  .HasKey(c => new { c.UlaznicaID, c.UtakmicaID,c.SjedaloID });
+           // modelBuilder.Entity<Ulaznice>().Property(p => p.UlaznicaID).ValueGeneratedOnAdd();
+            //modelBuilder.Entity<Ulaznice>()
+            //    .HasOne(s => s.utakmica)
+            //    .WithMany()
+            //    .HasPrincipalKey(y => y.UtakmicaID);
 
-            modelBuilder.Entity<Utakmice>()
-                .HasKey(a => new { a.UtakmicaID, a.DomaciTimID, a.GostujuciTimID });
+            //modelBuilder.Entity<Utakmice>()
+            //    .HasKey(a => new { a.UtakmicaID, a.DomaciTimID, a.GostujuciTimID });
+            
+                
+            //modelBuilder.Entity<Utakmice>().Property(p => p.UtakmicaID).ValueGeneratedOnAdd();
         }
 
 

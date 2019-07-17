@@ -1,5 +1,6 @@
 ﻿using ISNogometniStadion.Model;
 using ISNogometniStadion.Model.Requests;
+using ISNogometniStadion.WebAPI.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
-    public interface IKorisniciService
+    public interface IDrzaveService
     {
-        List<Korisnik> Get();
-        Korisnik GetById(int id);
-        Korisnik Insert(KorisniciInsertRequest req);
-        Korisnik Update(int id,KorisniciUpdateRequest req);
+        List<Drzava> Get();
+        Drzava GetById(int id);
+        Drzava Insert(GradoviUpdateRequest req);
+        Drzava Update(int id,DrzaveUpdateRequest req);
         string Delete(int id);
     }
 }

@@ -4,16 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace ISNogometniStadion.WebAPI.Database
+namespace ISNogometniStadion.Model
 {
-    public class Stadion
+    public class Grad
     {
         [Key]
-        public int StadionID { get; set; }
-        public string Naziv { get; set; }
-
-        [ForeignKey("GradID")]
-        public Gradovi Grad { get; set; }
         public int GradID { get; set; }
+        public string Naziv { get; set; }
+        public string Drzava { get; set; }
+        public int DrzavaID { get; set; }
     }
 }

@@ -15,7 +15,8 @@ namespace ISNogometniStadion.Model
         public string telefon { get; set; }
         public string email { get; set; }
         public string korisnickoIme { get; set; }
-            
-       
+        public int GradID { get; set; }
+        public string Grad { get; set; }
+
     }
 }

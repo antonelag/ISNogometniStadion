@@ -1,4 +1,5 @@
 ﻿using ISNogometniStadion.Model;
+using ISNogometniStadion.Model.Requests;
 using ISNogometniStadion.WebAPI.Database;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,10 @@ namespace ISNogometniStadion.WebAPI.Services
 {
     public interface IUlaznicaService
     {
-        IList<Ulaznice> Get();
-        Ulaznice GetById(int id);
+        List<Ulaznica> Get();
+        Ulaznica GetById(int id);
+        Ulaznica Insert(UlazniceInsertRequest req);
+        Ulaznica Update(int id, UlazniceUpdateRequest req);
+        string Delete(int id);
     }
 }

@@ -6,14 +6,14 @@ using System.Text;
 
 namespace ISNogometniStadion.WebAPI.Database
 {
-    public class Tribine
+    public class Stadioni
     {
         [Key]
-        public int TribinaID { get; set; }
+        public int StadionID { get; set; }
         public string Naziv { get; set; }
 
-        [ForeignKey("StadionID")]
-        public Stadioni Stadion { get; set; }
-        public int StadionID { get; set; }
+        [ForeignKey("GradID")]
+        public Gradovi Grad { get; set; }
+        public int GradID { get; set; }
     }
 }

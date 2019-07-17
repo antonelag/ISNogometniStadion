@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
-    public interface IKorisniciService
+    public interface ITimoviService
     {
-        List<Korisnik> Get();
-        Korisnik GetById(int id);
-        Korisnik Insert(KorisniciInsertRequest req);
-        Korisnik Update(int id,KorisniciUpdateRequest req);
+        List<Tim> Get();
+        Tim GetById(int id);
+        Tim Insert(TimoviInsertRequest req);
+        Tim Update(int id, TimoviUpdateRequest req);
         string Delete(int id);
     }
 }

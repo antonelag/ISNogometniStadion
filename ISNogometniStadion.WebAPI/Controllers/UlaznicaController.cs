@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ISNogometniStadion.Model;
+using ISNogometniStadion.Model.Requests;
 using ISNogometniStadion.WebAPI.Database;
 using ISNogometniStadion.WebAPI.Services;
 using Microsoft.AspNetCore.Http;
@@ -20,41 +21,32 @@ namespace ISNogometniStadion.WebAPI.Controllers
             _ulaznicaService = ulaznicaService;
         }
         [HttpGet]
-        public ActionResult <IEnumerable<Ulaznice>> Get()
+        public List<Ulaznica> Get()
         {
-            return Ok(_ulaznicaService.Get());
+            return _ulaznicaService.Get();
         }
 
 
         [HttpGet("{id}")]
-        public ActionResult<Ulaznice> GetById(int id)
+        public Ulaznica GetById(int id)
         {
-            return Ok(_ulaznicaService.GetById(id));
+            return _ulaznicaService.GetById(id);
         }
 
         [HttpPost]
-        public Ulaznice Insert(Ulaznice ulaznica)
+        public Ulaznica Insert(UlazniceInsertRequest req)
         {
-            return new Ulaznice()
-            {
-
-                UlaznicaID = -1,
-                KorisnikID = ulaznica.KorisnikID,
-                SjedaloID = ulaznica.SjedaloID,
-                UtakmicaID = ulaznica.UtakmicaID
-            };
+            return _ulaznicaService.Insert(req);
         }
         [HttpPut("{id}")]
-        public Ulaznice Update(int id, Ulaznice ulaznica)
+        public Ulaznica Update(int id, UlazniceUpdateRequest req)
         {
-            return new Ulaznice()
-            {
-
-                UlaznicaID = -1,
-                KorisnikID = ulaznica.KorisnikID,
-                SjedaloID = ulaznica.SjedaloID,
-                UtakmicaID = ulaznica.UtakmicaID
-            };
+            return _ulaznicaService.Update(id, req);
+        }
+        [HttpDelete]
+        public string Delete(int id)
+        {
+            return _ulaznicaService.Delete(id);
         }
     }
 }

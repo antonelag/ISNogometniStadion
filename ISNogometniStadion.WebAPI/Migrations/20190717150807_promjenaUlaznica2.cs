@@ -2,7 +2,7 @@
 
 namespace ISNogometniStadion.WebAPI.Migrations
 {
-    public partial class promjenaImena : Migration
+    public partial class promjenaUlaznica2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

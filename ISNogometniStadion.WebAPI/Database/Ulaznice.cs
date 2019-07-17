@@ -9,11 +9,12 @@ namespace ISNogometniStadion.WebAPI.Database
 {
     public class Ulaznice
     {
+        [Key]
         public int UlaznicaID { get; set; }
 
         public int SjedaloID { get; set; }
         public  Sjedala sjedalo { get; set; }
-
+        [ForeignKey("UtakmicaID")]
         public Utakmice utakmica { get; set; }
         public int UtakmicaID { get; set; }
 

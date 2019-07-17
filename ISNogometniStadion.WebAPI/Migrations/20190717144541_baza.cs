@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ISNogometniStadion.WebAPI.Migrations
 {
-    public partial class first : Migration
+    public partial class baza : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -50,6 +50,10 @@ namespace ISNogometniStadion.WebAPI.Migrations
                     Ime = table.Column<string>(nullable: true),
                     Prezime = table.Column<string>(nullable: true),
                     DatumRodjenja = table.Column<DateTime>(nullable: false),
+                    telefon = table.Column<string>(nullable: true),
+                    email = table.Column<string>(nullable: true),
+                    korisnickoIme = table.Column<string>(nullable: true),
+                    lozinka = table.Column<string>(nullable: true),
                     GradID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -91,16 +95,16 @@ namespace ISNogometniStadion.WebAPI.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Naziv = table.Column<string>(nullable: true),
                     Opis = table.Column<string>(nullable: true),
-                    GradID = table.Column<int>(nullable: false)
+                    StadionID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Timovi", x => x.TimID);
                     table.ForeignKey(
-                        name: "FK_Timovi_Gradovi_GradID",
-                        column: x => x.GradID,
-                        principalTable: "Gradovi",
-                        principalColumn: "GradID",
+                        name: "FK_Timovi_Stadioni_StadionID",
+                        column: x => x.StadionID,
+                        principalTable: "Stadioni",
+                        principalColumn: "StadionID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -111,24 +115,25 @@ namespace ISNogometniStadion.WebAPI.Migrations
                     TribinaID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Naziv = table.Column<string>(nullable: true),
-                    StadionID = table.Column<int>(name: "StadionID)", nullable: true)
+                    StadionID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tribine", x => x.TribinaID);
                     table.ForeignKey(
-                        name: "FK_Tribine_Stadioni_StadionID)",
+                        name: "FK_Tribine_Stadioni_StadionID",
                         column: x => x.StadionID,
                         principalTable: "Stadioni",
                         principalColumn: "StadionID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Utakmice",
                 columns: table => new
                 {
-                    UtakmicaID = table.Column<int>(nullable: false),
+                    UtakmicaID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DomaciTimID = table.Column<int>(nullable: false),
                     GostujuciTimID = table.Column<int>(nullable: false),
                     DatumOdigravanja = table.Column<DateTime>(nullable: false),
@@ -183,7 +188,8 @@ namespace ISNogometniStadion.WebAPI.Migrations
                 name: "Ulaznice",
                 columns: table => new
                 {
-                    UlaznicaID = table.Column<int>(nullable: false),
+                    UlaznicaID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     SjedaloID = table.Column<int>(nullable: false),
                     UtakmicaID = table.Column<int>(nullable: false),
                     KorisnikID = table.Column<int>(nullable: false),
@@ -204,7 +210,7 @@ namespace ISNogometniStadion.WebAPI.Migrations
                         column: x => x.SjedaloID,
                         principalTable: "Sjedala",
                         principalColumn: "SjedaloID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Ulaznice_Utakmice_UtakmicaID",
                         column: x => x.UtakmicaID,
@@ -234,14 +240,14 @@ namespace ISNogometniStadion.WebAPI.Migrations
                 column: "GradID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Timovi_GradID",
+                name: "IX_Timovi_StadionID",
                 table: "Timovi",
-                column: "GradID");
+                column: "StadionID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tribine_StadionID)",
+                name: "IX_Tribine_StadionID",
                 table: "Tribine",
-                column: "StadionID)");
+                column: "StadionID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ulaznice_KorisnikID",

@@ -8,6 +8,7 @@ namespace ISNogometniStadion.WebAPI.Database
 {
     public class Utakmice
     {
+        [Key]
         public int UtakmicaID { get; set; }
 
         [ForeignKey("DomaciTimID")]
@@ -21,7 +22,7 @@ namespace ISNogometniStadion.WebAPI.Database
         public DateTime DatumOdigravanja { get; set; }
         public DateTime VrijemeOdigravanja { get; set; }
         [ForeignKey("StadionID")]
-        public Stadion stadion { get; set; }
+        public Stadioni stadion { get; set; }
         public int StadionID { get; set; }
     }
 }

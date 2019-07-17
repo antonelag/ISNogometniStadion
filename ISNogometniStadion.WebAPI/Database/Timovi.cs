@@ -10,8 +10,9 @@ namespace ISNogometniStadion.WebAPI.Database
         public int TimID { get; set; }
         public string Naziv { get; set; }
         public string Opis { get; set; }
-        [ForeignKey("GradID")]
-        public Gradovi Grad { get; set; }
-        public int GradID { get; set; }
+      
+        [ForeignKey("StadionID")]
+        public Stadioni Stadion { get; set; }
+        public int StadionID { get; set; }
     }
 }
