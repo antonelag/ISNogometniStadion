@@ -51,6 +51,8 @@ namespace ISNogometniStadion.WebAPI
             services.AddScoped<ITimoviService, TimoviService>();
             services.AddScoped<IStadioniService, StadioniService>();
             services.AddScoped<ITribineService, TribineService>();
+            services.AddScoped<ISjedalaService, SjedalaService>();
+            services.AddScoped<IUtakmiceService, UtakmiceService>();
 
             var conn = @"Server = (localdb); Database = ISNogometniStadionDB; Trusted_Connection = True; ";
             services.AddDbContext<ISNogometniStadionContext>(options => options.UseSqlServer(conn));
