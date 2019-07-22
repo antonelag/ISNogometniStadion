@@ -34,11 +34,23 @@ namespace ISNogometniStadion.WebAPI.Services
                 throw new UserException("Korisnik nije pronadjen");
         }
 
-        public List<Korisnik> Get()
+        public List<Korisnik> Get(KorisniciSearchRequest req)
         {
             //return _ISNogometniStadionContext.Korisnici.ToList();
-            var list = _ISNogometniStadionContext.Korisnici.ToList();
-            return _mapper.Map<List<Model.Korisnik>>(list);
+            var query = _ISNogometniStadionContext.Korisnici.AsQueryable();
+            //ukoliko je req null kod se nece izvrsavati radi ?
+            if (!string.IsNullOrWhiteSpace(req?.Ime))
+                {
+                query = query.Where(x => x.Ime.StartsWith(req.Ime));
+            }
+            if (!string.IsNullOrWhiteSpace(req?.Prezime))
+            {
+                query = query.Where(x => x.Prezime.StartsWith(req.Prezime));
+            }
+            var list = query.ToList();
+           
+
+            return _mapper.Map<List<Korisnik>>(list);
         }
 
         public Korisnik GetById(int id)
@@ -54,7 +66,6 @@ namespace ISNogometniStadion.WebAPI.Services
         {
             //mapiraju se korisnici u bazu iz zahtjeva
             var entity = _mapper.Map<Database.Korisnici>(req);
-            entity.GradID = 1;
             if (req.lozinka != req.potvrdaLozinke)
             {
                 //napraviti folder filters sa klasom errorfilter
@@ -68,17 +79,16 @@ namespace ISNogometniStadion.WebAPI.Services
 
             return _mapper.Map<Model.Korisnik>(entity);
         }
-        public Korisnik Update(int id, KorisniciUpdateRequest req)
+        public Korisnik Update(int id, KorisniciInsertRequest req)
         {
                 var t = _ISNogometniStadionContext.Korisnici.FirstOrDefault(s => s.KorisnikID == id);
                 var g = _ISNogometniStadionContext.Gradovi.FirstOrDefault(s => s.GradID == req.GradID);
-            
-            if (t!=null && g!=null)
-            {
-                    _mapper.Map<KorisniciUpdateRequest,Database.Korisnici>(req,t);
-                    _ISNogometniStadionContext.SaveChanges();
-                    return _mapper.Map<Model.Korisnik>(t);
-            }
+                if (t!=null && g!=null && req.lozinka == req.potvrdaLozinke)
+                {
+                        _mapper.Map<KorisniciInsertRequest, Database.Korisnici>(req,t);
+                        _ISNogometniStadionContext.SaveChanges();
+                        return _mapper.Map<Model.Korisnik>(t);
+                }
             else
                 throw new UserException("Pogresan unos");
         }

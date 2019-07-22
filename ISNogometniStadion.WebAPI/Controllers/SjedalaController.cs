@@ -20,9 +20,9 @@ namespace ISNogometniStadion.WebAPI.Controllers
             _sjedalaService = sjedalaService;
         }
         [HttpGet]
-        public List<Sjedalo> Get()
+        public List<Sjedalo> Get([FromQuery]SjedalaSearchRequest req)
         {
-            return _sjedalaService.Get();
+            return _sjedalaService.Get(req);
         }
         [HttpGet("{id}")]
         public Sjedalo GetById(int id)
@@ -34,8 +34,8 @@ namespace ISNogometniStadion.WebAPI.Controllers
         {
             return _sjedalaService.Insert(req);
         }
-        [HttpPut]
-        public Sjedalo Update(int id, SjedaloUpdateRequest req)
+        [HttpPut("{id}")]
+        public Sjedalo Update(int id, SjedalaInsertRequest req)
         {
             return _sjedalaService.Update(id, req);
         }

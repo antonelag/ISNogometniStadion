@@ -9,10 +9,10 @@ namespace ISNogometniStadion.WebAPI.Services
 {
     public interface ISjedalaService
     {
-        List<Sjedalo> Get();
+        List<Sjedalo> Get(SjedalaSearchRequest req);
         Sjedalo GetById(int id);
         Sjedalo Insert(SjedalaInsertRequest req);
-        Sjedalo Update(int id, SjedaloUpdateRequest req);
+        Sjedalo Update(int id, SjedalaInsertRequest req);
         string Delete(int id);
     }
 }

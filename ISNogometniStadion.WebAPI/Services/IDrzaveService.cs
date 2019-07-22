@@ -10,10 +10,10 @@ namespace ISNogometniStadion.WebAPI.Services
 {
     public interface IDrzaveService
     {
-        List<Drzava> Get();
+        List<Drzava> Get(DrzaveSearchRequest req);
         Drzava GetById(int id);
-        Drzava Insert(GradoviUpdateRequest req);
-        Drzava Update(int id,DrzaveUpdateRequest req);
+        Drzava Insert(DrzaveInsertRequest req);
+        Drzava Update(int id, DrzaveInsertRequest req);
         string Delete(int id);
     }
 }

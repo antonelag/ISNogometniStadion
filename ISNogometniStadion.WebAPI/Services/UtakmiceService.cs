@@ -73,17 +73,17 @@ namespace ISNogometniStadion.WebAPI.Services
                 throw new UserException("Pogresan unos!");
         }
 
-        public Utakmica Update(int id, UtakmiceUpdateRequest req)
+        public Utakmica Update(int id, UtakmiceInsertRequest req)
         {
             var t = _context.Utakmice.FirstOrDefault(s => s.UtakmicaID == id);
             bool istiTim=req.DomaciTimID == req.GostujuciTimID?true:false;
             var d = _context.Timovi.FirstOrDefault(f => f.TimID == req.DomaciTimID);
             var e = _context.Timovi.FirstOrDefault(f => f.TimID == req.GostujuciTimID);
             var p = _context.Stadioni.FirstOrDefault(f => f.StadionID == req.StadionID);
-
-            if (t != null && !istiTim && d!=null && p!=null && e!=null)
+            var isti = _context.Utakmice.FirstOrDefault(a => a.DomaciTimID == req.DomaciTimID && a.GostujuciTimID == req.GostujuciTimID && DateTime.Compare(a.DatumOdigravanja, req.DatumOdigravanja)==0 && a.UtakmicaID != id);
+            if (isti==null && t != null && !istiTim && d!=null && p!=null && e!=null)
             {
-                _mapper.Map<UtakmiceUpdateRequest, Utakmice>(req, t);
+                _mapper.Map<UtakmiceInsertRequest, Utakmice>(req, t);
                 _context.SaveChanges();
                 return _mapper.Map<Utakmica>(t);
             }

@@ -10,10 +10,10 @@ namespace ISNogometniStadion.WebAPI.Services
 {
     public interface IGradoviService
     {
-        List<Grad> Get();
+        List<Grad> Get(GradoviSearchRequest req);
         Grad GetById(int id);
         Grad Insert(GradoviInsertRequest req);
-        Grad Update(int id,GradoviUpdateRequest req);
+        Grad Update(int id, GradoviInsertRequest req);
         string Delete(int id);
     }
 }

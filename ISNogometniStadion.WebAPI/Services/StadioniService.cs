@@ -32,9 +32,14 @@ namespace ISNogometniStadion.WebAPI.Services
                 throw new UserException("Stadion ne postoji!");
         }
 
-        public List<Stadion> Get()
+        public List<Stadion> Get(StadioniSearchRequest req)
         {
-            var list = _context.Stadioni.ToList();
+            var q = _context.Stadioni.AsQueryable();
+            if (!string.IsNullOrEmpty(req?.Naziv))
+            {
+                q = q.Where(s => s.Naziv.StartsWith(req.Naziv));
+            }
+            var list = q.ToList();
             return _mapper.Map<List<Stadion>>(list);
         }
 
@@ -62,14 +67,14 @@ namespace ISNogometniStadion.WebAPI.Services
                 throw new UserException("Pogresan unos");
         }
 
-        public Stadion Update(int id, StadioniUpdateRequest req)
+        public Stadion Update(int id, StadioniInsertRequest req)
         {
             var t = _context.Stadioni.FirstOrDefault(s => s.StadionID == id);
-            var a = _context.Stadioni.FirstOrDefault(s => s.Naziv == req.Naziv);
+            var a = _context.Stadioni.FirstOrDefault(s => s.Naziv == req.Naziv && s.StadionID!=id);
             var g = _context.Gradovi.FirstOrDefault(s => s.GradID == req.GradID);
             if (t != null && a==null && g!=null)
             {
-                _mapper.Map<StadioniUpdateRequest, Database.Stadioni>(req, t);
+                _mapper.Map<StadioniInsertRequest, Database.Stadioni>(req, t);
                 _context.SaveChanges();
                 return _mapper.Map<Stadion>(t);
             }

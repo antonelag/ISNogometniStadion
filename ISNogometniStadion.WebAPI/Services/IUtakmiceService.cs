@@ -12,7 +12,7 @@ namespace ISNogometniStadion.WebAPI.Services
         List<Utakmica> Get();
         Utakmica GetById(int id);
         Utakmica Insert(UtakmiceInsertRequest req);
-        Utakmica Update(int id, UtakmiceUpdateRequest req);
+        Utakmica Update(int id, UtakmiceInsertRequest req);
         string Delete(int id);
     }
 }

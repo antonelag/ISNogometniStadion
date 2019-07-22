@@ -20,9 +20,9 @@ namespace ISNogometniStadion.WebAPI.Controllers
             _drzaveService = drzaveService;
         }
         [HttpGet]
-        public ActionResult<List<Drzava>> Get()
+        public ActionResult<List<Drzava>> Get([FromQuery]DrzaveSearchRequest req)
         {
-            return _drzaveService.Get();
+            return _drzaveService.Get(req);
         }
         [HttpGet("{id}")]
         public Drzava GetById(int id)
@@ -30,12 +30,12 @@ namespace ISNogometniStadion.WebAPI.Controllers
             return _drzaveService.GetById(id);
         }
         [HttpPost]
-        public Drzava Insert(GradoviUpdateRequest req)
+        public Drzava Insert(DrzaveInsertRequest req)
         {
             return _drzaveService.Insert(req);
         }
         [HttpPut("{id}")]
-        public Drzava Update(int id, DrzaveUpdateRequest req)
+        public Drzava Update(int id, DrzaveInsertRequest req)
         {
             return _drzaveService.Update(id, req);
         }

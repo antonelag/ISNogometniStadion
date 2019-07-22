@@ -65,16 +65,16 @@ namespace ISNogometniStadion.WebAPI.Services
             else throw new UserException("Pogresan unos");
         }
 
-        public Ulaznica Update(int id, UlazniceUpdateRequest req)
+        public Ulaznica Update(int id, UlazniceInsertRequest req)
         {
             var t = _context.Ulaznice.FirstOrDefault(s => s.UlaznicaID == id);
             var a = _context.Sjedala.FirstOrDefault(e => e.SjedaloID == req.SjedaloID);
             var u = _context.Utakmice.FirstOrDefault(e => e.UtakmicaID == req.UtakmicaID);
             var p = _context.Korisnici.FirstOrDefault(r => r.KorisnikID == req.KorisnikID);
-            var z = _context.Ulaznice.FirstOrDefault(e => e.SjedaloID == req.SjedaloID && e.UtakmicaID == req.UtakmicaID);
+            var z = _context.Ulaznice.FirstOrDefault(e => e.SjedaloID == req.SjedaloID && e.UtakmicaID == req.UtakmicaID && e.UlaznicaID!=id);
             if (t != null && a != null && u != null && z == null && p!=null)
             {
-                _mapper.Map<UlazniceUpdateRequest, Database.Ulaznice>(req, t);
+                _mapper.Map<UlazniceInsertRequest, Database.Ulaznice>(req, t);
                 _context.SaveChanges();
                 return _mapper.Map<Ulaznica>(t);
             }

@@ -33,9 +33,15 @@ namespace ISNogometniStadion.WebAPI.Services
                 throw new UserException("Sjedalo nije pronadjeno!");
         }
 
-        public List<Sjedalo> Get()
+        public List<Sjedalo> Get(SjedalaSearchRequest req)
         {
-            var list = _context.Sjedala.ToList();
+            var     q = _context.Sjedala.AsQueryable();
+            if (!string.IsNullOrEmpty(req?.Oznaka))
+            {
+                q = q.Where(s => s.Oznaka.StartsWith(req.Oznaka));
+            }
+            var list = q.ToList();
+
             return _mapper.Map <List<Sjedalo>>(list);
         }
 
@@ -64,15 +70,15 @@ namespace ISNogometniStadion.WebAPI.Services
                 throw new UserException("Pogresan unos!");
         }
 
-        public Sjedalo Update(int id, SjedaloUpdateRequest req)
+        public Sjedalo Update(int id, SjedalaInsertRequest req)
         {
             var t = _context.Sjedala.FirstOrDefault(r => r.SjedaloID == id);
-            var s = _context.Sjedala.FirstOrDefault(a => a.Oznaka == req.Oznaka && a.TribinaID == req.TribinaID);
+            var s = _context.Sjedala.FirstOrDefault(a => a.Oznaka == req.Oznaka && a.TribinaID == req.TribinaID && a.SjedaloID!=id);
             var b = _context.Tribine.FirstOrDefault(r => r.TribinaID == req.TribinaID);
 
             if (t != null && s == null && b!=null)
             {
-                _mapper.Map<SjedaloUpdateRequest, Sjedala>(req, t);
+                _mapper.Map<SjedalaInsertRequest, Sjedala>(req, t);
                 _context.SaveChanges();
                 return _mapper.Map<Sjedalo>(t);
             }

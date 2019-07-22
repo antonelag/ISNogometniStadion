@@ -12,7 +12,7 @@ namespace ISNogometniStadion.WebAPI.Services
         List<Tribina> Get();
         Tribina GetById(int id);
         Tribina Insert(TribineInsertRequest req);
-        Tribina Update(int id, TribineUpdateRequest req);
+        Tribina Update(int id, TribineInsertRequest req);
         string Delete(int id);
     }
 }

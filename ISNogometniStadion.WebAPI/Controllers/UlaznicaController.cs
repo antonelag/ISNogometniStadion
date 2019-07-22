@@ -39,7 +39,7 @@ namespace ISNogometniStadion.WebAPI.Controllers
             return _ulaznicaService.Insert(req);
         }
         [HttpPut("{id}")]
-        public Ulaznica Update(int id, UlazniceUpdateRequest req)
+        public Ulaznica Update(int id, UlazniceInsertRequest req)
         {
             return _ulaznicaService.Update(id, req);
         }

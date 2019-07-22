@@ -12,7 +12,7 @@ namespace ISNogometniStadion.WebAPI.Services
         List<Tim> Get();
         Tim GetById(int id);
         Tim Insert(TimoviInsertRequest req);
-        Tim Update(int id, TimoviUpdateRequest req);
+        Tim Update(int id, TimoviInsertRequest req);
         string Delete(int id);
     }
 }

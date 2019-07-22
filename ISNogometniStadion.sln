@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISNogometniStadion.WebAPI", "ISNogometniStadion.WebAPI\ISNogometniStadion.WebAPI.csproj", "{45A369DF-336D-4978-8612-64F35ABCE693}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ISNogometniStadion.WebAPI", "ISNogometniStadion.WebAPI\ISNogometniStadion.WebAPI.csproj", "{45A369DF-336D-4978-8612-64F35ABCE693}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISNogometniStadion.Model", "ISNogometniStadion.Model\ISNogometniStadion.Model.csproj", "{AA0E0B7A-42E3-4409-B999-F9D90A192A7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ISNogometniStadion.Model", "ISNogometniStadion.Model\ISNogometniStadion.Model.csproj", "{AA0E0B7A-42E3-4409-B999-F9D90A192A7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{D299F8F5-0A96-4F51-8EBF-E3A74DEDDE6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISNogometniStadion.WinUI", "ISNogometniStadion.WinUI\ISNogometniStadion.WinUI.csproj", "{069040C1-E452-462D-A924-4CA96F231350}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{AA0E0B7A-42E3-4409-B999-F9D90A192A7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA0E0B7A-42E3-4409-B999-F9D90A192A7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA0E0B7A-42E3-4409-B999-F9D90A192A7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{069040C1-E452-462D-A924-4CA96F231350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{069040C1-E452-462D-A924-4CA96F231350}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{069040C1-E452-462D-A924-4CA96F231350}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{069040C1-E452-462D-A924-4CA96F231350}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{069040C1-E452-462D-A924-4CA96F231350} = {D299F8F5-0A96-4F51-8EBF-E3A74DEDDE6E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C816052-0EC3-4B3F-97A6-29FC5761ACE6}

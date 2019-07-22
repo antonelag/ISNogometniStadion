@@ -9,10 +9,10 @@ namespace ISNogometniStadion.WebAPI.Services
 {
     public interface IKorisniciService
     {
-        List<Korisnik> Get();
+        List<Korisnik> Get(KorisniciSearchRequest req);
         Korisnik GetById(int id);
         Korisnik Insert(KorisniciInsertRequest req);
-        Korisnik Update(int id,KorisniciUpdateRequest req);
+        Korisnik Update(int id, KorisniciInsertRequest req);
         string Delete(int id);
     }
 }

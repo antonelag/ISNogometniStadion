@@ -35,7 +35,7 @@ namespace ISNogometniStadion.WebAPI.Controllers
             return _utakmiceService.Insert(req);
         }
         [HttpPut]
-        public Utakmica Update(int id, UtakmiceUpdateRequest req)
+        public Utakmica Update(int id, UtakmiceInsertRequest req)
         {
             return _utakmiceService.Update(id, req);
         }

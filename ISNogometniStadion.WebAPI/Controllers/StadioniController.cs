@@ -20,9 +20,9 @@ namespace ISNogometniStadion.WebAPI.Controllers
             _stadioniService = stadioniService;
         }
         [HttpGet]
-        public List<Stadion> Get()
+        public List<Stadion> Get([FromQuery]StadioniSearchRequest req)
         {
-            return _stadioniService.Get();
+            return _stadioniService.Get(req);
         }
         [HttpGet("{id}")]
         public Stadion GetById(int id)
@@ -34,8 +34,8 @@ namespace ISNogometniStadion.WebAPI.Controllers
         {
             return _stadioniService.Insert(req);
         }
-        [HttpPut]
-        public Stadion Update(int id, StadioniUpdateRequest req)
+        [HttpPut("{id}")]
+        public Stadion Update(int id, StadioniInsertRequest req)
         {
             return _stadioniService.Update(id, req);
         }

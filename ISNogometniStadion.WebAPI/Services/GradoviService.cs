@@ -33,9 +33,13 @@ namespace ISNogometniStadion.WebAPI.Services
                 throw new UserException("Pogresan unos");
         }
 
-        public List<Grad> Get()
+        public List<Grad> Get(GradoviSearchRequest req)
         {
-            var list= _context.Gradovi.ToList();
+
+            var q= _context.Gradovi.AsQueryable();
+            if (!string.IsNullOrEmpty(req?.Naziv))
+                q = q.Where(s => s.Naziv.StartsWith(req.Naziv));
+            var list = q.ToList();
             return _mapper.Map<List<Grad>>(list);
         }
 
@@ -54,6 +58,7 @@ namespace ISNogometniStadion.WebAPI.Services
         {
             var a = _context.Gradovi.FirstOrDefault(r => r.Naziv.ToLower() == req.Naziv.ToLower());
             var g = _context.Drzave.FirstOrDefault(s => s.DrzavaID == req.DrzavaID);
+
             if (a == null && g!=null)
             {
                 var t = _mapper.Map<Database.Gradovi>(req);
@@ -65,15 +70,15 @@ namespace ISNogometniStadion.WebAPI.Services
                 throw new UserException("Pogresan unos!");
         }
 
-        public Grad Update(int id,GradoviUpdateRequest req)
+        public Grad Update(int id, GradoviInsertRequest req)
         {
             var t = _context.Gradovi.FirstOrDefault(r => r.GradID == id);
             var g = _context.Drzave.FirstOrDefault(s => s.DrzavaID == req.DrzavaID);
-            var a = _context.Gradovi.FirstOrDefault(e => e.Naziv == req.Naziv);
+            var a = _context.Gradovi.FirstOrDefault(e => e.Naziv == req.Naziv && e.GradID != id);
 
             if (t != null && g != null && a == null) 
             {
-                _mapper.Map<GradoviUpdateRequest, Database.Gradovi>(req, t);
+                _mapper.Map<GradoviInsertRequest, Database.Gradovi>(req, t);
                 _context.SaveChanges();
                 return _mapper.Map<Grad>(t);
             }

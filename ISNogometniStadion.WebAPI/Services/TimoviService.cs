@@ -66,14 +66,14 @@ namespace ISNogometniStadion.WebAPI.Services
                 throw new UserException("Pogresan unos!");
             }
 
-        public Tim Update(int id, TimoviUpdateRequest req)
+        public Tim Update(int id, TimoviInsertRequest req)
         {
             var t = _context.Timovi.FirstOrDefault(s => s.TimID == id);
             var g = _context.Stadioni.FirstOrDefault(r => r.StadionID == req.StadionID);
-            var a = _context.Timovi.FirstOrDefault(e => e.Naziv == req.Naziv);
+            var a = _context.Timovi.FirstOrDefault(e => e.Naziv == req.Naziv && e.TimID!=id);
             if (t != null && g != null && a==null)
             {
-                _mapper.Map<TimoviUpdateRequest, Database.Timovi>(req, t);
+                _mapper.Map<TimoviInsertRequest, Database.Timovi>(req, t);
                 _context.SaveChanges();
                 return _mapper.Map<Tim>(t);
             }

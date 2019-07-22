@@ -62,14 +62,14 @@ namespace ISNogometniStadion.WebAPI.Services
                 throw new UserException("Pogresan unos");
         }
 
-        public Tribina Update(int id, TribineUpdateRequest req)
+        public Tribina Update(int id, TribineInsertRequest req)
         {
-            var a = _context.Tribine.FirstOrDefault(s => s.Naziv == req.Naziv && s.StadionID==req.StadionID);
+            var a = _context.Tribine.FirstOrDefault(s => s.Naziv == req.Naziv && s.TribinaID!=id && s.StadionID==req.StadionID);
             var b = _context.Stadioni.FirstOrDefault(s => s.StadionID == req.StadionID);
             var c = _context.Tribine.FirstOrDefault(s => s.TribinaID == id);
             if (a == null && b != null && c != null)
             {
-                _mapper.Map<TribineUpdateRequest, Database.Tribine>(req, c);
+                _mapper.Map<TribineInsertRequest, Database.Tribine>(req, c);
                 _context.SaveChanges();
                 return _mapper.Map<Tribina>(c);
             }

@@ -35,7 +35,7 @@ namespace ISNogometniStadion.WebAPI.Controllers
             return _timoviService.Insert(req);
         }
         [HttpPut("{id}")]
-        public Tim Update(int id, TimoviUpdateRequest req)
+        public Tim Update(int id, TimoviInsertRequest req)
         {
             return _timoviService.Update(id, req);
         }

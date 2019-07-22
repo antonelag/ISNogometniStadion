@@ -20,9 +20,9 @@ namespace ISNogometniStadion.WebAPI.Controllers
             _gradoviService = gradoviService;
         }
         [HttpGet]
-        public ActionResult<List<Grad>> Get()
+        public ActionResult<List<Grad>> Get([FromQuery]GradoviSearchRequest req)
         {
-            return _gradoviService.Get();
+            return _gradoviService.Get(req);
         }
         [HttpGet("{id}")]
         public Grad GetById(int id)
@@ -35,7 +35,7 @@ namespace ISNogometniStadion.WebAPI.Controllers
             return _gradoviService.Insert(req);
         }
         [HttpPut("{id}")]
-        public Grad Update(int id, GradoviUpdateRequest req)
+        public Grad Update(int id, GradoviInsertRequest req)
         {
             return _gradoviService.Update(id, req);
         }

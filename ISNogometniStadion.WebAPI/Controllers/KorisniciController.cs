@@ -23,9 +23,9 @@ namespace ISNogometniStadion.WebAPI.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public ActionResult<List<Korisnik>> Get()
-        {
-            return _korisniciService.Get();
+        public ActionResult<List<Korisnik>> Get([FromQuery]KorisniciSearchRequest req)
+        {//brw ne podrzavaju na getu slanje parametara kroz body pa zato fromq
+            return _korisniciService.Get(req);
         }
         [HttpGet("{id}")]
         public Korisnik GetById(int id)
@@ -38,7 +38,7 @@ namespace ISNogometniStadion.WebAPI.Controllers
             return _korisniciService.Insert(req);
         }
         [HttpPut("{id}")]
-        public Korisnik Update(int id ,KorisniciUpdateRequest req)
+        public Korisnik Update(int id , KorisniciInsertRequest req)
         {
             return _korisniciService.Update(id, req);
         }

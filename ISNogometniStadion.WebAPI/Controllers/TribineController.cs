@@ -35,7 +35,7 @@ namespace ISNogometniStadion.WebAPI.Controllers
             return _tribineService.Insert(req);
         }
         [HttpPut]
-        public Tribina Update(int id, TribineUpdateRequest req)
+        public Tribina Update(int id, TribineInsertRequest req)
         {
             return _tribineService.Update(id,req);
         }

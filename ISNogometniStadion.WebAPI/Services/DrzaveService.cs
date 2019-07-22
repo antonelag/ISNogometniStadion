@@ -33,9 +33,17 @@ namespace ISNogometniStadion.WebAPI.Services
                 throw new UserException("Pogresan unos");
         }
 
-        public List<Drzava> Get()
+        public List<Drzava> Get(DrzaveSearchRequest req)
         {
-            var list= _context.Drzave.ToList();
+            var query = _context.Drzave.AsQueryable();
+            //ukoliko je req null kod se nece izvrsavati radi ?
+            if (!string.IsNullOrWhiteSpace(req?.Naziv))
+            {
+                query = query.Where(x => x.Naziv.StartsWith(req.Naziv));
+            }
+           
+            var list = query.ToList();
+
             return _mapper.Map<List<Drzava>>(list);
         }
 
@@ -50,7 +58,7 @@ namespace ISNogometniStadion.WebAPI.Services
                 throw new UserException("Drzava ne postoji!");
         }
 
-        public Drzava Insert(GradoviUpdateRequest req)
+        public Drzava Insert(DrzaveInsertRequest req)
         {
             var a = _context.Drzave.FirstOrDefault(r => r.Naziv.ToLower() == req.Naziv.ToLower());
             if (a == null)
@@ -64,13 +72,13 @@ namespace ISNogometniStadion.WebAPI.Services
                 throw new UserException("Drzava sa istim imenom vec postoji!");
         }
 
-        public Drzava Update(int id,DrzaveUpdateRequest req)
+        public Drzava Update(int id, DrzaveInsertRequest req)
         {
             var t = _context.Drzave.FirstOrDefault(r => r.DrzavaID == id);
-            var a = _context.Drzave.FirstOrDefault(s => s.Naziv == req.naziv);
+            var a = _context.Drzave.FirstOrDefault(s => s.Naziv == req.Naziv && s.DrzavaID!=id);
             if (t != null && a==null)
             {
-                _mapper.Map<DrzaveUpdateRequest, Database.Drzave>(req, t);
+                _mapper.Map<DrzaveInsertRequest, Database.Drzave>(req, t);
                 _context.SaveChanges();
                 return _mapper.Map<Drzava>(t);
             }
