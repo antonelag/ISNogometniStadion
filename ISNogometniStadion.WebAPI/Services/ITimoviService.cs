@@ -9,7 +9,7 @@ namespace ISNogometniStadion.WebAPI.Services
 {
     public interface ITimoviService
     {
-        List<Tim> Get();
+        List<Tim> Get(TimoviSearchRequest req);
         Tim GetById(int id);
         Tim Insert(TimoviInsertRequest req);
         Tim Update(int id, TimoviInsertRequest req);

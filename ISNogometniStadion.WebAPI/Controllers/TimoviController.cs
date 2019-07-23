@@ -20,9 +20,9 @@ namespace ISNogometniStadion.WebAPI.Controllers
             _timoviService = timoviService;
         }
         [HttpGet]
-        public ActionResult<List<Tim>> Get()
+        public ActionResult<List<Tim>> Get([FromQuery]TimoviSearchRequest req)
         {
-            return _timoviService.Get();
+            return _timoviService.Get(req);
         }
         [HttpGet("{id}")]
         public Tim GetById(int id)

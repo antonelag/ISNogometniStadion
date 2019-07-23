@@ -32,9 +32,12 @@ namespace ISNogometniStadion.WebAPI.Services
                 throw new UserException("Tribina ne postoji!");
         }
 
-        public List<Tribina> Get()
+        public List<Tribina> Get(TribineSearchRequest req)
         {
-            var list = _context.Tribine.ToList();
+            var q = _context.Tribine.AsQueryable();
+            if (!string.IsNullOrEmpty(req?.Naziv))
+                q = q.Where(s => s.Naziv.StartsWith(req.Naziv));
+            var list = q.ToList();
             return _mapper.Map<List<Tribina>>(list);
         }
 

@@ -3,6 +3,10 @@ using ISNogometniStadion.WinUI.Gradovi;
 using ISNogometniStadion.WinUI.Korisnici;
 using ISNogometniStadion.WinUI.Sjedala;
 using ISNogometniStadion.WinUI.Stadioni;
+using ISNogometniStadion.WinUI.Timovi;
+using ISNogometniStadion.WinUI.Tribine;
+using ISNogometniStadion.WinUI.Ulaznice;
+using ISNogometniStadion.WinUI.Utakmice;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -177,6 +181,63 @@ namespace ISNogometniStadion.WinUI
         private void NoviStadionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new frmStadionDetalji();
+            frm.Show();
+        }
+
+        private void PretraćiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new frmTimovi();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void NoviTimToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new frmTimoviDetalji();
+            frm.Show();
+        }
+
+        private void PretražiToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            var frm = new frmTribine();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void NovaTribinaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new frmTribineDetalji();
+            frm.Show();
+        }
+
+        private void PretražiToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            var frm = new frmUlaznice();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+
+        }
+
+        private void NovaUlaznicaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new frmUlazniceDetalji();
+            frm.Show();
+        }
+
+        private void PretražiToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            var frm = new frmUtakmice();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void NovaUtakmicaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new frmUtakmiceDetalji();
             frm.Show();
         }
     }

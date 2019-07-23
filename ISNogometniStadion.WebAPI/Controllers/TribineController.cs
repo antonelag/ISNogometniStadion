@@ -20,9 +20,9 @@ namespace ISNogometniStadion.WebAPI.Controllers
             _tribineService = tribineService;
         }
         [HttpGet]
-        public List<Tribina> Get()
+        public List<Tribina> Get([FromQuery]TribineSearchRequest req)
         {
-            return _tribineService.Get();
+            return _tribineService.Get(req);
         }
         [HttpGet("{id}")]
         public Tribina GetById(int id)
@@ -34,7 +34,7 @@ namespace ISNogometniStadion.WebAPI.Controllers
         {
             return _tribineService.Insert(req);
         }
-        [HttpPut]
+        [HttpPut("{id}")]
         public Tribina Update(int id, TribineInsertRequest req)
         {
             return _tribineService.Update(id,req);

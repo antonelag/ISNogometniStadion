@@ -100,6 +100,21 @@
     <Compile Include="Gradovi\frmGradoviDetalji.Designer.cs">
       <DependentUpon>frmGradoviDetalji.cs</DependentUpon>
     </Compile>
+    <Compile Include="KorisniciDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KorisniciDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SjedalaDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SjedalaDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="StadioniDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StadioniDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Stadioni\frmStadionDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +126,28 @@
     </Compile>
     <Compile Include="Stadioni\frmStadioni.Designer.cs">
       <DependentUpon>frmStadioni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="timovi2DBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>timovi2DBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TimoviDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TimoviDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Timovi\frmTimovi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Timovi\frmTimovi.Designer.cs">
+      <DependentUpon>frmTimovi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Timovi\frmTimoviDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Timovi\frmTimoviDetalji.Designer.cs">
+      <DependentUpon>frmTimoviDetalji.cs</DependentUpon>
     </Compile>
     <Compile Include="TribineDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -142,6 +179,47 @@
     </Compile>
     <Compile Include="Sjedala\frmSjedalaDetalji.Designer.cs">
       <DependentUpon>frmSjedalaDetalji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tribine\frmTribine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tribine\frmTribine.Designer.cs">
+      <DependentUpon>frmTribine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tribine\frmTribineDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tribine\frmTribineDetalji.Designer.cs">
+      <DependentUpon>frmTribineDetalji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ulaznice\frmUlaznice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ulaznice\frmUlaznice.Designer.cs">
+      <DependentUpon>frmUlaznice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ulaznice\frmUlazniceDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ulaznice\frmUlazniceDetalji.Designer.cs">
+      <DependentUpon>frmUlazniceDetalji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UtakmiceDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UtakmiceDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Utakmice\frmUtakmice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utakmice\frmUtakmice.Designer.cs">
+      <DependentUpon>frmUtakmice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utakmice\frmUtakmiceDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utakmice\frmUtakmiceDetalji.Designer.cs">
+      <DependentUpon>frmUtakmiceDetalji.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Drzave\frmDrzave.resx">
       <DependentUpon>frmDrzave.cs</DependentUpon>
@@ -186,6 +264,30 @@
     <EmbeddedResource Include="Stadioni\frmStadioni.resx">
       <DependentUpon>frmStadioni.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Timovi\frmTimovi.resx">
+      <DependentUpon>frmTimovi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Timovi\frmTimoviDetalji.resx">
+      <DependentUpon>frmTimoviDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tribine\frmTribine.resx">
+      <DependentUpon>frmTribine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tribine\frmTribineDetalji.resx">
+      <DependentUpon>frmTribineDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ulaznice\frmUlaznice.resx">
+      <DependentUpon>frmUlaznice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ulaznice\frmUlazniceDetalji.resx">
+      <DependentUpon>frmUlazniceDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utakmice\frmUtakmice.resx">
+      <DependentUpon>frmUtakmice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utakmice\frmUtakmiceDetalji.resx">
+      <DependentUpon>frmUtakmiceDetalji.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="DrzaveDataSet.xsc">
       <DependentUpon>DrzaveDataSet.xsd</DependentUpon>
     </None>
@@ -208,6 +310,61 @@
     <None Include="GradoviDataSet.xss">
       <DependentUpon>GradoviDataSet.xsd</DependentUpon>
     </None>
+    <None Include="KorisniciDBDataSet.xsc">
+      <DependentUpon>KorisniciDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="KorisniciDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>KorisniciDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="KorisniciDBDataSet.xss">
+      <DependentUpon>KorisniciDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SjedalaDBDataSet.xsc">
+      <DependentUpon>SjedalaDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SjedalaDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SjedalaDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SjedalaDBDataSet.xss">
+      <DependentUpon>SjedalaDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="StadioniDataSet.xsc">
+      <DependentUpon>StadioniDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="StadioniDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StadioniDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="StadioniDataSet.xss">
+      <DependentUpon>StadioniDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="timovi2DBDataSet.xsc">
+      <DependentUpon>timovi2DBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="timovi2DBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>timovi2DBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="timovi2DBDataSet.xss">
+      <DependentUpon>timovi2DBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TimoviDBDataSet.xsc">
+      <DependentUpon>TimoviDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TimoviDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TimoviDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TimoviDBDataSet.xss">
+      <DependentUpon>TimoviDBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="TribineDataSet.xsc">
       <DependentUpon>TribineDataSet.xsd</DependentUpon>
     </None>
@@ -229,6 +386,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="UtakmiceDBDataSet.xsc">
+      <DependentUpon>UtakmiceDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="UtakmiceDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UtakmiceDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UtakmiceDBDataSet.xss">
+      <DependentUpon>UtakmiceDBDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -242,5 +410,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

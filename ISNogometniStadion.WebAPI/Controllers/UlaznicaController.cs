@@ -21,9 +21,9 @@ namespace ISNogometniStadion.WebAPI.Controllers
             _ulaznicaService = ulaznicaService;
         }
         [HttpGet]
-        public List<Ulaznica> Get()
+        public List<Ulaznica> Get([FromQuery]UlazniceSearchRequest req)
         {
-            return _ulaznicaService.Get();
+            return _ulaznicaService.Get( req);
         }
 
 

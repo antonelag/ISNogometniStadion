@@ -10,7 +10,7 @@ namespace ISNogometniStadion.WebAPI.Services
 {
     public interface IUlaznicaService
     {
-        List<Ulaznica> Get();
+        List<Ulaznica> Get(UlazniceSearchRequest req);
         Ulaznica GetById(int id);
         Ulaznica Insert(UlazniceInsertRequest req);
         Ulaznica Update(int id, UlazniceInsertRequest req);

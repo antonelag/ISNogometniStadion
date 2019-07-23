@@ -20,9 +20,9 @@ namespace ISNogometniStadion.WebAPI.Controllers
             _utakmiceService = utakmiceService;
         }
         [HttpGet]
-        public List<Utakmica> Get()
+        public List<Utakmica> Get([FromQuery]UtakmiceeSearchRequest req)
         {
-            return _utakmiceService.Get();
+            return _utakmiceService.Get(req);
         }
         [HttpGet("{id}")]
         public Utakmica GetById(int id)
@@ -34,7 +34,7 @@ namespace ISNogometniStadion.WebAPI.Controllers
         {
             return _utakmiceService.Insert(req);
         }
-        [HttpPut]
+        [HttpPut("{id}")]
         public Utakmica Update(int id, UtakmiceInsertRequest req)
         {
             return _utakmiceService.Update(id, req);

@@ -32,9 +32,14 @@ namespace ISNogometniStadion.WebAPI.Services
             else throw new UserException("Ulaznica ne postoji");
         }
 
-        public List<Ulaznica> Get()
+        public List<Ulaznica> Get(UlazniceSearchRequest req)
         {
-            var list = _context.Ulaznice.ToList();
+            var q = _context.Ulaznice.AsQueryable();
+           
+             if(!string.IsNullOrEmpty(req?.OznakaSjedala))
+                q.Where(c => c.sjedalo.Oznaka.StartsWith(req.OznakaSjedala));
+
+            var list = q.ToList();
             return _mapper.Map<List<Ulaznica>>(list);
         }
 

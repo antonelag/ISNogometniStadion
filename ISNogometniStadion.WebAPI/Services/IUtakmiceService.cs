@@ -9,7 +9,7 @@ namespace ISNogometniStadion.WebAPI.Services
 {
     public interface IUtakmiceService
     {
-        List<Utakmica> Get();
+        List<Utakmica> Get(UtakmiceeSearchRequest req);
         Utakmica GetById(int id);
         Utakmica Insert(UtakmiceInsertRequest req);
         Utakmica Update(int id, UtakmiceInsertRequest req);

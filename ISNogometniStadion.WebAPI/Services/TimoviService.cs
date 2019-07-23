@@ -33,9 +33,12 @@ namespace ISNogometniStadion.WebAPI.Services
                 throw new UserException("Tim ne postoji!");
         }
 
-        public List<Tim> Get()
+        public List<Tim> Get(TimoviSearchRequest req)
         {
-            var list = _context.Timovi.ToList();
+            var q = _context.Timovi.AsQueryable();
+            if (!string.IsNullOrEmpty(req?.Naziv))
+                q = q.Where(s => s.Naziv.StartsWith(req.Naziv));
+            var list = q.ToList();
             return _mapper.Map<List<Tim>>(list);
 
         }

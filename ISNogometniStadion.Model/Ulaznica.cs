@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace ISNogometniStadion.Model
@@ -9,13 +10,14 @@ namespace ISNogometniStadion.Model
         public int UlaznicaID { get; set; }
 
         public int SjedaloID { get; set; }
-        public string Sjedalo { get; set; }
+        public string Oznaka { get; set; }
         public int UtakmicaID { get; set; }
         public string Utakmica { get; set; }
-
         public int KorisnikID { get; set; }
         public string Korisnik { get; set; }
+        [DataType(DataType.Date)]
         public DateTime DatumKupnje { get; set; }
+        [DataType(DataType.Time)]
         public DateTime VrijemeKupnje { get; set; }
     }
 }

@@ -12,6 +12,8 @@ namespace ISNogometniStadion.WebAPI.Database
         public int KorisnikID { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
+
+        public string Korisnik { get { return Ime + " " + Prezime; } }
         public DateTime DatumRodjenja { get; set; }
         public string telefon { get; set; }
         public string email { get; set; }

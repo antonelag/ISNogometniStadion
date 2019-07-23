@@ -3,6 +3,7 @@ using ISNogometniStadion.Model;
 using ISNogometniStadion.Model.Requests;
 using ISNogometniStadion.WebAPI.Database;
 using ISNogometniStadion.WebAPI.Exceptions;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,9 +34,16 @@ namespace ISNogometniStadion.WebAPI.Services
                 throw new UserException("Utakmica nije pronadjena!");
         }
 
-        public List<Utakmica> Get()
+        public List<Utakmica> Get(UtakmiceeSearchRequest req)
         {
-            var list = _context.Utakmice.ToList();
+            var q = _context.Utakmice.AsQueryable();
+            if (!string.IsNullOrEmpty(req?.Domaci))
+                q = q
+                    .Include(c=>c.DomaciTim)
+                    .Where(c => c.DomaciTim.Naziv.StartsWith(req.Domaci));
+
+
+            var list = q.ToList();
             return _mapper.Map<List<Utakmica>>(list);
             
         }
@@ -80,8 +88,13 @@ namespace ISNogometniStadion.WebAPI.Services
             var d = _context.Timovi.FirstOrDefault(f => f.TimID == req.DomaciTimID);
             var e = _context.Timovi.FirstOrDefault(f => f.TimID == req.GostujuciTimID);
             var p = _context.Stadioni.FirstOrDefault(f => f.StadionID == req.StadionID);
-            var isti = _context.Utakmice.FirstOrDefault(a => a.DomaciTimID == req.DomaciTimID && a.GostujuciTimID == req.GostujuciTimID && DateTime.Compare(a.DatumOdigravanja, req.DatumOdigravanja)==0 && a.UtakmicaID != id);
-            if (isti==null && t != null && !istiTim && d!=null && p!=null && e!=null)
+            var zamjena = _context.Utakmice.FirstOrDefault(s => s.GostujuciTimID == req.DomaciTimID && DateTime.Compare(s.DatumOdigravanja, req.DatumOdigravanja)== 0 && s.UtakmicaID != id);
+            var zamjena2 = _context.Utakmice.FirstOrDefault(s => s.DomaciTimID == req.GostujuciTimID && DateTime.Compare(s.DatumOdigravanja, req.DatumOdigravanja) == 0 && s.UtakmicaID != id);
+            var zamjena3 = _context.Utakmice.FirstOrDefault(s => s.DomaciTimID == req.DomaciTimID && DateTime.Compare(s.DatumOdigravanja, req.DatumOdigravanja) == 0 && s.UtakmicaID!=id);
+            var zamjena4 = _context.Utakmice.FirstOrDefault(s => s.GostujuciTimID == req.GostujuciTimID && DateTime.Compare(s.DatumOdigravanja.Date, req.DatumOdigravanja) == 0&& s.UtakmicaID != id);
+
+            var isti = _context.Utakmice.FirstOrDefault(a => a.DomaciTimID == req.DomaciTimID && a.GostujuciTimID == req.GostujuciTimID && DateTime.Compare(a.DatumOdigravanja.Date, req.DatumOdigravanja.Date)==0 && a.UtakmicaID != id);
+            if (zamjena3==null && zamjena4==null && zamjena==null && zamjena2==null && isti==null && t != null && !istiTim && d!=null && p!=null && e!=null)
             {
                 _mapper.Map<UtakmiceInsertRequest, Utakmice>(req, t);
                 _context.SaveChanges();
