@@ -21,9 +21,10 @@ namespace ISNogometniStadion.WinUI.Ulaznice
 
         private async void BtnPretrazi_Click(object sender, EventArgs e)
         {
-            var search = new UlazniceSearchRequest()
+            var search = new KorisniciSearchRequest()
             {
-                OznakaSjedala = txtPretraga.Text
+                ImePrezime
+                = txtPretraga.Text
             };
             var a = await _apiService.Get<dynamic>(search);
             dgvUlaznice.DataSource = a;

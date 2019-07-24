@@ -39,13 +39,9 @@ namespace ISNogometniStadion.WebAPI.Services
             //return _ISNogometniStadionContext.Korisnici.ToList();
             var query = _ISNogometniStadionContext.Korisnici.AsQueryable();
             //ukoliko je req null kod se nece izvrsavati radi ?
-            if (!string.IsNullOrWhiteSpace(req?.Ime))
+            if (!string.IsNullOrWhiteSpace(req?.ImePrezime))
                 {
-                query = query.Where(x => x.Ime.StartsWith(req.Ime));
-            }
-            if (!string.IsNullOrWhiteSpace(req?.Prezime))
-            {
-                query = query.Where(x => x.Prezime.StartsWith(req.Prezime));
+                query = query.Where(x => (x.Ime.StartsWith(req.ImePrezime)) || x.Prezime.StartsWith(req.ImePrezime));
             }
             var list = query.ToList();
            

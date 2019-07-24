@@ -7,8 +7,7 @@ namespace ISNogometniStadion.Model
 {
     public class UtakmiceeSearchRequest
     {
-        public string Domaci { get; set; }
-        public string Gosti { get; set; }
+        public string NazivTima { get; set; }
 
     }
 }

@@ -32,7 +32,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
             //async await- da ne ceka api
             var search = new KorisniciSearchRequest()
             {
-                Ime = txtPretraga.Text
+                ImePrezime = txtPretraga.Text
             };
             var result =await _APIService.Get<dynamic>(search);
             dgvKorisnici.AutoGenerateColumns = false; // da ne generise sama kontrole

@@ -66,15 +66,19 @@ namespace ISNogometniStadion.WebAPI.Mappers
             .ForMember(s => s.DomaciTim, a =>
               a.MapFrom(b => new Database.ISNogometniStadionContext().Timovi.Find(b.DomaciTimID).Naziv));
 
+         
+
 
             CreateMap<Database.Ulaznice, Model.Ulaznica>()
                .ForMember(s => s.Oznaka, a =>
                a.MapFrom(b => new Database.ISNogometniStadionContext().Sjedala.Find(b.SjedaloID).Oznaka))
 //popraviti!!
-               .ForMember(s => s.Utakmica, a =>
-                a.MapFrom(b => new Database.ISNogometniStadionContext().Utakmice.Find(b.UtakmicaID).Utakmica))
+               .ForMember(s => s.utakmica, a =>
+                a.MapFrom(b => new Database.ISNogometniStadionContext().Utakmice
+                .Include(s=>s.DomaciTim).Include(s=>s.GostujuciTim)
+                .FirstOrDefault(s=>s.UtakmicaID==b.UtakmicaID).Utakmica))
 
-               .ForMember(s => s.Korisnik, a =>
+               .ForMember(s => s.korisnik, a =>
                 a.MapFrom(b => new Database.ISNogometniStadionContext().Korisnici.Find(b.KorisnikID).Korisnik));
 
         }

@@ -23,8 +23,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
         {
             var search = new UtakmiceeSearchRequest
             {
-                Domaci = txtPretraga.Text,
-                Gosti = txtPretraga.Text
+                NazivTima = txtPretraga.Text
             };
             var res = await _apiService.Get<dynamic>(search);
             dgvUtakmice.DataSource = res;

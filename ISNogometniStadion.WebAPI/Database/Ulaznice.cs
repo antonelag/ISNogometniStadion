@@ -13,13 +13,13 @@ namespace ISNogometniStadion.WebAPI.Database
         public int UlaznicaID { get; set; }
 
         public int SjedaloID { get; set; }
-        public  Sjedala sjedalo { get; set; }
+        public  Sjedala Sjedalo { get; set; }
         [ForeignKey("UtakmicaID")]
-        public Utakmice utakmica { get; set; }
+        public  Utakmice Utakmica { get; set; }
         public int UtakmicaID { get; set; }
 
         [ForeignKey("KorisnikID")]
-        public Korisnici korisnik { get; set; }
+        public  Korisnici Korisnik { get; set; }
         public int KorisnikID { get; set; }
 
         public DateTime DatumKupnje { get; set; }

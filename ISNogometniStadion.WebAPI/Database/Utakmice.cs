@@ -14,6 +14,7 @@ namespace ISNogometniStadion.WebAPI.Database
         [ForeignKey("DomaciTimID")]
         public Timovi DomaciTim { get; set; }
         public int DomaciTimID { get; set; }
+
         public string Utakmica { get { return DomaciTim.Naziv + "-" + GostujuciTim.Naziv + " - " + DatumOdigravanja.ToShortDateString(); } }
 
         [ForeignKey("GostujuciTimID")]

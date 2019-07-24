@@ -7,6 +7,6 @@ namespace ISNogometniStadion.Model
 {
     public class UlazniceSearchRequest
     {
-        public string OznakaSjedala { get; set; }
+        public string ImePrezime { get; set; }
     }
 }

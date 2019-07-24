@@ -7,6 +7,7 @@ using ISNogometniStadion.Model;
 using ISNogometniStadion.Model.Requests;
 using ISNogometniStadion.WebAPI.Database;
 using ISNogometniStadion.WebAPI.Exceptions;
+using Microsoft.EntityFrameworkCore;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
@@ -34,10 +35,13 @@ namespace ISNogometniStadion.WebAPI.Services
 
         public List<Ulaznica> Get(UlazniceSearchRequest req)
         {
+           // var q = _context.Ulaznice.AsQueryable();
             var q = _context.Ulaznice.AsQueryable();
-           
-             if(!string.IsNullOrEmpty(req?.OznakaSjedala))
-                q.Where(c => c.sjedalo.Oznaka.StartsWith(req.OznakaSjedala));
+            if (!string.IsNullOrEmpty(req?.ImePrezime))
+            {
+                q=q.Include(s=>s.Korisnik)
+                 .Where(c => (c.Korisnik.Ime.StartsWith(req.ImePrezime)) || c.Korisnik.Prezime.StartsWith(req.ImePrezime));
+            }
 
             var list = q.ToList();
             return _mapper.Map<List<Ulaznica>>(list);

@@ -37,11 +37,15 @@ namespace ISNogometniStadion.WebAPI.Services
         public List<Utakmica> Get(UtakmiceeSearchRequest req)
         {
             var q = _context.Utakmice.AsQueryable();
-            if (!string.IsNullOrEmpty(req?.Domaci))
-                q = q
-                    .Include(c=>c.DomaciTim)
-                    .Where(c => c.DomaciTim.Naziv.StartsWith(req.Domaci));
 
+            if (!string.IsNullOrEmpty(req?.NazivTima))
+            {
+                q = q
+                  .Include(c => c.DomaciTim)
+                  .Include(c=>c.GostujuciTim)
+                  .Where(c => (c.DomaciTim.Naziv.StartsWith(req.NazivTima)) || c.GostujuciTim.Naziv.StartsWith(req.NazivTima));
+
+            }
 
             var list = q.ToList();
             return _mapper.Map<List<Utakmica>>(list);
