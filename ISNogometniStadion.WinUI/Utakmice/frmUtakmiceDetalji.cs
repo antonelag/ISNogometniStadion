@@ -15,6 +15,8 @@ namespace ISNogometniStadion.WinUI.Utakmice
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Utakmice");
+        private readonly APIService _apiServiceStadioni = new APIService("Stadioni");
+        private readonly APIService _apiServiceTimovi = new APIService("Timovi");
         public frmUtakmiceDetalji(int? id=null)
         {
             InitializeComponent();
@@ -23,18 +25,9 @@ namespace ISNogometniStadion.WinUI.Utakmice
 
         private async void FrmUtakmiceDetalji_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'timovi2DBDataSet.Timovi' table. You can move, or remove it, as needed.
-            this.timoviTableAdapter1.Fill(this.timovi2DBDataSet.Timovi);
-            // TODO: This line of code loads data into the 'stadioniDataSet.Stadioni' table. You can move, or remove it, as needed.
-            this.stadioniTableAdapter.Fill(this.stadioniDataSet.Stadioni);
-            // TODO: This line of code loads data into the 'timoviDBDataSet.Timovi' table. You can move, or remove it, as needed.
-            this.timoviTableAdapter.Fill(this.timoviDBDataSet.Timovi);
-            cbDomaci.SelectedItem = null;
-            cbDomaci.SelectedText = "--Odaberite--";
-            cbGosti.SelectedItem = null;
-            cbGosti.SelectedText = "--Odaberite--";
-            cbStadion.SelectedItem = null;
-            cbStadion.SelectedText = "--Odaberite--";
+            await LoadDomaci();
+            await LoadGosti();
+            await LoadStadioni();
 
             if (_id.HasValue)
             {
@@ -47,10 +40,39 @@ namespace ISNogometniStadion.WinUI.Utakmice
             }
 
         }
+        private async Task LoadStadioni()
+        {
+            var result = await _apiServiceStadioni.Get<List<Model.Stadion>>(null);
+            cbStadion.DisplayMember = "Naziv";
+            cbStadion.ValueMember = "StadionID";
+            cbStadion.SelectedItem = null;
+            cbStadion.SelectedText = "--Odaberite--";
+            cbStadion.DataSource = result;
+        }
+        private async Task LoadDomaci()
+        {
+            var result = await _apiServiceTimovi.Get<List<Model.Tim>>(null);
+            cbDomaci.DisplayMember = "Naziv";
+            cbDomaci.ValueMember = "TimID";
+            cbDomaci.SelectedItem = null;
+            cbDomaci.SelectedText = "--Odaberite--";
+            cbDomaci.DataSource = result;
+           
+        }
+        private async Task LoadGosti()
+        {
+            var result = await _apiServiceTimovi.Get<List<Model.Tim>>(null);
+            
+            cbGosti.DisplayMember = "Naziv";
+            cbGosti.ValueMember = "TimID";
+            cbGosti.SelectedItem = null;
+            cbGosti.SelectedText = "--Odaberite--";
+            cbGosti.DataSource = result;
+        }
 
         private void CbDomaci_Validating(object sender, CancelEventArgs e)
         {
-            if (cbDomaci.SelectedItem == null)
+            if (cbDomaci.SelectedItem == null && int.Parse(cbDomaci.SelectedValue.ToString())!= int.Parse(cbGosti.SelectedValue.ToString()))
             {
                 errorProvider1.SetError(cbDomaci, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;
@@ -107,23 +129,47 @@ namespace ISNogometniStadion.WinUI.Utakmice
 
         private async void BtnSacuvaj_Click(object sender, EventArgs e)
         {
-            if (this.ValidateChildren())
+            if (this.ValidateChildren() && int.Parse(cbDomaci.SelectedValue.ToString()) != int.Parse(cbGosti.SelectedValue.ToString()))
             {
 
-                var req = new UtakmiceInsertRequest()
+
+                //radi nemogucnosti nacina da na razini baze ogranicimo unos zamjene timova(gosti/domaci) a istog datuma
+
+                var t = await _apiService.Get<List<Model.Utakmica>>(null);
+                var domaciid = int.Parse(cbDomaci.SelectedValue.ToString());
+                var gostiid = int.Parse(cbGosti.SelectedValue.ToString());
+                var obrnutiisti = false;
+                foreach (var a in t)
                 {
-                    DatumOdigravanja = dtpDatum.Value.Date + dtpVrijeme.Value.TimeOfDay,
-                    VrijemeOdigravanja = dtpDatum.Value.Date + dtpVrijeme.Value.TimeOfDay,
-                    DomaciTimID = int.Parse(cbDomaci.SelectedValue.ToString()),
-                    GostujuciTimID = int.Parse(cbGosti.SelectedValue.ToString()),
-                    StadionID = int.Parse(cbStadion.SelectedValue.ToString())
-                };
-                if (_id.HasValue)
-                    await _apiService.Update<dynamic>(_id, req);
+                    if (a.GostujuciTimID == domaciid && a.DomaciTimID == gostiid && DateTime.Compare(a.DatumOdigravanja.Date, dtpDatum.Value.Date) == 0)
+                    {
+                        obrnutiisti = true;
+                        break;
+                    }
+
+                }
+
+                if (!obrnutiisti)
+                {
+                    var req = new UtakmiceInsertRequest()
+                    {
+                        DatumOdigravanja = dtpDatum.Value.Date + dtpVrijeme.Value.TimeOfDay,
+                        VrijemeOdigravanja = dtpDatum.Value.Date + dtpVrijeme.Value.TimeOfDay,
+                        DomaciTimID = int.Parse(cbDomaci.SelectedValue.ToString()),
+                        GostujuciTimID = int.Parse(cbGosti.SelectedValue.ToString()),
+                        StadionID = int.Parse(cbStadion.SelectedValue.ToString())
+                    };
+                    if (_id.HasValue)
+                        await _apiService.Update<dynamic>(_id, req);
+                    else
+                        await _apiService.Insert<dynamic>(req);
+                    MessageBox.Show("Operacija uspjela");
+                    this.Close();
+                }
                 else
-                    await _apiService.Insert<dynamic>(req);
-                MessageBox.Show("Operacija uspjela");
-                this.Close();
+                    MessageBox.Show("Operacija nije uspjela");
+
+                
             }
             else
                 MessageBox.Show("Operacija nije uspjela");

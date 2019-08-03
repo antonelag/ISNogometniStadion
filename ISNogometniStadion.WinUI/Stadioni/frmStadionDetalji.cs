@@ -15,6 +15,8 @@ namespace ISNogometniStadion.WinUI.Stadioni
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Stadioni");
+        private readonly APIService _apiServiceFradovi = new APIService("Gradovi");
+
         public frmStadionDetalji(int? id = null)
         {
             _id = id;
@@ -23,8 +25,7 @@ namespace ISNogometniStadion.WinUI.Stadioni
 
         private async void FrmStadionDetalji_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'gradoviDataSet.Gradovi' table. You can move, or remove it, as needed.
-            this.gradoviTableAdapter.Fill(this.gradoviDataSet.Gradovi);
+            await LoadGradovi();
             if (_id.HasValue)
             {
                 var r = await _apiService.GetById<dynamic>(_id);
@@ -32,6 +33,15 @@ namespace ISNogometniStadion.WinUI.Stadioni
                 cbStadioni.SelectedValue = int.Parse(r.gradID.ToString());
             }
 
+        }
+        private async Task LoadGradovi()
+        {
+            var result = await _apiServiceFradovi.Get<List<Model.Grad>>(null);
+            cbStadioni.DisplayMember = "Naziv";
+            cbStadioni.ValueMember = "GradID";
+            cbStadioni.SelectedItem = null;
+            cbStadioni.SelectedText = "--Odaberite--";
+            cbStadioni.DataSource = result;
         }
 
         private void TxtNaziv_Validating(object sender, CancelEventArgs e)
@@ -48,7 +58,7 @@ namespace ISNogometniStadion.WinUI.Stadioni
 
         private void CbStadioni_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(cbStadioni.SelectedValue.ToString()))
+            if (cbStadioni.SelectedItem==null)
             {
                 errorProvider1.SetError(cbStadioni, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;

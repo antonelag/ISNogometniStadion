@@ -36,12 +36,9 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.cbSjedala = new System.Windows.Forms.ComboBox();
             this.stadioniTribineDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.iSNogometniStadionDBDataSet = new ISNogometniStadion.WinUI.TribineDataSet();
             this.tribineBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tribineTableAdapter = new ISNogometniStadion.WinUI.ISNogometniStadionDBDataSetTableAdapters.TribineTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stadioniTribineDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iSNogometniStadionDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tribineBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,18 +98,6 @@
             // 
             // iSNogometniStadionDBDataSet
             // 
-            this.iSNogometniStadionDBDataSet.DataSetName = "ISNogometniStadionDBDataSet";
-            this.iSNogometniStadionDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tribineBindingSource
-            // 
-            this.tribineBindingSource.DataMember = "Tribine";
-            this.tribineBindingSource.DataSource = this.iSNogometniStadionDBDataSet;
-            // 
-            // tribineTableAdapter
-            // 
-            this.tribineTableAdapter.ClearBeforeFill = true;
-            // 
             // frmSjedalaDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,7 +113,6 @@
             this.Load += new System.EventHandler(this.FrmSjedalaDetalji_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stadioniTribineDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iSNogometniStadionDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tribineBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -144,8 +128,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ComboBox cbSjedala;
         private System.Windows.Forms.BindingSource stadioniTribineDataSetBindingSource;
-        private TribineDataSet iSNogometniStadionDBDataSet;
         private System.Windows.Forms.BindingSource tribineBindingSource;
-        private ISNogometniStadionDBDataSetTableAdapters.TribineTableAdapter tribineTableAdapter;
     }
 }

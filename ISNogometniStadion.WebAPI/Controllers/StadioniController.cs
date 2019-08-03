@@ -12,37 +12,10 @@ namespace ISNogometniStadion.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StadioniController : ControllerBase
+    public class StadioniController : BaseCRUDController<Stadion, StadioniSearchRequest, StadioniInsertRequest, StadioniInsertRequest>
     {
-        private readonly IStadioniService _stadioniService;
-        public StadioniController(IStadioniService stadioniService)
+        public StadioniController(ICRUDService<Stadion, StadioniSearchRequest, StadioniInsertRequest, StadioniInsertRequest> service) : base(service)
         {
-            _stadioniService = stadioniService;
-        }
-        [HttpGet]
-        public List<Stadion> Get([FromQuery]StadioniSearchRequest req)
-        {
-            return _stadioniService.Get(req);
-        }
-        [HttpGet("{id}")]
-        public Stadion GetById(int id)
-        {
-            return _stadioniService.GetById(id);
-        }
-        [HttpPost]
-        public Stadion Insert(StadioniInsertRequest req)
-        {
-            return _stadioniService.Insert(req);
-        }
-        [HttpPut("{id}")]
-        public Stadion Update(int id, StadioniInsertRequest req)
-        {
-            return _stadioniService.Update(id, req);
-        }
-        [HttpDelete]
-        public string Delete(int id)
-        {
-            return _stadioniService.Delete(id);
         }
     }
 }

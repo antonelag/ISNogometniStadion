@@ -6,7 +6,6 @@ namespace ISNogometniStadion.Model.Requests
 {
     public class UtakmiceInsertRequest
     {
-
         public int DomaciTimID { get; set; }
 
         public int GostujuciTimID { get; set; }

@@ -16,6 +16,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Korisnici");
+        private readonly APIService _apiServiceGradovi = new APIService("Gradovi");
         public frmKorisniciDetalji(int? KorisnikID=null)
         {
             _id = KorisnikID;
@@ -53,9 +54,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
 
         private async void FrmKorisniciDetalji_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'gradoviDataSet.Gradovi' table. You can move, or remove it, as needed.
-            this.gradoviTableAdapter.Fill(this.gradoviDataSet.Gradovi);
-            // TODO: This line of code loads data into the 'iSNogometniStadionDBDataSet.Gradovi' table. You can move, or remove it, as needed.
+            await LoadGradovi();
             if (_id != null)
             {
                 var korisnik = await _apiService.GetById<dynamic>(_id);
@@ -65,9 +64,18 @@ namespace ISNogometniStadion.WinUI.Korisnici
                 txtEmail.Text = korisnik.email;
                 txtKorisnickoIme.Text = korisnik.korisnickoIme;
                 txtTelefon.Text = korisnik.telefon;
-                comboBox.SelectedValue = korisnik.gradID;
+                comboBox.SelectedValue = int.Parse(korisnik.gradID.ToString());
                 
             }
+        }
+        private async Task LoadGradovi()
+        {
+            var result = await _apiServiceGradovi.Get<List<Model.Grad>>(null);
+            comboBox.DisplayMember = "Naziv";
+            comboBox.ValueMember = "GradID";
+            comboBox.SelectedItem = null;
+            comboBox.SelectedText = "--Odaberite--";
+            comboBox.DataSource = result;
         }
 
         private void TxtIme_Validating(object sender, CancelEventArgs e)
@@ -111,7 +119,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
 
         private void ComboBox_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(comboBox.SelectedValue.ToString()))
+            if (comboBox.SelectedItem==null)
             {
                 errorProvider.SetError(comboBox, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;//zaustaviti procesiranje forme

@@ -15,6 +15,8 @@ namespace ISNogometniStadion.WinUI.Gradovi
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Gradovi");
+        private readonly APIService _apiServiceDrzave = new APIService("Drzave");
+
         public frmGradoviDetalji(int? id = null)
         {
             _id = id;
@@ -23,9 +25,7 @@ namespace ISNogometniStadion.WinUI.Gradovi
 
         private async void FrmGradoviDetalji_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'drzaveDataSet.Drzave' table. You can move, or remove it, as needed.
-            this.drzaveTableAdapter.Fill(this.drzaveDataSet.Drzave);
-            // TODO: This line of code loads data into the 'iSNogometniStadionDBDataSet1.Drzave' table. You can move, or remove it, as needed.
+            await LoadDrzave();
             if (_id.HasValue)
             {
                 var a = await _apiService.GetById<dynamic>(_id);
@@ -71,13 +71,22 @@ namespace ISNogometniStadion.WinUI.Gradovi
 
         private void CbDrzave_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(cbDrzave.SelectedValue.ToString()))
+            if (cbDrzave.SelectedItem==null)
             {
                 errorProvider1.SetError(cbDrzave, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;
             }
             else
                 errorProvider1.SetError(cbDrzave, null);
+        }
+        private async Task LoadDrzave()
+        {
+            var result = await _apiServiceDrzave.Get<List<Model.Drzava>>(null);
+            cbDrzave.DisplayMember = "Naziv";
+            cbDrzave.ValueMember = "DrzavaID";
+            cbDrzave.DataSource = result;
+            cbDrzave.SelectedItem = null;
+            cbDrzave.SelectedText = "--Odaberite--";
         }
     }
 }

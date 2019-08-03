@@ -10,39 +10,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ISNogometniStadion.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class TimoviController : ControllerBase
+  
+    public class TimoviController : BaseCRUDController<Tim, TimoviSearchRequest, TimoviInsertRequest, TimoviInsertRequest>
     {
-        private readonly ITimoviService _timoviService;
-            public TimoviController(ITimoviService timoviService)
+        public TimoviController(ICRUDService<Tim, TimoviSearchRequest, TimoviInsertRequest, TimoviInsertRequest> service) : base(service)
         {
-            _timoviService = timoviService;
-        }
-        [HttpGet]
-        public ActionResult<List<Tim>> Get([FromQuery]TimoviSearchRequest req)
-        {
-            return _timoviService.Get(req);
-        }
-        [HttpGet("{id}")]
-        public Tim GetById(int id)
-        {
-            return _timoviService.GetById(id);
-        }
-        [HttpPost]
-        public Tim Insert(TimoviInsertRequest req)
-        {
-            return _timoviService.Insert(req);
-        }
-        [HttpPut("{id}")]
-        public Tim Update(int id, TimoviInsertRequest req)
-        {
-            return _timoviService.Update(id, req);
-        }
-        [HttpDelete]
-        public string Delete(int id)
-        {
-            return _timoviService.Delete(id);
         }
     }
 }

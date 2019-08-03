@@ -30,13 +30,15 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvTimovi = new System.Windows.Forms.DataGridView();
-            this.txtPretraga = new System.Windows.Forms.TextBox();
-            this.btnPretrazi = new System.Windows.Forms.Button();
             this.TimID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stadion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StadionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SlikaThumb = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Slika = new System.Windows.Forms.DataGridViewImageColumn();
+            this.txtPretraga = new System.Windows.Forms.TextBox();
+            this.btnPretrazi = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTimovi)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +63,9 @@
             this.Naziv,
             this.Opis,
             this.Stadion,
-            this.StadionID});
+            this.StadionID,
+            this.SlikaThumb,
+            this.Slika});
             this.dgvTimovi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTimovi.Location = new System.Drawing.Point(3, 16);
             this.dgvTimovi.Name = "dgvTimovi";
@@ -70,6 +74,68 @@
             this.dgvTimovi.Size = new System.Drawing.Size(770, 349);
             this.dgvTimovi.TabIndex = 0;
             this.dgvTimovi.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvTimovi_MouseDoubleClick);
+            // 
+            // TimID
+            // 
+            this.TimID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TimID.DataPropertyName = "TimID";
+            this.TimID.HeaderText = "TimID";
+            this.TimID.Name = "TimID";
+            this.TimID.ReadOnly = true;
+            this.TimID.Visible = false;
+            // 
+            // Naziv
+            // 
+            this.Naziv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Naziv.DataPropertyName = "Naziv";
+            this.Naziv.HeaderText = "Naziv";
+            this.Naziv.Name = "Naziv";
+            this.Naziv.ReadOnly = true;
+            // 
+            // Opis
+            // 
+            this.Opis.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Opis.DataPropertyName = "Opis";
+            this.Opis.HeaderText = "Opis";
+            this.Opis.Name = "Opis";
+            this.Opis.ReadOnly = true;
+            // 
+            // Stadion
+            // 
+            this.Stadion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Stadion.DataPropertyName = "Stadion";
+            this.Stadion.HeaderText = "Stadion";
+            this.Stadion.Name = "Stadion";
+            this.Stadion.ReadOnly = true;
+            // 
+            // StadionID
+            // 
+            this.StadionID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.StadionID.DataPropertyName = "StadionID";
+            this.StadionID.HeaderText = "StadionID";
+            this.StadionID.Name = "StadionID";
+            this.StadionID.ReadOnly = true;
+            this.StadionID.Visible = false;
+            // 
+            // SlikaThumb
+            // 
+            this.SlikaThumb.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SlikaThumb.DataPropertyName = "SlikaThumb";
+            this.SlikaThumb.HeaderText = "Slika";
+            this.SlikaThumb.Name = "SlikaThumb";
+            this.SlikaThumb.ReadOnly = true;
+            // 
+            // Slika
+            // 
+            this.Slika.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Slika.DataPropertyName = "Slika";
+            this.Slika.FillWeight = 300F;
+            this.Slika.HeaderText = "Slika";
+            this.Slika.Name = "Slika";
+            this.Slika.ReadOnly = true;
+            this.Slika.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Slika.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Slika.Visible = false;
             // 
             // txtPretraga
             // 
@@ -87,43 +153,6 @@
             this.btnPretrazi.Text = "Pretraži";
             this.btnPretrazi.UseVisualStyleBackColor = true;
             this.btnPretrazi.Click += new System.EventHandler(this.BtnPretrazi_Click);
-            // 
-            // TimID
-            // 
-            this.TimID.DataPropertyName = "TimID";
-            this.TimID.HeaderText = "TimID";
-            this.TimID.Name = "TimID";
-            this.TimID.ReadOnly = true;
-            this.TimID.Visible = false;
-            // 
-            // Naziv
-            // 
-            this.Naziv.DataPropertyName = "Naziv";
-            this.Naziv.HeaderText = "Naziv";
-            this.Naziv.Name = "Naziv";
-            this.Naziv.ReadOnly = true;
-            // 
-            // Opis
-            // 
-            this.Opis.DataPropertyName = "Opis";
-            this.Opis.HeaderText = "Opis";
-            this.Opis.Name = "Opis";
-            this.Opis.ReadOnly = true;
-            // 
-            // Stadion
-            // 
-            this.Stadion.DataPropertyName = "Stadion";
-            this.Stadion.HeaderText = "Stadion";
-            this.Stadion.Name = "Stadion";
-            this.Stadion.ReadOnly = true;
-            // 
-            // StadionID
-            // 
-            this.StadionID.DataPropertyName = "StadionID";
-            this.StadionID.HeaderText = "StadionID";
-            this.StadionID.Name = "StadionID";
-            this.StadionID.ReadOnly = true;
-            this.StadionID.Visible = false;
             // 
             // frmTimovi
             // 
@@ -153,5 +182,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stadion;
         private System.Windows.Forms.DataGridViewTextBoxColumn StadionID;
+        private System.Windows.Forms.DataGridViewImageColumn SlikaThumb;
+        private System.Windows.Forms.DataGridViewImageColumn Slika;
     }
 }

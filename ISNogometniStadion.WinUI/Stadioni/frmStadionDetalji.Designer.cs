@@ -32,17 +32,11 @@
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbStadioni = new System.Windows.Forms.ComboBox();
-            this.gradoviBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gradoviDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gradoviDataSet = new ISNogometniStadion.WinUI.GradoviDataSet();
-            this.gradoviTableAdapter = new ISNogometniStadion.WinUI.GradoviDataSetTableAdapters.GradoviTableAdapter();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cbStadioni = new System.Windows.Forms.ComboBox();
             this.btnSacuvaj = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.gradoviBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradoviDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradoviDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+
             this.SuspendLayout();
             // 
             // txtNaziv
@@ -73,7 +67,6 @@
             // 
             // cbStadioni
             // 
-            this.cbStadioni.DataSource = this.gradoviBindingSource;
             this.cbStadioni.DisplayMember = "Naziv";
             this.cbStadioni.FormattingEnabled = true;
             this.cbStadioni.Location = new System.Drawing.Point(12, 168);
@@ -85,27 +78,11 @@
             // 
             // gradoviBindingSource
             // 
-            this.gradoviBindingSource.DataMember = "Gradovi";
-            this.gradoviBindingSource.DataSource = this.gradoviDataSetBindingSource;
             // 
             // gradoviDataSetBindingSource
             // 
-            this.gradoviDataSetBindingSource.DataSource = this.gradoviDataSet;
-            this.gradoviDataSetBindingSource.Position = 0;
-            // 
-            // gradoviDataSet
-            // 
-            this.gradoviDataSet.DataSetName = "GradoviDataSet";
-            this.gradoviDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // gradoviTableAdapter
-            // 
-            this.gradoviTableAdapter.ClearBeforeFill = true;
-            // 
-            // errorProvider1
-            // 
+            //errorProvider1
             this.errorProvider1.ContainerControl = this;
-            // 
             // btnSacuvaj
             // 
             this.btnSacuvaj.Location = new System.Drawing.Point(113, 215);
@@ -129,10 +106,8 @@
             this.Name = "frmStadionDetalji";
             this.Text = "frmStadionDetalji";
             this.Load += new System.EventHandler(this.FrmStadionDetalji_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gradoviBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradoviDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradoviDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,11 +119,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbStadioni;
-        private System.Windows.Forms.BindingSource gradoviDataSetBindingSource;
-        private GradoviDataSet gradoviDataSet;
-        private System.Windows.Forms.BindingSource gradoviBindingSource;
-        private GradoviDataSetTableAdapters.GradoviTableAdapter gradoviTableAdapter;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button btnSacuvaj;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -39,8 +39,7 @@
             this.Korisnik = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumKupnje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VrijemeKupnje = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtPretraga = new System.Windows.Forms.TextBox();
-            this.btnPretrazi = new System.Windows.Forms.Button();
+            this.cbKorisniciPretraga = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUlaznice)).BeginInit();
             this.SuspendLayout();
@@ -146,30 +145,21 @@
             this.VrijemeKupnje.Name = "VrijemeKupnje";
             this.VrijemeKupnje.ReadOnly = true;
             // 
-            // txtPretraga
+            // cbKorisniciPretraga
             // 
-            this.txtPretraga.Location = new System.Drawing.Point(15, 31);
-            this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(502, 20);
-            this.txtPretraga.TabIndex = 1;
-            // 
-            // btnPretrazi
-            // 
-            this.btnPretrazi.Location = new System.Drawing.Point(692, 28);
-            this.btnPretrazi.Name = "btnPretrazi";
-            this.btnPretrazi.Size = new System.Drawing.Size(75, 23);
-            this.btnPretrazi.TabIndex = 2;
-            this.btnPretrazi.Text = "Pretraži";
-            this.btnPretrazi.UseVisualStyleBackColor = true;
-            this.btnPretrazi.Click += new System.EventHandler(this.BtnPretrazi_Click);
+            this.cbKorisniciPretraga.FormattingEnabled = true;
+            this.cbKorisniciPretraga.Location = new System.Drawing.Point(15, 30);
+            this.cbKorisniciPretraga.Name = "cbKorisniciPretraga";
+            this.cbKorisniciPretraga.Size = new System.Drawing.Size(121, 21);
+            this.cbKorisniciPretraga.TabIndex = 3;
+            this.cbKorisniciPretraga.SelectedIndexChanged += new System.EventHandler(this.CbKorisniciPretraga_SelectedIndexChanged);
             // 
             // frmUlaznice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(808, 450);
-            this.Controls.Add(this.btnPretrazi);
-            this.Controls.Add(this.txtPretraga);
+            this.Controls.Add(this.cbKorisniciPretraga);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmUlaznice";
             this.Text = "frmUlaznice";
@@ -177,7 +167,6 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUlaznice)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -185,8 +174,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvUlaznice;
-        private System.Windows.Forms.TextBox txtPretraga;
-        private System.Windows.Forms.Button btnPretrazi;
         private System.Windows.Forms.DataGridViewTextBoxColumn UlaznicaID;
         private System.Windows.Forms.DataGridViewTextBoxColumn SjedaloID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sjedalo;
@@ -196,5 +183,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Korisnik;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumKupnje;
         private System.Windows.Forms.DataGridViewTextBoxColumn VrijemeKupnje;
+        private System.Windows.Forms.ComboBox cbKorisniciPretraga;
     }
 }

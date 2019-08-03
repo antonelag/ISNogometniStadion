@@ -13,5 +13,7 @@ namespace ISNogometniStadion.Model.Requests
         public string Opis { get; set; }
         [RegularExpression(@"^[0-9]+$")]
         public int StadionID { get; set; }
+        public byte[] Slika { get; set; }
+        public byte[] SlikaThumb { get; set; }
     }
 }

@@ -1,13 +1,16 @@
-﻿using ISNogometniStadion.Model.Requests;
+﻿using ISNogometniStadion.Model;
+using ISNogometniStadion.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace ISNogometniStadion.WinUI.Timovi
 {
@@ -15,6 +18,8 @@ namespace ISNogometniStadion.WinUI.Timovi
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Timovi");
+        private readonly APIService _apiServiceStadioni = new APIService("Stadioni");
+        private readonly ImageService _imageService = new ImageService();
         public frmTimoviDetalji(int? id=null)
         {
             InitializeComponent();
@@ -23,16 +28,36 @@ namespace ISNogometniStadion.WinUI.Timovi
 
         private async void FrmTimoviDetalji_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'stadioniDataSet.Stadioni' table. You can move, or remove it, as needed.
-            this.stadioniTableAdapter.Fill(this.stadioniDataSet.Stadioni);
-            // TODO: This line of code loads data into the 'iSNogometniStadionDBDataSet.Stadioni' table. You can move, or remove it, as needed.
+            await LoadStadioni();
             if (_id.HasValue)
             {
-                var a = await _apiService.GetById<dynamic>(_id);
-                txtNaziv.Text = a.naziv;
-                txtOpis.Text = a.opis;
-                cbTimovi.SelectedValue = int.Parse(a.stadionID.ToString());
+                Tim a = await _apiService.GetById<Tim>(_id);
+                txtNaziv.Text = a.Naziv;
+                txtOpis.Text = a.Opis;
+                cbTimovi.SelectedValue = int.Parse(a.StadionID.ToString());
+               
+                if(a.Slika.Length!=0)
+                { 
+                    var img = _imageService.BytesToImage(a.Slika);
+                    Image mythumb = _imageService.ImageToThumbnail(img);
+                pictureBox1.Image = mythumb;
             }
+                else
+                {
+                    var noimg = _imageService.GetNoImage();
+                    var th = _imageService.ImageToThumbnail(noimg);
+                    pictureBox1.Image = th;
+                }
+            }
+        }
+        private async Task LoadStadioni()
+        {
+            var result = await _apiServiceStadioni.Get<List<Model.Stadion>>(null);
+            cbTimovi.DisplayMember = "Naziv";
+            cbTimovi.ValueMember = "StadionID";
+            cbTimovi.SelectedItem = null;
+            cbTimovi.SelectedText = "--Odaberite--";
+            cbTimovi.DataSource = result;
         }
 
         private void TxtNaziv_Validating(object sender, CancelEventArgs e)
@@ -59,7 +84,7 @@ namespace ISNogometniStadion.WinUI.Timovi
 
         private void CbTimovi_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(cbTimovi.SelectedValue.ToString()))
+            if (cbTimovi.SelectedItem == null)
             {
                 errorProvider1.SetError(cbTimovi, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;
@@ -67,17 +92,31 @@ namespace ISNogometniStadion.WinUI.Timovi
             else
                 errorProvider1.SetError(cbTimovi, null);
         }
-
+        TimoviInsertRequest res = new TimoviInsertRequest();
         private async void BtnSacuvaj_Click(object sender, EventArgs e)
         {
             if (this.ValidateChildren())
             {
-                var res = new TimoviInsertRequest()
+                res.Naziv = txtNaziv.Text;
+                res.Opis = txtOpis.Text;
+                res.StadionID = int.Parse(cbTimovi.SelectedValue.ToString());
+               //spremanje slike u request se radi prilikom klika na dodaj 
+               //ako nije dodao novu sliku(UPDATE), samim time nije kliknuo na dodaj, trebala bi slika ostati nepromijenjena
+               if(res.Slika==null && _id.HasValue)
                 {
-                    Naziv = txtNaziv.Text,
-                    Opis = txtOpis.Text,
-                    StadionID = int.Parse(cbTimovi.SelectedValue.ToString())
-                };
+                    Tim a = await _apiService.GetById<Tim>(_id);
+                    res.Slika = a.Slika;
+                    res.SlikaThumb = a.SlikaThumb;
+                }
+
+               //za slucaj da korisnik ne unese sliku
+               if(res.Slika==null && !_id.HasValue)
+                {
+                    var img = _imageService.GetNoImage();
+                    res.Slika = _imageService.ImageToBytes(img);
+                    var th = _imageService.ImageToThumbnail(img);
+                    res.SlikaThumb = _imageService.ImageToBytes(th);
+                }
 
                 if (_id.HasValue)
                     await _apiService.Update<dynamic>(_id, res);
@@ -90,5 +129,27 @@ namespace ISNogometniStadion.WinUI.Timovi
             else
                 MessageBox.Show("Operacija nije uspjela");
         }
-    }
+        public bool ThumbnailCallback()
+        {
+            return false;
+        }
+
+        private void BtnDodajSliku_Click(object sender, EventArgs e)
+        {
+
+            var result= openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var fileName = openFileDialog1.FileName;
+                var file = File.ReadAllBytes(fileName);
+                res.Slika = file;
+                Image image = Image.FromFile(fileName);
+
+                Image mythumb = _imageService.ImageToThumbnail(image);
+                res.SlikaThumb = _imageService.ImageToBytes(mythumb);
+                pictureBox1.Image = mythumb;
+
+            }
+        }
+       }
 }

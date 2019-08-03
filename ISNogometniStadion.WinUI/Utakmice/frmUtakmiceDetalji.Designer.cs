@@ -32,31 +32,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbDomaci = new System.Windows.Forms.ComboBox();
-            this.timoviBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.timoviDBDataSet = new ISNogometniStadion.WinUI.TimoviDBDataSet();
-            this.timoviTableAdapter = new ISNogometniStadion.WinUI.TimoviDBDataSetTableAdapters.TimoviTableAdapter();
             this.cbGosti = new System.Windows.Forms.ComboBox();
             this.dtpDatum = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.dtpVrijeme = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.cbStadion = new System.Windows.Forms.ComboBox();
-            this.stadioniBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.stadioniDataSet = new ISNogometniStadion.WinUI.StadioniDataSet();
-            this.stadioniTableAdapter = new ISNogometniStadion.WinUI.StadioniDataSetTableAdapters.StadioniTableAdapter();
             this.label5 = new System.Windows.Forms.Label();
             this.btnSacuvaj = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.timovi2DBDataSet = new ISNogometniStadion.WinUI.timovi2DBDataSet();
-            this.timoviBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.timoviTableAdapter1 = new ISNogometniStadion.WinUI.timovi2DBDataSetTableAdapters.TimoviTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.timoviBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timoviDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stadioniBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stadioniDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timovi2DBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timoviBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -79,8 +64,6 @@
             // 
             // cbDomaci
             // 
-            this.cbDomaci.DataSource = this.timoviBindingSource;
-            this.cbDomaci.DisplayMember = "Naziv";
             this.cbDomaci.FormattingEnabled = true;
             this.cbDomaci.Location = new System.Drawing.Point(12, 41);
             this.cbDomaci.Name = "cbDomaci";
@@ -89,24 +72,6 @@
             this.cbDomaci.ValueMember = "TimID";
             this.cbDomaci.Validating += new System.ComponentModel.CancelEventHandler(this.CbDomaci_Validating);
             // 
-            // timoviBindingSource
-            // 
-            this.timoviBindingSource.DataMember = "Timovi";
-            this.timoviBindingSource.DataSource = this.timoviDBDataSet;
-            // 
-            // timoviDBDataSet
-            // 
-            this.timoviDBDataSet.DataSetName = "TimoviDBDataSet";
-            this.timoviDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // timoviTableAdapter
-            // 
-            this.timoviTableAdapter.ClearBeforeFill = true;
-            // 
-            // cbGosti
-            // 
-            this.cbGosti.DataSource = this.timoviBindingSource1;
-            this.cbGosti.DisplayMember = "Naziv";
             this.cbGosti.FormattingEnabled = true;
             this.cbGosti.Location = new System.Drawing.Point(12, 115);
             this.cbGosti.Name = "cbGosti";
@@ -154,8 +119,6 @@
             // 
             // cbStadion
             // 
-            this.cbStadion.DataSource = this.stadioniBindingSource;
-            this.cbStadion.DisplayMember = "Naziv";
             this.cbStadion.FormattingEnabled = true;
             this.cbStadion.Location = new System.Drawing.Point(12, 301);
             this.cbStadion.Name = "cbStadion";
@@ -166,17 +129,7 @@
             // 
             // stadioniBindingSource
             // 
-            this.stadioniBindingSource.DataMember = "Stadioni";
-            this.stadioniBindingSource.DataSource = this.stadioniDataSet;
             // 
-            // stadioniDataSet
-            // 
-            this.stadioniDataSet.DataSetName = "StadioniDataSet";
-            this.stadioniDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // stadioniTableAdapter
-            // 
-            this.stadioniTableAdapter.ClearBeforeFill = true;
             // 
             // label5
             // 
@@ -203,17 +156,6 @@
             // 
             // timovi2DBDataSet
             // 
-            this.timovi2DBDataSet.DataSetName = "timovi2DBDataSet";
-            this.timovi2DBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // timoviBindingSource1
-            // 
-            this.timoviBindingSource1.DataMember = "Timovi";
-            this.timoviBindingSource1.DataSource = this.timovi2DBDataSet;
-            // 
-            // timoviTableAdapter1
-            // 
-            this.timoviTableAdapter1.ClearBeforeFill = true;
             // 
             // frmUtakmiceDetalji
             // 
@@ -234,13 +176,7 @@
             this.Name = "frmUtakmiceDetalji";
             this.Text = "frmUtakmiceDetalji";
             this.Load += new System.EventHandler(this.FrmUtakmiceDetalji_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.timoviBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timoviDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stadioniBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stadioniDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timovi2DBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timoviBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,23 +187,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbDomaci;
-        private TimoviDBDataSet timoviDBDataSet;
-        private System.Windows.Forms.BindingSource timoviBindingSource;
-        private TimoviDBDataSetTableAdapters.TimoviTableAdapter timoviTableAdapter;
         private System.Windows.Forms.ComboBox cbGosti;
         private System.Windows.Forms.DateTimePicker dtpDatum;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dtpVrijeme;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbStadion;
-        private StadioniDataSet stadioniDataSet;
-        private System.Windows.Forms.BindingSource stadioniBindingSource;
-        private StadioniDataSetTableAdapters.StadioniTableAdapter stadioniTableAdapter;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private timovi2DBDataSet timovi2DBDataSet;
-        private System.Windows.Forms.BindingSource timoviBindingSource1;
-        private timovi2DBDataSetTableAdapters.TimoviTableAdapter timoviTableAdapter1;
     }
 }

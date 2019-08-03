@@ -13,40 +13,10 @@ namespace ISNogometniStadion.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UlaznicaController : ControllerBase
+    public class UlaznicaController : BaseCRUDController<Ulaznica, UlazniceSearchRequest, UlazniceInsertRequest, UlazniceInsertRequest>
     {
-        private readonly IUlaznicaService _ulaznicaService;
-        public UlaznicaController(IUlaznicaService ulaznicaService)
+        public UlaznicaController(ICRUDService<Ulaznica, UlazniceSearchRequest, UlazniceInsertRequest, UlazniceInsertRequest> service) : base(service)
         {
-            _ulaznicaService = ulaznicaService;
-        }
-        [HttpGet]
-        public List<Ulaznica> Get([FromQuery]UlazniceSearchRequest req)
-        {
-            return _ulaznicaService.Get( req);
-        }
-
-
-        [HttpGet("{id}")]
-        public Ulaznica GetById(int id)
-        {
-            return _ulaznicaService.GetById(id);
-        }
-
-        [HttpPost]
-        public Ulaznica Insert(UlazniceInsertRequest req)
-        {
-            return _ulaznicaService.Insert(req);
-        }
-        [HttpPut("{id}")]
-        public Ulaznica Update(int id, UlazniceInsertRequest req)
-        {
-            return _ulaznicaService.Update(id, req);
-        }
-        [HttpDelete]
-        public string Delete(int id)
-        {
-            return _ulaznicaService.Delete(id);
         }
     }
 }

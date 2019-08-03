@@ -33,15 +33,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbTribine = new System.Windows.Forms.ComboBox();
             this.Stadion = new System.Windows.Forms.Label();
-            this.stadioniDataSet = new ISNogometniStadion.WinUI.StadioniDataSet();
-            this.stadioniDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.stadioniBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.stadioniTableAdapter = new ISNogometniStadion.WinUI.StadioniDataSetTableAdapters.StadioniTableAdapter();
             this.btnSacuvaj = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.stadioniDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stadioniDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stadioniBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +57,6 @@
             // 
             // cbTribine
             // 
-            this.cbTribine.DataSource = this.stadioniBindingSource;
             this.cbTribine.DisplayMember = "Naziv";
             this.cbTribine.FormattingEnabled = true;
             this.cbTribine.Location = new System.Drawing.Point(29, 130);
@@ -83,24 +75,6 @@
             this.Stadion.TabIndex = 3;
             this.Stadion.Text = "Stadion";
             // 
-            // stadioniDataSet
-            // 
-            this.stadioniDataSet.DataSetName = "StadioniDataSet";
-            this.stadioniDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // stadioniDataSetBindingSource
-            // 
-            this.stadioniDataSetBindingSource.DataSource = this.stadioniDataSet;
-            this.stadioniDataSetBindingSource.Position = 0;
-            // 
-            // stadioniBindingSource
-            // 
-            this.stadioniBindingSource.DataMember = "Stadioni";
-            this.stadioniBindingSource.DataSource = this.stadioniDataSetBindingSource;
-            // 
-            // stadioniTableAdapter
-            // 
-            this.stadioniTableAdapter.ClearBeforeFill = true;
             // 
             // btnSacuvaj
             // 
@@ -129,9 +103,6 @@
             this.Name = "frmTribineDetalji";
             this.Text = "frmTribineDetalji";
             this.Load += new System.EventHandler(this.FrmTribineDetalji_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.stadioniDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stadioniDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stadioniBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -144,10 +115,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbTribine;
         private System.Windows.Forms.Label Stadion;
-        private System.Windows.Forms.BindingSource stadioniDataSetBindingSource;
-        private StadioniDataSet stadioniDataSet;
-        private System.Windows.Forms.BindingSource stadioniBindingSource;
-        private StadioniDataSetTableAdapters.StadioniTableAdapter stadioniTableAdapter;
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.ErrorProvider errorProvider1;
     }

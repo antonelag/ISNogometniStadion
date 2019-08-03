@@ -41,9 +41,10 @@ namespace ISNogometniStadion.WebAPI.Database
                 .WithOne(ad => ad.Sjedalo)
                 .HasForeignKey<Ulaznice>(ad => ad.SjedaloID);
 
+
             //modelBuilder.Entity<Ulaznice>()
             //  .HasKey(c => new { c.UlaznicaID, c.UtakmicaID,c.SjedaloID });
-           // modelBuilder.Entity<Ulaznice>().Property(p => p.UlaznicaID).ValueGeneratedOnAdd();
+            // modelBuilder.Entity<Ulaznice>().Property(p => p.UlaznicaID).ValueGeneratedOnAdd();
             //modelBuilder.Entity<Ulaznice>()
             //    .HasOne(s => s.utakmica)
             //    .WithMany()
@@ -51,8 +52,8 @@ namespace ISNogometniStadion.WebAPI.Database
 
             //modelBuilder.Entity<Utakmice>()
             //    .HasKey(a => new { a.UtakmicaID, a.DomaciTimID, a.GostujuciTimID });
-            
-                
+
+
             //modelBuilder.Entity<Utakmice>().Property(p => p.UtakmicaID).ValueGeneratedOnAdd();
         }
 

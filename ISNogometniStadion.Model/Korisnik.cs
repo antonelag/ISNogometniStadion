@@ -14,6 +14,7 @@ namespace ISNogometniStadion.Model
         public string prezime { get; set; }
         public string telefon { get; set; }
         public DateTime datumRodjenja { get; set; }
+        public string KorisnikPodaci { get { return ime + " " + prezime; } }
         public string email { get; set; }
         public string korisnickoIme { get; set; }
         public int gradID { get; set; }

@@ -37,13 +37,10 @@
             this.btnSacuvaj = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.cbDrzave = new System.Windows.Forms.ComboBox();
-            this.drzaveDataSet = new ISNogometniStadion.WinUI.DrzaveDataSet();
             this.drzaveBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.drzaveTableAdapter = new ISNogometniStadion.WinUI.DrzaveDataSetTableAdapters.DrzaveTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.drzaveBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iSNogometniStadionDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drzaveDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drzaveBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,19 +97,6 @@
             // 
             // drzaveDataSet
             // 
-            this.drzaveDataSet.DataSetName = "DrzaveDataSet";
-            this.drzaveDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // drzaveBindingSource1
-            // 
-            this.drzaveBindingSource1.DataMember = "Drzave";
-            this.drzaveBindingSource1.DataSource = this.drzaveDataSet;
-            // 
-            // drzaveTableAdapter
-            // 
-            this.drzaveTableAdapter.ClearBeforeFill = true;
-            // 
-            // frmGradoviDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -128,7 +112,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.drzaveBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iSNogometniStadionDBDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drzaveDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.drzaveBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -145,8 +128,6 @@
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ComboBox cbDrzave;
-        private DrzaveDataSet drzaveDataSet;
         private System.Windows.Forms.BindingSource drzaveBindingSource1;
-        private DrzaveDataSetTableAdapters.DrzaveTableAdapter drzaveTableAdapter;
     }
 }

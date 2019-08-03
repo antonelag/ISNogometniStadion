@@ -15,6 +15,7 @@ namespace ISNogometniStadion.WinUI.Tribine
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Tribine");
+        private readonly APIService _apiServiceStadioni = new APIService("Stadioni");
         public frmTribineDetalji(int? id=null)
         {
             InitializeComponent();
@@ -23,14 +24,22 @@ namespace ISNogometniStadion.WinUI.Tribine
 
         private async void FrmTribineDetalji_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'stadioniDataSet.Stadioni' table. You can move, or remove it, as needed.
-            this.stadioniTableAdapter.Fill(this.stadioniDataSet.Stadioni);
+            await LoadStadioni();
             if (_id.HasValue)
             {
                 var a = await _apiService.GetById<dynamic>(_id);
                 txtNaziv.Text = a.naziv;
                 cbTribine.SelectedValue = int.Parse(a.stadionID.ToString());
             }
+        }
+        private async Task LoadStadioni()
+        {
+            var result = await _apiServiceStadioni.Get<List<Model.Stadion>>(null);
+            cbTribine.DisplayMember = "Naziv";
+            cbTribine.ValueMember = "StadionID";
+            cbTribine.SelectedItem = null;
+            cbTribine.SelectedText = "--Odaberite--";
+            cbTribine.DataSource = result;
         }
 
         private void TxtNaziv_Validating(object sender, CancelEventArgs e)
@@ -47,7 +56,7 @@ namespace ISNogometniStadion.WinUI.Tribine
 
         private void CbTribine_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(cbTribine.SelectedValue.ToString()))
+            if (cbTribine.SelectedItem==null)
             {
                 errorProvider1.SetError(cbTribine, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;

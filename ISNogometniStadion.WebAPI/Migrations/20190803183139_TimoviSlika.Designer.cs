@@ -4,14 +4,16 @@ using ISNogometniStadion.WebAPI.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ISNogometniStadion.WebAPI.Migrations
 {
     [DbContext(typeof(ISNogometniStadionContext))]
-    partial class ISNogometniStadionContextModelSnapshot : ModelSnapshot
+    [Migration("20190803183139_TimoviSlika")]
+    partial class TimoviSlika
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,8 +125,6 @@ namespace ISNogometniStadion.WebAPI.Migrations
                     b.Property<string>("Opis");
 
                     b.Property<byte[]>("Slika");
-
-                    b.Property<byte[]>("SlikaThumb");
 
                     b.Property<int>("StadionID");
 

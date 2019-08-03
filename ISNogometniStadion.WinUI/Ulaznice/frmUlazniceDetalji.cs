@@ -15,6 +15,10 @@ namespace ISNogometniStadion.WinUI.Ulaznice
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Ulaznica");
+        private readonly APIService _apiServiceSjedala = new APIService("Sjedala");
+
+        private readonly APIService _apiServiceUtakmica = new APIService("Utakmice");
+        private readonly APIService _apiServiceKorisnici = new APIService("Korisnici");
         public frmUlazniceDetalji(int? id=null)
         {
             InitializeComponent();
@@ -23,19 +27,9 @@ namespace ISNogometniStadion.WinUI.Ulaznice
 
         private async void FrmUlazniceDetalji_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'korisniciDBDataSet.Korisnici' table. You can move, or remove it, as needed.
-            this.korisniciTableAdapter.Fill(this.korisniciDBDataSet.Korisnici);
-            // TODO: This line of code loads data into the 'iSNogometniStadionDBDataSet.Korisnici' table. You can move, or remove it, as needed.
-            // TODO: This line of code loads data into the 'utakmiceDBDataSet.Utakmice' table. You can move, or remove it, as needed.
-            this.utakmiceTableAdapter.Fill(this.utakmiceDBDataSet.Utakmice);
-            // TODO: This line of code loads data into the 'sjedalaDBDataSet.Sjedala' table. You can move, or remove it, as needed.
-            this.sjedalaTableAdapter.Fill(this.sjedalaDBDataSet.Sjedala);
-            cbSjedala.SelectedItem = null;
-            cbSjedala.SelectedText = "--Odaberite--";
-            cbUtakmica.SelectedItem = null;
-            cbUtakmica.SelectedText = "--Odaberite--";
-            cbKorisnik.SelectedItem = null;
-            cbKorisnik.SelectedText = "--Odaberite--";
+            await LoadSjedala();
+            await LoadUtakmica();
+            await LoadKorisnici();
             if (_id.HasValue)
             {
                 var a = await _apiService.GetById<dynamic>(_id);
@@ -45,6 +39,33 @@ namespace ISNogometniStadion.WinUI.Ulaznice
                 dtpDatum.Value = a.datumKupnje;
                 dtpVrijeme.Value = a.vrijemeKupnje;
             }
+        }
+        private async Task LoadSjedala()
+        {
+            var result = await _apiServiceSjedala.Get<List<Model.Sjedalo>>(null);
+            cbSjedala.DisplayMember = "Oznaka";
+            cbSjedala.ValueMember = "SjedaloID";
+            cbSjedala.SelectedItem = null;
+            cbSjedala.SelectedText = "--Odaberite--";
+            cbSjedala.DataSource = result;
+        }
+        private async Task LoadUtakmica()
+        {
+            var result = await _apiServiceUtakmica.Get<List<Model.Utakmica>>(null);
+            cbUtakmica.DisplayMember = "UtakmicaPodaci";
+            cbUtakmica.ValueMember = "UtakmicaID";
+            cbUtakmica.SelectedItem = null;
+            cbUtakmica.SelectedText = "--Odaberite--";
+            cbUtakmica.DataSource = result;
+        }
+        private async Task LoadKorisnici()
+        {
+            var result = await _apiServiceKorisnici.Get<List<Model.Korisnik>>(null);
+            cbKorisnik.DisplayMember = "KorisnikPodaci";
+            cbKorisnik.ValueMember = "KorisnikID";
+            cbKorisnik.SelectedItem = null;
+            cbKorisnik.SelectedText = "--Odaberite--";
+            cbKorisnik.DataSource = result;
         }
 
         private void CbSjedala_Validating(object sender, CancelEventArgs e)

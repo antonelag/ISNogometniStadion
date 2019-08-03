@@ -26,5 +26,6 @@ namespace ISNogometniStadion.WebAPI.Database
         [ForeignKey("StadionID")]
         public Stadioni stadion { get; set; }
         public int StadionID { get; set; }
+        public DateTime dateonly { get; set; }
     }
 }

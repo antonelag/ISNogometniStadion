@@ -32,6 +32,9 @@ namespace ISNogometniStadion.WebAPI.Mappers
             CreateMap<Database.Sjedala, Model.Requests.SjedalaInsertRequest>().ReverseMap();
             CreateMap<Database.Utakmice, Model.Utakmica>();
             CreateMap<Database.Utakmice, Model.Requests.UtakmiceInsertRequest>().ReverseMap();
+            CreateMap<Model.Requests.UtakmiceInsertRequest, Database.Utakmice>()
+                .ForMember(s => s.dateonly, a => a.MapFrom(s=>s.DatumOdigravanja.Date));
+
             CreateMap<Database.Korisnici, Model.Korisnik>()
                 .ForMember(s => s.Naziv, a => 
                 a.MapFrom(b => new Database.ISNogometniStadionContext().Gradovi.Find(b.GradID).Naziv));

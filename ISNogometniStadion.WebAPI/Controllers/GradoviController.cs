@@ -12,37 +12,10 @@ namespace ISNogometniStadion.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GradoviController : ControllerBase
+    public class GradoviController : BaseCRUDController<Grad, GradoviSearchRequest, GradoviInsertRequest, GradoviInsertRequest>
     {
-        private IGradoviService _gradoviService;
-        public GradoviController(IGradoviService gradoviService)
+        public GradoviController(ICRUDService<Grad, GradoviSearchRequest, GradoviInsertRequest, GradoviInsertRequest> service) : base(service)
         {
-            _gradoviService = gradoviService;
-        }
-        [HttpGet]
-        public ActionResult<List<Grad>> Get([FromQuery]GradoviSearchRequest req)
-        {
-            return _gradoviService.Get(req);
-        }
-        [HttpGet("{id}")]
-        public Grad GetById(int id)
-        {
-            return _gradoviService.GetById(id);
-        }
-        [HttpPost]
-        public Grad Insert(GradoviInsertRequest req)
-        {
-            return _gradoviService.Insert(req);
-        }
-        [HttpPut("{id}")]
-        public Grad Update(int id, GradoviInsertRequest req)
-        {
-            return _gradoviService.Update(id, req);
-        }
-        [HttpDelete("{id}")]
-        public string Delete(int id)
-        {
-            return _gradoviService.Delete(id);
         }
     }
 }

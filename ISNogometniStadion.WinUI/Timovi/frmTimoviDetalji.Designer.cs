@@ -34,24 +34,21 @@
             this.txtOpis = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.stadioniBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.cbTimovi = new System.Windows.Forms.ComboBox();
-            this.stadioniDataSet = new ISNogometniStadion.WinUI.StadioniDataSet();
-            this.stadioniBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.stadioniTableAdapter = new ISNogometniStadion.WinUI.StadioniDataSetTableAdapters.StadioniTableAdapter();
             this.btnSacuvaj = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.stadioniBindingSource)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnDodajSliku = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stadioniDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stadioniBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNaziv
             // 
             this.txtNaziv.Location = new System.Drawing.Point(13, 60);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(250, 20);
+            this.txtNaziv.Size = new System.Drawing.Size(303, 20);
             this.txtNaziv.TabIndex = 0;
             this.txtNaziv.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNaziv_Validating);
             // 
@@ -68,7 +65,7 @@
             // 
             this.txtOpis.Location = new System.Drawing.Point(13, 115);
             this.txtOpis.Name = "txtOpis";
-            this.txtOpis.Size = new System.Drawing.Size(250, 65);
+            this.txtOpis.Size = new System.Drawing.Size(303, 65);
             this.txtOpis.TabIndex = 2;
             this.txtOpis.Text = "";
             this.txtOpis.Validating += new System.ComponentModel.CancelEventHandler(this.TxtOpis_Validating);
@@ -91,42 +88,23 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Stadion";
             // 
-            // stadioniBindingSource
-            // 
-            this.stadioniBindingSource.DataMember = "Stadioni";
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
             // cbTimovi
             // 
-            this.cbTimovi.DataSource = this.stadioniBindingSource1;
             this.cbTimovi.DisplayMember = "Naziv";
             this.cbTimovi.FormattingEnabled = true;
             this.cbTimovi.Location = new System.Drawing.Point(13, 229);
             this.cbTimovi.Name = "cbTimovi";
-            this.cbTimovi.Size = new System.Drawing.Size(250, 21);
+            this.cbTimovi.Size = new System.Drawing.Size(303, 21);
             this.cbTimovi.TabIndex = 6;
             this.cbTimovi.ValueMember = "StadionID";
             // 
-            // stadioniDataSet
-            // 
-            this.stadioniDataSet.DataSetName = "StadioniDataSet";
-            this.stadioniDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // stadioniBindingSource1
-            // 
-            this.stadioniBindingSource1.DataMember = "Stadioni";
-            this.stadioniBindingSource1.DataSource = this.stadioniDataSet;
-            // 
-            // stadioniTableAdapter
-            // 
-            this.stadioniTableAdapter.ClearBeforeFill = true;
-            // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(188, 283);
+            this.btnSacuvaj.Location = new System.Drawing.Point(241, 380);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(75, 36);
             this.btnSacuvaj.TabIndex = 7;
@@ -134,11 +112,37 @@
             this.btnSacuvaj.UseVisualStyleBackColor = true;
             this.btnSacuvaj.Click += new System.EventHandler(this.BtnSacuvaj_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(15, 267);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(136, 71);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnDodajSliku
+            // 
+            this.btnDodajSliku.Location = new System.Drawing.Point(241, 283);
+            this.btnDodajSliku.Name = "btnDodajSliku";
+            this.btnDodajSliku.Size = new System.Drawing.Size(75, 38);
+            this.btnDodajSliku.TabIndex = 9;
+            this.btnDodajSliku.Text = "Dodaj";
+            this.btnDodajSliku.UseVisualStyleBackColor = true;
+            this.btnDodajSliku.Click += new System.EventHandler(this.BtnDodajSliku_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmTimoviDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 343);
+            this.ClientSize = new System.Drawing.Size(328, 428);
+            this.Controls.Add(this.btnDodajSliku);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSacuvaj);
             this.Controls.Add(this.cbTimovi);
             this.Controls.Add(this.label3);
@@ -149,10 +153,8 @@
             this.Name = "frmTimoviDetalji";
             this.Text = "frmTimoviDetalji";
             this.Load += new System.EventHandler(this.FrmTimoviDetalji_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.stadioniBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stadioniDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stadioniBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,12 +167,11 @@
         private System.Windows.Forms.RichTextBox txtOpis;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.BindingSource stadioniBindingSource;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ComboBox cbTimovi;
-        private StadioniDataSet stadioniDataSet;
-        private System.Windows.Forms.BindingSource stadioniBindingSource1;
-        private StadioniDataSetTableAdapters.StadioniTableAdapter stadioniTableAdapter;
         private System.Windows.Forms.Button btnSacuvaj;
+        private System.Windows.Forms.Button btnDodajSliku;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

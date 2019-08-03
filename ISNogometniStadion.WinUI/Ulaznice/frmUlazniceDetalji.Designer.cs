@@ -31,19 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.cbUtakmica = new System.Windows.Forms.ComboBox();
-            this.utakmiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.utakmiceDBDataSet = new ISNogometniStadion.WinUI.UtakmiceDBDataSet();
-            this.sjedalaDBDataSet = new ISNogometniStadion.WinUI.SjedalaDBDataSet();
-            this.sjedalaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sjedalaTableAdapter = new ISNogometniStadion.WinUI.SjedalaDBDataSetTableAdapters.SjedalaTableAdapter();
             this.cbSjedala = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.utakmiceTableAdapter = new ISNogometniStadion.WinUI.UtakmiceDBDataSetTableAdapters.UtakmiceTableAdapter();
-            this.korisniciBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbKorisnik = new System.Windows.Forms.ComboBox();
-            this.korisniciBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.korisniciDBDataSet = new ISNogometniStadion.WinUI.KorisniciDBDataSet();
-            this.korisniciTableAdapter = new ISNogometniStadion.WinUI.KorisniciDBDataSetTableAdapters.KorisniciTableAdapter();
             this.label3 = new System.Windows.Forms.Label();
             this.dtpVrijeme = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,13 +41,6 @@
             this.dtpDatum = new System.Windows.Forms.DateTimePicker();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnSacuvaj = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.utakmiceBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.utakmiceDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sjedalaDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sjedalaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.korisniciBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.korisniciBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.korisniciDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +55,6 @@
             // 
             // cbUtakmica
             // 
-            this.cbUtakmica.DataSource = this.utakmiceBindingSource;
             this.cbUtakmica.DisplayMember = "UtakmicaID";
             this.cbUtakmica.FormattingEnabled = true;
             this.cbUtakmica.Location = new System.Drawing.Point(12, 131);
@@ -82,34 +64,6 @@
             this.cbUtakmica.ValueMember = "UtakmicaID";
             this.cbUtakmica.Validating += new System.ComponentModel.CancelEventHandler(this.CbUtakmica_Validating);
             // 
-            // utakmiceBindingSource
-            // 
-            this.utakmiceBindingSource.DataMember = "Utakmice";
-            this.utakmiceBindingSource.DataSource = this.utakmiceDBDataSet;
-            // 
-            // utakmiceDBDataSet
-            // 
-            this.utakmiceDBDataSet.DataSetName = "UtakmiceDBDataSet";
-            this.utakmiceDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sjedalaDBDataSet
-            // 
-            this.sjedalaDBDataSet.DataSetName = "SjedalaDBDataSet";
-            this.sjedalaDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sjedalaBindingSource
-            // 
-            this.sjedalaBindingSource.DataMember = "Sjedala";
-            this.sjedalaBindingSource.DataSource = this.sjedalaDBDataSet;
-            // 
-            // sjedalaTableAdapter
-            // 
-            this.sjedalaTableAdapter.ClearBeforeFill = true;
-            // 
-            // cbSjedala
-            // 
-            this.cbSjedala.DataSource = this.sjedalaBindingSource;
-            this.cbSjedala.DisplayMember = "Oznaka";
             this.cbSjedala.FormattingEnabled = true;
             this.cbSjedala.Location = new System.Drawing.Point(12, 65);
             this.cbSjedala.Name = "cbSjedala";
@@ -127,13 +81,9 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Oznaka sjedala";
             // 
-            // utakmiceTableAdapter
-            // 
-            this.utakmiceTableAdapter.ClearBeforeFill = true;
             // 
             // cbKorisnik
             // 
-            this.cbKorisnik.DataSource = this.korisniciBindingSource1;
             this.cbKorisnik.DisplayMember = "KorisnikID";
             this.cbKorisnik.FormattingEnabled = true;
             this.cbKorisnik.Location = new System.Drawing.Point(15, 201);
@@ -142,20 +92,6 @@
             this.cbKorisnik.TabIndex = 4;
             this.cbKorisnik.ValueMember = "KorisnikID";
             this.cbKorisnik.Validating += new System.ComponentModel.CancelEventHandler(this.CbKorisnik_Validating);
-            // 
-            // korisniciBindingSource1
-            // 
-            this.korisniciBindingSource1.DataMember = "Korisnici";
-            this.korisniciBindingSource1.DataSource = this.korisniciDBDataSet;
-            // 
-            // korisniciDBDataSet
-            // 
-            this.korisniciDBDataSet.DataSetName = "KorisniciDBDataSet";
-            this.korisniciDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // korisniciTableAdapter
-            // 
-            this.korisniciTableAdapter.ClearBeforeFill = true;
             // 
             // label3
             // 
@@ -239,13 +175,6 @@
             this.Name = "frmUlazniceDetalji";
             this.Text = "frmUlazniceDetalji";
             this.Load += new System.EventHandler(this.FrmUlazniceDetalji_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.utakmiceBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.utakmiceDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sjedalaDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sjedalaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.korisniciBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.korisniciBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.korisniciDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -256,19 +185,9 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbUtakmica;
-        private SjedalaDBDataSet sjedalaDBDataSet;
-        private System.Windows.Forms.BindingSource sjedalaBindingSource;
-        private SjedalaDBDataSetTableAdapters.SjedalaTableAdapter sjedalaTableAdapter;
         private System.Windows.Forms.ComboBox cbSjedala;
         private System.Windows.Forms.Label label2;
-        private UtakmiceDBDataSet utakmiceDBDataSet;
-        private System.Windows.Forms.BindingSource utakmiceBindingSource;
-        private UtakmiceDBDataSetTableAdapters.UtakmiceTableAdapter utakmiceTableAdapter;
-        private System.Windows.Forms.BindingSource korisniciBindingSource;
         private System.Windows.Forms.ComboBox cbKorisnik;
-        private KorisniciDBDataSet korisniciDBDataSet;
-        private System.Windows.Forms.BindingSource korisniciBindingSource1;
-        private KorisniciDBDataSetTableAdapters.KorisniciTableAdapter korisniciTableAdapter;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dtpVrijeme;
         private System.Windows.Forms.Label label4;

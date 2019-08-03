@@ -10,39 +10,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ISNogometniStadion.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class DrzaveController : ControllerBase
-    {
-        private IDrzaveService _drzaveService;
-        public DrzaveController(IDrzaveService drzaveService)
+ 
+    public class DrzaveController : BaseCRUDController<Drzava, DrzaveSearchRequest, DrzaveInsertRequest, DrzaveInsertRequest>
+    { // da nema search ide object
+        public DrzaveController(ICRUDService<Drzava, DrzaveSearchRequest, DrzaveInsertRequest, DrzaveInsertRequest> service) : base(service)
         {
-            _drzaveService = drzaveService;
-        }
-        [HttpGet]
-        public ActionResult<List<Drzava>> Get([FromQuery]DrzaveSearchRequest req)
-        {
-            return _drzaveService.Get(req);
-        }
-        [HttpGet("{id}")]
-        public Drzava GetById(int id)
-        {
-            return _drzaveService.GetById(id);
-        }
-        [HttpPost]
-        public Drzava Insert(DrzaveInsertRequest req)
-        {
-            return _drzaveService.Insert(req);
-        }
-        [HttpPut("{id}")]
-        public Drzava Update(int id, DrzaveInsertRequest req)
-        {
-            return _drzaveService.Update(id, req);
-        }
-        [HttpDelete("{id}")]
-        public string Delete(int id)
-        {
-            return _drzaveService.Delete(id);
+
         }
     }
 }

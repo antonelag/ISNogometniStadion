@@ -12,37 +12,10 @@ namespace ISNogometniStadion.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UtakmiceController : ControllerBase
+    public class UtakmiceController : BaseCRUDController<Utakmica, UtakmiceeSearchRequest, UtakmiceInsertRequest, UtakmiceInsertRequest>
     {
-        private readonly IUtakmiceService _utakmiceService;
-        public UtakmiceController(IUtakmiceService utakmiceService)
+        public UtakmiceController(ICRUDService<Utakmica, UtakmiceeSearchRequest, UtakmiceInsertRequest, UtakmiceInsertRequest> service) : base(service)
         {
-            _utakmiceService = utakmiceService;
-        }
-        [HttpGet]
-        public List<Utakmica> Get([FromQuery]UtakmiceeSearchRequest req)
-        {
-            return _utakmiceService.Get(req);
-        }
-        [HttpGet("{id}")]
-        public Utakmica GetById(int id)
-        {
-            return _utakmiceService.GetById(id);
-        }
-        [HttpPost]
-        public Utakmica Insert(UtakmiceInsertRequest req)
-        {
-            return _utakmiceService.Insert(req);
-        }
-        [HttpPut("{id}")]
-        public Utakmica Update(int id, UtakmiceInsertRequest req)
-        {
-            return _utakmiceService.Update(id, req);
-        }
-        [HttpDelete]
-        public string Delete(int id)
-        {
-            return _utakmiceService.Delete(id);
         }
     }
 }

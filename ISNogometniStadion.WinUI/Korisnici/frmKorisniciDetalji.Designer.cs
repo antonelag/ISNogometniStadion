@@ -50,12 +50,9 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.comboBox = new System.Windows.Forms.ComboBox();
             this.gradoviBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gradoviDataSet = new ISNogometniStadion.WinUI.GradoviDataSet();
             this.gradoviBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.gradoviTableAdapter = new ISNogometniStadion.WinUI.GradoviDataSetTableAdapters.GradoviTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradoviBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradoviDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradoviBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -235,17 +232,6 @@
             // 
             // gradoviDataSet
             // 
-            this.gradoviDataSet.DataSetName = "GradoviDataSet";
-            this.gradoviDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // gradoviBindingSource1
-            // 
-            this.gradoviBindingSource1.DataMember = "Gradovi";
-            this.gradoviBindingSource1.DataSource = this.gradoviDataSet;
-            // 
-            // gradoviTableAdapter
-            // 
-            this.gradoviTableAdapter.ClearBeforeFill = true;
             // 
             // frmKorisniciDetalji
             // 
@@ -276,7 +262,6 @@
             this.Load += new System.EventHandler(this.FrmKorisniciDetalji_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradoviBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradoviDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradoviBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -306,8 +291,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.ComboBox comboBox;
         private System.Windows.Forms.BindingSource gradoviBindingSource;
-        private GradoviDataSet gradoviDataSet;
         private System.Windows.Forms.BindingSource gradoviBindingSource1;
-        private GradoviDataSetTableAdapters.GradoviTableAdapter gradoviTableAdapter;
     }
 }

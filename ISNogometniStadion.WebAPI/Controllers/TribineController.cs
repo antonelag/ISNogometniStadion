@@ -10,39 +10,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ISNogometniStadion.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class TribineController : ControllerBase
+    public class TribineController : BaseCRUDController<Tribina, TribineSearchRequest, TribineInsertRequest, TribineInsertRequest>
     {
-        private readonly ITribineService _tribineService;
-        public TribineController(ITribineService tribineService)
+        public TribineController(ICRUDService<Tribina, TribineSearchRequest, TribineInsertRequest, TribineInsertRequest> service) : base(service)
         {
-            _tribineService = tribineService;
-        }
-        [HttpGet]
-        public List<Tribina> Get([FromQuery]TribineSearchRequest req)
-        {
-            return _tribineService.Get(req);
-        }
-        [HttpGet("{id}")]
-        public Tribina GetById(int id)
-        {
-            return _tribineService.GetById(id);
-        }
-        [HttpPost]
-        public Tribina Insert(TribineInsertRequest req)
-        {
-            return _tribineService.Insert(req);
-        }
-        [HttpPut("{id}")]
-        public Tribina Update(int id, TribineInsertRequest req)
-        {
-            return _tribineService.Update(id,req);
-        }
-        [HttpDelete]
-        public string Delete(int id)
-        {
-            return _tribineService.Delete(id);
         }
     }
 }

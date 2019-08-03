@@ -12,6 +12,7 @@ namespace ISNogometniStadion.Model
         public int DomaciTimID { get; set; }
         public string GostujuciTim { get; set; }
         public int GostujuciTimID { get; set; }
+        public string UtakmicaPodaci { get { return DomaciTim + "-" + GostujuciTim + ", " + DatumOdigravanja.ToShortDateString(); }  }
         public DateTime DatumOdigravanja { get; set; }
         public DateTime VrijemeOdigravanja { get; set; }
         public string stadion { get; set; }

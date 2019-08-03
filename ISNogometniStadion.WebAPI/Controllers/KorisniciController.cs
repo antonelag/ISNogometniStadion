@@ -13,40 +13,10 @@ namespace ISNogometniStadion.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class KorisniciController : ControllerBase
+    public class KorisniciController : BaseCRUDController<Korisnik, KorisniciSearchRequest, KorisniciInsertRequest, KorisniciInsertRequest>
     {
-        private readonly IKorisniciService _korisniciService;
-        private readonly IMapper _mapper;
-        public KorisniciController(IKorisniciService service, IMapper mapper)
+        public KorisniciController(ICRUDService<Korisnik, KorisniciSearchRequest, KorisniciInsertRequest, KorisniciInsertRequest> service) : base(service)
         {
-            _korisniciService = service;
-            _mapper = mapper;
         }
-        [HttpGet]
-        public ActionResult<List<Korisnik>> Get([FromQuery]KorisniciSearchRequest req)
-        {//brw ne podrzavaju na getu slanje parametara kroz body pa zato fromq
-            return _korisniciService.Get(req);
-        }
-        [HttpGet("{id}")]
-        public Korisnik GetById(int id)
-        {
-            return _korisniciService.GetById(id);
-        }
-        [HttpPost]
-        public Korisnik Insert(KorisniciInsertRequest req)
-        {
-            return _korisniciService.Insert(req);
-        }
-        [HttpPut("{id}")]
-        public Korisnik Update(int id , KorisniciInsertRequest req)
-        {
-            return _korisniciService.Update(id, req);
-        }
-        [HttpDelete("{id}")]
-        public string Delete(int id)
-        {
-            return _korisniciService.Delete(id);
-        }
-      
     }
 }

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
+using System.Drawing;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ISNogometniStadion.WebAPI.Database
 {
@@ -14,5 +17,7 @@ namespace ISNogometniStadion.WebAPI.Database
         [ForeignKey("StadionID")]
         public Stadioni Stadion { get; set; }
         public int StadionID { get; set; }
+        public byte[] Slika { get; set; }
+        public byte[] SlikaThumb { get; set; }
     }
 }

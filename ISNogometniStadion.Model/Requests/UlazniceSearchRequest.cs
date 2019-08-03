@@ -7,6 +7,6 @@ namespace ISNogometniStadion.Model
 {
     public class UlazniceSearchRequest
     {
-        public string ImePrezime { get; set; }
+        public int? KorisnikID { get; set; }
     }
 }
