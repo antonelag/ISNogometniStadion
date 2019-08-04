@@ -48,14 +48,14 @@ namespace ISNogometniStadion.WebAPI
             services.AddAutoMapper((typeof(Startup)));
             services.AddScoped<ICRUDService<Model.Ulaznica,UlazniceSearchRequest,UlazniceInsertRequest,UlazniceInsertRequest>, UlazniceService>();
             //jer ulazniceservice implementira search
-            services.AddScoped<ICRUDService<Model.Drzava,DrzaveSearchRequest,DrzaveInsertRequest,DrzaveInsertRequest>, BaseCRUDService<Model.Drzava,DrzaveSearchRequest,Database.Drzave,DrzaveInsertRequest,DrzaveInsertRequest>>();
-            services.AddScoped<ICRUDService<Model.Grad,GradoviSearchRequest,GradoviInsertRequest,GradoviInsertRequest>, BaseCRUDService<Model.Grad,GradoviSearchRequest,Database.Gradovi, GradoviInsertRequest,GradoviInsertRequest>>();
-            services.AddScoped<ICRUDService<Model.Korisnik,KorisniciSearchRequest,KorisniciInsertRequest,KorisniciInsertRequest>, BaseCRUDService<Model.Korisnik, KorisniciSearchRequest, Database.Korisnici,KorisniciInsertRequest,KorisniciInsertRequest>>();
-            services.AddScoped<ICRUDService<Model.Tim, TimoviSearchRequest,TimoviInsertRequest,TimoviInsertRequest>, BaseCRUDService<Model.Tim, TimoviSearchRequest, Database.Timovi,TimoviInsertRequest,TimoviInsertRequest>>();
-            services.AddScoped<ICRUDService<Model.Stadion,StadioniSearchRequest,StadioniInsertRequest,StadioniInsertRequest>, BaseCRUDService<Model.Stadion, StadioniSearchRequest,Database.Stadioni,StadioniInsertRequest,StadioniInsertRequest>>();
-            services.AddScoped<ICRUDService<Model.Tribina,TribineSearchRequest,TribineInsertRequest,TribineInsertRequest>, BaseCRUDService<Model.Tribina, TribineSearchRequest, Database.Tribine,TribineInsertRequest,TribineInsertRequest>>();
-            services.AddScoped<ICRUDService<Model.Sjedalo,SjedalaSearchRequest,SjedalaInsertRequest,SjedalaInsertRequest>, BaseCRUDService<Model.Sjedalo, SjedalaSearchRequest,Database.Sjedala,SjedalaInsertRequest,SjedalaInsertRequest>>();
-            services.AddScoped<ICRUDService<Model.Utakmica,UtakmiceeSearchRequest,UtakmiceInsertRequest,UtakmiceInsertRequest>, BaseCRUDService<Model.Utakmica, UtakmiceeSearchRequest, Database.Utakmice,UtakmiceInsertRequest,UtakmiceInsertRequest>>();
+            services.AddScoped<ICRUDService<Model.Drzava,DrzaveSearchRequest,DrzaveInsertRequest,DrzaveInsertRequest>, DrzaveService>();
+            services.AddScoped<ICRUDService<Model.Grad,GradoviSearchRequest,GradoviInsertRequest,GradoviInsertRequest>, GradService>();
+            services.AddScoped<ICRUDService<Model.Korisnik,KorisniciSearchRequest,KorisniciInsertRequest,KorisniciInsertRequest>, KorisniciService>();
+            services.AddScoped<ICRUDService<Model.Tim, TimoviSearchRequest,TimoviInsertRequest,TimoviInsertRequest>,TimoviService>();
+            services.AddScoped<ICRUDService<Model.Stadion,StadioniSearchRequest,StadioniInsertRequest,StadioniInsertRequest>,StadioniService>();
+            services.AddScoped<ICRUDService<Model.Tribina,TribineSearchRequest,TribineInsertRequest,TribineInsertRequest>, TribineService>();
+            services.AddScoped<ICRUDService<Model.Sjedalo,SjedalaSearchRequest,SjedalaInsertRequest,SjedalaInsertRequest>, SjedalaService>();
+            services.AddScoped<ICRUDService<Model.Utakmica,UtakmiceeSearchRequest,UtakmiceInsertRequest,UtakmiceInsertRequest>, UtakmiceService>();
 
             var conn = @"Server = (localdb); Database = ISNogometniStadionDB; Trusted_Connection = True; ";
             services.AddDbContext<ISNogometniStadionContext>(options => options.UseSqlServer(conn));
