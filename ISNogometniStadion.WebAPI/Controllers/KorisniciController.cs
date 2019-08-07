@@ -6,13 +6,11 @@ using AutoMapper;
 using ISNogometniStadion.Model;
 using ISNogometniStadion.Model.Requests;
 using ISNogometniStadion.WebAPI.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ISNogometniStadion.WebAPI.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class KorisniciController : ControllerBase

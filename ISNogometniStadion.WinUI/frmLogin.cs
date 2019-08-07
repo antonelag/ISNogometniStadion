@@ -53,7 +53,7 @@ namespace ISNogometniStadion.WinUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"Authentication",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
             }
         }
     }
