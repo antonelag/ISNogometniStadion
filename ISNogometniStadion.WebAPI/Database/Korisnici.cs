@@ -18,7 +18,9 @@ namespace ISNogometniStadion.WebAPI.Database
         public string telefon { get; set; }
         public string email { get; set; }
         public string korisnickoIme { get; set; }
-        public string lozinka { get; set; }
+        public string LozinkaHash { get; set; }
+        public string LozinkaSalt { get; set; }
+
         [ForeignKey("GradID")]
         public Gradovi Grad { get; set; }
         public int GradID { get; set; }

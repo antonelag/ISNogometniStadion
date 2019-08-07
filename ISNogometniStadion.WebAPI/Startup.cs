@@ -8,7 +8,9 @@ using ISNogometniStadion.Model;
 using ISNogometniStadion.Model.Requests;
 using ISNogometniStadion.WebAPI.Database;
 using ISNogometniStadion.WebAPI.Filters;
+using ISNogometniStadion.WebAPI.Security;
 using ISNogometniStadion.WebAPI.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
@@ -19,10 +21,23 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace ISNogometniStadion.WebAPI
 {
+    public class BasicAuthDocumentFilter : IDocumentFilter
+    {
+        public void Apply(SwaggerDocument swaggerDoc, DocumentFilterContext context)
+        {
+            var securityRequirements = new Dictionary<string, IEnumerable<string>>()
+        {
+            { "basic", new string[] { } }  // in swagger you specify empty list unless using OAuth2 scopes
+        };
+
+            swaggerDoc.Security = new[] { securityRequirements };
+        }
+    }
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -37,25 +52,43 @@ namespace ISNogometniStadion.WebAPI
         {
             //da jedan od filtera treba da se doda i error filter koji je implementiran da mozemo da kontrolisemo
             //kako cemo prikazati gresku
-            services.AddMvc(x=>x.Filters.Add<ErrorFilter>()).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
-                
-            });
+            services.AddMvc(x => x.Filters.Add<ErrorFilter>()).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
             //dok traje sam request, instanca servisa ce trajati dok traje req
             //dependencyInjection
             services.AddAutoMapper((typeof(Startup)));
-            services.AddScoped<ICRUDService<Model.Ulaznica,UlazniceSearchRequest,UlazniceInsertRequest,UlazniceInsertRequest>, UlazniceService>();
+
+
+
+
+
+            services.AddAuthentication("BasicAuthentication")
+             .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                c.AddSecurityDefinition("basic", new BasicAuthScheme() { Type = "basic" });
+                c.DocumentFilter<BasicAuthDocumentFilter>();
+            });
+
+
+
+
+
+
+
+
+            services.AddScoped<ICRUDService<Model.Ulaznica, UlazniceSearchRequest, UlazniceInsertRequest, UlazniceInsertRequest>, UlazniceService>();
             //jer ulazniceservice implementira search
-            services.AddScoped<ICRUDService<Model.Drzava,DrzaveSearchRequest,DrzaveInsertRequest,DrzaveInsertRequest>, DrzaveService>();
-            services.AddScoped<ICRUDService<Model.Grad,GradoviSearchRequest,GradoviInsertRequest,GradoviInsertRequest>, GradService>();
-            services.AddScoped<ICRUDService<Model.Korisnik,KorisniciSearchRequest,KorisniciInsertRequest,KorisniciInsertRequest>, KorisniciService>();
-            services.AddScoped<ICRUDService<Model.Tim, TimoviSearchRequest,TimoviInsertRequest,TimoviInsertRequest>,TimoviService>();
-            services.AddScoped<ICRUDService<Model.Stadion,StadioniSearchRequest,StadioniInsertRequest,StadioniInsertRequest>,StadioniService>();
-            services.AddScoped<ICRUDService<Model.Tribina,TribineSearchRequest,TribineInsertRequest,TribineInsertRequest>, TribineService>();
-            services.AddScoped<ICRUDService<Model.Sjedalo,SjedalaSearchRequest,SjedalaInsertRequest,SjedalaInsertRequest>, SjedalaService>();
-            services.AddScoped<ICRUDService<Model.Utakmica,UtakmiceeSearchRequest,UtakmiceInsertRequest,UtakmiceInsertRequest>, UtakmiceService>();
+            services.AddScoped<ICRUDService<Model.Drzava, DrzaveSearchRequest, DrzaveInsertRequest, DrzaveInsertRequest>, DrzaveService>();
+            services.AddScoped<ICRUDService<Model.Grad, GradoviSearchRequest, GradoviInsertRequest, GradoviInsertRequest>, GradService>();
+            services.AddScoped<IKorisniciService, KorisniciService>();
+            services.AddScoped<ICRUDService<Model.Tim, TimoviSearchRequest, TimoviInsertRequest, TimoviInsertRequest>, TimoviService>();
+            services.AddScoped<ICRUDService<Model.Stadion, StadioniSearchRequest, StadioniInsertRequest, StadioniInsertRequest>, StadioniService>();
+            services.AddScoped<ICRUDService<Model.Tribina, TribineSearchRequest, TribineInsertRequest, TribineInsertRequest>, TribineService>();
+            services.AddScoped<ICRUDService<Model.Sjedalo, SjedalaSearchRequest, SjedalaInsertRequest, SjedalaInsertRequest>, SjedalaService>();
+            services.AddScoped<ICRUDService<Model.Utakmica, UtakmiceeSearchRequest, UtakmiceInsertRequest, UtakmiceInsertRequest>, UtakmiceService>();
 
             var conn = @"Server = (localdb); Database = ISNogometniStadionDB; Trusted_Connection = True; ";
             services.AddDbContext<ISNogometniStadionContext>(options => options.UseSqlServer(conn));
@@ -74,19 +107,21 @@ namespace ISNogometniStadion.WebAPI
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-            app.UseMvc();
             app.UseSwagger();
-          
-            
+
+
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-                
+
             });
+
+            app.UseAuthentication();
+            app.UseHttpsRedirection();
+            app.UseMvc();
         }
     }
 }

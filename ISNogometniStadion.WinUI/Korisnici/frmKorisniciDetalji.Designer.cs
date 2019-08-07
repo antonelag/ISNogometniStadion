@@ -49,11 +49,11 @@
             this.dpdatumRodjenja = new System.Windows.Forms.DateTimePicker();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.comboBox = new System.Windows.Forms.ComboBox();
-            this.gradoviBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gradoviBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.gradoviBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradoviBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradoviBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gradoviBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txtIme
@@ -154,6 +154,7 @@
             // 
             this.txtLozinka.Location = new System.Drawing.Point(15, 424);
             this.txtLozinka.Name = "txtLozinka";
+            this.txtLozinka.PasswordChar = '*';
             this.txtLozinka.Size = new System.Drawing.Size(159, 20);
             this.txtLozinka.TabIndex = 12;
             this.txtLozinka.Validating += new System.ComponentModel.CancelEventHandler(this.TxtLozinka_Validating);
@@ -180,6 +181,7 @@
             // 
             this.txtPotvrdaLozinke.Location = new System.Drawing.Point(184, 424);
             this.txtPotvrdaLozinke.Name = "txtPotvrdaLozinke";
+            this.txtPotvrdaLozinke.PasswordChar = '*';
             this.txtPotvrdaLozinke.Size = new System.Drawing.Size(167, 20);
             this.txtPotvrdaLozinke.TabIndex = 14;
             this.txtPotvrdaLozinke.Validating += new System.ComponentModel.CancelEventHandler(this.TxtPotvrdaLozinke_Validating);
@@ -230,9 +232,6 @@
             // 
             this.gradoviBindingSource.DataMember = "Gradovi";
             // 
-            // gradoviDataSet
-            // 
-            // 
             // frmKorisniciDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,8 +260,8 @@
             this.Text = "frmKorisniciDetalji";
             this.Load += new System.EventHandler(this.FrmKorisniciDetalji_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradoviBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradoviBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gradoviBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
