@@ -139,17 +139,27 @@ namespace ISNogometniStadion.WinUI.Utakmice
                 var domaciid = int.Parse(cbDomaci.SelectedValue.ToString());
                 var gostiid = int.Parse(cbGosti.SelectedValue.ToString());
                 var obrnutiisti = false;
+                var isti = false;
                 foreach (var a in t)
                 {
-                    if (a.GostujuciTimID == domaciid && a.DomaciTimID == gostiid && DateTime.Compare(a.DatumOdigravanja.Date, dtpDatum.Value.Date) == 0)
+                    if ((a.GostujuciTimID == domaciid || a.DomaciTimID == gostiid) && DateTime.Compare(a.DatumOdigravanja.Date, dtpDatum.Value.Date) == 0 && a.UtakmicaID != _id)
                     {
                         obrnutiisti = true;
                         break;
                     }
 
                 }
+                foreach (var a in t)
+                {
+                    if ((a.GostujuciTimID == gostiid || a.DomaciTimID == domaciid) && DateTime.Compare(a.DatumOdigravanja.Date, dtpDatum.Value.Date) == 0 && a.UtakmicaID!=_id)
+                    {
+                        isti = true;
+                        break;
+                    }
 
-                if (!obrnutiisti)
+                }
+
+                if (!obrnutiisti && !isti)
                 {
                     var req = new UtakmiceInsertRequest()
                     {

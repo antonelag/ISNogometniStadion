@@ -47,7 +47,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 104);
+            this.label1.Location = new System.Drawing.Point(12, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 0;
@@ -57,15 +57,19 @@
             // 
             this.cbUtakmica.DisplayMember = "UtakmicaID";
             this.cbUtakmica.FormattingEnabled = true;
-            this.cbUtakmica.Location = new System.Drawing.Point(12, 131);
+            this.cbUtakmica.Location = new System.Drawing.Point(15, 71);
             this.cbUtakmica.Name = "cbUtakmica";
             this.cbUtakmica.Size = new System.Drawing.Size(200, 21);
             this.cbUtakmica.TabIndex = 1;
             this.cbUtakmica.ValueMember = "UtakmicaID";
+            this.cbUtakmica.SelectedIndexChanged += new System.EventHandler(this.CbUtakmica_SelectedIndexChanged);
             this.cbUtakmica.Validating += new System.ComponentModel.CancelEventHandler(this.CbUtakmica_Validating);
             // 
+            // cbSjedala
+            // 
+            this.cbSjedala.DisplayMember = "SjedaloID";
             this.cbSjedala.FormattingEnabled = true;
-            this.cbSjedala.Location = new System.Drawing.Point(12, 65);
+            this.cbSjedala.Location = new System.Drawing.Point(15, 140);
             this.cbSjedala.Name = "cbSjedala";
             this.cbSjedala.Size = new System.Drawing.Size(200, 21);
             this.cbSjedala.TabIndex = 3;
@@ -75,12 +79,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 38);
+            this.label2.Location = new System.Drawing.Point(12, 114);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Oznaka sjedala";
-            // 
             // 
             // cbKorisnik
             // 

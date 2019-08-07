@@ -16,6 +16,7 @@ namespace ISNogometniStadion.WinUI.Ulaznice
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Ulaznica");
         private readonly APIService _apiServiceSjedala = new APIService("Sjedala");
+        private readonly APIService _apiServiceTribine = new APIService("Tribine");
 
         private readonly APIService _apiServiceUtakmica = new APIService("Utakmice");
         private readonly APIService _apiServiceKorisnici = new APIService("Korisnici");
@@ -27,7 +28,7 @@ namespace ISNogometniStadion.WinUI.Ulaznice
 
         private async void FrmUlazniceDetalji_Load(object sender, EventArgs e)
         {
-            await LoadSjedala();
+           // await LoadSjedala();
             await LoadUtakmica();
             await LoadKorisnici();
             if (_id.HasValue)
@@ -73,7 +74,6 @@ namespace ISNogometniStadion.WinUI.Ulaznice
             if (cbSjedala.SelectedItem == null)
             {
                 errorProvider1.SetError(cbSjedala, Properties.Resources.ObaveznoPolje);
-                e.Cancel = true;
             }
             else
                 errorProvider1.SetError(cbSjedala, null);
@@ -147,6 +147,32 @@ namespace ISNogometniStadion.WinUI.Ulaznice
             }
             else
                 MessageBox.Show("Operacija nije uspjela!");
+        }
+
+        private async void CbUtakmica_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Model.Utakmica utakmica = (Model.Utakmica)cbUtakmica.SelectedItem;
+            var id = utakmica.StadionID;
+            List<Model.Sjedalo> sjedala = await _apiServiceSjedala.Get<List<Model.Sjedalo>>(null);
+            List<Model.Tribina> tribine = await _apiServiceTribine.Get<List<Model.Tribina>>(null);
+            List<Model.Sjedalo> lista = new List<Model.Sjedalo>();
+
+            foreach (var tribina in tribine)
+            {
+                if (tribina.StadionID == id)
+                {
+                    foreach (var sjedalo in sjedala)
+                    {
+                        if (sjedalo.TribinaID == tribina.TribinaID)
+                            lista.Add(sjedalo);
+                    }
+                }
+            }
+            cbSjedala.DisplayMember = "Oznaka";
+            cbSjedala.ValueMember = "SjedaloID";
+            cbSjedala.SelectedItem = null;
+            cbSjedala.SelectedText = "--Odaberite--";
+            cbSjedala.DataSource = lista;
         }
     }
 }
