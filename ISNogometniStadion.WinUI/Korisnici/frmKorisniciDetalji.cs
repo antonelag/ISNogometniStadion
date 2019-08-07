@@ -27,6 +27,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
         {
             if (this.ValidateChildren())
             {
+             
 
                 var request = new KorisniciInsertRequest()
                 {
@@ -45,6 +46,13 @@ namespace ISNogometniStadion.WinUI.Korisnici
                 else
                     await _apiService.Insert<dynamic>(request);
                 MessageBox.Show("Operacija uspjesna!");
+
+
+                if (_id.HasValue)
+                {
+
+                }
+             
                 this.Close();
             }
             else
