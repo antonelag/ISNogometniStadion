@@ -120,7 +120,7 @@ namespace ISNogometniStadion.WebAPI
             });
 
             app.UseAuthentication();
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
