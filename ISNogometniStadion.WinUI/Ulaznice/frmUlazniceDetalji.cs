@@ -138,7 +138,10 @@ namespace ISNogometniStadion.WinUI.Ulaznice
                     UtakmicaID = int.Parse(cbUtakmica.SelectedValue.ToString())
                 };
                 if (_id.HasValue)
-                    await _apiService.Update<dynamic>(_id, req);
+                {
+                    int i = (int)_id;
+                    await _apiService.Update<dynamic>(i, req);
+                }
                 else
                     await _apiService.Insert<dynamic>(req);
 

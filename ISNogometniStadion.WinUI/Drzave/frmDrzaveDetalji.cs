@@ -43,7 +43,10 @@ namespace ISNogometniStadion.WinUI.Drzave
                     Naziv = txtNaziv.Text
                 };
                 if (_id.HasValue)
-                    await _apiService.Update<dynamic>(_id,req);
+                {
+                    int i = (int)_id;
+                    await _apiService.Update<dynamic>(i,req);
+                }
                 else
                     await _apiService.Insert<dynamic>(req);
 

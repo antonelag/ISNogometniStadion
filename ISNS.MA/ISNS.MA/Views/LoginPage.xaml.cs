@@ -16,5 +16,16 @@ namespace ISNS.MA.Views
         {
             InitializeComponent();
         }
+
+        private void Entry_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
     }
 }

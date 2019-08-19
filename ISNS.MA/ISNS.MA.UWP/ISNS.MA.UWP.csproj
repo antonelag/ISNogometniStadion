@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{22529955-422C-49E4-BE98-D22A043E57A1}</ProjectGuid>
+    <ProjectGuid>{A1BB2E1B-1134-43B4-B183-2C0E46B3291A}</ProjectGuid>
     <TemplateGuid>{98C37F10-6541-44BE-B1E6-7EB3EB8C08F1}</TemplateGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -154,7 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISNS.MA\ISNS.MA.csproj">
-      <Project>{C5572E36-69FC-4B7C-A7B1-05C12411C65B}</Project>
+      <Project>{562B5D2C-A5AA-4A2C-84F5-BB017F312CDF}</Project>
       <Name>ISNS.MA</Name>
     </ProjectReference>
   </ItemGroup>

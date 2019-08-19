@@ -1,22 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewModels="clr-namespace:ISNS.MA.ViewModels"
-             mc:Ignorable="d"
+             xmlns:vm="clr-namespace:ISNS.MA.ViewModels"
              x:Class="ISNS.MA.Views.LoginPage">
     <ContentPage.BindingContext>
-        <viewModels:LoginViewModel></viewModels:LoginViewModel>
+        <vm:LoginViewModel></vm:LoginViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Padding="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-            <Label Text="Korisničko ime"/>
-            <Entry Text="{Binding KorisnickoIme}"></Entry>
-            <Label Text="Lozinka"/>
-            <Entry Text="{Binding Lozinka}"></Entry>
-            <Button Command="{Binding LoginCommand}" HorizontalOptions="FillAndExpand" Text="Prijavi se"></Button>
-            <Label IsVisible="{Binding IsBusy}" Text="Working..."></Label>
+        <StackLayout HorizontalOptions="FillAndExpand" Padding="10" VerticalOptions="CenterAndExpand">
+            <Label  Text="Korisničko ime"></Label>
+            <Entry x:Name="KorisnickoIme" Text="{Binding KorisnickoIme}"></Entry>
+
+            <Label  Text="Password"></Label>
+            <Entry Text="{Binding Lozinka}" IsPassword="True"></Entry>
+
+            <Button Command="{Binding LoginCommand}"  HorizontalOptions="FillAndExpand" Text="Login"></Button>
+            <Label IsVisible="{Binding IsBusy}" Text="..."></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

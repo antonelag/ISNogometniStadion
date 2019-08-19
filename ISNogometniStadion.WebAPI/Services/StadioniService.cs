@@ -24,9 +24,9 @@ namespace ISNogometniStadion.WebAPI.Services
         {
             var q = _context.Set<Database.Stadioni>().AsQueryable();
 
-            if (!string.IsNullOrEmpty(search?.Naziv))
+            if (search.GradID.HasValue)
             {
-                q = q.Where(s => (s.Naziv.StartsWith(search.Naziv)));
+                q = q.Where(s => (s.GradID==search.GradID));
             }
             var list = q.ToList();
             return _mapper.Map<List<Stadion>>(list);

@@ -1,19 +1,20 @@
-﻿using ISNS.MA.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ISNS.MA.Views;
 using Xamarin.Forms;
 
 namespace ISNS.MA.ViewModels
 {
-    public class LoginViewModel:BaseViewModel
+    public class LoginViewModel : BaseViewModel
     {
-        private readonly APIService _apiService=new APIService("Korisnici");
+        private readonly APIService _service = new APIService("Gradovi");
+
         public LoginViewModel()
         {
-            LoginCommand = new Command(async () => { await Login(); });
+            LoginCommand = new Command(async () => await Login());
         }
         string _korisnickoIme = string.Empty;
         public string KorisnickoIme
@@ -21,13 +22,14 @@ namespace ISNS.MA.ViewModels
             get { return _korisnickoIme; }
             set { SetProperty(ref _korisnickoIme, value); }
         }
+
         string _lozinka = string.Empty;
         public string Lozinka
         {
             get { return _lozinka; }
             set { SetProperty(ref _lozinka, value); }
         }
-        //interfejs koji ce nam omoguciti da povezujemo buttone itd sa odredjenim komandama
+
         public ICommand LoginCommand { get; set; }
 
         async Task Login()
@@ -35,15 +37,15 @@ namespace ISNS.MA.ViewModels
             IsBusy = true;
             APIService.KorisnickoIme = KorisnickoIme;
             APIService.Lozinka = Lozinka;
+
             try
             {
-                await _apiService.Get<dynamic>(null);
+                await _service.Get<dynamic>(null);
                 Application.Current.MainPage = new MainPage();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 await Application.Current.MainPage.DisplayAlert("Greška", "Niste autentificirani", "OK");
-                throw;
             }
         }
     }

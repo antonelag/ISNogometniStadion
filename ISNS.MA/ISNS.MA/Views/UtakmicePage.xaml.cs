@@ -14,7 +14,7 @@ namespace ISNS.MA.Views
     public partial class UtakmicePage : ContentPage
     {
         UtakmiceViewModel utakmiceViewModel = null;
-        public 
+        public
             UtakmicePage()
         {
             InitializeComponent();

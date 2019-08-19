@@ -133,7 +133,10 @@ namespace ISNogometniStadion.WinUI.Timovi
                 }
 
                 if (_id.HasValue)
-                    await _apiService.Update<dynamic>(_id, res);
+                {
+                    int i = (int)_id;
+                    await _apiService.Update<dynamic>(i, res);
+                }
                 else
                     await _apiService.Insert<dynamic>(res);
                 MessageBox.Show("Operacija je uspjela.");

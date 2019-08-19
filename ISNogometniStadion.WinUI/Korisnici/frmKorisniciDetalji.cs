@@ -41,7 +41,10 @@ namespace ISNogometniStadion.WinUI.Korisnici
                     GradID = (int)comboBox.SelectedValue
                 };
                 if (_id.HasValue)
-                    await _apiService.Update<dynamic>(_id, request);
+                {
+                    int i = (int)_id;
+                    await _apiService.Update<dynamic>(i, request);
+                }
                 else
                     await _apiService.Insert<dynamic>(request);
                 MessageBox.Show("Operacija uspjesna!");

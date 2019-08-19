@@ -14,6 +14,8 @@
             <Label Text="Utakmice"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+
+            <Picker ItemsSource="{Binding LigeList}" ItemDisplayBinding="{Binding Naziv}" SelectedItem="{Binding SelectedLiga}"></Picker>
             <ListView ItemsSource="{Binding UtakmiceList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -35,6 +37,6 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-        
+
     </ContentPage.Content>
 </ContentPage>
