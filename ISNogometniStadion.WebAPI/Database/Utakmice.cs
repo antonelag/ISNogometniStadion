@@ -21,6 +21,10 @@ namespace ISNogometniStadion.WebAPI.Database
         public Timovi GostujuciTim { get; set; }
         public int GostujuciTimID { get; set; }
 
+        [ForeignKey("LigaID")]
+        public Lige Liga { get; set; }
+        public int LigaID { get; set; }
+
         public DateTime DatumOdigravanja { get; set; }
         public DateTime VrijemeOdigravanja { get; set; }
         [ForeignKey("StadionID")]

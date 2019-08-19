@@ -28,6 +28,9 @@ namespace ISNogometniStadion.WebAPI.Mappers
             CreateMap<Database.Tribine, Model.Requests.TribineInsertRequest>().ReverseMap();
             CreateMap<Database.Ulaznice, Model.Ulaznica>();
             CreateMap<Database.Ulaznice, Model.Requests.UlazniceInsertRequest>().ReverseMap();
+
+            CreateMap<Database.Lige, Model.Liga>();
+            CreateMap<Database.Lige, Model.Requests.LigaInsertRequest>().ReverseMap();
             CreateMap<Database.Sjedala, Model.Sjedalo>();
             CreateMap<Database.Sjedala, Model.Requests.SjedalaInsertRequest>().ReverseMap();
             CreateMap<Database.Utakmice, Model.Utakmica>();
@@ -55,19 +58,29 @@ namespace ISNogometniStadion.WebAPI.Mappers
               .ForMember(s => s.Stadion, a =>
               a.MapFrom(b => new Database.ISNogometniStadionContext().Stadioni.Find(b.StadionID).Naziv));
 
+
+            CreateMap<Database.Timovi, Model.Tim>()
+             .ForMember(s => s.Liga, a =>
+             a.MapFrom(b => new Database.ISNogometniStadionContext().Lige.Find(b.LigaID).Naziv));
+            CreateMap<Database.Lige, Model.Liga>()
+         .ForMember(s => s.Drzava, a =>
+         a.MapFrom(b => new Database.ISNogometniStadionContext().Drzave.Find(b.DrzavaID).Naziv));
+
             CreateMap<Database.Tribine, Model.Tribina>()
           .ForMember(s => s.Stadion, a =>
           a.MapFrom(b => new Database.ISNogometniStadionContext().Stadioni.Find(b.StadionID).Naziv));
 
 
-      
+
             CreateMap<Database.Utakmice, Model.Utakmica>()
             .ForMember(s => s.stadion, a =>
             a.MapFrom(b => new Database.ISNogometniStadionContext().Stadioni.Find(b.StadionID).Naziv))
             .ForMember(s => s.GostujuciTim, a =>
             a.MapFrom(b => new Database.ISNogometniStadionContext().Timovi.Find(b.GostujuciTimID).Naziv))
             .ForMember(s => s.DomaciTim, a =>
-              a.MapFrom(b => new Database.ISNogometniStadionContext().Timovi.Find(b.DomaciTimID).Naziv));
+              a.MapFrom(b => new Database.ISNogometniStadionContext().Timovi.Find(b.DomaciTimID).Naziv))
+            .ForMember(s => s.Liga, a =>
+               a.MapFrom(b => new Database.ISNogometniStadionContext().Lige.Find(b.LigaID).Naziv));
 
          
 

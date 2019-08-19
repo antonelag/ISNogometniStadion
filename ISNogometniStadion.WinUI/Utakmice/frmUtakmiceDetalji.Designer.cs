@@ -41,6 +41,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnSacuvaj = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbLiga = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,6 +66,7 @@
             // 
             // cbDomaci
             // 
+            this.cbDomaci.DisplayMember = "TimID";
             this.cbDomaci.FormattingEnabled = true;
             this.cbDomaci.Location = new System.Drawing.Point(12, 41);
             this.cbDomaci.Name = "cbDomaci";
@@ -72,6 +75,9 @@
             this.cbDomaci.ValueMember = "TimID";
             this.cbDomaci.Validating += new System.ComponentModel.CancelEventHandler(this.CbDomaci_Validating);
             // 
+            // cbGosti
+            // 
+            this.cbGosti.DisplayMember = "TimID";
             this.cbGosti.FormattingEnabled = true;
             this.cbGosti.Location = new System.Drawing.Point(12, 115);
             this.cbGosti.Name = "cbGosti";
@@ -119,6 +125,7 @@
             // 
             // cbStadion
             // 
+            this.cbStadion.DisplayMember = "StadionID";
             this.cbStadion.FormattingEnabled = true;
             this.cbStadion.Location = new System.Drawing.Point(12, 301);
             this.cbStadion.Name = "cbStadion";
@@ -126,10 +133,6 @@
             this.cbStadion.TabIndex = 8;
             this.cbStadion.ValueMember = "StadionID";
             this.cbStadion.Validating += new System.ComponentModel.CancelEventHandler(this.CbStadion_Validating);
-            // 
-            // stadioniBindingSource
-            // 
-            // 
             // 
             // label5
             // 
@@ -142,7 +145,7 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(137, 343);
+            this.btnSacuvaj.Location = new System.Drawing.Point(137, 418);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(75, 31);
             this.btnSacuvaj.TabIndex = 10;
@@ -154,14 +157,30 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // timovi2DBDataSet
+            // label6
             // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 342);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(83, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Vrsta natjecanja";
+            // 
+            // cbLiga
+            // 
+            this.cbLiga.FormattingEnabled = true;
+            this.cbLiga.Location = new System.Drawing.Point(12, 368);
+            this.cbLiga.Name = "cbLiga";
+            this.cbLiga.Size = new System.Drawing.Size(200, 21);
+            this.cbLiga.TabIndex = 12;
             // 
             // frmUtakmiceDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 386);
+            this.ClientSize = new System.Drawing.Size(298, 461);
+            this.Controls.Add(this.cbLiga);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnSacuvaj);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cbStadion);
@@ -196,5 +215,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ComboBox cbLiga;
+        private System.Windows.Forms.Label label6;
     }
 }

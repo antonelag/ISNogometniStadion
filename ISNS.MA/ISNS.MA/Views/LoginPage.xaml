@@ -7,15 +7,16 @@
              mc:Ignorable="d"
              x:Class="ISNS.MA.Views.LoginPage">
     <ContentPage.BindingContext>
-        <viewModels:LoginViewModel/>
+        <viewModels:LoginViewModel></viewModels:LoginViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Padding="5" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+        <StackLayout Padding="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
             <Label Text="Korisničko ime"/>
-            <Entry TextChanged="Entry_TextChanged" Text="{Binding KorisnickoIme}"></Entry>
+            <Entry Text="{Binding KorisnickoIme}"></Entry>
             <Label Text="Lozinka"/>
             <Entry Text="{Binding Lozinka}"></Entry>
-            <Button Command="{Binding LoginCommand}" Text="Prijavi se"></Button>
-            </StackLayout>
+            <Button Command="{Binding LoginCommand}" HorizontalOptions="FillAndExpand" Text="Prijavi se"></Button>
+            <Label IsVisible="{Binding IsBusy}" Text="Working..."></Label>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

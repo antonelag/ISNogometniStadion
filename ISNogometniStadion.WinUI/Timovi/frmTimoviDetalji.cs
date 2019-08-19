@@ -19,6 +19,7 @@ namespace ISNogometniStadion.WinUI.Timovi
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Timovi");
         private readonly APIService _apiServiceStadioni = new APIService("Stadioni");
+        private readonly APIService _apiServiceLige= new APIService("Lige");
         private readonly ImageService _imageService = new ImageService();
         public frmTimoviDetalji(int? id=null)
         {
@@ -29,14 +30,17 @@ namespace ISNogometniStadion.WinUI.Timovi
         private async void FrmTimoviDetalji_Load(object sender, EventArgs e)
         {
             await LoadStadioni();
+            await LoadLige();
             if (_id.HasValue)
             {
                 Tim a = await _apiService.GetById<Tim>(_id);
                 txtNaziv.Text = a.Naziv;
                 txtOpis.Text = a.Opis;
                 cbTimovi.SelectedValue = int.Parse(a.StadionID.ToString());
-               
-                if(a.Slika.Length!=0)
+                cbLige.SelectedValue = int.Parse(a.LigaID.ToString());
+
+
+                if (a.Slika.Length!=0)
                 { 
                     var img = _imageService.BytesToImage(a.Slika);
                     Image mythumb = _imageService.ImageToThumbnail(img);
@@ -58,6 +62,15 @@ namespace ISNogometniStadion.WinUI.Timovi
             cbTimovi.SelectedItem = null;
             cbTimovi.SelectedText = "--Odaberite--";
             cbTimovi.DataSource = result;
+        }
+        private async Task LoadLige()
+        {
+            var result = await _apiServiceLige.Get<List<Model.Liga>>(null);
+            cbLige.DisplayMember = "Naziv";
+            cbLige.ValueMember = "LigaID";
+            cbLige.SelectedItem = null;
+            cbLige.SelectedText = "--Odaberite--";
+            cbLige.DataSource = result;
         }
 
         private void TxtNaziv_Validating(object sender, CancelEventArgs e)
@@ -100,9 +113,10 @@ namespace ISNogometniStadion.WinUI.Timovi
                 res.Naziv = txtNaziv.Text;
                 res.Opis = txtOpis.Text;
                 res.StadionID = int.Parse(cbTimovi.SelectedValue.ToString());
-               //spremanje slike u request se radi prilikom klika na dodaj 
-               //ako nije dodao novu sliku(UPDATE), samim time nije kliknuo na dodaj, trebala bi slika ostati nepromijenjena
-               if(res.Slika==null && _id.HasValue)
+                res.LigaID = int.Parse(cbLige.SelectedValue.ToString());
+                //spremanje slike u request se radi prilikom klika na dodaj 
+                //ako nije dodao novu sliku(UPDATE), samim time nije kliknuo na dodaj, trebala bi slika ostati nepromijenjena
+                if (res.Slika==null && _id.HasValue)
                 {
                     Tim a = await _apiService.GetById<Tim>(_id);
                     res.Slika = a.Slika;

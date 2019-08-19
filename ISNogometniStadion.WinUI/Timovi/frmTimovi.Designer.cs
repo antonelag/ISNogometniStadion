@@ -30,15 +30,17 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvTimovi = new System.Windows.Forms.DataGridView();
+            this.txtPretraga = new System.Windows.Forms.TextBox();
+            this.btnPretrazi = new System.Windows.Forms.Button();
             this.TimID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stadion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StadionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NazivLige = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SlikaThumb = new System.Windows.Forms.DataGridViewImageColumn();
             this.Slika = new System.Windows.Forms.DataGridViewImageColumn();
-            this.txtPretraga = new System.Windows.Forms.TextBox();
-            this.btnPretrazi = new System.Windows.Forms.Button();
+            this.LigaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTimovi)).BeginInit();
             this.SuspendLayout();
@@ -64,8 +66,10 @@
             this.Opis,
             this.Stadion,
             this.StadionID,
+            this.NazivLige,
             this.SlikaThumb,
-            this.Slika});
+            this.Slika,
+            this.LigaID});
             this.dgvTimovi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTimovi.Location = new System.Drawing.Point(3, 16);
             this.dgvTimovi.Name = "dgvTimovi";
@@ -74,6 +78,23 @@
             this.dgvTimovi.Size = new System.Drawing.Size(770, 349);
             this.dgvTimovi.TabIndex = 0;
             this.dgvTimovi.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvTimovi_MouseDoubleClick);
+            // 
+            // txtPretraga
+            // 
+            this.txtPretraga.Location = new System.Drawing.Point(15, 28);
+            this.txtPretraga.Name = "txtPretraga";
+            this.txtPretraga.Size = new System.Drawing.Size(450, 20);
+            this.txtPretraga.TabIndex = 1;
+            // 
+            // btnPretrazi
+            // 
+            this.btnPretrazi.Location = new System.Drawing.Point(683, 28);
+            this.btnPretrazi.Name = "btnPretrazi";
+            this.btnPretrazi.Size = new System.Drawing.Size(75, 23);
+            this.btnPretrazi.TabIndex = 2;
+            this.btnPretrazi.Text = "Pretraži";
+            this.btnPretrazi.UseVisualStyleBackColor = true;
+            this.btnPretrazi.Click += new System.EventHandler(this.BtnPretrazi_Click);
             // 
             // TimID
             // 
@@ -117,6 +138,13 @@
             this.StadionID.ReadOnly = true;
             this.StadionID.Visible = false;
             // 
+            // NazivLige
+            // 
+            this.NazivLige.DataPropertyName = "Liga";
+            this.NazivLige.HeaderText = "Liga";
+            this.NazivLige.Name = "NazivLige";
+            this.NazivLige.ReadOnly = true;
+            // 
             // SlikaThumb
             // 
             this.SlikaThumb.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -137,28 +165,19 @@
             this.Slika.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Slika.Visible = false;
             // 
-            // txtPretraga
+            // LigaID
             // 
-            this.txtPretraga.Location = new System.Drawing.Point(15, 28);
-            this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(450, 20);
-            this.txtPretraga.TabIndex = 1;
-            // 
-            // btnPretrazi
-            // 
-            this.btnPretrazi.Location = new System.Drawing.Point(683, 28);
-            this.btnPretrazi.Name = "btnPretrazi";
-            this.btnPretrazi.Size = new System.Drawing.Size(75, 23);
-            this.btnPretrazi.TabIndex = 2;
-            this.btnPretrazi.Text = "Pretraži";
-            this.btnPretrazi.UseVisualStyleBackColor = true;
-            this.btnPretrazi.Click += new System.EventHandler(this.BtnPretrazi_Click);
+            this.LigaID.DataPropertyName = "LigaID";
+            this.LigaID.HeaderText = "LigaID";
+            this.LigaID.Name = "LigaID";
+            this.LigaID.ReadOnly = true;
+            this.LigaID.Visible = false;
             // 
             // frmTimovi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(933, 450);
             this.Controls.Add(this.btnPretrazi);
             this.Controls.Add(this.txtPretraga);
             this.Controls.Add(this.groupBox1);
@@ -182,7 +201,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stadion;
         private System.Windows.Forms.DataGridViewTextBoxColumn StadionID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NazivLige;
         private System.Windows.Forms.DataGridViewImageColumn SlikaThumb;
         private System.Windows.Forms.DataGridViewImageColumn Slika;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LigaID;
     }
 }

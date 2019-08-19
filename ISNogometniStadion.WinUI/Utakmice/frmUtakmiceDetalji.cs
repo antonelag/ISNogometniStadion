@@ -17,6 +17,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
         private readonly APIService _apiService = new APIService("Utakmice");
         private readonly APIService _apiServiceStadioni = new APIService("Stadioni");
         private readonly APIService _apiServiceTimovi = new APIService("Timovi");
+        private readonly APIService _apiServiceLige = new APIService("Lige");
         public frmUtakmiceDetalji(int? id=null)
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
             await LoadDomaci();
             await LoadGosti();
             await LoadStadioni();
+            await LoadLige();
 
             if (_id.HasValue)
             {
@@ -37,6 +39,8 @@ namespace ISNogometniStadion.WinUI.Utakmice
                 dtpDatum.Value = a.datumOdigravanja;
                 dtpVrijeme.Value = a.vrijemeOdigravanja;
                 cbStadion.SelectedValue = int.Parse(a.stadionID.ToString());
+                cbLiga.SelectedValue = int.Parse(a.ligaID.ToString());
+
             }
 
         }
@@ -48,6 +52,15 @@ namespace ISNogometniStadion.WinUI.Utakmice
             cbStadion.SelectedItem = null;
             cbStadion.SelectedText = "--Odaberite--";
             cbStadion.DataSource = result;
+        }
+        private async Task LoadLige()
+        {
+            var result = await _apiServiceLige.Get<List<Model.Liga>>(null);
+            cbLiga.DisplayMember = "Naziv";
+            cbLiga.ValueMember = "LigaID";
+            cbLiga.SelectedItem = null;
+            cbLiga.SelectedText = "--Odaberite--";
+            cbLiga.DataSource = result;
         }
         private async Task LoadDomaci()
         {
@@ -167,7 +180,9 @@ namespace ISNogometniStadion.WinUI.Utakmice
                         VrijemeOdigravanja = dtpDatum.Value.Date + dtpVrijeme.Value.TimeOfDay,
                         DomaciTimID = int.Parse(cbDomaci.SelectedValue.ToString()),
                         GostujuciTimID = int.Parse(cbGosti.SelectedValue.ToString()),
-                        StadionID = int.Parse(cbStadion.SelectedValue.ToString())
+                        StadionID = int.Parse(cbStadion.SelectedValue.ToString()),
+                        LigaID = int.Parse(cbLiga.SelectedValue.ToString())
+
                     };
                     if (_id.HasValue)
                         await _apiService.Update<dynamic>(_id, req);

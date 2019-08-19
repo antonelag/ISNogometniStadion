@@ -40,6 +40,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDodajSliku = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.cbLige = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -104,7 +106,7 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(241, 380);
+            this.btnSacuvaj.Location = new System.Drawing.Point(241, 417);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(75, 36);
             this.btnSacuvaj.TabIndex = 7;
@@ -115,7 +117,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 267);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 326);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(136, 71);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -124,7 +126,7 @@
             // 
             // btnDodajSliku
             // 
-            this.btnDodajSliku.Location = new System.Drawing.Point(241, 283);
+            this.btnDodajSliku.Location = new System.Drawing.Point(241, 341);
             this.btnDodajSliku.Name = "btnDodajSliku";
             this.btnDodajSliku.Size = new System.Drawing.Size(75, 38);
             this.btnDodajSliku.TabIndex = 9;
@@ -136,11 +138,30 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // cbLige
+            // 
+            this.cbLige.FormattingEnabled = true;
+            this.cbLige.Location = new System.Drawing.Point(12, 283);
+            this.cbLige.Name = "cbLige";
+            this.cbLige.Size = new System.Drawing.Size(304, 21);
+            this.cbLige.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 267);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(27, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Liga";
+            // 
             // frmTimoviDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 428);
+            this.ClientSize = new System.Drawing.Size(328, 479);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cbLige);
             this.Controls.Add(this.btnDodajSliku);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSacuvaj);
@@ -173,5 +194,7 @@
         private System.Windows.Forms.Button btnDodajSliku;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbLige;
     }
 }

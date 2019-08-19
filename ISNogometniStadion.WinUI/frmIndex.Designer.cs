@@ -60,6 +60,9 @@
             this.utakmiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pretražiToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.novaUtakmicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ligeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.novaLigaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.novaLigaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -70,7 +73,7 @@
             this.toolStripStatusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 431);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(632, 22);
+            this.statusStrip.Size = new System.Drawing.Size(679, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -91,10 +94,11 @@
             this.timoviToolStripMenuItem,
             this.tribineToolStripMenuItem,
             this.ulazniceToolStripMenuItem,
-            this.utakmiceToolStripMenuItem});
+            this.utakmiceToolStripMenuItem,
+            this.ligeToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(632, 24);
+            this.menuStrip.Size = new System.Drawing.Size(679, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -294,22 +298,45 @@
             // pretražiToolStripMenuItem5
             // 
             this.pretražiToolStripMenuItem5.Name = "pretražiToolStripMenuItem5";
-            this.pretražiToolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
+            this.pretražiToolStripMenuItem5.Size = new System.Drawing.Size(154, 22);
             this.pretražiToolStripMenuItem5.Text = "Pretraži";
             this.pretražiToolStripMenuItem5.Click += new System.EventHandler(this.PretražiToolStripMenuItem5_Click);
             // 
             // novaUtakmicaToolStripMenuItem
             // 
             this.novaUtakmicaToolStripMenuItem.Name = "novaUtakmicaToolStripMenuItem";
-            this.novaUtakmicaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.novaUtakmicaToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.novaUtakmicaToolStripMenuItem.Text = "Nova utakmica";
             this.novaUtakmicaToolStripMenuItem.Click += new System.EventHandler(this.NovaUtakmicaToolStripMenuItem_Click);
+            // 
+            // ligeToolStripMenuItem
+            // 
+            this.ligeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.novaLigaToolStripMenuItem,
+            this.novaLigaToolStripMenuItem1});
+            this.ligeToolStripMenuItem.Name = "ligeToolStripMenuItem";
+            this.ligeToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.ligeToolStripMenuItem.Text = "Lige";
+            // 
+            // novaLigaToolStripMenuItem
+            // 
+            this.novaLigaToolStripMenuItem.Name = "novaLigaToolStripMenuItem";
+            this.novaLigaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.novaLigaToolStripMenuItem.Text = "Pretraži";
+            this.novaLigaToolStripMenuItem.Click += new System.EventHandler(this.NovaLigaToolStripMenuItem_Click);
+            // 
+            // novaLigaToolStripMenuItem1
+            // 
+            this.novaLigaToolStripMenuItem1.Name = "novaLigaToolStripMenuItem1";
+            this.novaLigaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.novaLigaToolStripMenuItem1.Text = "Nova liga";
+            this.novaLigaToolStripMenuItem1.Click += new System.EventHandler(this.NovaLigaToolStripMenuItem1_Click);
             // 
             // frmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 453);
+            this.ClientSize = new System.Drawing.Size(679, 453);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
@@ -358,6 +385,9 @@
         private System.Windows.Forms.ToolStripMenuItem utakmiceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pretražiToolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem novaUtakmicaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ligeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem novaLigaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem novaLigaToolStripMenuItem1;
     }
 }
 

@@ -8,13 +8,12 @@ using Xamarin.Forms;
 
 namespace ISNS.MA.ViewModels
 {
-    class LoginViewModel:BaseViewModel
+    public class LoginViewModel:BaseViewModel
     {
-        private readonly APIService _service = new APIService("Korisnici");
-
+        private readonly APIService _apiService=new APIService("Korisnici");
         public LoginViewModel()
         {
-            LoginCommand = new Command(async () => await Login());
+            LoginCommand = new Command(async () => { await Login(); });
         }
         string _korisnickoIme = string.Empty;
         public string KorisnickoIme
@@ -28,24 +27,24 @@ namespace ISNS.MA.ViewModels
             get { return _lozinka; }
             set { SetProperty(ref _lozinka, value); }
         }
-
+        //interfejs koji ce nam omoguciti da povezujemo buttone itd sa odredjenim komandama
         public ICommand LoginCommand { get; set; }
-         async Task Login()
+
+        async Task Login()
         {
             IsBusy = true;
             APIService.KorisnickoIme = KorisnickoIme;
             APIService.Lozinka = Lozinka;
             try
             {
-                await _service.Get<dynamic>(null);
+                await _apiService.Get<dynamic>(null);
                 Application.Current.MainPage = new MainPage();
             }
-            catch ( Exception ex)
+            catch (Exception)
             {
-
+                await Application.Current.MainPage.DisplayAlert("Greška", "Niste autentificirani", "OK");
                 throw;
             }
         }
-
     }
 }

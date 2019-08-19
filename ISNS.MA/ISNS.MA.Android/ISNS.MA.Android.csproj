@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FE2A8483-53FD-40F9-ADEC-0C98E934FC79}</ProjectGuid>
+    <ProjectGuid>{D2BC76B7-734A-40DF-B771-E133D2B18BD4}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{9AA2D3C6-3393-45F1-8E7C-5A9901728795}</TemplateGuid>
     <OutputType>Library</OutputType>
@@ -100,7 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISNS.MA\ISNS.MA.csproj">
-      <Project>{FB12EB16-5C8A-42B8-9C0E-AF3719046FA2}</Project>
+      <Project>{C5572E36-69FC-4B7C-A7B1-05C12411C65B}</Project>
       <Name>ISNS.MA</Name>
     </ProjectReference>
   </ItemGroup>

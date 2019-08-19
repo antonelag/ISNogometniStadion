@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using Flurl.Http;
-using Flurl;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Flurl.Http;
 using ISNogometniStadion.Model;
+
 namespace ISNogometniStadion.WinUI
 {
     public class APIService
     {
-        private string _route;
-        public static string KorisnickoIme;
-        public static string Lozinka;
-        //jer za svaki request koji dodje na api korisnik mora biti autenti.
+        public static string KorisnickoIme { get; set; }
+        public static string Lozinka { get; set; }
+
+        private readonly string _route;
         public APIService(string route)
         {
             _route = route;
@@ -19,41 +22,81 @@ namespace ISNogometniStadion.WinUI
 
         public async Task<T> Get<T>(object search)
         {
-            //SVAKA metoda koja je asinhrona mora da vraca task
-            //i mora await eksterne resurse u ovom slucaju je to api
-            //async mora biti u paru i treba ga staviti i na metodu
-
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
-            //linija koda ispod ceka sve dok se ne zavrsi api
-            //ui thread koji crta nasu formu ce biti slobodan
 
-            if (search != null)
+            try
             {
-                url += "?";//jer query string pocinje s upitnikom
-                url += await search.ToQueryString();
+                if (search != null)
+                {
+                    url += "?";
+                    url += await search.ToQueryString();
+                }
+
+                return await url.WithBasicAuth(KorisnickoIme, Lozinka).GetJsonAsync<T>();
             }
-            var result = await url.WithBasicAuth(KorisnickoIme, Lozinka).GetJsonAsync<T>();
-            return result;
+            catch (FlurlHttpException ex)
+            {
+                if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    MessageBox.Show("Niste authentificirani");
+                }
+                throw;
+            }
         }
+
         public async Task<T> GetById<T>(object id)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
-            var result = await url.WithBasicAuth(KorisnickoIme, Lozinka).GetJsonAsync<T>();
-            return result;
+
+            return await url.WithBasicAuth(KorisnickoIme, Lozinka).GetJsonAsync<T>();
         }
+
         public async Task<T> Insert<T>(object request)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
-            var result = await url.WithBasicAuth(KorisnickoIme, Lozinka).PostJsonAsync(request).ReceiveJson<T>(); ;
-            return result;
+
+            try
+            {
+                return await url.WithBasicAuth(KorisnickoIme, Lozinka).PostJsonAsync(request).ReceiveJson<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(T);
+            }
+
         }
-        public async Task<T> Update<T>(object id, object request)
+
+        public async Task<T> Update<T>(int id, object request)
         {
-            var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
-            var result = await url.WithBasicAuth(KorisnickoIme, Lozinka).PutJsonAsync(request).ReceiveJson<T>(); ;
-            return result;
+            try
+            {
+                var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
+
+                return await url.WithBasicAuth(KorisnickoIme, Lozinka).PutJsonAsync(request).ReceiveJson<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(T);
+            }
+
         }
-
     }
-
 }

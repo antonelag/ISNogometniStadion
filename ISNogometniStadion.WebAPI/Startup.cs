@@ -80,6 +80,7 @@ namespace ISNogometniStadion.WebAPI
 
 
             services.AddScoped<ICRUDService<Model.Ulaznica, UlazniceSearchRequest, UlazniceInsertRequest, UlazniceInsertRequest>, UlazniceService>();
+            services.AddScoped<ICRUDService<Model.Liga, LigaSearchRequest, LigaInsertRequest, LigaInsertRequest>, LigeService>();
             //jer ulazniceservice implementira search
             services.AddScoped<ICRUDService<Model.Drzava, DrzaveSearchRequest, DrzaveInsertRequest, DrzaveInsertRequest>, DrzaveService>();
             services.AddScoped<ICRUDService<Model.Grad, GradoviSearchRequest, GradoviInsertRequest, GradoviInsertRequest>, GradService>();
@@ -120,7 +121,7 @@ namespace ISNogometniStadion.WebAPI
             });
 
             app.UseAuthentication();
-            //app.UseHttpsRedirection();
+            //app.UseHttpsRedirection(); //ukoliko smo dosli na api bez https automatski ce .netcore sve prebaciti na https
             app.UseMvc();
         }
     }

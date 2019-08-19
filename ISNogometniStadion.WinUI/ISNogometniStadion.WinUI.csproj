@@ -100,6 +100,18 @@
     <Compile Include="Gradovi\frmGradoviDetalji.Designer.cs">
       <DependentUpon>frmGradoviDetalji.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lige\frmLige.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lige\frmLige.Designer.cs">
+      <DependentUpon>frmLige.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lige\frmLigeDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lige\frmLigeDetalji.Designer.cs">
+      <DependentUpon>frmLigeDetalji.cs</DependentUpon>
+    </Compile>
     <Compile Include="Stadioni\frmStadionDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +221,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Korisnici\frmKorisniciDetalji.resx">
       <DependentUpon>frmKorisniciDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lige\frmLige.resx">
+      <DependentUpon>frmLige.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lige\frmLigeDetalji.resx">
+      <DependentUpon>frmLigeDetalji.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

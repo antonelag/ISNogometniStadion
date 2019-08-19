@@ -17,5 +17,7 @@ namespace ISNogometniStadion.Model
         public DateTime VrijemeOdigravanja { get; set; }
         public string stadion { get; set; }
         public int StadionID { get; set; }
+        public int LigaID { get; set; }
+        public string Liga { get; set; }
     }
 }

@@ -14,15 +14,17 @@ namespace ISNS.MA.Views
     public partial class UtakmicePage : ContentPage
     {
         UtakmiceViewModel utakmiceViewModel = null;
-        public UtakmicePage()
+        public 
+            UtakmicePage()
         {
             InitializeComponent();
             BindingContext = utakmiceViewModel = new UtakmiceViewModel();
-
         }
 
         protected async override void OnAppearing()
         {
+            //pozivanje init metode u samom kodu
+            //kada se pojavi utakmice page na uredjaju ova ce se metoda pokrenuti
             base.OnAppearing();
             await utakmiceViewModel.Init();
         }

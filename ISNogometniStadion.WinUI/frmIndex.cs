@@ -1,6 +1,7 @@
 ﻿using ISNogometniStadion.WinUI.Drzave;
 using ISNogometniStadion.WinUI.Gradovi;
 using ISNogometniStadion.WinUI.Korisnici;
+using ISNogometniStadion.WinUI.Lige;
 using ISNogometniStadion.WinUI.Sjedala;
 using ISNogometniStadion.WinUI.Stadioni;
 using ISNogometniStadion.WinUI.Timovi;
@@ -238,6 +239,20 @@ namespace ISNogometniStadion.WinUI
         private void NovaUtakmicaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new frmUtakmiceDetalji();
+            frm.Show();
+        }
+
+        private void NovaLigaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new frmLige();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void NovaLigaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var frm = new frmLigeDetalji();
             frm.Show();
         }
     }

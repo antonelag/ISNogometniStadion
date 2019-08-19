@@ -28,7 +28,7 @@ namespace ISNogometniStadion.WebAPI.Database
         public  DbSet<Tribine> Tribine { get; set; }
         public  DbSet<Ulaznice> Ulaznice { get; set; }
         public  DbSet<Utakmice> Utakmice { get; set; }
-
+        public DbSet<Lige> Lige { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server = localhost; Database =ISNogometniStadionDB; Trusted_Connection = True; ");

@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace ISNogometniStadion.Model
 {
-    public class UtakmiceeSearchRequest
+    public class LigaSearchRequest
     {
-        public int? LigaID { get; set; }
+        public int? DrzavaID { get; set; }
     }
 }

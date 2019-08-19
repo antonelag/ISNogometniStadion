@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ISNogometniStadion.WebAPI.Migrations
 {
     [DbContext(typeof(ISNogometniStadionContext))]
-    [Migration("20190717144541_baza")]
+    [Migration("20190819124151_baza")]
     partial class baza
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -63,13 +63,15 @@ namespace ISNogometniStadion.WebAPI.Migrations
 
                     b.Property<string>("Ime");
 
+                    b.Property<string>("LozinkaHash");
+
+                    b.Property<string>("LozinkaSalt");
+
                     b.Property<string>("Prezime");
 
                     b.Property<string>("email");
 
                     b.Property<string>("korisnickoIme");
-
-                    b.Property<string>("lozinka");
 
                     b.Property<string>("telefon");
 
@@ -78,6 +80,23 @@ namespace ISNogometniStadion.WebAPI.Migrations
                     b.HasIndex("GradID");
 
                     b.ToTable("Korisnici");
+                });
+
+            modelBuilder.Entity("ISNogometniStadion.WebAPI.Database.Lige", b =>
+                {
+                    b.Property<int>("LigaID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DrzavaID");
+
+                    b.Property<string>("Naziv");
+
+                    b.HasKey("LigaID");
+
+                    b.HasIndex("DrzavaID");
+
+                    b.ToTable("Lige");
                 });
 
             modelBuilder.Entity("ISNogometniStadion.WebAPI.Database.Sjedala", b =>
@@ -120,13 +139,21 @@ namespace ISNogometniStadion.WebAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("LigaID");
+
                     b.Property<string>("Naziv");
 
                     b.Property<string>("Opis");
 
+                    b.Property<byte[]>("Slika");
+
+                    b.Property<byte[]>("SlikaThumb");
+
                     b.Property<int>("StadionID");
 
                     b.HasKey("TimID");
+
+                    b.HasIndex("LigaID");
 
                     b.HasIndex("StadionID");
 
@@ -156,17 +183,17 @@ namespace ISNogometniStadion.WebAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("UtakmicaID");
-
-                    b.Property<int>("SjedaloID");
-
                     b.Property<DateTime>("DatumKupnje");
 
                     b.Property<int>("KorisnikID");
 
+                    b.Property<int>("SjedaloID");
+
+                    b.Property<int>("UtakmicaID");
+
                     b.Property<DateTime>("VrijemeKupnje");
 
-                    b.HasKey("UlaznicaID", "UtakmicaID", "SjedaloID");
+                    b.HasKey("UlaznicaID");
 
                     b.HasIndex("KorisnikID");
 
@@ -184,17 +211,19 @@ namespace ISNogometniStadion.WebAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("DatumOdigravanja");
+
                     b.Property<int>("DomaciTimID");
 
                     b.Property<int>("GostujuciTimID");
-
-                    b.Property<DateTime>("DatumOdigravanja");
 
                     b.Property<int>("StadionID");
 
                     b.Property<DateTime>("VrijemeOdigravanja");
 
-                    b.HasKey("UtakmicaID", "DomaciTimID", "GostujuciTimID");
+                    b.Property<DateTime>("dateonly");
+
+                    b.HasKey("UtakmicaID");
 
                     b.HasIndex("DomaciTimID");
 
@@ -221,6 +250,14 @@ namespace ISNogometniStadion.WebAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("ISNogometniStadion.WebAPI.Database.Lige", b =>
+                {
+                    b.HasOne("ISNogometniStadion.WebAPI.Database.Drzave", "Drzava")
+                        .WithMany()
+                        .HasForeignKey("DrzavaID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("ISNogometniStadion.WebAPI.Database.Sjedala", b =>
                 {
                     b.HasOne("ISNogometniStadion.WebAPI.Database.Tribine", "Tribina")
@@ -239,6 +276,11 @@ namespace ISNogometniStadion.WebAPI.Migrations
 
             modelBuilder.Entity("ISNogometniStadion.WebAPI.Database.Timovi", b =>
                 {
+                    b.HasOne("ISNogometniStadion.WebAPI.Database.Lige", "Liga")
+                        .WithMany()
+                        .HasForeignKey("LigaID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("ISNogometniStadion.WebAPI.Database.Stadioni", "Stadion")
                         .WithMany()
                         .HasForeignKey("StadionID")
@@ -255,20 +297,19 @@ namespace ISNogometniStadion.WebAPI.Migrations
 
             modelBuilder.Entity("ISNogometniStadion.WebAPI.Database.Ulaznice", b =>
                 {
-                    b.HasOne("ISNogometniStadion.WebAPI.Database.Korisnici", "korisnik")
+                    b.HasOne("ISNogometniStadion.WebAPI.Database.Korisnici", "Korisnik")
                         .WithMany()
                         .HasForeignKey("KorisnikID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ISNogometniStadion.WebAPI.Database.Sjedala", "sjedalo")
+                    b.HasOne("ISNogometniStadion.WebAPI.Database.Sjedala", "Sjedalo")
                         .WithOne("ulaznica")
                         .HasForeignKey("ISNogometniStadion.WebAPI.Database.Ulaznice", "SjedaloID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ISNogometniStadion.WebAPI.Database.Utakmice", "utakmica")
+                    b.HasOne("ISNogometniStadion.WebAPI.Database.Utakmice", "Utakmica")
                         .WithMany()
                         .HasForeignKey("UtakmicaID")
-                        .HasPrincipalKey("UtakmicaID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

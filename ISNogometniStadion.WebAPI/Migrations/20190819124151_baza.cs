@@ -42,6 +42,26 @@ namespace ISNogometniStadion.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Lige",
+                columns: table => new
+                {
+                    LigaID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Naziv = table.Column<string>(nullable: true),
+                    DrzavaID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Lige", x => x.LigaID);
+                    table.ForeignKey(
+                        name: "FK_Lige_Drzave_DrzavaID",
+                        column: x => x.DrzavaID,
+                        principalTable: "Drzave",
+                        principalColumn: "DrzavaID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Korisnici",
                 columns: table => new
                 {
@@ -53,7 +73,8 @@ namespace ISNogometniStadion.WebAPI.Migrations
                     telefon = table.Column<string>(nullable: true),
                     email = table.Column<string>(nullable: true),
                     korisnickoIme = table.Column<string>(nullable: true),
-                    lozinka = table.Column<string>(nullable: true),
+                    LozinkaHash = table.Column<string>(nullable: true),
+                    LozinkaSalt = table.Column<string>(nullable: true),
                     GradID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -95,17 +116,26 @@ namespace ISNogometniStadion.WebAPI.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Naziv = table.Column<string>(nullable: true),
                     Opis = table.Column<string>(nullable: true),
-                    StadionID = table.Column<int>(nullable: false)
+                    StadionID = table.Column<int>(nullable: false),
+                    LigaID = table.Column<int>(nullable: false),
+                    Slika = table.Column<byte[]>(nullable: true),
+                    SlikaThumb = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Timovi", x => x.TimID);
                     table.ForeignKey(
+                        name: "FK_Timovi_Lige_LigaID",
+                        column: x => x.LigaID,
+                        principalTable: "Lige",
+                        principalColumn: "LigaID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Timovi_Stadioni_StadionID",
                         column: x => x.StadionID,
                         principalTable: "Stadioni",
                         principalColumn: "StadionID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -138,12 +168,12 @@ namespace ISNogometniStadion.WebAPI.Migrations
                     GostujuciTimID = table.Column<int>(nullable: false),
                     DatumOdigravanja = table.Column<DateTime>(nullable: false),
                     VrijemeOdigravanja = table.Column<DateTime>(nullable: false),
-                    StadionID = table.Column<int>(nullable: false)
+                    StadionID = table.Column<int>(nullable: false),
+                    dateonly = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Utakmice", x => new { x.UtakmicaID, x.DomaciTimID, x.GostujuciTimID });
-                    table.UniqueConstraint("AK_Utakmice_UtakmicaID", x => x.UtakmicaID);
+                    table.PrimaryKey("PK_Utakmice", x => x.UtakmicaID);
                     table.ForeignKey(
                         name: "FK_Utakmice_Timovi_DomaciTimID",
                         column: x => x.DomaciTimID,
@@ -198,7 +228,7 @@ namespace ISNogometniStadion.WebAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ulaznice", x => new { x.UlaznicaID, x.UtakmicaID, x.SjedaloID });
+                    table.PrimaryKey("PK_Ulaznice", x => x.UlaznicaID);
                     table.ForeignKey(
                         name: "FK_Ulaznice_Korisnici_KorisnikID",
                         column: x => x.KorisnikID,
@@ -230,6 +260,11 @@ namespace ISNogometniStadion.WebAPI.Migrations
                 column: "GradID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Lige_DrzavaID",
+                table: "Lige",
+                column: "DrzavaID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Sjedala_TribinaID",
                 table: "Sjedala",
                 column: "TribinaID");
@@ -238,6 +273,11 @@ namespace ISNogometniStadion.WebAPI.Migrations
                 name: "IX_Stadioni_GradID",
                 table: "Stadioni",
                 column: "GradID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Timovi_LigaID",
+                table: "Timovi",
+                column: "LigaID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Timovi_StadionID",
@@ -300,6 +340,9 @@ namespace ISNogometniStadion.WebAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "Timovi");
+
+            migrationBuilder.DropTable(
+                name: "Lige");
 
             migrationBuilder.DropTable(
                 name: "Stadioni");

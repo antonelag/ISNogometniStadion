@@ -24,13 +24,10 @@ namespace ISNogometniStadion.WebAPI.Services
         public override List<Utakmica> Get(UtakmiceeSearchRequest search)
         {
             var q = _context.Set<Database.Utakmice>().AsQueryable();
-
-            if (!string.IsNullOrEmpty(search?.NazivTima))
+            q=q.Where(s=>s.DatumOdigravanja>DateTime.Now);
+            if (search?.LigaID.HasValue == true)
             {
-                q = q.
-                    Include(a=>a.DomaciTim)
-                    .Include(a=>a.GostujuciTim)
-                    .Where(s => ((s.DomaciTim.Naziv.StartsWith(search.NazivTima)) || s.GostujuciTim.Naziv.StartsWith(search.NazivTima) ));
+                q = q.Where(s => s.LigaID == search.LigaID);
             }
             var list = q.ToList();
             return _mapper.Map<List<Utakmica>>(list);
