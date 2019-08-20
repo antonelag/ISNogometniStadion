@@ -33,6 +33,7 @@
             this.cbGradovi = new System.Windows.Forms.ComboBox();
             this.StadionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GradID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NazivGrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
@@ -57,6 +58,7 @@
             this.dgvStadioni.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.StadionID,
             this.Naziv,
+            this.Opis,
             this.GradID,
             this.NazivGrada});
             this.dgvStadioni.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -91,6 +93,13 @@
             this.Naziv.HeaderText = "Naziv stadiona";
             this.Naziv.Name = "Naziv";
             this.Naziv.ReadOnly = true;
+            // 
+            // Opis
+            // 
+            this.Opis.DataPropertyName = "Opis";
+            this.Opis.HeaderText = "Opis";
+            this.Opis.Name = "Opis";
+            this.Opis.ReadOnly = true;
             // 
             // GradID
             // 
@@ -130,6 +139,7 @@
         private System.Windows.Forms.ComboBox cbGradovi;
         private System.Windows.Forms.DataGridViewTextBoxColumn StadionID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
         private System.Windows.Forms.DataGridViewTextBoxColumn GradID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NazivGrada;
     }

@@ -11,14 +11,13 @@ using Xamarin.Forms.Xaml;
 namespace ISNS.MA.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class UtakmicePage : ContentPage
+    public partial class TimoviPage : ContentPage
     {
-        UtakmiceViewModel utakmiceViewModel = null;
-        public
-            UtakmicePage()
+        TimoviViewModel timoviViewModel = null;
+        public TimoviPage()
         {
             InitializeComponent();
-            BindingContext = utakmiceViewModel = new UtakmiceViewModel();
+            BindingContext = timoviViewModel = new TimoviViewModel();
         }
 
         protected async override void OnAppearing()
@@ -26,12 +25,7 @@ namespace ISNS.MA.Views
             //pozivanje init metode u samom kodu
             //kada se pojavi utakmice page na uredjaju ova ce se metoda pokrenuti
             base.OnAppearing();
-            await utakmiceViewModel.Init();
-        }
-
-        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            await Navigation.PushAsync(new RezervacijaPage());
+            await timoviViewModel.Init();
         }
     }
 }

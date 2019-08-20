@@ -30,6 +30,7 @@ namespace ISNogometniStadion.WinUI.Stadioni
             {
                 var r = await _apiService.GetById<dynamic>(_id);
                 txtNaziv.Text = r.naziv;
+                txtOpis.Text = r.opis;
                 cbStadioni.SelectedValue = int.Parse(r.gradID.ToString());
             }
 
@@ -75,6 +76,7 @@ namespace ISNogometniStadion.WinUI.Stadioni
                 var req = new StadioniInsertRequest()
                 {
                     Naziv = txtNaziv.Text,
+                    Opis=txtOpis.Text,
                     GradID = int.Parse(cbStadioni.SelectedValue.ToString())
                 };
             
@@ -93,6 +95,17 @@ namespace ISNogometniStadion.WinUI.Stadioni
                 MessageBox.Show("Operacija nije uspjela");
         }
 
+        private void TxtOpis_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtOpis.Text))
+            {
+                errorProvider1.SetError(txtOpis, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+
+            }
+            else
+                errorProvider1.SetError(txtOpis, null);
         }
+    }
     }
 

@@ -4,33 +4,44 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:ISNS.MA.ViewModels"
+             xmlns:local="clr-namespace:ISNS.MA.Converters"
              mc:Ignorable="d"
-             x:Class="ISNS.MA.Views.UtakmicePage">
+             x:Class="ISNS.MA.Views.TimoviPage">
     <ContentPage.BindingContext>
-        <viewModels:UtakmiceViewModel></viewModels:UtakmiceViewModel>
+        <viewModels:TimoviViewModel></viewModels:TimoviViewModel>
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Utakmice"
+            <Label Text="Timovi"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 
             <Picker ItemsSource="{Binding LigeList}" ItemDisplayBinding="{Binding Naziv}" SelectedItem="{Binding SelectedLiga}"></Picker>
-            <ListView ItemsSource="{Binding UtakmiceList}" ItemSelected="ListView_ItemSelected">
+            <ListView ItemsSource="{Binding TimoviList}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding UtakmicaPodaci}" 
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <StackLayout>
+                                <Image Source="{ Binding SlikaThumb, Converter={StaticResource imgConv}}"></Image>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding Naziv}" 
                                 d:Text="{Binding .}"
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="16" />
-                                <Label Text="{Binding stadion}" 
+                                <Label Text="{Binding Opis}" 
                                 d:Text="Item descripton"
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
+                                </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

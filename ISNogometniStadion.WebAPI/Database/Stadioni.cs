@@ -11,7 +11,7 @@ namespace ISNogometniStadion.WebAPI.Database
         [Key]
         public int StadionID { get; set; }
         public string Naziv { get; set; }
-
+        public string Opis { get; set; }
         [ForeignKey("GradID")]
         public Gradovi Grad { get; set; }
         public int GradID { get; set; }

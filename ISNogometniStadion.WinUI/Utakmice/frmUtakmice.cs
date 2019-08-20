@@ -44,7 +44,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
             result.Insert(0, new Model.Liga());
             cbLiga.DataSource = result;
         }
-        private async Task LoadKorisnici(int id)
+        private async Task LoadLige(int id)
         {
             var result = await _apiService.Get<List<Model.Utakmica>>(new UtakmiceeSearchRequest()
             {
@@ -64,7 +64,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
             var idObj = cbLiga.SelectedValue;
             if (int.TryParse(idObj.ToString(), out int id))
             {
-                await LoadKorisnici(id);
+                await LoadLige(id);
             }
         }
     }

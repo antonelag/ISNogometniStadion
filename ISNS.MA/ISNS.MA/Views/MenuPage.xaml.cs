@@ -21,8 +21,12 @@ namespace ISNS.MA.Views
             menuItems = new List<HomeMenuItem>
             {
                 new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
-                new HomeMenuItem {Id = MenuItemType.About, Title="About" },
-                  new HomeMenuItem {Id = MenuItemType.Utakmice, Title="Utakmice" }
+                  new HomeMenuItem {Id = MenuItemType.Utakmice, Title="Utakmice" },
+                  new HomeMenuItem {Id = MenuItemType.Stadioni, Title="Stadioni" },
+                  new HomeMenuItem {Id = MenuItemType.Timovi, Title="Timovi" },
+                new HomeMenuItem {Id = MenuItemType.About, Title="O nama" }
+
+
             };
 
             ListViewMenu.ItemsSource = menuItems;

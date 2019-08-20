@@ -5,28 +5,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:ISNS.MA.ViewModels"
              mc:Ignorable="d"
-             x:Class="ISNS.MA.Views.UtakmicePage">
+             x:Class="ISNS.MA.Views.StadioniPage">
     <ContentPage.BindingContext>
-        <viewModels:UtakmiceViewModel></viewModels:UtakmiceViewModel>
+        <viewModels:StadioniViewModel></viewModels:StadioniViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Utakmice"
+            <Label Text="Stadioni"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 
-            <Picker ItemsSource="{Binding LigeList}" ItemDisplayBinding="{Binding Naziv}" SelectedItem="{Binding SelectedLiga}"></Picker>
-            <ListView ItemsSource="{Binding UtakmiceList}" ItemSelected="ListView_ItemSelected">
+            <Picker ItemsSource="{Binding GradoviList}" ItemDisplayBinding="{Binding Naziv}" SelectedItem="{Binding SelectedGrad}"></Picker>
+            <ListView ItemsSource="{Binding StadioniList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10">
-                                <Label Text="{Binding UtakmicaPodaci}" 
+                                <Label Text="{Binding Naziv}" 
                                 d:Text="{Binding .}"
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="16" />
-                                <Label Text="{Binding stadion}" 
+                                <Label Text="{Binding Opis}" 
                                 d:Text="Item descripton"
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"

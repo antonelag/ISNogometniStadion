@@ -30,8 +30,6 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvTimovi = new System.Windows.Forms.DataGridView();
-            this.txtPretraga = new System.Windows.Forms.TextBox();
-            this.btnPretrazi = new System.Windows.Forms.Button();
             this.TimID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +39,7 @@
             this.SlikaThumb = new System.Windows.Forms.DataGridViewImageColumn();
             this.Slika = new System.Windows.Forms.DataGridViewImageColumn();
             this.LigaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbLiga = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTimovi)).BeginInit();
             this.SuspendLayout();
@@ -78,23 +77,6 @@
             this.dgvTimovi.Size = new System.Drawing.Size(770, 349);
             this.dgvTimovi.TabIndex = 0;
             this.dgvTimovi.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvTimovi_MouseDoubleClick);
-            // 
-            // txtPretraga
-            // 
-            this.txtPretraga.Location = new System.Drawing.Point(15, 28);
-            this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(450, 20);
-            this.txtPretraga.TabIndex = 1;
-            // 
-            // btnPretrazi
-            // 
-            this.btnPretrazi.Location = new System.Drawing.Point(683, 28);
-            this.btnPretrazi.Name = "btnPretrazi";
-            this.btnPretrazi.Size = new System.Drawing.Size(75, 23);
-            this.btnPretrazi.TabIndex = 2;
-            this.btnPretrazi.Text = "Pretraži";
-            this.btnPretrazi.UseVisualStyleBackColor = true;
-            this.btnPretrazi.Click += new System.EventHandler(this.BtnPretrazi_Click);
             // 
             // TimID
             // 
@@ -173,20 +155,28 @@
             this.LigaID.ReadOnly = true;
             this.LigaID.Visible = false;
             // 
+            // cbLiga
+            // 
+            this.cbLiga.FormattingEnabled = true;
+            this.cbLiga.Location = new System.Drawing.Point(15, 26);
+            this.cbLiga.Name = "cbLiga";
+            this.cbLiga.Size = new System.Drawing.Size(416, 21);
+            this.cbLiga.TabIndex = 1;
+            this.cbLiga.SelectedIndexChanged += new System.EventHandler(this.CbLiga_SelectedIndexChanged);
+            // 
             // frmTimovi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(933, 450);
-            this.Controls.Add(this.btnPretrazi);
-            this.Controls.Add(this.txtPretraga);
+            this.Controls.Add(this.cbLiga);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmTimovi";
             this.Text = "frmTimovi";
+            this.Load += new System.EventHandler(this.FrmTimovi_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTimovi)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -194,8 +184,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvTimovi;
-        private System.Windows.Forms.TextBox txtPretraga;
-        private System.Windows.Forms.Button btnPretrazi;
         private System.Windows.Forms.DataGridViewTextBoxColumn TimID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
@@ -205,5 +193,6 @@
         private System.Windows.Forms.DataGridViewImageColumn SlikaThumb;
         private System.Windows.Forms.DataGridViewImageColumn Slika;
         private System.Windows.Forms.DataGridViewTextBoxColumn LigaID;
+        private System.Windows.Forms.ComboBox cbLiga;
     }
 }

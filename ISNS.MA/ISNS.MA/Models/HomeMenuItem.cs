@@ -8,7 +8,9 @@ namespace ISNS.MA.Models
     {
         Browse,
         About,
-        Utakmice
+        Utakmice,
+        Stadioni,
+        Timovi
     }
     public class HomeMenuItem
     {

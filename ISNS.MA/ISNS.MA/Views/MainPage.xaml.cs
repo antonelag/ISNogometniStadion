@@ -39,6 +39,12 @@ namespace ISNS.MA.Views
                     case (int)MenuItemType.Utakmice:
                         MenuPages.Add(id, new NavigationPage(new UtakmicePage()));
                         break;
+                    case (int)MenuItemType.Stadioni:
+                        MenuPages.Add(id, new NavigationPage(new StadioniPage()));
+                        break;
+                    case (int)MenuItemType.Timovi:
+                        MenuPages.Add(id, new NavigationPage(new TimoviPage()));
+                        break;
                 }
             }
 

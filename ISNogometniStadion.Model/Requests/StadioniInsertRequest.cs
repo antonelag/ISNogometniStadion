@@ -9,7 +9,12 @@ namespace ISNogometniStadion.Model.Requests
     {
         [DataType(DataType.Text)]
         public string Naziv { get; set; }
-        [RegularExpression(@"^[0-9]+$")]
+        [DataType(DataType.Text)]
+        public string Opis
+        {
+            get; set;
+        }
+            [RegularExpression(@"^[0-9]+$")]
         public int GradID { get; set; }
     }
 }

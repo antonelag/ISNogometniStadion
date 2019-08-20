@@ -8,7 +8,7 @@ namespace ISNogometniStadion.Model
     {
         public int StadionID { get; set; }
         public string Naziv { get; set; }
-
+        public string Opis { get; set; }
         public int GradID { get; set; }
         public string Grad { get; set; }
     }
