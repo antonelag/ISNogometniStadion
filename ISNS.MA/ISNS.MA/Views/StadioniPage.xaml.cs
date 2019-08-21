@@ -1,4 +1,5 @@
-﻿using ISNS.MA.ViewModels;
+﻿using ISNogometniStadion.Model;
+using ISNS.MA.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,12 @@ namespace ISNS.MA.Views
             //kada se pojavi utakmice page na uredjaju ova ce se metoda pokrenuti
             base.OnAppearing();
             await stadioniViewModel.Init();
+        }
+
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as Stadion;
+            await Navigation.PushAsync(new StadionDetailPage(item));
         }
     }
 }

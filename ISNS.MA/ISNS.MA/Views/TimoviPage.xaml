@@ -22,7 +22,7 @@
                 HorizontalOptions="CenterAndExpand" />
 
             <Picker ItemsSource="{Binding LigeList}" ItemDisplayBinding="{Binding Naziv}" SelectedItem="{Binding SelectedLiga}"></Picker>
-            <ListView ItemsSource="{Binding TimoviList}" >
+            <ListView ItemsSource="{Binding TimoviList}"  ItemSelected="ListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

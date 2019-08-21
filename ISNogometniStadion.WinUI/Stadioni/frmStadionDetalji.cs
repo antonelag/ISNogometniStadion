@@ -1,9 +1,11 @@
-﻿using ISNogometniStadion.Model.Requests;
+﻿using ISNogometniStadion.Model;
+using ISNogometniStadion.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +18,8 @@ namespace ISNogometniStadion.WinUI.Stadioni
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Stadioni");
         private readonly APIService _apiServiceFradovi = new APIService("Gradovi");
+        private readonly ImageService _imageService = new ImageService();
+
 
         public frmStadionDetalji(int? id = null)
         {
@@ -28,10 +32,25 @@ namespace ISNogometniStadion.WinUI.Stadioni
             await LoadGradovi();
             if (_id.HasValue)
             {
-                var r = await _apiService.GetById<dynamic>(_id);
-                txtNaziv.Text = r.naziv;
-                txtOpis.Text = r.opis;
-                cbStadioni.SelectedValue = int.Parse(r.gradID.ToString());
+                Stadion r = await _apiService.GetById<Stadion>(_id);
+                txtNaziv.Text = r.Naziv;
+                txtOpis.Text = r.Opis;
+                cbStadioni.SelectedValue = int.Parse(r.GradID.ToString());
+
+
+
+                if (r.Slika.Length != 0)
+                {
+                    var img = _imageService.BytesToImage(r.Slika);
+                    Image mythumb = _imageService.ImageToThumbnail(img);
+                    pictureBox1.Image = mythumb;
+                }
+                else
+                {
+                    var noimg = _imageService.GetNoImage();
+                    var th = _imageService.ImageToThumbnail(noimg);
+                    pictureBox1.Image = th;
+                }
             }
 
         }
@@ -68,18 +87,32 @@ namespace ISNogometniStadion.WinUI.Stadioni
             else
                 errorProvider1.SetError(cbStadioni, null);
         }
-
+        StadioniInsertRequest req = new StadioniInsertRequest();
         private async void BtnSacuvaj_Click(object sender, EventArgs e)
         {
             if (this.ValidateChildren())
             {
-                var req = new StadioniInsertRequest()
+                req.Naziv = txtNaziv.Text;
+                req.Opis = txtOpis.Text;
+                req.GradID = int.Parse(cbStadioni.SelectedValue.ToString());
+               
+                //spremanje slike u request se radi prilikom klika na dodaj 
+                //ako nije dodao novu sliku(UPDATE), samim time nije kliknuo na dodaj, trebala bi slika ostati nepromijenjena
+                if (req.Slika == null && _id.HasValue)
                 {
-                    Naziv = txtNaziv.Text,
-                    Opis=txtOpis.Text,
-                    GradID = int.Parse(cbStadioni.SelectedValue.ToString())
-                };
-            
+                    Stadion a = await _apiService.GetById<Stadion>(_id);
+                    req.Slika = a.Slika;
+                    req.SlikaThumb = a.SlikaThumb;
+                }
+
+                //za slucaj da korisnik ne unese sliku
+                if (req.Slika == null && !_id.HasValue)
+                {
+                    var img = _imageService.GetNoImage();
+                    req.Slika = _imageService.ImageToBytes(img);
+                    var th = _imageService.ImageToThumbnail(img);
+                    req.SlikaThumb = _imageService.ImageToBytes(th);
+                }
 
                 if (_id.HasValue)
                 {
@@ -105,6 +138,26 @@ namespace ISNogometniStadion.WinUI.Stadioni
             }
             else
                 errorProvider1.SetError(txtOpis, null);
+        }
+        public bool ThumbnailCallback()
+        {
+            return false;
+        }
+        private void BtnDodaj_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var fileName = openFileDialog1.FileName;
+                var file = File.ReadAllBytes(fileName);
+                req.Slika = file;
+                Image image = Image.FromFile(fileName);
+
+                Image mythumb = _imageService.ImageToThumbnail(image);
+                req.SlikaThumb = _imageService.ImageToBytes(mythumb);
+                pictureBox1.Image = mythumb;
+
+            }
         }
     }
     }

@@ -7,8 +7,11 @@
         <vm:LoginViewModel></vm:LoginViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
+     
         <StackLayout HorizontalOptions="FillAndExpand" Padding="10" VerticalOptions="CenterAndExpand">
+           
             <Label  Text="Korisničko ime"></Label>
+
             <Entry x:Name="KorisnickoIme" Text="{Binding KorisnickoIme}"></Entry>
 
             <Label  Text="Password"></Label>

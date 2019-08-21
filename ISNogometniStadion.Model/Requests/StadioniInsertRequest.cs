@@ -16,5 +16,8 @@ namespace ISNogometniStadion.Model.Requests
         }
             [RegularExpression(@"^[0-9]+$")]
         public int GradID { get; set; }
+        public byte[] Slika { get; set; }
+        public byte[] SlikaThumb { get; set; }
     }
+
 }

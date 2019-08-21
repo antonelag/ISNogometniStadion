@@ -11,5 +11,7 @@ namespace ISNogometniStadion.Model
         public string Opis { get; set; }
         public int GradID { get; set; }
         public string Grad { get; set; }
+        public byte[] Slika { get; set; }
+        public byte[] SlikaThumb { get; set; }
     }
 }

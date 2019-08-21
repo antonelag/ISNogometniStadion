@@ -15,5 +15,7 @@ namespace ISNogometniStadion.WebAPI.Database
         [ForeignKey("GradID")]
         public Gradovi Grad { get; set; }
         public int GradID { get; set; }
+        public byte[] Slika { get; set; }
+        public byte[] SlikaThumb { get; set; }
     }
 }

@@ -6,7 +6,7 @@ namespace ISNS.MA.Models
 {
     public enum MenuItemType
     {
-        Browse,
+        Početna,
         About,
         Utakmice,
         Stadioni,

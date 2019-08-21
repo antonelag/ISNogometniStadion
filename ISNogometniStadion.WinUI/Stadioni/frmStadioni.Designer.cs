@@ -34,8 +34,10 @@
             this.StadionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SlikaThumb = new System.Windows.Forms.DataGridViewImageColumn();
             this.GradID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NazivGrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Slika = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStadioni)).BeginInit();
             this.SuspendLayout();
@@ -59,8 +61,10 @@
             this.StadionID,
             this.Naziv,
             this.Opis,
+            this.SlikaThumb,
             this.GradID,
-            this.NazivGrada});
+            this.NazivGrada,
+            this.Slika});
             this.dgvStadioni.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvStadioni.Location = new System.Drawing.Point(3, 16);
             this.dgvStadioni.Name = "dgvStadioni";
@@ -101,6 +105,13 @@
             this.Opis.Name = "Opis";
             this.Opis.ReadOnly = true;
             // 
+            // SlikaThumb
+            // 
+            this.SlikaThumb.DataPropertyName = "SlikaThumb";
+            this.SlikaThumb.HeaderText = "Slika";
+            this.SlikaThumb.Name = "SlikaThumb";
+            this.SlikaThumb.ReadOnly = true;
+            // 
             // GradID
             // 
             this.GradID.DataPropertyName = "GradID";
@@ -115,6 +126,14 @@
             this.NazivGrada.HeaderText = "NazivGrada";
             this.NazivGrada.Name = "NazivGrada";
             this.NazivGrada.ReadOnly = true;
+            // 
+            // Slika
+            // 
+            this.Slika.DataPropertyName = "Slika";
+            this.Slika.HeaderText = "Slika";
+            this.Slika.Name = "Slika";
+            this.Slika.ReadOnly = true;
+            this.Slika.Visible = false;
             // 
             // frmStadioni
             // 
@@ -140,7 +159,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn StadionID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
+        private System.Windows.Forms.DataGridViewImageColumn SlikaThumb;
         private System.Windows.Forms.DataGridViewTextBoxColumn GradID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NazivGrada;
+        private System.Windows.Forms.DataGridViewImageColumn Slika;
     }
 }
