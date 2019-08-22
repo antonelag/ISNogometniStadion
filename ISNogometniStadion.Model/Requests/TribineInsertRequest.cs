@@ -11,5 +11,8 @@ namespace ISNogometniStadion.Model.Requests
         public string Naziv { get; set; }
         [RegularExpression(@"^[0-9]+$")]
         public int StadionID { get; set; }
+       
+        public int Cijena { get; set; }
+
     }
 }

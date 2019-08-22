@@ -30,6 +30,7 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvUtakmice = new System.Windows.Forms.DataGridView();
+            this.cbLiga = new System.Windows.Forms.ComboBox();
             this.UtakmicaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DomaciTim = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DomaciTimID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,7 +42,8 @@
             this.StadionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LigaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Liga = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbLiga = new System.Windows.Forms.ComboBox();
+            this.Slika = new System.Windows.Forms.DataGridViewImageColumn();
+            this.SlikaThumb = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUtakmice)).BeginInit();
             this.SuspendLayout();
@@ -72,7 +74,9 @@
             this.Stadion,
             this.StadionID,
             this.LigaID,
-            this.Liga});
+            this.Liga,
+            this.Slika,
+            this.SlikaThumb});
             this.dgvUtakmice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUtakmice.Location = new System.Drawing.Point(3, 16);
             this.dgvUtakmice.Name = "dgvUtakmice";
@@ -81,6 +85,15 @@
             this.dgvUtakmice.Size = new System.Drawing.Size(770, 306);
             this.dgvUtakmice.TabIndex = 0;
             this.dgvUtakmice.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvUtakmice_MouseDoubleClick);
+            // 
+            // cbLiga
+            // 
+            this.cbLiga.FormattingEnabled = true;
+            this.cbLiga.Location = new System.Drawing.Point(15, 27);
+            this.cbLiga.Name = "cbLiga";
+            this.cbLiga.Size = new System.Drawing.Size(373, 21);
+            this.cbLiga.TabIndex = 3;
+            this.cbLiga.SelectedIndexChanged += new System.EventHandler(this.CbLiga_SelectedIndexChanged);
             // 
             // UtakmicaID
             // 
@@ -164,14 +177,20 @@
             this.Liga.Name = "Liga";
             this.Liga.ReadOnly = true;
             // 
-            // cbLiga
+            // Slika
             // 
-            this.cbLiga.FormattingEnabled = true;
-            this.cbLiga.Location = new System.Drawing.Point(15, 27);
-            this.cbLiga.Name = "cbLiga";
-            this.cbLiga.Size = new System.Drawing.Size(373, 21);
-            this.cbLiga.TabIndex = 3;
-            this.cbLiga.SelectedIndexChanged += new System.EventHandler(this.CbLiga_SelectedIndexChanged);
+            this.Slika.DataPropertyName = "Slika";
+            this.Slika.HeaderText = "Slika";
+            this.Slika.Name = "Slika";
+            this.Slika.ReadOnly = true;
+            this.Slika.Visible = false;
+            // 
+            // SlikaThumb
+            // 
+            this.SlikaThumb.DataPropertyName = "SlikaThumb";
+            this.SlikaThumb.HeaderText = "SlikaThumb";
+            this.SlikaThumb.Name = "SlikaThumb";
+            this.SlikaThumb.ReadOnly = true;
             // 
             // frmUtakmice
             // 
@@ -193,6 +212,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvUtakmice;
+        private System.Windows.Forms.ComboBox cbLiga;
         private System.Windows.Forms.DataGridViewTextBoxColumn UtakmicaID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DomaciTim;
         private System.Windows.Forms.DataGridViewTextBoxColumn DomaciTimID;
@@ -204,6 +224,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn StadionID;
         private System.Windows.Forms.DataGridViewTextBoxColumn LigaID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Liga;
-        private System.Windows.Forms.ComboBox cbLiga;
+        private System.Windows.Forms.DataGridViewImageColumn Slika;
+        private System.Windows.Forms.DataGridViewImageColumn SlikaThumb;
     }
 }

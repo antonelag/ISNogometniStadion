@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ISNogometniStadion.Model;
+using ISNS.MA.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,19 @@ namespace ISNS.MA.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RezervacijaPage : ContentPage
     {
-        public RezervacijaPage()
+        private SektoriViewModel sektoriViewModel = null;
+        public RezervacijaPage(Utakmica utakmica)
         {
             InitializeComponent();
+            BindingContext = sektoriViewModel = new SektoriViewModel() { StadionID=utakmica.StadionID
+            ,Utakmica=utakmica};
+        }
+        protected async override void OnAppearing()
+        {
+            //pozivanje init metode u samom kodu
+            //kada se pojavi utakmice page na uredjaju ova ce se metoda pokrenuti
+            base.OnAppearing();
+            await sektoriViewModel.Init();
         }
     }
 }

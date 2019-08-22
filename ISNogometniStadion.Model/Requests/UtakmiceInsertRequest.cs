@@ -14,6 +14,8 @@ namespace ISNogometniStadion.Model.Requests
         public DateTime VrijemeOdigravanja { get; set; }
         public int StadionID { get; set; }
         public int LigaID { get; set; }
+        public byte[] Slika { get; set; }
+        public byte[] SlikaThumb { get; set; }
 
     }
 }

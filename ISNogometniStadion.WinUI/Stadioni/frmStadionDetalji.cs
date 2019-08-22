@@ -36,7 +36,8 @@ namespace ISNogometniStadion.WinUI.Stadioni
                 txtNaziv.Text = r.Naziv;
                 txtOpis.Text = r.Opis;
                 cbStadioni.SelectedValue = int.Parse(r.GradID.ToString());
-
+                txtlat.Text = r.lat;
+                txtlng.Text = r.lng;
 
 
                 if (r.Slika.Length != 0)
@@ -95,6 +96,8 @@ namespace ISNogometniStadion.WinUI.Stadioni
                 req.Naziv = txtNaziv.Text;
                 req.Opis = txtOpis.Text;
                 req.GradID = int.Parse(cbStadioni.SelectedValue.ToString());
+                req.lat = txtlat.Text;
+                req.lng = txtlng.Text;
                
                 //spremanje slike u request se radi prilikom klika na dodaj 
                 //ako nije dodao novu sliku(UPDATE), samim time nije kliknuo na dodaj, trebala bi slika ostati nepromijenjena
@@ -158,6 +161,32 @@ namespace ISNogometniStadion.WinUI.Stadioni
                 pictureBox1.Image = mythumb;
 
             }
+        }
+
+        private void TextBox1_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtlat.Text))
+            {
+                errorProvider1.SetError(txtlat, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+
+            }
+            else
+                errorProvider1.SetError(txtlng
+                    , null);
+        }
+
+        private void Txtlng_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtlng.Text))
+            {
+                errorProvider1.SetError(txtlng, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+
+            }
+            else
+                errorProvider1.SetError(txtlng
+                    , null);
         }
     }
     }

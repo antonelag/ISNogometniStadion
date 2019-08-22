@@ -29,7 +29,10 @@ namespace ISNogometniStadion.WinUI.Utakmice
         //    var res = await _apiService.Get<dynamic>(search);
         //    dgvUtakmice.DataSource = res;
         //}
-
+        public bool ThumbnailCallback()
+        {
+            return false;
+        }
         private void DgvUtakmice_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var id = dgvUtakmice.SelectedRows[0].Cells[0].Value;

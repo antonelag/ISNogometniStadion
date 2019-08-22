@@ -13,5 +13,7 @@ namespace ISNogometniStadion.Model
         public string Grad { get; set; }
         public byte[] Slika { get; set; }
         public byte[] SlikaThumb { get; set; }
+        public string lat { get; set; }
+        public string lng { get; set; }
     }
 }

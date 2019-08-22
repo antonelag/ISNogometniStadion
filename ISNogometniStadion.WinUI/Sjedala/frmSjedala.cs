@@ -38,5 +38,7 @@ namespace ISNogometniStadion.WinUI.Sjedala
             var frm = new frmSjedalaDetalji(int.Parse(id.ToString()));
             frm.Show();
         }
+
+       
     }
 }

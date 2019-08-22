@@ -2,6 +2,7 @@
 using ISNogometniStadion.WinUI.Gradovi;
 using ISNogometniStadion.WinUI.Korisnici;
 using ISNogometniStadion.WinUI.Lige;
+using ISNogometniStadion.WinUI.Sektori;
 using ISNogometniStadion.WinUI.Sjedala;
 using ISNogometniStadion.WinUI.Stadioni;
 using ISNogometniStadion.WinUI.Timovi;
@@ -253,6 +254,21 @@ namespace ISNogometniStadion.WinUI
         private void NovaLigaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var frm = new frmLigeDetalji();
+            frm.Show();
+        }
+
+        private void PretražiToolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            var frm = new frmSektori();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void NoviSektorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            var frm = new frmSektoriDetalji();
             frm.Show();
         }
     }

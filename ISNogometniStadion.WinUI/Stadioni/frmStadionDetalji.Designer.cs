@@ -40,6 +40,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.txtlat = new System.Windows.Forms.TextBox();
+            this.txtlng = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +52,7 @@
             // 
             this.txtNaziv.Location = new System.Drawing.Point(13, 76);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(175, 20);
+            this.txtNaziv.Size = new System.Drawing.Size(224, 20);
             this.txtNaziv.TabIndex = 0;
             this.txtNaziv.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNaziv_Validating);
             // 
@@ -64,7 +68,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 312);
+            this.label2.Location = new System.Drawing.Point(10, 369);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 2;
@@ -78,16 +82,16 @@
             // 
             this.cbStadioni.DisplayMember = "Naziv";
             this.cbStadioni.FormattingEnabled = true;
-            this.cbStadioni.Location = new System.Drawing.Point(12, 337);
+            this.cbStadioni.Location = new System.Drawing.Point(12, 394);
             this.cbStadioni.Name = "cbStadioni";
-            this.cbStadioni.Size = new System.Drawing.Size(176, 21);
+            this.cbStadioni.Size = new System.Drawing.Size(225, 21);
             this.cbStadioni.TabIndex = 3;
             this.cbStadioni.ValueMember = "GradID";
             this.cbStadioni.Validating += new System.ComponentModel.CancelEventHandler(this.CbStadioni_Validating);
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(113, 384);
+            this.btnSacuvaj.Location = new System.Drawing.Point(113, 441);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(75, 23);
             this.btnSacuvaj.TabIndex = 4;
@@ -108,13 +112,14 @@
             // 
             this.txtOpis.Location = new System.Drawing.Point(13, 148);
             this.txtOpis.Name = "txtOpis";
-            this.txtOpis.Size = new System.Drawing.Size(175, 48);
+            this.txtOpis.Size = new System.Drawing.Size(224, 48);
             this.txtOpis.TabIndex = 6;
             this.txtOpis.Text = "";
             this.txtOpis.Validating += new System.ComponentModel.CancelEventHandler(this.TxtOpis_Validating);
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(13, 215);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(103, 66);
@@ -123,7 +128,7 @@
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(122, 230);
+            this.btnDodaj.Location = new System.Drawing.Point(171, 229);
             this.btnDodaj.Name = "btnDodaj";
             this.btnDodaj.Size = new System.Drawing.Size(66, 34);
             this.btnDodaj.TabIndex = 8;
@@ -135,11 +140,49 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // txtlat
+            // 
+            this.txtlat.Location = new System.Drawing.Point(12, 319);
+            this.txtlat.Name = "txtlat";
+            this.txtlat.Size = new System.Drawing.Size(100, 20);
+            this.txtlat.TabIndex = 9;
+            this.txtlat.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox1_Validating);
+            // 
+            // txtlng
+            // 
+            this.txtlng.Location = new System.Drawing.Point(137, 319);
+            this.txtlng.Name = "txtlng";
+            this.txtlng.Size = new System.Drawing.Size(100, 20);
+            this.txtlng.TabIndex = 10;
+            this.txtlng.Validating += new System.ComponentModel.CancelEventHandler(this.Txtlng_Validating);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(10, 303);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Lattitude";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(134, 303);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Longitude";
+            // 
             // frmStadionDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(212, 418);
+            this.ClientSize = new System.Drawing.Size(262, 478);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtlng);
+            this.Controls.Add(this.txtlat);
             this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtOpis);
@@ -172,5 +215,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnDodaj;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtlng;
+        private System.Windows.Forms.TextBox txtlat;
     }
 }

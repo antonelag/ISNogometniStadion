@@ -9,9 +9,9 @@ namespace ISNogometniStadion.Model
         public int SjedaloID { get; set; }
         public string Oznaka { get; set; }
 
-        public string Tribina { get; set; }
-        public int TribinaID { get; set; }
+        public string Sektor { get; set; }
+        public int SektorID { get; set; }
 
-
+        public bool Status { get; set; }
     }
 }

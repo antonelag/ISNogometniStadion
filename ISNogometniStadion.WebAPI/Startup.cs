@@ -88,6 +88,7 @@ namespace ISNogometniStadion.WebAPI
             services.AddScoped<ICRUDService<Model.Tim, TimoviSearchRequest, TimoviInsertRequest, TimoviInsertRequest>, TimoviService>();
             services.AddScoped<ICRUDService<Model.Stadion, StadioniSearchRequest, StadioniInsertRequest, StadioniInsertRequest>, StadioniService>();
             services.AddScoped<ICRUDService<Model.Tribina, TribineSearchRequest, TribineInsertRequest, TribineInsertRequest>, TribineService>();
+            services.AddScoped<ICRUDService<Model.Sektor, SektoriSearchRequest, SektoriInsertRequest, SektoriInsertRequest>, SektoriService>();
             services.AddScoped<ICRUDService<Model.Sjedalo, SjedalaSearchRequest, SjedalaInsertRequest, SjedalaInsertRequest>, SjedalaService>();
             services.AddScoped<ICRUDService<Model.Utakmica, UtakmiceeSearchRequest, UtakmiceInsertRequest, UtakmiceInsertRequest>, UtakmiceService>();
 

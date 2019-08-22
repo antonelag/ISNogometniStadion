@@ -31,5 +31,7 @@ namespace ISNogometniStadion.WebAPI.Database
         public Stadioni stadion { get; set; }
         public int StadionID { get; set; }
         public DateTime dateonly { get; set; }
+        public byte[] Slika { get; set; }
+        public byte[] SlikaThumb { get; set; }
     }
 }

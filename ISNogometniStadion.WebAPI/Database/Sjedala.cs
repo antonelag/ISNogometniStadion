@@ -12,10 +12,10 @@ namespace ISNogometniStadion.WebAPI.Database
         public int SjedaloID { get; set; }
         public string Oznaka { get; set; }
 
-        [ForeignKey("TribinaID")]
-        public Tribine Tribina { get; set; }
-        public int TribinaID { get; set; }
-
+        [ForeignKey("SektorID")]
+        public Sektori Sektor { get; set; }
+        public int SektorID { get; set; }
+        public bool Status { get; set; }
 
         public Ulaznice ulaznica { get; set; }
     }

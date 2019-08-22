@@ -19,9 +19,9 @@ namespace ISNogometniStadion.WinUI.Timovi
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Timovi");
         private readonly APIService _apiServiceStadioni = new APIService("Stadioni");
-        private readonly APIService _apiServiceLige= new APIService("Lige");
+        private readonly APIService _apiServiceLige = new APIService("Lige");
         private readonly ImageService _imageService = new ImageService();
-        public frmTimoviDetalji(int? id=null)
+        public frmTimoviDetalji(int? id = null)
         {
             InitializeComponent();
             _id = id;
@@ -40,12 +40,12 @@ namespace ISNogometniStadion.WinUI.Timovi
                 cbLige.SelectedValue = int.Parse(a.LigaID.ToString());
 
 
-                if (a.Slika.Length!=0)
-                { 
+                if (a.Slika.Length != 0)
+                {
                     var img = _imageService.BytesToImage(a.Slika);
                     Image mythumb = _imageService.ImageToThumbnail(img);
-                pictureBox1.Image = mythumb;
-            }
+                    pictureBox1.Image = mythumb;
+                }
                 else
                 {
                     var noimg = _imageService.GetNoImage();
@@ -116,15 +116,15 @@ namespace ISNogometniStadion.WinUI.Timovi
                 res.LigaID = int.Parse(cbLige.SelectedValue.ToString());
                 //spremanje slike u request se radi prilikom klika na dodaj 
                 //ako nije dodao novu sliku(UPDATE), samim time nije kliknuo na dodaj, trebala bi slika ostati nepromijenjena
-                if (res.Slika==null && _id.HasValue)
+                if (res.Slika == null && _id.HasValue)
                 {
                     Tim a = await _apiService.GetById<Tim>(_id);
                     res.Slika = a.Slika;
                     res.SlikaThumb = a.SlikaThumb;
                 }
 
-               //za slucaj da korisnik ne unese sliku
-               if(res.Slika==null && !_id.HasValue)
+                //za slucaj da korisnik ne unese sliku
+                if (res.Slika == null && !_id.HasValue)
                 {
                     var img = _imageService.GetNoImage();
                     res.Slika = _imageService.ImageToBytes(img);
@@ -142,7 +142,7 @@ namespace ISNogometniStadion.WinUI.Timovi
                 MessageBox.Show("Operacija je uspjela.");
                 this.Close();
             }
-            
+
             else
                 MessageBox.Show("Operacija nije uspjela");
         }
@@ -154,7 +154,7 @@ namespace ISNogometniStadion.WinUI.Timovi
         private void BtnDodajSliku_Click(object sender, EventArgs e)
         {
 
-            var result= openFileDialog1.ShowDialog();
+            var result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
                 var fileName = openFileDialog1.FileName;
@@ -168,5 +168,5 @@ namespace ISNogometniStadion.WinUI.Timovi
 
             }
         }
-       }
+    }
 }

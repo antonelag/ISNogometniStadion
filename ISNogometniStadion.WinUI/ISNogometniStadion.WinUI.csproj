@@ -124,6 +124,12 @@
     <Compile Include="Lige\frmLigeDetalji.Designer.cs">
       <DependentUpon>frmLigeDetalji.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sektori\frmSektori.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sektori\frmSektori.Designer.cs">
+      <DependentUpon>frmSektori.cs</DependentUpon>
+    </Compile>
     <Compile Include="Stadioni\frmStadionDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,12 @@
     <Compile Include="Ulaznice\frmUlazniceDetalji.Designer.cs">
       <DependentUpon>frmUlazniceDetalji.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sektori\frmSektoriDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sektori\frmSektoriDetalji.Designer.cs">
+      <DependentUpon>frmSektoriDetalji.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utakmice\frmUtakmice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,6 +262,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Sektori\frmSektori.resx">
+      <DependentUpon>frmSektori.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sjedala\frmSjedala.resx">
       <DependentUpon>frmSjedala.cs</DependentUpon>
     </EmbeddedResource>
@@ -279,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ulaznice\frmUlazniceDetalji.resx">
       <DependentUpon>frmUlazniceDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sektori\frmSektoriDetalji.resx">
+      <DependentUpon>frmSektoriDetalji.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utakmice\frmUtakmice.resx">
       <DependentUpon>frmUtakmice.cs</DependentUpon>

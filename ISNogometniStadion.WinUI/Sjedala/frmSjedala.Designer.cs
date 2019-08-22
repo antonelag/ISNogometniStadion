@@ -30,12 +30,13 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvSjedala = new System.Windows.Forms.DataGridView();
-            this.sjedaloID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tribina = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tribinaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtPretraga = new System.Windows.Forms.TextBox();
             this.txtPretrazi = new System.Windows.Forms.Button();
+            this.sjedaloID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Sektor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SektorID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSjedala)).BeginInit();
             this.SuspendLayout();
@@ -58,8 +59,9 @@
             this.dgvSjedala.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sjedaloID,
             this.oznaka,
-            this.tribina,
-            this.tribinaID});
+            this.Status,
+            this.Sektor,
+            this.SektorID});
             this.dgvSjedala.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSjedala.Location = new System.Drawing.Point(3, 16);
             this.dgvSjedala.Name = "dgvSjedala";
@@ -68,34 +70,6 @@
             this.dgvSjedala.Size = new System.Drawing.Size(778, 349);
             this.dgvSjedala.TabIndex = 0;
             this.dgvSjedala.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvSjedala_MouseDoubleClick);
-            // 
-            // sjedaloID
-            // 
-            this.sjedaloID.DataPropertyName = "SjedaloID";
-            this.sjedaloID.HeaderText = "SjedaloID";
-            this.sjedaloID.Name = "sjedaloID";
-            this.sjedaloID.ReadOnly = true;
-            // 
-            // oznaka
-            // 
-            this.oznaka.DataPropertyName = "Oznaka";
-            this.oznaka.HeaderText = "Oznaka sjedala";
-            this.oznaka.Name = "oznaka";
-            this.oznaka.ReadOnly = true;
-            // 
-            // tribina
-            // 
-            this.tribina.DataPropertyName = "Tribina";
-            this.tribina.HeaderText = "Naziv tribine";
-            this.tribina.Name = "tribina";
-            this.tribina.ReadOnly = true;
-            // 
-            // tribinaID
-            // 
-            this.tribinaID.DataPropertyName = "TribinaID";
-            this.tribinaID.HeaderText = "TribinaID";
-            this.tribinaID.Name = "tribinaID";
-            this.tribinaID.ReadOnly = true;
             // 
             // txtPretraga
             // 
@@ -113,6 +87,41 @@
             this.txtPretrazi.Text = "Pretraži";
             this.txtPretrazi.UseVisualStyleBackColor = true;
             this.txtPretrazi.Click += new System.EventHandler(this.TxtPretrazi_Click);
+            // 
+            // sjedaloID
+            // 
+            this.sjedaloID.DataPropertyName = "SjedaloID";
+            this.sjedaloID.HeaderText = "SjedaloID";
+            this.sjedaloID.Name = "sjedaloID";
+            this.sjedaloID.ReadOnly = true;
+            // 
+            // oznaka
+            // 
+            this.oznaka.DataPropertyName = "Oznaka";
+            this.oznaka.HeaderText = "Oznaka sjedala";
+            this.oznaka.Name = "oznaka";
+            this.oznaka.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Zauzeto";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // Sektor
+            // 
+            this.Sektor.DataPropertyName = "Sektor";
+            this.Sektor.HeaderText = "Naziv sektora";
+            this.Sektor.Name = "Sektor";
+            this.Sektor.ReadOnly = true;
+            // 
+            // SektorID
+            // 
+            this.SektorID.DataPropertyName = "SektorID";
+            this.SektorID.HeaderText = "SektorID";
+            this.SektorID.Name = "SektorID";
+            this.SektorID.ReadOnly = true;
             // 
             // frmSjedala
             // 
@@ -139,7 +148,8 @@
         private System.Windows.Forms.Button txtPretrazi;
         private System.Windows.Forms.DataGridViewTextBoxColumn sjedaloID;
         private System.Windows.Forms.DataGridViewTextBoxColumn oznaka;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tribina;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tribinaID;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sektor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SektorID;
     }
 }

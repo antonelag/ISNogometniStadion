@@ -13,6 +13,7 @@ namespace ISNogometniStadion.Model
         public string Oznaka { get; set; }
         public int UtakmicaID { get; set; }
         public string utakmica { get; set; }
+        public string sektor { get; set; }
         public int KorisnikID { get; set; }
         public string korisnik { get; set; }
         [DataType(DataType.Date)]

@@ -15,5 +15,6 @@ namespace ISNogometniStadion.WebAPI.Database
         [ForeignKey("StadionID")]
         public Stadioni Stadion { get; set; }
         public int StadionID { get; set; }
+        public int Cijena { get; set; }
     }
 }

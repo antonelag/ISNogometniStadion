@@ -3,13 +3,57 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:ISNS.MA.ViewModels"
+             xmlns:local="clr-namespace:ISNS.MA.Converters"
              mc:Ignorable="d"
              x:Class="ISNS.MA.Views.RezervacijaPage">
+    <ContentPage.BindingContext>
+        <viewModels:SektoriViewModel></viewModels:SektoriViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout>
+                    <Image HeightRequest="300" WidthRequest="300" Source="{Binding Utakmica.Slika, Converter={StaticResource imgConv}}"></Image>
+                </StackLayout>
+        <StackLayout HeightRequest="300" Padding="20" BackgroundColor="WhiteSmoke">
+                    <Label FontSize="Title" Text="Odaberite ulaznicu" HorizontalOptions="CenterAndExpand"></Label>
+
+                    <ListView ItemsSource="{Binding SektoriList}"  >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                <StackLayout Padding="10" Orientation="Horizontal">
+                                        
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                                        <Label Text="{Binding SektorPodaci}" 
+                                d:Text="{Binding .}"
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                                    <Label Text="{Binding CijenaPodaci}" 
+                                d:Text="Item descripton"
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+                                        </StackLayout>
+                                        <StackLayout  HorizontalOptions="EndAndExpand" >
+                                            <Button Padding="10" CornerRadius="2" BackgroundColor="Blue" TextColor="White" Text="Sjedalo"></Button>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+            </StackLayout>
+            </StackLayout>
+
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

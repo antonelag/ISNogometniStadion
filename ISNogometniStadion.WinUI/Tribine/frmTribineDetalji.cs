@@ -30,6 +30,7 @@ namespace ISNogometniStadion.WinUI.Tribine
                 var a = await _apiService.GetById<dynamic>(_id);
                 txtNaziv.Text = a.naziv;
                 cbTribine.SelectedValue = int.Parse(a.stadionID.ToString());
+                txtCijena.Text = a.cijena.ToString();
             }
         }
         private async Task LoadStadioni()
@@ -72,8 +73,10 @@ namespace ISNogometniStadion.WinUI.Tribine
                 var req = new TribineInsertRequest()
                 {
                     Naziv = txtNaziv.Text,
-                    StadionID = int.Parse(cbTribine.SelectedValue.ToString())
+                    StadionID = int.Parse(cbTribine.SelectedValue.ToString()),
+                    Cijena = int.Parse(txtCijena.Text)
                 };
+               
                 if (_id.HasValue)
                 {
                     int i = (int)_id;

@@ -1,9 +1,11 @@
-﻿using ISNogometniStadion.Model.Requests;
+﻿using ISNogometniStadion.Model;
+using ISNogometniStadion.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +20,8 @@ namespace ISNogometniStadion.WinUI.Utakmice
         private readonly APIService _apiServiceStadioni = new APIService("Stadioni");
         private readonly APIService _apiServiceTimovi = new APIService("Timovi");
         private readonly APIService _apiServiceLige = new APIService("Lige");
+        private readonly ImageService _imageService = new ImageService();
+
         public frmUtakmiceDetalji(int? id=null)
         {
             InitializeComponent();
@@ -33,13 +37,27 @@ namespace ISNogometniStadion.WinUI.Utakmice
 
             if (_id.HasValue)
             {
-                var a = await _apiService.GetById<dynamic>(_id);
-                cbDomaci.SelectedValue = int.Parse(a.domaciTimID.ToString());
-                cbGosti.SelectedValue = int.Parse(a.gostujuciTimID.ToString());
-                dtpDatum.Value = a.datumOdigravanja;
-                dtpVrijeme.Value = a.vrijemeOdigravanja;
-                cbStadion.SelectedValue = int.Parse(a.stadionID.ToString());
-                cbLiga.SelectedValue = int.Parse(a.ligaID.ToString());
+                Model.Utakmica a = await _apiService.GetById<Model.Utakmica>(_id);
+                cbDomaci.SelectedValue = int.Parse(a.DomaciTimID.ToString());
+                cbGosti.SelectedValue = int.Parse(a.GostujuciTimID.ToString());
+                dtpDatum.Value = a.DatumOdigravanja;
+                dtpVrijeme.Value = a.VrijemeOdigravanja;
+                cbStadion.SelectedValue = int.Parse(a.StadionID.ToString());
+                cbLiga.SelectedValue = int.Parse(a.LigaID.ToString());
+
+
+                if (a.Slika.Length != 0)
+                {
+                    var img = _imageService.BytesToImage(a.Slika);
+                    Image mythumb = _imageService.ImageToThumbnail(img);
+                    pictureBox1.Image = mythumb;
+                }
+                else
+                {
+                    var noimg = _imageService.GetNoImage();
+                    var th = _imageService.ImageToThumbnail(noimg);
+                    pictureBox1.Image = th;
+                }
 
             }
 
@@ -139,7 +157,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
                 errorProvider1.SetError(dtpVrijeme, null);
 
         }
-
+        UtakmiceInsertRequest req = new UtakmiceInsertRequest();
         private async void BtnSacuvaj_Click(object sender, EventArgs e)
         {
             if (this.ValidateChildren() && int.Parse(cbDomaci.SelectedValue.ToString()) != int.Parse(cbGosti.SelectedValue.ToString()))
@@ -174,24 +192,42 @@ namespace ISNogometniStadion.WinUI.Utakmice
 
                 if (!obrnutiisti && !isti)
                 {
-                    var req = new UtakmiceInsertRequest()
-                    {
-                        DatumOdigravanja = dtpDatum.Value.Date + dtpVrijeme.Value.TimeOfDay,
-                        VrijemeOdigravanja = dtpDatum.Value.Date + dtpVrijeme.Value.TimeOfDay,
-                        DomaciTimID = int.Parse(cbDomaci.SelectedValue.ToString()),
-                        GostujuciTimID = int.Parse(cbGosti.SelectedValue.ToString()),
-                        StadionID = int.Parse(cbStadion.SelectedValue.ToString()),
-                        LigaID = int.Parse(cbLiga.SelectedValue.ToString())
 
-                    };
+                    req.DatumOdigravanja = dtpDatum.Value.Date + dtpVrijeme.Value.TimeOfDay;
+                    req.VrijemeOdigravanja = dtpDatum.Value.Date + dtpVrijeme.Value.TimeOfDay;
+                    req.DomaciTimID = int.Parse(cbDomaci.SelectedValue.ToString());
+                    req.GostujuciTimID = int.Parse(cbGosti.SelectedValue.ToString());
+                    req.StadionID = int.Parse(cbStadion.SelectedValue.ToString());
+                    req.LigaID = int.Parse(cbLiga.SelectedValue.ToString());
+
+                   
+                    if (req.Slika == null && _id.HasValue)
+                    {
+                        Utakmica a = await _apiService.GetById<Utakmica>(_id);
+                        req.Slika = a.Slika;
+                        req.SlikaThumb = a.SlikaThumb;
+                    }
+
+                    //za slucaj da korisnik ne unese sliku
+                    if (req.Slika == null && !_id.HasValue)
+                    {
+                        var img = _imageService.GetNoImage();
+                        req.Slika = _imageService.ImageToBytes(img);
+                        var th = _imageService.ImageToThumbnail(img);
+                        req.SlikaThumb = _imageService.ImageToBytes(th);
+                    }
                     if (_id.HasValue)
                     {
                         int i = (int)_id;
                         await _apiService.Update<dynamic>(i, req);
+                    MessageBox.Show("Operacija uspjela");
                     }
                     else
+                    {
                         await _apiService.Insert<dynamic>(req);
-                    MessageBox.Show("Operacija uspjela");
+                        MessageBox.Show("Operacija uspjela");
+
+                    }
                     this.Close();
                 }
                 else
@@ -201,6 +237,28 @@ namespace ISNogometniStadion.WinUI.Utakmice
             }
             else
                 MessageBox.Show("Operacija nije uspjela");
+        }
+
+        public bool ThumbnailCallback()
+        {
+            return false;
+        }
+
+        private void BtnDodaj_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var fileName = openFileDialog1.FileName;
+                var file = File.ReadAllBytes(fileName);
+                req.Slika = file;
+                Image image = Image.FromFile(fileName);
+
+                Image mythumb = _imageService.ImageToThumbnail(image);
+                req.SlikaThumb = _imageService.ImageToBytes(mythumb);
+                pictureBox1.Image = mythumb;
+
+            }
         }
     }
 }

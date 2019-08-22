@@ -34,5 +34,6 @@ namespace ISNS.MA.Views
             var item = e.SelectedItem as Stadion;
             await Navigation.PushAsync(new StadionDetailPage(item));
         }
+
     }
 }

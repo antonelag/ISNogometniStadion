@@ -9,7 +9,7 @@ namespace ISNogometniStadion.Model.Requests
 
         public string Oznaka { get; set; }
 
-        public int TribinaID { get; set; }
-
+        public int SektorID { get; set; }
+        public bool Status { get; set; }
     }
 }

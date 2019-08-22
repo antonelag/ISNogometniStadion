@@ -19,5 +19,7 @@ namespace ISNogometniStadion.Model
         public int StadionID { get; set; }
         public int LigaID { get; set; }
         public string Liga { get; set; }
+        public byte[] Slika { get; set; }
+        public byte[] SlikaThumb { get; set; }
     }
 }

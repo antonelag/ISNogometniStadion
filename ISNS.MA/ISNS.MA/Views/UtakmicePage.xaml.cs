@@ -1,4 +1,5 @@
-﻿using ISNS.MA.ViewModels;
+﻿using ISNogometniStadion.Model;
+using ISNS.MA.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,8 @@ namespace ISNS.MA.Views
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            await Navigation.PushAsync(new RezervacijaPage());
+            var item = e.SelectedItem as Utakmica;
+            await Navigation.PushAsync(new RezervacijaPage(item));
         }
     }
 }

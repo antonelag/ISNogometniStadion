@@ -35,6 +35,8 @@
             this.Stadion = new System.Windows.Forms.Label();
             this.btnSacuvaj = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtCijena = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,10 +77,9 @@
             this.Stadion.TabIndex = 3;
             this.Stadion.Text = "Stadion";
             // 
-            // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(160, 188);
+            this.btnSacuvaj.Location = new System.Drawing.Point(160, 221);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(75, 44);
             this.btnSacuvaj.TabIndex = 4;
@@ -90,11 +91,29 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // txtCijena
+            // 
+            this.txtCijena.Location = new System.Drawing.Point(29, 184);
+            this.txtCijena.Name = "txtCijena";
+            this.txtCijena.Size = new System.Drawing.Size(206, 20);
+            this.txtCijena.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(26, 168);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Cijena";
+            // 
             // frmTribineDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(343, 277);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtCijena);
             this.Controls.Add(this.btnSacuvaj);
             this.Controls.Add(this.Stadion);
             this.Controls.Add(this.cbTribine);
@@ -117,5 +136,7 @@
         private System.Windows.Forms.Label Stadion;
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtCijena;
     }
 }

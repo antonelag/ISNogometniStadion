@@ -30,12 +30,13 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvTribine = new System.Windows.Forms.DataGridView();
+            this.txtPretraga = new System.Windows.Forms.TextBox();
+            this.btnPretrazi = new System.Windows.Forms.Button();
             this.TribinaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StadionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stadion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtPretraga = new System.Windows.Forms.TextBox();
-            this.btnPretrazi = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTribine)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +58,7 @@
             this.dgvTribine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTribine.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TribinaID,
+            this.Cijena,
             this.Naziv,
             this.StadionID,
             this.Stadion});
@@ -69,6 +71,23 @@
             this.dgvTribine.TabIndex = 0;
             this.dgvTribine.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvTribine_MouseDoubleClick);
             // 
+            // txtPretraga
+            // 
+            this.txtPretraga.Location = new System.Drawing.Point(15, 42);
+            this.txtPretraga.Name = "txtPretraga";
+            this.txtPretraga.Size = new System.Drawing.Size(511, 20);
+            this.txtPretraga.TabIndex = 1;
+            // 
+            // btnPretrazi
+            // 
+            this.btnPretrazi.Location = new System.Drawing.Point(678, 39);
+            this.btnPretrazi.Name = "btnPretrazi";
+            this.btnPretrazi.Size = new System.Drawing.Size(75, 23);
+            this.btnPretrazi.TabIndex = 2;
+            this.btnPretrazi.Text = "Pretraži";
+            this.btnPretrazi.UseVisualStyleBackColor = true;
+            this.btnPretrazi.Click += new System.EventHandler(this.BtnPretrazi_Click);
+            // 
             // TribinaID
             // 
             this.TribinaID.DataPropertyName = "TribinaID";
@@ -76,6 +95,14 @@
             this.TribinaID.Name = "TribinaID";
             this.TribinaID.ReadOnly = true;
             this.TribinaID.Visible = false;
+            // 
+            // Cijena
+            // 
+            this.Cijena.DataPropertyName = "Cijena";
+            this.Cijena.HeaderText = "Cijena";
+            this.Cijena.Name = "Cijena";
+            this.Cijena.ReadOnly = true;
+            this.Cijena.Visible = false;
             // 
             // Naziv
             // 
@@ -98,23 +125,6 @@
             this.Stadion.HeaderText = "Stadion";
             this.Stadion.Name = "Stadion";
             this.Stadion.ReadOnly = true;
-            // 
-            // txtPretraga
-            // 
-            this.txtPretraga.Location = new System.Drawing.Point(15, 42);
-            this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(511, 20);
-            this.txtPretraga.TabIndex = 1;
-            // 
-            // btnPretrazi
-            // 
-            this.btnPretrazi.Location = new System.Drawing.Point(678, 39);
-            this.btnPretrazi.Name = "btnPretrazi";
-            this.btnPretrazi.Size = new System.Drawing.Size(75, 23);
-            this.btnPretrazi.TabIndex = 2;
-            this.btnPretrazi.Text = "Pretraži";
-            this.btnPretrazi.UseVisualStyleBackColor = true;
-            this.btnPretrazi.Click += new System.EventHandler(this.BtnPretrazi_Click);
             // 
             // frmTribine
             // 
@@ -140,6 +150,7 @@
         private System.Windows.Forms.Button btnPretrazi;
         private System.Windows.Forms.DataGridView dgvTribine;
         private System.Windows.Forms.DataGridViewTextBoxColumn TribinaID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewTextBoxColumn StadionID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stadion;

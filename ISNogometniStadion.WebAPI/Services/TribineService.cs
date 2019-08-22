@@ -23,7 +23,7 @@ namespace ISNogometniStadion.WebAPI.Services
         public override List<Tribina> Get(TribineSearchRequest search)
         {
             var q = _context.Set<Database.Tribine>().AsQueryable();
-
+           
             if (!string.IsNullOrEmpty(search?.Naziv))
             {
                 q = q.Where(s => (s.Naziv.StartsWith(search.Naziv)));

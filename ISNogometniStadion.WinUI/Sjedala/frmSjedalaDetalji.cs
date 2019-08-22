@@ -1,4 +1,5 @@
-﻿using ISNogometniStadion.Model.Requests;
+﻿using ISNogometniStadion.Model;
+using ISNogometniStadion.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ namespace ISNogometniStadion.WinUI.Sjedala
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Sjedala");
-        private readonly APIService _apiServiceTribine = new APIService("Tribine");
+        private readonly APIService _apiServiceSektori = new APIService("Sektori");
         public frmSjedalaDetalji(int? id = null)
         {
             InitializeComponent();
@@ -24,33 +25,50 @@ namespace ISNogometniStadion.WinUI.Sjedala
 
         private async void FrmSjedalaDetalji_Load(object sender, EventArgs e)
         {
-            await LoadTribine();
+            await LoadSektori();
             if (_id.HasValue)
             {
-                var r = await _apiService.GetById<dynamic>(_id);
-                txtOznaka.Text = r.oznaka;
-                cbSjedala.SelectedValue = int.Parse(r.tribinaID.ToString());
+                Sjedalo r = await _apiService.GetById<Sjedalo>(_id);
+                txtOznaka.Text = r.Oznaka;
+                cbSektori.SelectedValue = int.Parse(r.SektorID.ToString());
+                cbxStatus.Checked = r.Status;
             }
         }
-        private async Task LoadTribine()
+        private async Task LoadSektori()
         {
-            var result = await _apiServiceTribine.Get<dynamic>(null);
-            cbSjedala.DisplayMember = "Naziv";
-            cbSjedala.ValueMember = "TribinaID";
-            cbSjedala.DataSource = result;
-            cbSjedala.SelectedItem = null;
-            cbSjedala.SelectedText = "--Odaberite--";
+            var result = await _apiServiceSektori.Get<List<Model.Sektor>>(null);
+            cbSektori.DisplayMember = "SektorPodaci";
+            cbSektori.ValueMember = "SektorID";
+            
+            cbSektori.DataSource = result;
+            cbSektori.SelectedItem = null;
+            cbSektori.SelectedText = "--Odaberite--";
         }
 
         private async void BtnSnimi_Click(object sender, EventArgs e)
         {
             if (this.ValidateChildren())
             {
+                bool isti = false;
+                List<Sjedalo> sjedala = await _apiService.Get<List<Sjedalo>>(null);
+               
                 var req = new SjedalaInsertRequest()
                 {
                     Oznaka = txtOznaka.Text,
-                    TribinaID = int.Parse(cbSjedala.SelectedValue.ToString())
+                    SektorID = int.Parse(cbSektori.SelectedValue.ToString()),
+                    Status=cbxStatus.Checked
                 };
+                foreach (var s in sjedala)
+                {
+                    if (s.Oznaka ==req.Oznaka && s.SektorID == req.SektorID)
+                    {
+                        isti = true;
+                        break;
+                    }
+                }
+                if (!isti)
+                {
+
                 if (_id.HasValue)
                 {
                     int i = (int)_id;
@@ -60,6 +78,11 @@ namespace ISNogometniStadion.WinUI.Sjedala
                     await _apiService.Insert<dynamic>(req);
                 MessageBox.Show("Operacija uspjesna!");
                 this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Operacija nije uspjela");
+                }
             }
             else
                 MessageBox.Show("Operacija nije uspjela!");
@@ -78,13 +101,13 @@ namespace ISNogometniStadion.WinUI.Sjedala
 
         private void CbSjedala_Validating(object sender, CancelEventArgs e)
         {
-            if(cbSjedala.SelectedItem==null)
+            if(cbSektori.SelectedItem==null)
             {
-                errorProvider1.SetError(cbSjedala, Properties.Resources.ObaveznoPolje);
+                errorProvider1.SetError(cbSektori, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;
             }
             else
-                errorProvider1.SetError(cbSjedala, null);
+                errorProvider1.SetError(cbSektori, null);
         }
 
 
