@@ -24,7 +24,8 @@
         <StackLayout HeightRequest="300" Padding="20" BackgroundColor="WhiteSmoke">
                     <Label FontSize="Title" Text="Odaberite ulaznicu" HorizontalOptions="CenterAndExpand"></Label>
 
-                    <ListView ItemsSource="{Binding SektoriList}"  >
+                    <ListView ItemsSource="{Binding SektoriList}" ItemSelected="ListView_ItemSelected" 
+                              >
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -43,7 +44,7 @@
                                 FontSize="13" />
                                         </StackLayout>
                                         <StackLayout  HorizontalOptions="EndAndExpand" >
-                                            <Button Padding="10" CornerRadius="2" BackgroundColor="Blue" TextColor="White" Text="Sjedalo"></Button>
+                                            <Button  Padding="10" CornerRadius="2" BackgroundColor="Blue" TextColor="White" Text="Sjedalo"></Button>
                                         </StackLayout>
                                     </StackLayout>
                                 </ViewCell>

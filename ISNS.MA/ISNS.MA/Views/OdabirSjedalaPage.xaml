@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:ISNS.MA.ViewModels"
+             mc:Ignorable="d"
+             x:Class="ISNS.MA.Views.OdabirSjedalaPage">
+    <ContentPage.BindingContext>
+        <viewModels:SjedalaViewModel></viewModels:SjedalaViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="10">
+                <Label Text="Odaberite sjedalo" HorizontalOptions="CenterAndExpand"  FontSize="Medium"></Label>
+            </StackLayout>
+        <ScrollView VerticalScrollBarVisibility="Default" HorizontalScrollBarVisibility="Default">
+        <StackLayout BackgroundColor="White" HeightRequest="500" >
+            <Grid x:Name="gridSjedala" HorizontalOptions="CenterAndExpand"></Grid>
+        </StackLayout>
+        </ScrollView>
+        <StackLayout x:Name="nastavidalje" IsVisible="False">
+                <Label x:Name="odabranoSjedalo" IsVisible="False"></Label>
+                <Label x:Name="poruka" BackgroundColor="LightYellow" HeightRequest="50" FontSize="20" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" LineBreakMode="WordWrap" ></Label>
+            <Button Text="Nastavi dalje" Clicked="Button_Clicked" BackgroundColor="Yellow"></Button>
+        </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

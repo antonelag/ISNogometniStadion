@@ -23,7 +23,6 @@ namespace ISNogometniStadion.WebAPI.Services
         public override List<Sjedalo> Get(SjedalaSearchRequest search)
         {
             var q = _context.Set<Database.Sjedala>().AsQueryable();
-
             if (!string.IsNullOrEmpty(search?.Oznaka))
             {
                 q = q.Where(s => (s.Oznaka.StartsWith(search.Oznaka)));

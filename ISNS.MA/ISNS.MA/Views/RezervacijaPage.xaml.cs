@@ -28,5 +28,12 @@ namespace ISNS.MA.Views
             base.OnAppearing();
             await sektoriViewModel.Init();
         }
+
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as Sektor;
+            await Navigation.PushAsync(new OdabirSjedalaPage(item, sektoriViewModel.Utakmica));
+        }
+
     }
 }

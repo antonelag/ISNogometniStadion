@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ISNogometniStadion.WebAPI.Migrations
 {
     [DbContext(typeof(ISNogometniStadionContext))]
-    [Migration("20190821194112_tribinacijena")]
-    partial class tribinacijena
+    [Migration("20190825204301_baza")]
+    partial class baza
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -124,11 +124,13 @@ namespace ISNogometniStadion.WebAPI.Migrations
 
                     b.Property<string>("Oznaka");
 
-                    b.Property<int>("TribinaID");
+                    b.Property<int>("SektorID");
+
+                    b.Property<bool>("Status");
 
                     b.HasKey("SjedaloID");
 
-                    b.HasIndex("TribinaID");
+                    b.HasIndex("SektorID");
 
                     b.ToTable("Sjedala");
                 });
@@ -193,7 +195,7 @@ namespace ISNogometniStadion.WebAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("Cijena");
+                    b.Property<int>("Cijena");
 
                     b.Property<string>("Naziv");
 
@@ -248,6 +250,10 @@ namespace ISNogometniStadion.WebAPI.Migrations
 
                     b.Property<int>("LigaID");
 
+                    b.Property<byte[]>("Slika");
+
+                    b.Property<byte[]>("SlikaThumb");
+
                     b.Property<int>("StadionID");
 
                     b.Property<DateTime>("VrijemeOdigravanja");
@@ -301,9 +307,9 @@ namespace ISNogometniStadion.WebAPI.Migrations
 
             modelBuilder.Entity("ISNogometniStadion.WebAPI.Database.Sjedala", b =>
                 {
-                    b.HasOne("ISNogometniStadion.WebAPI.Database.Tribine", "Tribina")
+                    b.HasOne("ISNogometniStadion.WebAPI.Database.Sektori", "Sektor")
                         .WithMany()
-                        .HasForeignKey("TribinaID")
+                        .HasForeignKey("SektorID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
