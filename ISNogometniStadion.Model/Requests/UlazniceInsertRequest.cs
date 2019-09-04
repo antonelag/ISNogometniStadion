@@ -17,5 +17,7 @@ namespace ISNogometniStadion.Model.Requests
         public DateTime DatumKupnje { get; set; }
         [DataType(DataType.Time)]
         public DateTime VrijemeKupnje { get; set; }
+
+        public byte[] barcodeimg { get; set; }
     }
 }

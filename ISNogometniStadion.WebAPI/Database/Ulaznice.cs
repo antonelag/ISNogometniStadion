@@ -23,5 +23,6 @@ namespace ISNogometniStadion.WebAPI.Database
 
         public DateTime DatumKupnje { get; set; }
         public DateTime VrijemeKupnje { get; set; }
+        public byte[] barcodeimg { get; set; }
     }
 }

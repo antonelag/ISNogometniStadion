@@ -4,27 +4,49 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:ISNS.MA.ViewModels"
+             xmlns:local="clr-namespace:ISNS.MA.Converters"
              mc:Ignorable="d"
              x:Class="ISNS.MA.Views.UlaznicaInfoPage">
     <ContentPage.BindingContext>
         <viewModels:UlaznicaDetailVM></viewModels:UlaznicaDetailVM>
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Start" BackgroundColor="LightYellow"  >
-            <Label Text="Korisnik: "/>
-            <Label Text="{ Binding korisnik}" FontAttributes="Bold"/>
-            <Label Text="Utakmica: "/>
-            <Label Text="{Binding utakmica}" FontAttributes="Bold"/>
-            <Label Text="Oznaka sektora: "/>
-            <Label Text="{Binding sektor}" FontAttributes="Bold"/>
-            <Label Text="Oznaka sjedala: "/>
-            <Label Text="{ Binding Oznaka}" FontAttributes="Bold"/>
-            <Label Text="Datum kupnje: "/>
-            <Label Text="{ Binding Datum}" FontAttributes="Bold"/>
-            <Label Text="Vrijeme kupnje: "/>
-            <Label Text="{ Binding Vrijeme}" FontAttributes="Bold"/>
+        <StackLayout>
+        <StackLayout BackgroundColor="Red" HeightRequest="40">
+        </StackLayout>
+            <StackLayout VerticalOptions="Start" BackgroundColor="White"  >
+                <Label Text="{Binding utakmica}" FontAttributes="Bold" HorizontalOptions="Center" FontSize="Medium"/>
+                <Label Text="Ime i prezime: " FontAttributes="Bold" FontSize="Small"/>
+                <Label Text="{ Binding korisnik}"/>
 
+                <Label Text="Sektor: " FontAttributes="Bold" FontSize="Small"/>
+                <Label Text="{Binding sektor}"/>
+                <Label Text="Sjedalo: " FontAttributes="Bold" FontSize="Small"/>
+                <Label Text="{ Binding Oznaka}"/>
+                <Label Text="Datum kupnje: " FontAttributes="Bold" FontSize="Small"/>
+                <Label Text="{ Binding Datum}" />
+                <Label Text="Vrijeme kupnje: " FontSize="Small" FontAttributes="Bold"/>
+                <Label Text="{ Binding Vrijeme}"/>
 
+            </StackLayout>
+            <StackLayout BackgroundColor="red" HeightRequest="40">
+                
+            </StackLayout>
+            <StackLayout>
+                <Button x:Name="btn" Text="Get barcode" Clicked="Button_Clicked"></Button>
+            </StackLayout>
+            <StackLayout>
+                <Image HeightRequest="150" x:Name="barcode"></Image>
+            </StackLayout>
+         
+            
+        
+         
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -18,7 +18,7 @@ namespace ISNogometniStadion.WebAPI.Services
             _mapper = mapper;
         }
 
-        public TModel Insert(TInsert req)
+        public virtual TModel Insert(TInsert req)
         {
             var t = _mapper.Map<TDatabase>(req);
             _context.Add(t);

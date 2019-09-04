@@ -1,4 +1,5 @@
 ﻿using ISNogometniStadion.Model;
+using ISNogometniStadion.Model.Requests;
 using ISNS.MA.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -84,7 +85,6 @@ namespace ISNS.MA.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            
             await Navigation.PushAsync(new UlaznicaInfoPage(sjedalaViewModel.utakmica, sjedalaViewModel.sektor, this.odabranoSjedalo.Text,DateTime.Now, sjedalaViewModel.Korisnik));
         }
     }
