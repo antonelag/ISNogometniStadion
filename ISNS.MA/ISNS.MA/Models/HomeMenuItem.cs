@@ -10,7 +10,8 @@ namespace ISNS.MA.Models
         About,
         Utakmice,
         Stadioni,
-        Timovi
+        Timovi,
+        MojeUlaznice
     }
     public class HomeMenuItem
     {

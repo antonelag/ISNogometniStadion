@@ -45,6 +45,9 @@ namespace ISNS.MA.Views
                     case (int)MenuItemType.Timovi:
                         MenuPages.Add(id, new NavigationPage(new TimoviPage()));
                         break;
+                    case (int)MenuItemType.MojeUlaznice:
+                        MenuPages.Add(id, new NavigationPage(new MojeUlaznicePage()));
+                        break;
                 }
             }
 

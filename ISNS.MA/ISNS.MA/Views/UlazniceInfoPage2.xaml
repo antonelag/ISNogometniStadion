@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:ISNS.MA.ViewModels"
+             xmlns:local="clr-namespace:ISNS.MA.Converters"
+             mc:Ignorable="d"
+             x:Class="ISNS.MA.Views.UlazniceInfoPage2">
+    <ContentPage.BindingContext>
+        <viewModels:UlaznicaSimpleDetailVM></viewModels:UlaznicaSimpleDetailVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="Red" HeightRequest="40">
+            </StackLayout>
+            <StackLayout VerticalOptions="Start" BackgroundColor="White"  >
+                <Label Text="{Binding ulaznica.utakmica}" FontAttributes="Bold" HorizontalOptions="Center" FontSize="Medium"/>
+                <Label Text="Ime i prezime: " FontAttributes="Bold" FontSize="Small"/>
+                <Label Text="{ Binding ulaznica.korisnik}"/>
+
+                <Label Text="Sektor: " FontAttributes="Bold" FontSize="Small"/>
+                <Label Text="{Binding ulaznica.sektor}"/>
+                <Label Text="Sjedalo: " FontAttributes="Bold" FontSize="Small"/>
+                <Label Text="{ Binding ulaznica.Oznaka}"/>
+                <Label Text="Datum kupnje: " FontAttributes="Bold" FontSize="Small"/>
+                <Label Text="{ Binding ulaznica.DatumKupnje}" />
+                <Label Text="Vrijeme kupnje: " FontSize="Small" FontAttributes="Bold"/>
+                <Label Text="{ Binding ulaznica.VrijemeKupnje}"/>
+
+            </StackLayout>
+            <StackLayout BackgroundColor="red" HeightRequest="40">
+
+            </StackLayout>
+    
+            <StackLayout>
+                <Image HeightRequest="150" Source="{Binding ulaznica.barcodeimg,Converter={StaticResource imgConv}}"></Image>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

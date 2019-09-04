@@ -24,6 +24,7 @@ namespace ISNS.MA.Views
                   new HomeMenuItem {Id = MenuItemType.Utakmice, Title="Utakmice" },
                   new HomeMenuItem {Id = MenuItemType.Stadioni, Title="Stadioni" },
                   new HomeMenuItem {Id = MenuItemType.Timovi, Title="Timovi" },
+                  new HomeMenuItem{Id=MenuItemType.MojeUlaznice, Title="Moje ulaznice"}
 
 
             };
