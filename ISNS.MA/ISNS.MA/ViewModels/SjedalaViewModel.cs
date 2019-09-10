@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace ISNS.MA.ViewModels
 {
-    public class SjedalaViewModel:BaseViewModel
+    public class SjedalaViewModel : BaseViewModel
     {
         private APIService _apiServiceSjedala = new APIService("Sjedala");
         private APIService _apiServiceKorisnici = new APIService("Korisnici");
@@ -43,10 +43,10 @@ namespace ISNS.MA.ViewModels
             }
 
             var list = await _apiServiceSjedala.Get<List<Sjedalo>>(null);
-            BrojSjedala=0;
-            foreach(var sjedalo in list)
+            BrojSjedala = 0;
+            foreach (var sjedalo in list)
             {
-                if (sjedalo.SektorID == sektor.SektorID && sjedalo.Status==false)
+                if (sjedalo.SektorID == sektor.SektorID && sjedalo.Status == false)
                 {
                     SjedalaList.Add(sjedalo);
                     BrojSjedala++;

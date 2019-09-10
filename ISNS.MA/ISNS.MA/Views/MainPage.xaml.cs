@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using ISNS.MA.Models;
+using ISNogometniStadion.Model;
 
 namespace ISNS.MA.Views
 {
@@ -14,6 +15,7 @@ namespace ISNS.MA.Views
     [DesignTimeVisible(false)]
     public partial class MainPage : MasterDetailPage
     {
+        public APIService aPIServiceKorisnici = new APIService("Korisnici");
         Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
         public MainPage()
         {
@@ -47,6 +49,20 @@ namespace ISNS.MA.Views
                         break;
                     case (int)MenuItemType.MojeUlaznice:
                         MenuPages.Add(id, new NavigationPage(new MojeUlaznicePage()));
+                        break;
+                    case (int)MenuItemType.UrediProfil:
+                        Korisnik korisnik=new Korisnik();
+                        var ki = APIService.KorisnickoIme;
+                        List<Korisnik> lista = await aPIServiceKorisnici.Get<List<Korisnik>>(null);
+                        foreach(var k in lista)
+                        {
+                            if(k.korisnickoIme==ki)
+                            {
+                                korisnik = k;
+                                break;
+                            }
+                        }
+                        MenuPages.Add(id, new NavigationPage(new UrediProfilPage(korisnik)));
                         break;
                 }
             }

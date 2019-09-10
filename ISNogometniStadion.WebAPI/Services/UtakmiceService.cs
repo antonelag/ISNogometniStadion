@@ -29,6 +29,10 @@ namespace ISNogometniStadion.WebAPI.Services
             {
                 q = q.Where(s => s.LigaID == search.LigaID);
             }
+            if (search?.StadionID.HasValue == true)
+            {
+                q = q.Where(s => s.StadionID == search.StadionID);
+            }
             var list = q.ToList();
             return _mapper.Map<List<Utakmica>>(list);
             

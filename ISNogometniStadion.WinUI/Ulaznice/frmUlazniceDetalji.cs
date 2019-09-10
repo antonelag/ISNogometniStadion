@@ -152,8 +152,7 @@ namespace ISNogometniStadion.WinUI.Ulaznice
                     Ulaznica u = await _apiService.GetById<Ulaznica>(_id);
                     prosloSjedalo = u.SjedaloID;
                 }
-
-
+                Korisnik k = await _apiServiceKorisnici.GetById<Korisnik>(int.Parse(cbKorisnik.SelectedValue.ToString()));
                 var req = new UlazniceInsertRequest()
                 {
                     DatumKupnje = dtpDatum.Value.Date + dtpVrijeme.Value.TimeOfDay,

@@ -37,7 +37,7 @@
             <StackLayout BackgroundColor="red" HeightRequest="40">
 
             </StackLayout>
-    
+
             <StackLayout>
                 <Image HeightRequest="150" Source="{Binding ulaznica.barcodeimg,Converter={StaticResource imgConv}}"></Image>
             </StackLayout>

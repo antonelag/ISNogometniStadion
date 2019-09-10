@@ -28,6 +28,10 @@ namespace ISNogometniStadion.WebAPI.Services
             {
                 q = q.Where(s => (s.TribinaID==search.TribinaID));
             }
+            if (!string.IsNullOrWhiteSpace(search?.Naziv))
+            {
+                q = q.Where(s => s.Naziv == search.Naziv);
+            }
             var list = q.ToList();
             return _mapper.Map<List<Sektor>>(list);
             

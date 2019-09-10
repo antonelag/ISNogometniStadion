@@ -1,5 +1,6 @@
 ﻿using ISNogometniStadion.WinUI.Drzave;
 using ISNogometniStadion.WinUI.Gradovi;
+using ISNogometniStadion.WinUI.Izvješća;
 using ISNogometniStadion.WinUI.Korisnici;
 using ISNogometniStadion.WinUI.Lige;
 using ISNogometniStadion.WinUI.Sektori;
@@ -269,6 +270,14 @@ namespace ISNogometniStadion.WinUI
         {
 
             var frm = new frmSektoriDetalji();
+            frm.Show();
+        }
+
+        private void GodineIStadioniToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new frmGodineIStadioniIzvjesce();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
     }

@@ -11,10 +11,11 @@ using ISNogometniStadion.Model.Requests;
 using ISNogometniStadion.WebAPI.Database;
 using System.Drawing.Imaging;
 using QRCoder;
+using static Android.Bluetooth.BluetoothClass;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
-    public class UlazniceService : BaseCRUDService<Model.Ulaznica, Model.UlazniceSearchRequest, Database.Ulaznice,UlazniceInsertRequest,UlazniceInsertRequest>
+    public class UlazniceService : BaseCRUDService<Model.Ulaznica, Model.UlazniceSearchRequest, Database.Ulaznice, UlazniceInsertRequest, UlazniceInsertRequest>
     {
         private readonly ISNogometniStadionContext _context;
         private readonly IMapper _mapper;
@@ -29,31 +30,36 @@ namespace ISNogometniStadion.WebAPI.Services
         {
             var q = _context.Set<Database.Ulaznice>().AsQueryable();
 
-            if (search?.KorisnikID.HasValue==true)
+            if (search?.KorisnikID.HasValue == true)
             {
                 q = q.Where(s => s.Korisnik.KorisnikID == search.KorisnikID);
             }
+            if (search?.Godina.HasValue == true)
+            {
+                q = q.Where(s => s.DatumKupnje.Year == search.Godina);
+            }
+            if (search?.UtakmicaID.HasValue == true)
+            {
+                q = q.Where(s => s.UtakmicaID == search.UtakmicaID);
+            }
             var list = q.ToList();
             return _mapper.Map<List<Ulaznica>>(list);
-            
+
         }
         public override Ulaznica Insert(UlazniceInsertRequest req)
         {
-            string number = req.SjedaloID.ToString()+req.UtakmicaID.ToString() + GetVoucherNumber(8);
+            Korisnici k = _context.Korisnici.FirstOrDefault(s => s.KorisnikID == req.KorisnikID);
+            Korisnik korisnik = _mapper.Map<Korisnik>(k);
+            string number = korisnik.KorisnikPodaci + "$" + req.UtakmicaID + "$" + req.SjedaloID + "$" + req.DatumKupnje.ToString() + "$" + req.VrijemeKupnje.ToString() + "$" + GetVoucherNumber(8);
 
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(number, QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);
+
             Bitmap qrCodeImage = qrCode.GetGraphic(20);
             var bitmapBytes = BitmapToBytes(qrCodeImage);
-
-
-            //Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
-            //Image img = barcode.Draw(number, 50);
-            
-            //byte[] barcodeimg = imageService.ImageToBytes(img);
             req.barcodeimg = bitmapBytes;
-            
+
             return base.Insert(req);
         }
         private static byte[] BitmapToBytes(Bitmap img)

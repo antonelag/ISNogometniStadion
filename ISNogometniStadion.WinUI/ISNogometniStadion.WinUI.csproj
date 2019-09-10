@@ -112,6 +112,12 @@
     <Compile Include="Gradovi\frmGradoviDetalji.Designer.cs">
       <DependentUpon>frmGradoviDetalji.cs</DependentUpon>
     </Compile>
+    <Compile Include="Izvješća\frmGodineIStadioniIzvjesce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izvješća\frmGodineIStadioniIzvjesce.Designer.cs">
+      <DependentUpon>frmGodineIStadioniIzvjesce.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lige\frmLige.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gradovi\frmGradoviDetalji.resx">
       <DependentUpon>frmGradoviDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvješća\frmGodineIStadioniIzvjesce.resx">
+      <DependentUpon>frmGodineIStadioniIzvjesce.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Korisnici\frmKorisnici.resx">
       <DependentUpon>frmKorisnici.cs</DependentUpon>

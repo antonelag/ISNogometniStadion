@@ -28,7 +28,7 @@ namespace ISNS.MA.ViewModels
         public DateTime DatumKupnje { get; set; }
         [DataType(DataType.Time)]
         public DateTime VrijemeKupnje { get; set; }
-        public string Datum { get { return DatumKupnje.ToShortDateString(); } } 
+        public string Datum { get { return DatumKupnje.ToShortDateString(); } }
         public string Vrijeme { get { return DatumKupnje.ToShortTimeString(); } }
         private APIService _apiServiceSjedala = new APIService("Sjedala");
         private APIService _apiServiceKorisnici = new APIService("Korisnici");
@@ -44,7 +44,7 @@ namespace ISNS.MA.ViewModels
         public async Task Init()
         {
 
-                List<Sjedalo> listSjedala = await _apiServiceSjedala.Get<List<Sjedalo>>(null);
+            List<Sjedalo> listSjedala = await _apiServiceSjedala.Get<List<Sjedalo>>(null);
             foreach (var sjedalo in listSjedala)
             {
                 if (sjedalo.Oznaka == Oznaka && sjedalo.SektorID == Sektor.SektorID)
@@ -53,13 +53,14 @@ namespace ISNS.MA.ViewModels
                     break;
                 }
             }
+            Korisnik k = await _apiServiceKorisnici.GetById<Korisnik>(Korisnik.KorisnikID);
             UlazniceInsertRequest req = new UlazniceInsertRequest()
             {
-               DatumKupnje=DatumKupnje,
-               VrijemeKupnje=VrijemeKupnje,
-               KorisnikID=Korisnik.KorisnikID,
-               SjedaloID=Sjedalo.SjedaloID,
-               UtakmicaID=Utakmica.UtakmicaID
+                DatumKupnje = DatumKupnje,
+                VrijemeKupnje = VrijemeKupnje,
+                KorisnikID = Korisnik.KorisnikID,
+                SjedaloID = Sjedalo.SjedaloID,
+                UtakmicaID = Utakmica.UtakmicaID
             };
             Sjedalo s1 = await _apiServiceSjedala.GetById<Sjedalo>(req.SjedaloID);
             s1.Status = true;
@@ -72,8 +73,8 @@ namespace ISNS.MA.ViewModels
 
             try
             {
-                Ulaznica u= await _apiServiceUlaznice.Insert<Ulaznica>(req);
-                await _apiServiceSjedala.Update<dynamic>(req.SjedaloID,req2);
+                Ulaznica u = await _apiServiceUlaznice.Insert<Ulaznica>(req);
+                await _apiServiceSjedala.Update<dynamic>(req.SjedaloID, req2);
                 barcode = u.barcodeimg;
 
             }
@@ -84,7 +85,7 @@ namespace ISNS.MA.ViewModels
             }
 
         }
-     
+
 
 
     }
