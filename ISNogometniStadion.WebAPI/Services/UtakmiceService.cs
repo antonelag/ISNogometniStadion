@@ -24,7 +24,7 @@ namespace ISNogometniStadion.WebAPI.Services
         public override List<Utakmica> Get(UtakmiceeSearchRequest search)
         {
             var q = _context.Set<Database.Utakmice>().AsQueryable();
-            q=q.Where(s=>s.DatumOdigravanja>DateTime.Now);
+            q=q.Where(s=>s.DatumOdigravanja.Date>=DateTime.Now.Date);
             if (search?.LigaID.HasValue == true)
             {
                 q = q.Where(s => s.LigaID == search.LigaID);

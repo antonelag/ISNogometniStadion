@@ -165,12 +165,24 @@ namespace ISNogometniStadion.WinUI.Utakmice
 
 
                 //radi nemogucnosti nacina da na razini baze ogranicimo unos zamjene timova(gosti/domaci) a istog datuma
-
-                var t = await _apiService.Get<List<Model.Utakmica>>(null);
+                var stadionid = int.Parse(cbStadion.SelectedValue.ToString());
+;                var t = await _apiService.Get<List<Model.Utakmica>>(null);
+                var utakmiceSaIstimStadionom = await _apiService.Get<List<Model.Utakmica>>(new UtakmiceeSearchRequest() { StadionID = stadionid });
                 var domaciid = int.Parse(cbDomaci.SelectedValue.ToString());
                 var gostiid = int.Parse(cbGosti.SelectedValue.ToString());
                 var obrnutiisti = false;
                 var isti = false;
+                var postojecaUtakmica = false;
+                if (utakmiceSaIstimStadionom.Count != 0)
+                {
+                    foreach(var u in utakmiceSaIstimStadionom)
+                    {
+                        if (u.UtakmicaID != _id)
+                            postojecaUtakmica = true;
+                    }
+                }
+              
+
                 foreach (var a in t)
                 {
                     if ((a.GostujuciTimID == domaciid || a.DomaciTimID == gostiid) && DateTime.Compare(a.DatumOdigravanja.Date, dtpDatum.Value.Date) == 0 && a.UtakmicaID != _id)
@@ -190,7 +202,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
 
                 }
 
-                if (!obrnutiisti && !isti)
+                if (!obrnutiisti && !isti && !postojecaUtakmica)
                 {
 
                     req.DatumOdigravanja = dtpDatum.Value.Date + dtpVrijeme.Value.TimeOfDay;
@@ -219,13 +231,28 @@ namespace ISNogometniStadion.WinUI.Utakmice
                     if (_id.HasValue)
                     {
                         int i = (int)_id;
-                        await _apiService.Update<dynamic>(i, req);
-                    MessageBox.Show("Operacija uspjela");
+                        try
+                        {
+                            await _apiService.Update<dynamic>(i, req);
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Operacija nije uspjela");
+                        }
+                            MessageBox.Show("Operacija uspjela");
                     }
                     else
                     {
+                        try
+                        {
                         await _apiService.Insert<dynamic>(req);
-                        MessageBox.Show("Operacija uspjela");
+
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Operacija nije uspjela");
+                        }
+                            MessageBox.Show("Operacija uspjela");
 
                     }
                     this.Close();
