@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -88,6 +89,11 @@ namespace ISNogometniStadion.WinUI.Korisnici
                 errorProvider.SetError(txtIme, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
+            else if (!Regex.IsMatch(txtIme.Text, @"^[a-zA-Z ]+$"))
+            {
+                errorProvider.SetError(txtIme, Properties.Resources.NeispravanFormat);
+                e.Cancel = true;
+            }
             else
             {
                 errorProvider.SetError(txtIme, null);
@@ -101,7 +107,12 @@ namespace ISNogometniStadion.WinUI.Korisnici
                     errorProvider.SetError(txtPrezime, Properties.Resources.ObaveznoPolje);
                     e.Cancel = true;//zaustaviti procesiranje forme
                 }
-                else
+            else if (!Regex.IsMatch(txtPrezime.Text, @"^[a-zA-Z -]+$"))
+            {
+                errorProvider.SetError(txtPrezime, Properties.Resources.NeispravanFormat);
+                e.Cancel = true;
+            }
+            else
                 {
                     errorProvider.SetError(txtPrezime, null);
                 }
@@ -112,6 +123,11 @@ namespace ISNogometniStadion.WinUI.Korisnici
             if (string.IsNullOrEmpty(txtTelefon.Text))
             {
                 errorProvider.SetError(txtTelefon, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;//zaustaviti procesiranje forme
+            }
+            else if(!Regex.IsMatch(txtTelefon.Text, @"^[+]{1}\d{3}[ ]?\d{2}[ ]?\d{3}[ ]?\d{3}"))
+            {
+                errorProvider.SetError(txtTelefon, Properties.Resources.NeispravanFormat);
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
             else
@@ -140,6 +156,11 @@ namespace ISNogometniStadion.WinUI.Korisnici
                 errorProvider.SetError(txtEmail, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
+            else if (!Regex.IsMatch(txtEmail.Text, @"^[a-z0-9][-a-z0-9.!#$%&'*+-=?^_`{|}~\/]+@([-a-z0-9]+\.)+[a-z]{2,5}$"))
+            {
+                errorProvider.SetError(txtTelefon, Properties.Resources.NeispravanFormat);
+                e.Cancel = true;//zaustaviti procesiranje forme
+            }
             else
             {
                 errorProvider.SetError(txtEmail, null);
@@ -153,18 +174,30 @@ namespace ISNogometniStadion.WinUI.Korisnici
                 errorProvider.SetError(txtKorisnickoIme,Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
+        
+            else if (!Regex.IsMatch(txtKorisnickoIme.Text, @"^(?=.{8,40}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"))
+            {
+
+                errorProvider.SetError(txtKorisnickoIme, "Neispravan format ili dužina imena (8-40)");
+                e.Cancel = true;
+            }
             else
             {
                 errorProvider.SetError(txtKorisnickoIme, null);
             }
         }
-
         private void TxtLozinka_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtLozinka.Text))
             {
                 errorProvider.SetError(txtLozinka, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;//zaustaviti procesiranje forme
+            }
+            else if (txtLozinka.Text.Length<8)
+            {
+
+                errorProvider.SetError(txtLozinka, "Lozinka mora sadrzavati minimalno 8 znakova.");
+                e.Cancel = true;
             }
             else
             {

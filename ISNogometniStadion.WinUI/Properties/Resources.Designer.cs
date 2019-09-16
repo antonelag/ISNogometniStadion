@@ -61,6 +61,15 @@ namespace ISNogometniStadion.WinUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Neispravan format.
+        /// </summary>
+        public static string NeispravanFormat {
+            get {
+                return ResourceManager.GetString("NeispravanFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ovo polje je obavezno.
         /// </summary>
         public static string ObaveznoPolje {

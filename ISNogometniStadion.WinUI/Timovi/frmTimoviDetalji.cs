@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -78,6 +79,11 @@ namespace ISNogometniStadion.WinUI.Timovi
             if (string.IsNullOrEmpty(txtNaziv.Text))
             {
                 errorProvider1.SetError(txtNaziv, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+            }
+            else if (!Regex.IsMatch(txtNaziv.Text, @"^[a-zA-Z ]+$"))
+            {
+                errorProvider1.SetError(txtNaziv, Properties.Resources.NeispravanFormat);
                 e.Cancel = true;
             }
             else

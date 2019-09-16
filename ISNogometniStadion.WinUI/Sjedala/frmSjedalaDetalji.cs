@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -93,6 +94,11 @@ namespace ISNogometniStadion.WinUI.Sjedala
             if (string.IsNullOrWhiteSpace(txtOznaka.Text))
             {
                 errorProvider1.SetError(txtOznaka, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+            }
+            else if (!Regex.IsMatch(txtOznaka.Text, @"^[a-zA-Z0-9 ]+$"))//brojevi i/ili slova
+            {
+                errorProvider1.SetError(txtOznaka, Properties.Resources.NeispravanFormat);
                 e.Cancel = true;
             }
             else
