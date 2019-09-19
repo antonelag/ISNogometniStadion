@@ -62,6 +62,23 @@ namespace ISNogometniStadion.WebAPI.Services
 
             return base.Insert(req);
         }
+
+        public override Ulaznica Update(int id, UlazniceInsertRequest req)
+        {
+            Korisnici k = _context.Korisnici.FirstOrDefault(s => s.KorisnikID == req.KorisnikID);
+            Korisnik korisnik = _mapper.Map<Korisnik>(k);
+            string number = korisnik.KorisnikPodaci + "$" + req.UtakmicaID + "$" + req.SjedaloID + "$" + req.DatumKupnje.ToString() + "$" + req.VrijemeKupnje.ToString() + "$" + GetVoucherNumber(8);
+
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(number, QRCodeGenerator.ECCLevel.Q);
+            QRCode qrCode = new QRCode(qrCodeData);
+
+            Bitmap qrCodeImage = qrCode.GetGraphic(20);
+            var bitmapBytes = BitmapToBytes(qrCodeImage);
+            req.barcodeimg = bitmapBytes;
+
+            return base.Update(id, req);
+        }
         private static byte[] BitmapToBytes(Bitmap img)
         {
             using (MemoryStream stream = new MemoryStream())

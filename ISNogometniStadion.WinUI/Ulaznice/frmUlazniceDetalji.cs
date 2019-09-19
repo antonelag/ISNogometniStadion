@@ -19,6 +19,8 @@ namespace ISNogometniStadion.WinUI.Ulaznice
         private readonly APIService _apiServiceSjedala = new APIService("Sjedala");
         private readonly APIService _apiServiceSektori = new APIService("Sektori");
         private readonly APIService _apiServiceTribine = new APIService("Tribine");
+        private readonly APIService _apiServicePreporuke = new APIService("Preporuke");
+        private readonly APIService _apiServiceTimovi = new APIService("Timovi");
 
         private readonly APIService _apiServiceUtakmica = new APIService("Utakmice");
         private readonly APIService _apiServiceKorisnici = new APIService("Korisnici");
@@ -146,11 +148,16 @@ namespace ISNogometniStadion.WinUI.Ulaznice
         {
             if (this.ValidateChildren())
             {
+
                 int prosloSjedalo = -1;
+                int proslaUtakmica = -1;
+                int prosliKorisnik = -1;
                 if (_id.HasValue)
                 {
                     Ulaznica u = await _apiService.GetById<Ulaznica>(_id);
                     prosloSjedalo = u.SjedaloID;
+                    proslaUtakmica = u.UtakmicaID;
+                    prosliKorisnik = u.KorisnikID;
                 }
                 Korisnik k = await _apiServiceKorisnici.GetById<Korisnik>(int.Parse(cbKorisnik.SelectedValue.ToString()));
                 var req = new UlazniceInsertRequest()
@@ -180,6 +187,11 @@ namespace ISNogometniStadion.WinUI.Ulaznice
                     r2.SektorID = s2.SektorID;
                     r2.Status = s2.Status;
                 }
+
+
+              
+
+
                 if (_id.HasValue)
                 {
                     int i = (int)_id;
@@ -194,6 +206,114 @@ namespace ISNogometniStadion.WinUI.Ulaznice
                     await _apiServiceSjedala.Update<dynamic>(s1.SjedaloID, r1);
 
                 }
+
+
+
+                //spremanje u preporuke
+
+                //update
+                if (proslaUtakmica != -1 || prosliKorisnik!=-1)
+                {
+                    Utakmica proslaU = await _apiServiceUtakmica.GetById<Utakmica>(proslaUtakmica);
+                    List<Preporuka> preporuke = await _apiServicePreporuke.Get<List<Preporuka>>(new PreporukaSearchRequest()
+                    {
+                        KorisnikID = prosliKorisnik,
+                        PrviTimID = proslaU.DomaciTimID,
+                        DrugiTimID = proslaU.GostujuciTimID
+                    });
+                    foreach (var p in preporuke)
+                    {
+                        p.BrojKupljenihUlaznica--;
+                        await _apiServicePreporuke.Update<Preporuka>(p.PreporukaID, new PreporukaInsertRequest()
+                        {
+                            BrojKupljenihUlaznica = p.BrojKupljenihUlaznica,
+                            KorisnikID = p.KorisnikID,
+                            TimID = p.TimID
+                        });
+                    }
+
+                }
+
+                //insert
+                Utakmica utakmica = await _apiServiceUtakmica.GetById<Utakmica>(req.UtakmicaID);
+                var prviTim = utakmica.DomaciTimID;
+                var drugiTim = utakmica.GostujuciTimID;
+                List<Preporuka> rezultat = await _apiServicePreporuke.Get<List<Preporuka>>(new PreporukaSearchRequest() { KorisnikID = k.KorisnikID, PrviTimID = prviTim, DrugiTimID = drugiTim });
+
+                if (rezultat.Count == 1)
+                {
+                    rezultat[0].BrojKupljenihUlaznica++;
+                    PreporukaInsertRequest reqP = null;
+                    if (rezultat[0].TimID == prviTim)
+                    {
+                        reqP = new PreporukaInsertRequest
+                        {
+                            TimID = drugiTim,
+                            BrojKupljenihUlaznica = 1,
+                            KorisnikID = k.KorisnikID
+                        };
+
+                    }
+                    else
+                    {
+                        reqP = new PreporukaInsertRequest
+                        {
+                            TimID = prviTim,
+                            BrojKupljenihUlaznica = 1,
+                            KorisnikID = k.KorisnikID
+                        };
+                    }
+
+
+                    PreporukaInsertRequest reqPU = new PreporukaInsertRequest
+                    {
+                        TimID = rezultat[0].TimID,
+                        KorisnikID = rezultat[0].KorisnikID,
+                        BrojKupljenihUlaznica = rezultat[0].BrojKupljenihUlaznica
+                    };
+                    await _apiServicePreporuke.Insert<Preporuka>(reqP);
+                    await _apiServicePreporuke.Update<Preporuka>(rezultat[0].PreporukaID, reqPU);
+
+                }
+                else if (rezultat.Count == 2)
+                {
+                    PreporukaInsertRequest req1 = new PreporukaInsertRequest
+                    {
+                        TimID = rezultat[0].TimID,
+                        BrojKupljenihUlaznica = ++rezultat[0].BrojKupljenihUlaznica,
+                        KorisnikID = rezultat[0].KorisnikID
+                    };
+                    PreporukaInsertRequest req2 = new PreporukaInsertRequest
+                    {
+                        TimID = rezultat[1].TimID,
+                        BrojKupljenihUlaznica = ++rezultat[1].BrojKupljenihUlaznica,
+                        KorisnikID = rezultat[1].KorisnikID
+                    };
+
+                    await _apiServicePreporuke.Update<Preporuka>(rezultat[0].PreporukaID, req1);
+                    await _apiServicePreporuke.Update<Preporuka>(rezultat[1].PreporukaID, req2);
+
+                }
+                else//ako je 0
+                {
+                    PreporukaInsertRequest req1 = new PreporukaInsertRequest
+                    {
+                        TimID = prviTim,
+                        BrojKupljenihUlaznica = 1,
+                        KorisnikID = k.KorisnikID
+                    };
+                    PreporukaInsertRequest req2 = new PreporukaInsertRequest
+                    {
+                        TimID = drugiTim,
+                        BrojKupljenihUlaznica = 1,
+                        KorisnikID = k.KorisnikID
+                    };
+
+                    await _apiServicePreporuke.Insert<Preporuka>(req1);
+                    await _apiServicePreporuke.Insert<Preporuka>(req2);
+                }
+
+
 
                 MessageBox.Show("Operacija uspjela");
                 this.Close();

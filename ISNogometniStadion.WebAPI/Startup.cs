@@ -91,7 +91,7 @@ namespace ISNogometniStadion.WebAPI
             services.AddScoped<ICRUDService<Model.Sektor, SektoriSearchRequest, SektoriInsertRequest, SektoriInsertRequest>, SektoriService>();
             services.AddScoped<ICRUDService<Model.Sjedalo, SjedalaSearchRequest, SjedalaInsertRequest, SjedalaInsertRequest>, SjedalaService>();
             services.AddScoped<ICRUDService<Model.Utakmica, UtakmiceeSearchRequest, UtakmiceInsertRequest, UtakmiceInsertRequest>, UtakmiceService>();
-
+            services.AddScoped<ICRUDService<Model.Preporuka, PreporukaSearchRequest, PreporukaInsertRequest, PreporukaInsertRequest>, PreporukeService>();
 
             var conn = @"Server = (localdb); Database = ISNogometniStadionDB; Trusted_Connection = True; ";
             services.AddDbContext<ISNogometniStadionContext>(options => options.UseSqlServer(conn));

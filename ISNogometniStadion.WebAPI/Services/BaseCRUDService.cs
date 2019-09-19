@@ -26,7 +26,7 @@ namespace ISNogometniStadion.WebAPI.Services
             return _mapper.Map<TModel>(t);
         }
 
-        public TModel Update(int id, TUpdate req)
+        public virtual TModel Update(int id, TUpdate req)
         {
             var entity = _context.Set<TDatabase>().Find(id);
             _context.Set<TDatabase>().Attach(entity);

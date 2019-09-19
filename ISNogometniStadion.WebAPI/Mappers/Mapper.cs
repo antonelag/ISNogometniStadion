@@ -28,6 +28,8 @@ namespace ISNogometniStadion.WebAPI.Mappers
             CreateMap<Database.Tribine, Model.Requests.TribineInsertRequest>().ReverseMap();
             CreateMap<Database.Sektori, Model.Sektor>();
             CreateMap<Database.Sektori, Model.Requests.SektoriInsertRequest>().ReverseMap();
+            CreateMap<Database.Preporuke, Model.Preporuka>();
+            CreateMap<Database.Preporuke, Model.Requests.PreporukaInsertRequest>().ReverseMap();
 
 
 

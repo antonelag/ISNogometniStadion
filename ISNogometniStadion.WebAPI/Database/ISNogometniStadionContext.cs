@@ -30,6 +30,7 @@ namespace ISNogometniStadion.WebAPI.Database
         public  DbSet<Utakmice> Utakmice { get; set; }
         public  DbSet<Sektori> Sektori { get; set; }
         public DbSet<Lige> Lige { get; set; }
+        public DbSet<Preporuke> Preporuke { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server = localhost; Database =ISNogometniStadionDB; Trusted_Connection = True; ");

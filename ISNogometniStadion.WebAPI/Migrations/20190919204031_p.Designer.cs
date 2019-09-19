@@ -4,14 +4,16 @@ using ISNogometniStadion.WebAPI.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ISNogometniStadion.WebAPI.Migrations
 {
     [DbContext(typeof(ISNogometniStadionContext))]
-    partial class ISNogometniStadionContextModelSnapshot : ModelSnapshot
+    [Migration("20190919204031_p")]
+    partial class p
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,23 +97,6 @@ namespace ISNogometniStadion.WebAPI.Migrations
                     b.HasIndex("DrzavaID");
 
                     b.ToTable("Lige");
-                });
-
-            modelBuilder.Entity("ISNogometniStadion.WebAPI.Database.Preporuke", b =>
-                {
-                    b.Property<int>("PreporukaID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BrojKupljenihUlaznica");
-
-                    b.Property<int>("KorisnikID");
-
-                    b.Property<int>("TimID");
-
-                    b.HasKey("PreporukaID");
-
-                    b.ToTable("Preporuke");
                 });
 
             modelBuilder.Entity("ISNogometniStadion.WebAPI.Database.Sektori", b =>
