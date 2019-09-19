@@ -38,7 +38,8 @@
                 
             </StackLayout>
             <StackLayout>
-                <Button x:Name="btn" Text="Get barcode" Clicked="Button_Clicked"></Button>
+                <Label HorizontalOptions="CenterAndExpand">Ulaznica sa bar kodom se nalazi u vašim ulaznicama.</Label>
+                <!--<Button x:Name="btn" Text="Idi u moje ulaznice" Clicked="Button_Clicked"></Button>-->
             </StackLayout>
             <StackLayout>
                 <Image HeightRequest="150" x:Name="barcode"></Image>

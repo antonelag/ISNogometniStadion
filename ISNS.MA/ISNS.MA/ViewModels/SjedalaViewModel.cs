@@ -44,6 +44,7 @@ namespace ISNS.MA.ViewModels
 
             var list = await _apiServiceSjedala.Get<List<Sjedalo>>(null);
             BrojSjedala = 0;
+            SjedalaList.Clear();
             foreach (var sjedalo in list)
             {
                 if (sjedalo.SektorID == sektor.SektorID && sjedalo.Status == false)

@@ -28,6 +28,7 @@ namespace ISNS.MA.ViewModels
         {
 
             var list = await _apiServiceGradovi.Get<List<Grad>>(null);
+            GradoviList.Clear();
             foreach(var g in list)
             {
                 GradoviList.Add(g);

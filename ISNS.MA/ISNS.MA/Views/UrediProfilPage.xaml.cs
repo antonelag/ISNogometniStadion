@@ -88,8 +88,7 @@ namespace ISNS.MA.Views
                     };
                     await _apiServiceKorisnici.Update<dynamic>(korisnikVM.korisnik.KorisnikID, req);
                     await DisplayAlert("OK", "Uspješno uneseni podaci", "OK");
-                    if (APIService.Lozinka != req.lozinka || APIService.KorisnickoIme != req.korisnickoIme)
-                        await Navigation.PushAsync(new LoginPage());
+                   
                 }
                 catch (Exception err)
                 {

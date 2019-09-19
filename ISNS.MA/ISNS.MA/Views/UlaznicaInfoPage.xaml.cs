@@ -15,7 +15,7 @@ namespace ISNS.MA.Views
         {
             InitializeComponent();
             BindingContext = ulaznicaDetailVM = new UlaznicaDetailVM() { Utakmica = utakmica, Sektor = sektor, Korisnik = korisnik, korisnik = korisnik.KorisnikPodaci, Oznaka = OznakaSjedala, DatumKupnje = datum, VrijemeKupnje = datum, sektor = sektor.SektorPodaci, utakmica = utakmica.UtakmicaPodaci };
-           
+            
         }
 
 
@@ -28,10 +28,11 @@ namespace ISNS.MA.Views
 
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            this.barcode.Source = ImageSource.FromStream(()=>new MemoryStream(ulaznicaDetailVM.barcode));
-            this.btn.IsEnabled = false;
-        }
+        //private void Button_Clicked(object sender, EventArgs e)
+        //{
+        //    //this.barcode.Source = ImageSource.FromStream(()=>new MemoryStream(ulaznicaDetailVM.barcode));
+        //    //this.btn.IsEnabled = false;
+        //    Navigation.PushAsync(new MojeUlaznicePage());
+        //}
     }
 }

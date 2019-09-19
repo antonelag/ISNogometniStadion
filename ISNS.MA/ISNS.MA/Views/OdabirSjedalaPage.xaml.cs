@@ -28,6 +28,7 @@ namespace ISNS.MA.Views
             base.OnAppearing();
             await sjedalaViewModel.Init();
             var brSjedala = sjedalaViewModel.BrojSjedala;
+            this.gridSjedala.Children.Clear();
             this.gridSjedala.RowDefinitions = new RowDefinitionCollection();
             this.gridSjedala.ColumnDefinitions = new ColumnDefinitionCollection();
             var brR = 0;
@@ -86,6 +87,7 @@ namespace ISNS.MA.Views
         private async void Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new UlaznicaInfoPage(sjedalaViewModel.utakmica, sjedalaViewModel.sektor, this.odabranoSjedalo.Text,DateTime.Now, sjedalaViewModel.Korisnik));
+            this.nastavidalje.IsVisible = false;
         }
     }
 }

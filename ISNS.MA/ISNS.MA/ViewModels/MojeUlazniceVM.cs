@@ -37,6 +37,7 @@ namespace ISNS.MA.ViewModels
                 }
             }
             var list = await _apiServiceUlaznice.Get<IEnumerable<Ulaznica>>(new UlazniceSearchRequest() { KorisnikID=korisnik.KorisnikID});
+            UlazniceList.Clear();
                 foreach (var ulaznica in list)
                 {
                 
