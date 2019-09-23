@@ -24,7 +24,11 @@ namespace ISNogometniStadion.WebAPI.Services
         {
             var q = _context.Set<Database.Preporuke>().AsQueryable();
 
-            if (search?.KorisnikID.HasValue==true)
+            if (search?.KorisnikID.HasValue == true)
+            {
+                q = q.Where(s => s.KorisnikID == search.KorisnikID).OrderByDescending(s=>s.BrojKupljenihUlaznica);
+            }
+            if (search?.KorisnikID.HasValue==true && search?.PrviTimID.HasValue==true && search?.DrugiTimID.HasValue==true)
             {
                 q = q.Where(s => s.KorisnikID==search.KorisnikID &&(s.TimID==search.PrviTimID || s.TimID==search.DrugiTimID));
             }
