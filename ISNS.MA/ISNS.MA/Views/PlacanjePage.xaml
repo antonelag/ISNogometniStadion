@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:ISNS.MA.ViewModels"
+             mc:Ignorable="d"
+             x:Class="ISNS.MA.Views.PlacanjePage">
+    <ContentPage.BindingContext>
+        <viewModels:CreditCardVM></viewModels:CreditCardVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <StackLayout x:Name="creditcard">
+            <Entry TextChanged="Ccn_TextChanged" x:Name="ccn" Placeholder="Enter your credit card number"></Entry>
+            <StackLayout Orientation="Horizontal">
+                    <Entry TextChanged="Exm_TextChanged" x:Name="exm" Placeholder="Expiry month"></Entry>
+                    <Entry TextChanged="Exy_TextChanged" x:Name="exy" Placeholder="Expiry year"></Entry>
+                <Entry TextChanged="Cvv_TextChanged" x:Name="cvv" Placeholder="CVV"></Entry>
+            </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <Button x:Name="btn" Text="Uplati iznos" Clicked="Button_Clicked"></Button>
+            </StackLayout>
+            <StackLayout>
+                <Label x:Name="greska"></Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

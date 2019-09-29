@@ -37,7 +37,8 @@ namespace ISNS.MA.ViewModels
             IsBusy = true;
             APIService.KorisnickoIme = KorisnickoIme;
             APIService.Lozinka = Lozinka;
-
+            PaymentAPIService.KorisnickoIme = KorisnickoIme;
+            PaymentAPIService.Lozinka = Lozinka;
             try
             {
                 await _service.Get<dynamic>(null);
