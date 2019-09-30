@@ -21,8 +21,8 @@
         </ScrollView>
         <StackLayout x:Name="nastavidalje" IsVisible="False">
                 <Label x:Name="odabranoSjedalo" IsVisible="False"></Label>
-                <Label x:Name="poruka" BackgroundColor="LightYellow" HeightRequest="50" FontSize="20" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" LineBreakMode="WordWrap" ></Label>
-            <Button Text="Nastavi dalje" Clicked="Button_Clicked" BackgroundColor="Yellow"></Button>
+                <Label x:Name="poruka" BackgroundColor="LightGreen" HeightRequest="50" FontSize="20" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" LineBreakMode="WordWrap" ></Label>
+            <Button Text="Nastavi dalje" Clicked="Button_Clicked" BackgroundColor="LightGreen"></Button>
         </StackLayout>
         </StackLayout>
     </ContentPage.Content>

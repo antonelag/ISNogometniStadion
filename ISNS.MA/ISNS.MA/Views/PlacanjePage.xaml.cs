@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using CreditCardVM = ISNS.MA.ViewModels.CreditCardVM;
 
 namespace ISNS.MA.Views
 {
@@ -68,11 +69,12 @@ namespace ISNS.MA.Views
                     this.exy.Text = "";
                     this.exm.Text = "";
                     this.cvv.Text = "";
+                    this.greska.IsVisible = false;
                     await Navigation.PushAsync(new PlacanjeInfoPage(CreditCardVM, UlaznicaDetailVM));
                 }
                 else
                 {
-                    this.greska.Text = "Neispravni podaci";
+                    this.greska.Text = "Neispravni podaci.";
                     this.btn.IsEnabled = true;
                 }
 

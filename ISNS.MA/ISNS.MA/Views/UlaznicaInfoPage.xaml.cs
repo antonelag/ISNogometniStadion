@@ -11,22 +11,29 @@ namespace ISNS.MA.Views
     public partial class UlaznicaInfoPage : ContentPage
     {
         UlaznicaDetailVM ulaznicaDetailVM = null;
-        public UlaznicaInfoPage(Utakmica utakmica, Sektor sektor, string OznakaSjedala, DateTime datum, Korisnik korisnik)
+        public UlaznicaInfoPage(UlaznicaDetailVM vm)
         {
             InitializeComponent();
-            BindingContext = ulaznicaDetailVM = new UlaznicaDetailVM() { Utakmica = utakmica, Sektor = sektor, Korisnik = korisnik, korisnik = korisnik.KorisnikPodaci, Oznaka = OznakaSjedala, DatumKupnje = datum, VrijemeKupnje = datum, sektor = sektor.SektorPodaci, utakmica = utakmica.UtakmicaPodaci };
-            
+            BindingContext = ulaznicaDetailVM = vm;
+            NavigationPage.SetHasBackButton(this, false);
         }
 
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            
-            await ulaznicaDetailVM.Init();
+
+           // await ulaznicaDetailVM.Init();
 
 
         }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopToRootAsync();
+        }
+
+      
 
         //private void Button_Clicked(object sender, EventArgs e)
         //{

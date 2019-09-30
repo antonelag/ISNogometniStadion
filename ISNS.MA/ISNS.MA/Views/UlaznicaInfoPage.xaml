@@ -42,6 +42,9 @@
                 <!--<Button x:Name="btn" Text="Idi u moje ulaznice" Clicked="Button_Clicked"></Button>-->
             </StackLayout>
             <StackLayout>
+                <Button Text="Natrag na početnu" Clicked="Button_Clicked" BackgroundColor="LightGreen"></Button>
+            </StackLayout>
+            <StackLayout>
                 <Image HeightRequest="150" x:Name="barcode"></Image>
             </StackLayout>
          

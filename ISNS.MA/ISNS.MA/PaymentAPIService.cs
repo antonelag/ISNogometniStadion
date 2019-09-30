@@ -1,10 +1,12 @@
 ﻿using Flurl.Http;
 using ISNogometniStadion.Model;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Application = Xamarin.Forms.Application;
 
 namespace ISNS.MA
 {
@@ -29,26 +31,20 @@ namespace ISNS.MA
 
        
 
-        public async Task<T> Post<T>(object request)
+        public async Task<StripeError> Post<T>(object request)
         {
             var url = $"{_apiUrl}/{_route}";
 
             try
             {
-                return await url.WithBasicAuth(KorisnickoIme, Lozinka).PostJsonAsync(request).ReceiveJson<T>();
+                var ret= await url.WithBasicAuth(KorisnickoIme, Lozinka).PostJsonAsync(request).ReceiveString();
+                return new StripeError() { Message=ret};
             }
             catch (FlurlHttpException ex)
             {
-                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+                var errors = await ex.GetResponseStringAsync();
 
-                var stringBuilder = new StringBuilder();
-                foreach (var error in errors)
-                {
-                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
-                }
-                await Application.Current.MainPage.DisplayAlert("Greška", "Niste autentificirani", "OK");
-
-                return default(T);
+                return new StripeError() { Message = errors };
             }
 
         }

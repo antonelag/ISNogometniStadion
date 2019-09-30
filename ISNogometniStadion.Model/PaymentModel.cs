@@ -6,7 +6,6 @@ namespace ISNogometniStadion.Model
 {
     public class PaymentModel
     {
-        public string Token { get; set; }
-        public decimal Amount { get; set; }
+        public CreditCardVM CreditCard { get; set; }
     }
 }

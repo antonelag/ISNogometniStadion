@@ -17,6 +17,7 @@ namespace ISNS.MA.ViewModels
         public string CVV { get; set; }
         public decimal amount { get; set; }
         public bool uspjesno { get; set; }
+        public string msg { get; set; }
         PaymentAPIService PaymentAPIService = new PaymentAPIService("Payment");
         public CreditCardVM()
         {
@@ -26,23 +27,28 @@ namespace ISNS.MA.ViewModels
         public ICommand InitCommand { get; set; }
         public async Task Init()
         {
-            StripeConfiguration.ApiKey = ("pk_test_DaPhATJ0sS0GJYJnXbgubW6C00oJqhvxio");
-
-            var tokenOptions = new Stripe.TokenCreateOptions()
+            PaymentModel vm = new PaymentModel()
             {
-                Card = new Stripe.CreditCardOptions()
+                CreditCard=new ISNogometniStadion.Model.CreditCardVM()
                 {
-                    Number = CreditCardNumber,
-                    ExpYear = ExpYear,
-                    ExpMonth = ExpMonth,
-                    Cvc = CVV
+                amount = amount,
+                CreditCardNumber = CreditCardNumber,
+                CVV = CVV,
+                ExpMonth = ExpMonth,
+                ExpYear = ExpYear
                 }
+                
             };
-            var tokenService = new Stripe.TokenService();
-            Stripe.Token stripeToken = tokenService.Create(tokenOptions);
+            StripeError e = await PaymentAPIService.Post<StripeError>(vm);
+            msg = e.Message;
+            if (msg == null)
+                msg = "Neuspješna uplata";
 
-            string token= stripeToken.Id; // This is the token
-            uspjesno =await PaymentAPIService.Post<bool>(new PaymentModel() { Amount = amount, Token = token });
+            //--
+            if (msg == "Uspješna uplata")
+                uspjesno = true;
+            else
+                uspjesno = false;
         }
     }
 

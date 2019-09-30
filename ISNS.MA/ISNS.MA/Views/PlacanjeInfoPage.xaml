@@ -7,12 +7,12 @@
              x:Class="ISNS.MA.Views.PlacanjeInfoPage">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout x:Name="success" IsVisible="False">
-                <Label>Uspjesno ste izvrsili uplatu!</Label>
-                <Button Text="Provjerite informacije ulaznice"></Button>
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="success" IsVisible="False">
+                <Label HorizontalOptions="CenterAndExpand" x:Name="successmsg"></Label>
+                <Button Text="Provjerite informacije ulaznice" Clicked="Button_Clicked" BackgroundColor="LightGreen"></Button>
             </StackLayout>
-            <StackLayout x:Name="fail" IsVisible="False">
-                <Label>Uplata nije uspjela!</Label>
+            <StackLayout  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="fail" IsVisible="False">
+                <Label HorizontalOptions="CenterAndExpand" x:Name="failmsg"></Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

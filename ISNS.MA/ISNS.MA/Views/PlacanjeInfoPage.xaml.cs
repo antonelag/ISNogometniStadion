@@ -24,14 +24,35 @@ namespace ISNS.MA.Views
 
         protected async override void OnAppearing()
         {
-            this.success.IsVisible = false;
-            this.fail.IsVisible = false;
+        
             base.OnAppearing();
             await ccvm.Init();
             if (ccvm.uspjesno)
+            {
+                try
+                {
+                    await detailVM.Init();
+
+                }
+                catch (Exception)
+                {
+                    this.fail.IsVisible = true;
+                    this.failmsg.Text = "Neuspješna uplata.";
+                }
                 this.success.IsVisible = true;
-            else
+                this.successmsg.Text = ccvm.msg;
+
+            }
+
+            else { 
                 this.fail.IsVisible = true;
+                this.failmsg.Text = ccvm.msg;
+        }
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new UlaznicaInfoPage(detailVM));
         }
     }
 }
