@@ -19,6 +19,10 @@
 
             <Button Command="{Binding LoginCommand}"  HorizontalOptions="FillAndExpand" Text="Login"></Button>
             <Label IsVisible="{Binding IsBusy}" Text="..."></Label>
+        <StackLayout>
+            <Button Text="Registriraj se" Clicked="Button_Clicked"
+                    BackgroundColor="LightGreen"></Button>
+        </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

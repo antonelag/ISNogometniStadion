@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModel="clr-namespace:ISNS.MA.ViewModels"
+             mc:Ignorable="d"
+             x:Class="ISNS.MA.Views.RegistrationPage">
+    <ContentPage.BindingContext>
+        <viewModel:RegistrationViewModel></viewModel:RegistrationViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" Padding="10" VerticalOptions="CenterAndExpand">
+            <Label Text="Ime"></Label>
+            <Entry x:Name="Ime" Text="{ Binding Ime}"></Entry>
+            <Label Text="Prezime"></Label>
+            <Entry x:Name="Prezime" Text="{ Binding Prezime}"></Entry>
+            <Label Text="Datum rodjenja"></Label>
+            <DatePicker x:Name="DatumRodjenja"></DatePicker>
+            <Label Text="Telefon"></Label>
+            <Entry x:Name="Telefon" Text="{ Binding Telefon}"></Entry>
+            <Label Text="Email"></Label>
+            <Entry x:Name="Email" Text="{ Binding Email}"></Entry>
+            <Label Text="Grad"></Label>
+            <Picker x:Name="Gradovi" ItemsSource="{Binding GradoviList}" ItemDisplayBinding="{Binding Naziv}"></Picker>
+            <Label Text="Korisničko ime"></Label>
+            <Entry x:Name="KorisnickoIme" Text="{Binding KorisnickoIme}"></Entry>
+            <Label  Text="Lozinka"></Label>
+            <Entry x:Name="Lozinka" Text="{Binding Lozinka}" IsPassword="True"></Entry>
+            <Label  Text="Potvrda lozinke"></Label>
+            <Entry x:Name="PotvrdaLozinke" Text="{Binding PotvrdaLozinke}" IsPassword="True"></Entry>
+
+            <Button Clicked="Button_Clicked"  HorizontalOptions="FillAndExpand" Text="Registriraj se" BackgroundColor="LightGreen"></Button>
+            <Label IsVisible="{Binding IsBusy}" Text="..."></Label>
+            <StackLayout>
+             
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

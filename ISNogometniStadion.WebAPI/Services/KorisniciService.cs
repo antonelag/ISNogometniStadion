@@ -30,6 +30,12 @@ namespace ISNogometniStadion.WebAPI.Services
                 query = query.Where(x => x.Ime.StartsWith(request.ImePrezime));
             }
 
+            if (!string.IsNullOrWhiteSpace(request?.KorisnickoIme))
+            {
+                query = query.Where(x => x.korisnickoIme.StartsWith(request.KorisnickoIme));
+            }
+
+
 
 
             var list = query.ToList();

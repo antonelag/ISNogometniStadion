@@ -8,5 +8,6 @@ namespace ISNogometniStadion.Model
     public class KorisniciSearchRequest
     {
         public string ImePrezime { get; set; }
+        public string KorisnickoIme { get; set; }
     }
 }
