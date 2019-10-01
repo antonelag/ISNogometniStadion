@@ -31,6 +31,7 @@ namespace ISNS.MA.Views
             {
                 try
                 {
+                    detailVM.Iznos = ccvm.amount;
                     await detailVM.Init();
 
                 }

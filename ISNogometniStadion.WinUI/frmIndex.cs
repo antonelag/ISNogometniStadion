@@ -9,6 +9,7 @@ using ISNogometniStadion.WinUI.Stadioni;
 using ISNogometniStadion.WinUI.Timovi;
 using ISNogometniStadion.WinUI.Tribine;
 using ISNogometniStadion.WinUI.Ulaznice;
+using ISNogometniStadion.WinUI.Uplate;
 using ISNogometniStadion.WinUI.Utakmice;
 using System;
 using System.Collections.Generic;
@@ -280,5 +281,15 @@ namespace ISNogometniStadion.WinUI
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
+
+        private void PretražiToolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            var frm = new frmUplate();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+       
     }
 }

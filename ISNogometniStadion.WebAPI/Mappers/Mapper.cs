@@ -30,8 +30,13 @@ namespace ISNogometniStadion.WebAPI.Mappers
             CreateMap<Database.Sektori, Model.Requests.SektoriInsertRequest>().ReverseMap();
             CreateMap<Database.Preporuke, Model.Preporuka>();
             CreateMap<Database.Preporuke, Model.Requests.PreporukaInsertRequest>().ReverseMap();
+            CreateMap<Database.Uplate, Model.Uplata>();
+            CreateMap<Database.Uplate,Model.Uplata>()
+                .ForMember(s => s.UplataPodaci, a => a.MapFrom(b => new Database.ISNogometniStadionContext()
+                .Ulaznice.Include(s=>s.Utakmica.DomaciTim).Include(s=>s.Utakmica.GostujuciTim).Include(s=>s.Korisnik).FirstOrDefault(s=>s.UlaznicaID==b.UlaznicaID).UlaznicaPodaci));
 
-
+            CreateMap<Database.Uplate, Model.Requests.UplateInsertRequest>().ReverseMap();
+         
 
             CreateMap<Database.Ulaznice, Model.Ulaznica>();
             CreateMap<Database.Ulaznice, Model.Requests.UlazniceInsertRequest>().ReverseMap();

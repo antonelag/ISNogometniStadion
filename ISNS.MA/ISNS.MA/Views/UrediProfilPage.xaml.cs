@@ -29,6 +29,7 @@ namespace ISNS.MA.Views
         {
             base.OnAppearing();
             await korisnikVM.Init();
+            this.gradovi.SelectedItem = korisnikVM.GradoviList.FirstOrDefault(s => s.GradID == korisnikVM.korisnik.gradID);
         }
 
         private async void Button_Clicked(object sender, EventArgs e)

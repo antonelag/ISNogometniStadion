@@ -24,6 +24,7 @@ namespace ISNS.MA.ViewModels
         public string sektor { get; set; }
         public Korisnik Korisnik { get; set; }
         public string korisnik { get; set; }
+        public decimal Iznos { get; set; }
         [DataType(DataType.Date)]
         public DateTime DatumKupnje { get; set; }
         [DataType(DataType.Time)]
@@ -35,6 +36,7 @@ namespace ISNS.MA.ViewModels
         private APIService _apiServiceUlaznice = new APIService("Ulaznica");
         private APIService _apiServicePreporuke = new APIService("Preporuke");
         private APIService _apiServiceUtakmica = new APIService("Utakmice");
+        private APIService _apiServiceUplate = new APIService("Uplate");
 
         public Ulaznica ulaznica { get; set; }
         public byte[] barcode { get; set; }
@@ -74,19 +76,36 @@ namespace ISNS.MA.ViewModels
                 Status = s1.Status
             };
 
+            Ulaznica u = null;
             try
             {
-                Ulaznica u = await _apiServiceUlaznice.Insert<Ulaznica>(req);
+                 u = await _apiServiceUlaznice.Insert<Ulaznica>(req);
                 await _apiServiceSjedala.Update<dynamic>(req.SjedaloID, req2);
                 barcode = u.barcodeimg;
 
             }
             catch (Exception)
             {
+                throw;
+                
+            }
+            //SPREMANJE UPLATA
 
+            UplateInsertRequest requestUplate = new UplateInsertRequest()
+            {
+                Iznos = Iznos,
+                UlaznicaID = u.UlaznicaID
+            };
+            try
+            {
+                await _apiServiceUplate.Insert<Uplata>(requestUplate);
+            }
+            catch (Exception ex)
+            {
                 throw;
             }
 
+            //SPREMANJE PREPORUKA
             Utakmica utakmica = await _apiServiceUtakmica.GetById<Utakmica>(req.UtakmicaID);
             var prviTim = utakmica.DomaciTimID;
             var drugiTim = utakmica.GostujuciTimID;

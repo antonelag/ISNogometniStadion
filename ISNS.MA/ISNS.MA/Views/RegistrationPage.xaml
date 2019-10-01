@@ -10,9 +10,10 @@
         <viewModel:RegistrationViewModel></viewModel:RegistrationViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" Padding="10" VerticalOptions="CenterAndExpand">
+        <StackLayout  HorizontalOptions="FillAndExpand" Padding="30" VerticalOptions="CenterAndExpand">
+         
             <Label Text="Ime"></Label>
-            <Entry x:Name="Ime" Text="{ Binding Ime}"></Entry>
+            <Entry  x:Name="Ime" Text="{ Binding Ime}"></Entry>
             <Label Text="Prezime"></Label>
             <Entry x:Name="Prezime" Text="{ Binding Prezime}"></Entry>
             <Label Text="Datum rodjenja"></Label>
@@ -33,6 +34,9 @@
             <Button Clicked="Button_Clicked"  HorizontalOptions="FillAndExpand" Text="Registriraj se" BackgroundColor="LightGreen"></Button>
             <Label IsVisible="{Binding IsBusy}" Text="..."></Label>
             <StackLayout>
+                <StackLayout>
+                    <Button BackgroundColor="LightGray" Text="Već imam račun!" Clicked="Button_Clicked_1"></Button>
+                </StackLayout>
              
             </StackLayout>
         </StackLayout>

@@ -7,7 +7,11 @@
              x:Class="ISNS.MA.Views.PlacanjeInfoPage">
     <ContentPage.Content>
         <StackLayout>
+       
             <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="success" IsVisible="False">
+                <StackLayout>
+                    <Image Source="success.png"></Image>
+                </StackLayout>
                 <Label HorizontalOptions="CenterAndExpand" x:Name="successmsg"></Label>
                 <Button Text="Provjerite informacije ulaznice" Clicked="Button_Clicked" BackgroundColor="LightGreen"></Button>
             </StackLayout>

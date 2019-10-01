@@ -104,6 +104,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="creditcard.png" />
     <Content Include="location.png" />
     <Content Include="logo.png" />
     <Content Include="plan.JPG" />
@@ -135,6 +136,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="success.png" />
     <Content Include="xamarin_logo.png" />
     <Content Include="add.png" />
     <Content Include="save.png" />

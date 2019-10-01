@@ -84,5 +84,10 @@ namespace ISNS.MA.Views
                 await vm.Registration();
             }
         }
+
+        private  void Button_Clicked_1(object sender, EventArgs e)
+        {
+             Application.Current.MainPage = new LoginPage();
+        }
     }
 }

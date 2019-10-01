@@ -7,8 +7,12 @@
         <vm:LoginViewModel></vm:LoginViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-     
-        <StackLayout HorizontalOptions="FillAndExpand" Padding="10" VerticalOptions="CenterAndExpand">
+
+        <StackLayout>
+            <StackLayout Margin="20">
+                <Image Source="logo.png"></Image>
+            </StackLayout>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="30" >
            
             <Label  Text="Korisničko ime"></Label>
 
@@ -17,11 +21,12 @@
             <Label  Text="Password"></Label>
             <Entry Text="{Binding Lozinka}" IsPassword="True"></Entry>
 
-            <Button Command="{Binding LoginCommand}"  HorizontalOptions="FillAndExpand" Text="Login"></Button>
+                <StackLayout Margin="0,20,0,0">
+                <Button Command="{Binding LoginCommand}"  HorizontalOptions="FillAndExpand" Text="Login"></Button>
             <Label IsVisible="{Binding IsBusy}" Text="..."></Label>
-        <StackLayout>
             <Button Text="Registriraj se" Clicked="Button_Clicked"
-                    BackgroundColor="LightGreen"></Button>
+                    BackgroundColor="LightGreen" ></Button>
+        </StackLayout>
         </StackLayout>
         </StackLayout>
     </ContentPage.Content>

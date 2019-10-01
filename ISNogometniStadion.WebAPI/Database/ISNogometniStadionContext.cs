@@ -31,6 +31,7 @@ namespace ISNogometniStadion.WebAPI.Database
         public  DbSet<Sektori> Sektori { get; set; }
         public DbSet<Lige> Lige { get; set; }
         public DbSet<Preporuke> Preporuke { get; set; }
+        public DbSet<Uplate> Uplate { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server = localhost; Database =ISNogometniStadionDB; Trusted_Connection = True; ");
@@ -42,7 +43,10 @@ namespace ISNogometniStadion.WebAPI.Database
                 .HasOne(s => s.ulaznica)
                 .WithOne(ad => ad.Sjedalo)
                 .HasForeignKey<Ulaznice>(ad => ad.SjedaloID);
-
+            modelBuilder.Entity<Ulaznice>()
+                .HasOne(s => s.Uplata)
+                .WithOne(ad => ad.Ulaznica)
+               .HasForeignKey<Uplate>(ad => ad.UlaznicaID);
 
             //modelBuilder.Entity<Ulaznice>()
             //  .HasKey(c => new { c.UlaznicaID, c.UtakmicaID,c.SjedaloID });

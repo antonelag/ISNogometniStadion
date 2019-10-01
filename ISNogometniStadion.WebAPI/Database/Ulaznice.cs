@@ -16,6 +16,7 @@ namespace ISNogometniStadion.WebAPI.Database
         public  Sjedala Sjedalo { get; set; }
         [ForeignKey("UtakmicaID")]
         public  Utakmice Utakmica { get; set; }
+        public string UlaznicaPodaci { get { return DatumKupnje.ToShortDateString()+": "+ Utakmica.DomaciTim.Naziv+"-"+Utakmica.GostujuciTim.Naziv+"; Korisnik: "+Korisnik.Ime+" "+Korisnik.Prezime; } }
         public int UtakmicaID { get; set; }
         [ForeignKey("KorisnikID")]
         public  Korisnici Korisnik { get; set; }
@@ -24,5 +25,7 @@ namespace ISNogometniStadion.WebAPI.Database
         public DateTime DatumKupnje { get; set; }
         public DateTime VrijemeKupnje { get; set; }
         public byte[] barcodeimg { get; set; }
+
+        public Uplate Uplata { get; set; }
     }
 }

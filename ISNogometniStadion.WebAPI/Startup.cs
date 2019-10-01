@@ -92,6 +92,7 @@ namespace ISNogometniStadion.WebAPI
             services.AddScoped<ICRUDService<Model.Sjedalo, SjedalaSearchRequest, SjedalaInsertRequest, SjedalaInsertRequest>, SjedalaService>();
             services.AddScoped<ICRUDService<Model.Utakmica, UtakmiceeSearchRequest, UtakmiceInsertRequest, UtakmiceInsertRequest>, UtakmiceService>();
             services.AddScoped<ICRUDService<Model.Preporuka, PreporukaSearchRequest, PreporukaInsertRequest, PreporukaInsertRequest>, PreporukeService>();
+            services.AddScoped<ICRUDService<Model.Uplata, UplateSearchRequest, UplateInsertRequest, UplateInsertRequest>, UplateService>();
 
             //za registraciju
             services.AddScoped<GradService, GradService>();
