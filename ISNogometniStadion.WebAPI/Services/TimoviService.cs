@@ -9,7 +9,7 @@ using ISNogometniStadion.WebAPI.Database;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
-    public class TimoviService : BaseCRUDService<Model.Tim, Model.TimoviSearchRequest, Database.Timovi,TimoviInsertRequest, TimoviInsertRequest>
+    public class TimoviService : BaseCRUDService<Model.Tim, Model.TimoviSearchRequest, Database.Timovi, TimoviInsertRequest, TimoviInsertRequest>
     {
         private readonly ISNogometniStadionContext _context;
         private readonly IMapper _mapper;
@@ -23,17 +23,24 @@ namespace ISNogometniStadion.WebAPI.Services
         public override List<Tim> Get(TimoviSearchRequest search)
         {
             var q = _context.Set<Database.Timovi>().AsQueryable();
-            if (string.IsNullOrWhiteSpace(search?.Naziv))
+            if (string.IsNullOrWhiteSpace(search?.Naziv) && search?.LigaID.HasValue == true)
             {
-                q = q.Where(s => s.Naziv.StartsWith(search.Naziv));
+                q = q.Where(s => s.Naziv.StartsWith(search.Naziv) && s.LigaID == search.LigaID);
             }
-            if (search?.LigaID.HasValue==true)
+            else
             {
-                q = q.Where(s => s.LigaID==search.LigaID);
+                if (string.IsNullOrWhiteSpace(search?.Naziv))
+                {
+                    q = q.Where(s => s.Naziv.StartsWith(search.Naziv));
+                }
+                if (search?.LigaID.HasValue == true)
+                {
+                    q = q.Where(s => s.LigaID == search.LigaID);
+                }
             }
             var list = q.ToList();
             return _mapper.Map<List<Tim>>(list);
-            
+
         }
     }
 }

@@ -74,6 +74,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DrzaveApiService.cs" />
+    <Compile Include="Drzave\frmDrzaveTemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drzave\frmDrzaveTemp.Designer.cs">
+      <DependentUpon>frmDrzaveTemp.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +94,12 @@
       <DependentUpon>frmRegistracija.cs</DependentUpon>
     </Compile>
     <Compile Include="GradoviApiService.cs" />
+    <Compile Include="Gradovi\frmGradoviTemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gradovi\frmGradoviTemp.Designer.cs">
+      <DependentUpon>frmGradoviTemp.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImageService.cs" />
     <Compile Include="APIService.cs" />
     <Compile Include="Drzave\frmDrzave.cs">
@@ -248,6 +261,9 @@
     <EmbeddedResource Include="Drzave\frmDrzaveDetalji.resx">
       <DependentUpon>frmDrzaveDetalji.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Drzave\frmDrzaveTemp.resx">
+      <DependentUpon>frmDrzaveTemp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIndex.resx">
       <DependentUpon>frmIndex.cs</DependentUpon>
     </EmbeddedResource>
@@ -262,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gradovi\frmGradoviDetalji.resx">
       <DependentUpon>frmGradoviDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gradovi\frmGradoviTemp.resx">
+      <DependentUpon>frmGradoviTemp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Izvješća\frmGodineIStadioniIzvjesce.resx">
       <DependentUpon>frmGodineIStadioniIzvjesce.cs</DependentUpon>

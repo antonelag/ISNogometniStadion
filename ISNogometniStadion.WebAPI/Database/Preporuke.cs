@@ -10,6 +10,8 @@ namespace ISNogometniStadion.WebAPI.Database
     {
         [Key]
         public int PreporukaID { get; set; }
+        [ForeignKey("KorisnikID")]
+        public Korisnici Korisnik { get; set; }
         public int KorisnikID { get; set; }
         public int TimID { get; set; }
         public int BrojKupljenihUlaznica { get; set; }

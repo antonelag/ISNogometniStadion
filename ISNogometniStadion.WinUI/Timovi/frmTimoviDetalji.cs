@@ -178,7 +178,6 @@ namespace ISNogometniStadion.WinUI.Timovi
                 else
                 {
                     MessageBox.Show("Uneseni tim za tu ligu već postoji!");
-                    this.Close();
                 }
             }
 

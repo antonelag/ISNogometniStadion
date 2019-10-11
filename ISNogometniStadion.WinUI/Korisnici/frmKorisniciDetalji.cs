@@ -81,7 +81,6 @@ namespace ISNogometniStadion.WinUI.Korisnici
                 else
                 {
                     MessageBox.Show("Zauzeto korisnicko ime!");
-                    this.Close();
                 }
             }
             else

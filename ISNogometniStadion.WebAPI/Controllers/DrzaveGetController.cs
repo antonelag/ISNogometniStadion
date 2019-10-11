@@ -12,21 +12,21 @@ namespace ISNogometniStadion.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GradoviGetController : ControllerBase
+    public class DrzaveGetController : ControllerBase
     {
-        private readonly GradService _service;
+        private readonly DrzaveService _service;
 
-        public GradoviGetController(GradService service)
+        public DrzaveGetController(DrzaveService service)
         {
             _service = service;
         }
         [HttpGet]
-        public ActionResult<List<Grad>> Get([FromQuery]GradoviSearchRequest req)
+        public ActionResult<List<Drzava>> Get([FromQuery]DrzaveSearchRequest req)
         {
             return _service.Get(req);
         }
         [HttpPost]
-        public Model.Grad Insert(GradoviInsertRequest request)
+        public Model.Drzava Insert(DrzaveInsertRequest request)
         {
             return _service.Insert(request);
         }

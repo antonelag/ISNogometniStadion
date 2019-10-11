@@ -111,6 +111,8 @@ namespace ISNogometniStadion.WebAPI.Migrations
 
                     b.HasKey("PreporukaID");
 
+                    b.HasIndex("KorisnikID");
+
                     b.ToTable("Preporuke");
                 });
 
@@ -329,6 +331,14 @@ namespace ISNogometniStadion.WebAPI.Migrations
                     b.HasOne("ISNogometniStadion.WebAPI.Database.Drzave", "Drzava")
                         .WithMany()
                         .HasForeignKey("DrzavaID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ISNogometniStadion.WebAPI.Database.Preporuke", b =>
+                {
+                    b.HasOne("ISNogometniStadion.WebAPI.Database.Korisnici", "Korisnik")
+                        .WithMany()
+                        .HasForeignKey("KorisnikID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

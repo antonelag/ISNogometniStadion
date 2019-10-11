@@ -96,6 +96,7 @@ namespace ISNogometniStadion.WebAPI
 
             //za registraciju
             services.AddScoped<GradService, GradService>();
+            services.AddScoped<DrzaveService, DrzaveService>();
             var conn = @"Server = (localdb); Database = ISNogometniStadionDB; Trusted_Connection = True; ";
             services.AddDbContext<ISNogometniStadionContext>(options => options.UseSqlServer(conn));
         }

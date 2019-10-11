@@ -1,5 +1,6 @@
 ﻿using ISNogometniStadion.Model;
 using ISNogometniStadion.Model.Requests;
+using ISNogometniStadion.WinUI.Gradovi;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -75,7 +76,7 @@ namespace ISNogometniStadion.WinUI
             }
             else if (!Regex.IsMatch(txtTelefon.Text, @"^[+]{1}\d{3}[ ]?\d{2}[ ]?\d{3}[ ]?\d{3}"))
             {
-                errorProvider1.SetError(txtTelefon, Properties.Resources.NeispravanFormat);
+                errorProvider1.SetError(txtTelefon, "Format telefona je: +/// // /// ///");
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
             else
@@ -229,6 +230,13 @@ namespace ISNogometniStadion.WinUI
                 MessageBox.Show("Operacija nije uspjela");
                 this.Close();
             }
+        }
+
+        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var frm = new frmGradoviTemp();
+            frm.Show();
+            this.Close();
         }
     }
 }

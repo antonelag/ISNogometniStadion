@@ -21,16 +21,23 @@ namespace ISNogometniStadion.WebAPI.Services
 
         }
         public override List<Grad> Get(GradoviSearchRequest search)
-        {
+            {
             var q = _context.Set<Database.Gradovi>().AsQueryable();
 
-            if (!string.IsNullOrEmpty(search?.Naziv))
+            if (!string.IsNullOrEmpty(search?.Naziv) && search?.DrzavaID.HasValue == true)
             {
-                q = q.Where(s => s.Naziv.StartsWith(search.Naziv));
+                q = q.Where(s => s.Naziv.StartsWith(search.Naziv) && s.DrzavaID == search.DrzavaID);
             }
-            if (search?.DrzavaID.HasValue == true)
+            else
             {
-                q = q.Where(s => s.DrzavaID == search.DrzavaID);
+                if (!string.IsNullOrEmpty(search?.Naziv))
+                {
+                    q = q.Where(s => s.Naziv.StartsWith(search.Naziv));
+                }
+                if (search?.DrzavaID.HasValue == true)
+                {
+                    q = q.Where(s => s.DrzavaID == search.DrzavaID);
+                }
             }
             var list = q.ToList();
 

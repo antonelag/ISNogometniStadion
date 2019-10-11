@@ -92,7 +92,6 @@ namespace ISNogometniStadion.WinUI.Utakmice
                 else
                 {
                     MessageBox.Show("Već postoji isti sektor za istu tribinu!");
-                    this.Close();
                 }
             }
             else

@@ -9,7 +9,7 @@ using ISNogometniStadion.WebAPI.Database;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
-    public class SektoriService : BaseCRUDService<Model.Sektor, Model.SektoriSearchRequest, Database.Sektori,SektoriInsertRequest, SektoriInsertRequest>
+    public class SektoriService : BaseCRUDService<Model.Sektor, Model.SektoriSearchRequest, Database.Sektori, SektoriInsertRequest, SektoriInsertRequest>
     {
         private readonly ISNogometniStadionContext _context;
         private readonly IMapper _mapper;
@@ -23,18 +23,24 @@ namespace ISNogometniStadion.WebAPI.Services
         public override List<Sektor> Get(SektoriSearchRequest search)
         {
             var q = _context.Set<Database.Sektori>().AsQueryable();
-
-            if (!string.IsNullOrWhiteSpace(search?.Naziv))
+            if (!string.IsNullOrWhiteSpace(search?.Naziv) && search.TribinaID.HasValue)
             {
-                q = q.Where(s => s.Naziv == search.Naziv);
+                q = q.Where(s => s.Naziv == search.Naziv && s.TribinaID == search.TribinaID);
             }
-            if (search.TribinaID.HasValue)
+            else
             {
-                q = q.Where(s => (s.TribinaID==search.TribinaID));
+                if (!string.IsNullOrWhiteSpace(search?.Naziv))
+                {
+                    q = q.Where(s => s.Naziv == search.Naziv);
+                }
+                if (search.TribinaID.HasValue)
+                {
+                    q = q.Where(s => (s.TribinaID == search.TribinaID));
+                }
             }
             var list = q.ToList();
             return _mapper.Map<List<Sektor>>(list);
-            
+
         }
     }
 }

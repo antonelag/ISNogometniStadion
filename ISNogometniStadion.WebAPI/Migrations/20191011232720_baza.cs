@@ -114,6 +114,27 @@ namespace ISNogometniStadion.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Preporuke",
+                columns: table => new
+                {
+                    PreporukaID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    KorisnikID = table.Column<int>(nullable: false),
+                    TimID = table.Column<int>(nullable: false),
+                    BrojKupljenihUlaznica = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Preporuke", x => x.PreporukaID);
+                    table.ForeignKey(
+                        name: "FK_Preporuke_Korisnici_KorisnikID",
+                        column: x => x.KorisnikID,
+                        principalTable: "Korisnici",
+                        principalColumn: "KorisnikID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Timovi",
                 columns: table => new
                 {
@@ -260,7 +281,8 @@ namespace ISNogometniStadion.WebAPI.Migrations
                     UtakmicaID = table.Column<int>(nullable: false),
                     KorisnikID = table.Column<int>(nullable: false),
                     DatumKupnje = table.Column<DateTime>(nullable: false),
-                    VrijemeKupnje = table.Column<DateTime>(nullable: false)
+                    VrijemeKupnje = table.Column<DateTime>(nullable: false),
+                    barcodeimg = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -285,6 +307,26 @@ namespace ISNogometniStadion.WebAPI.Migrations
                         onDelete: ReferentialAction.NoAction);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Uplate",
+                columns: table => new
+                {
+                    UplataID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UlaznicaID = table.Column<int>(nullable: false),
+                    Iznos = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Uplate", x => x.UplataID);
+                    table.ForeignKey(
+                        name: "FK_Uplate_Ulaznice_UlaznicaID",
+                        column: x => x.UlaznicaID,
+                        principalTable: "Ulaznice",
+                        principalColumn: "UlaznicaID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Gradovi_DrzavaID",
                 table: "Gradovi",
@@ -299,6 +341,11 @@ namespace ISNogometniStadion.WebAPI.Migrations
                 name: "IX_Lige_DrzavaID",
                 table: "Lige",
                 column: "DrzavaID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Preporuke_KorisnikID",
+                table: "Preporuke",
+                column: "KorisnikID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Sektori_TribinaID",
@@ -347,6 +394,12 @@ namespace ISNogometniStadion.WebAPI.Migrations
                 column: "UtakmicaID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Uplate_UlaznicaID",
+                table: "Uplate",
+                column: "UlaznicaID",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Utakmice_DomaciTimID",
                 table: "Utakmice",
                 column: "DomaciTimID");
@@ -369,6 +422,12 @@ namespace ISNogometniStadion.WebAPI.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Preporuke");
+
+            migrationBuilder.DropTable(
+                name: "Uplate");
+
             migrationBuilder.DropTable(
                 name: "Ulaznice");
 

@@ -9,7 +9,7 @@ using ISNogometniStadion.WebAPI.Database;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
-    public class SjedalaService : BaseCRUDService<Model.Sjedalo, Model.SjedalaSearchRequest, Database.Sjedala,SjedalaInsertRequest, SjedalaInsertRequest>
+    public class SjedalaService : BaseCRUDService<Model.Sjedalo, Model.SjedalaSearchRequest, Database.Sjedala, SjedalaInsertRequest, SjedalaInsertRequest>
     {
         private readonly ISNogometniStadionContext _context;
         private readonly IMapper _mapper;
@@ -23,17 +23,24 @@ namespace ISNogometniStadion.WebAPI.Services
         public override List<Sjedalo> Get(SjedalaSearchRequest search)
         {
             var q = _context.Set<Database.Sjedala>().AsQueryable();
-            if (!string.IsNullOrEmpty(search?.Oznaka))
+            if (!string.IsNullOrEmpty(search?.Oznaka) && search?.SektorID.HasValue == true)
             {
-                q = q.Where(s => (s.Oznaka.StartsWith(search.Oznaka)));
+                q = q.Where(s => (s.Oznaka.StartsWith(search.Oznaka)) && s.SektorID == search.SektorID);
             }
-            if (search?.SektorID.HasValue == true)
+            else
             {
-                q = q.Where(s => s.SektorID == search.SektorID);
+                if (!string.IsNullOrEmpty(search?.Oznaka))
+                {
+                    q = q.Where(s => (s.Oznaka.StartsWith(search.Oznaka)));
+                }
+                if (search?.SektorID.HasValue == true)
+                {
+                    q = q.Where(s => s.SektorID == search.SektorID);
+                }
             }
             var list = q.ToList();
             return _mapper.Map<List<Sjedalo>>(list);
-            
+
         }
     }
 }

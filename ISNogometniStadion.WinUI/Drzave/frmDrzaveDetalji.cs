@@ -89,7 +89,6 @@ namespace ISNogometniStadion.WinUI.Drzave
                 else
                 {
                     MessageBox.Show("Unesena država već postoji!");
-                    this.Close();
 
                 }
             }

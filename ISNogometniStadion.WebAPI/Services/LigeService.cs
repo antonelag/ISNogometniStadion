@@ -9,7 +9,7 @@ using ISNogometniStadion.WebAPI.Database;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
-    public class LigeService : BaseCRUDService<Model.Liga, Model.LigaSearchRequest, Database.Lige,LigaInsertRequest,LigaInsertRequest>
+    public class LigeService : BaseCRUDService<Model.Liga, Model.LigaSearchRequest, Database.Lige, LigaInsertRequest, LigaInsertRequest>
     {
         private readonly ISNogometniStadionContext _context;
         private readonly IMapper _mapper;
@@ -23,17 +23,24 @@ namespace ISNogometniStadion.WebAPI.Services
         public override List<Liga> Get(LigaSearchRequest search)
         {
             var q = _context.Set<Database.Lige>().AsQueryable();
-            if (!string.IsNullOrEmpty(search?.Naziv))
+            if (!string.IsNullOrEmpty(search?.Naziv) && search?.DrzavaID.HasValue == true)
             {
-                q = q.Where(s => s.Naziv.StartsWith(search.Naziv));
+                q = q.Where(s => s.Naziv.StartsWith(search.Naziv) && s.DrzavaID == search.DrzavaID);
             }
-            if (search?.DrzavaID.HasValue==true)
+            else
             {
-                q = q.Where(s => s.Drzava.DrzavaID == search.DrzavaID);
+                if (!string.IsNullOrEmpty(search?.Naziv))
+                {
+                    q = q.Where(s => s.Naziv.StartsWith(search.Naziv));
+                }
+                if (search?.DrzavaID.HasValue == true)
+                {
+                    q = q.Where(s => s.Drzava.DrzavaID == search.DrzavaID);
+                }
             }
             var list = q.ToList();
             return _mapper.Map<List<Liga>>(list);
-            
+
         }
     }
 }

@@ -164,7 +164,6 @@ namespace ISNogometniStadion.WinUI.Stadioni
                 else
                 {
                     MessageBox.Show("Uneseni stadion već postoji");
-                    this.Close();
                 }
             }
 

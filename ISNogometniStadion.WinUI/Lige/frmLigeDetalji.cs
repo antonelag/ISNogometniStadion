@@ -121,7 +121,6 @@ namespace ISNogometniStadion.WinUI.Lige
                 else
                 {
                     MessageBox.Show("Unesena liga već postoji!");
-                    this.Close();
                 }
             }
             else

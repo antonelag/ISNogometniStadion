@@ -97,7 +97,6 @@ namespace ISNogometniStadion.WinUI.Sjedala
                 else
                 {
                     MessageBox.Show("Uneseno sjedalo već postoji za isti sektor!");
-                    this.Close();
                 }
 
             }

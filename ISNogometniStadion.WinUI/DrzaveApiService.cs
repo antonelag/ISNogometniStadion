@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Flurl.Http;
 using ISNogometniStadion.Model;
-
 namespace ISNogometniStadion.WinUI
 {
-    public class APIService
+    public class DrzaveApiService
     {
-        public static string KorisnickoIme { get; set; }
-        public static string Lozinka { get; set; }
-
         private readonly string _route;
-        public APIService(string route)
+        public DrzaveApiService(string route)
         {
             _route = route;
         }
@@ -32,19 +28,16 @@ namespace ISNogometniStadion.WinUI
                     url += await search.ToQueryString();
                 }
 
-                return await url.WithBasicAuth(KorisnickoIme, Lozinka).GetJsonAsync<T>();
+                return await url.GetJsonAsync<T>();
             }
             catch (FlurlHttpException ex)
             {
+                if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    MessageBox.Show("Niste autentificirani");
+                }
                 throw;
             }
-        }
-
-        public async Task<T> GetById<T>(object id)
-        {
-            var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
-
-            return await url.WithBasicAuth(KorisnickoIme, Lozinka).GetJsonAsync<T>();
         }
 
         public async Task<T> Insert<T>(object request)
@@ -53,31 +46,7 @@ namespace ISNogometniStadion.WinUI
 
             try
             {
-                return await url.WithBasicAuth(KorisnickoIme, Lozinka).PostJsonAsync(request).ReceiveJson<T>();
-            }
-            catch (FlurlHttpException ex)
-            {
-                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
-
-                var stringBuilder = new StringBuilder();
-                foreach (var error in errors)
-                {
-                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
-                }
-
-                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return default(T);
-            }
-
-        }
-
-        public async Task<T> Update<T>(int id, object request)
-        {
-            try
-            {
-                var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
-
-                return await url.WithBasicAuth(KorisnickoIme, Lozinka).PutJsonAsync(request).ReceiveJson<T>();
+                return await url.PostJsonAsync(request).ReceiveJson<T>();
             }
             catch (FlurlHttpException ex)
             {

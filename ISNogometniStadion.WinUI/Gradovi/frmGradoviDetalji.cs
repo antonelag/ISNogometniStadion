@@ -85,7 +85,6 @@ namespace ISNogometniStadion.WinUI.Gradovi
                 else
                 {
                     MessageBox.Show("Uneseni grad već postoji u unesenoj državi!");
-                    this.Close();
 
                 }
             }

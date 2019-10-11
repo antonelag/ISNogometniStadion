@@ -9,7 +9,7 @@ using ISNogometniStadion.WebAPI.Database;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
-    public class TribineService : BaseCRUDService<Model.Tribina, Model.TribineSearchRequest, Database.Tribine,TribineInsertRequest, TribineInsertRequest>
+    public class TribineService : BaseCRUDService<Model.Tribina, Model.TribineSearchRequest, Database.Tribine, TribineInsertRequest, TribineInsertRequest>
     {
         private readonly ISNogometniStadionContext _context;
         private readonly IMapper _mapper;
@@ -23,18 +23,25 @@ namespace ISNogometniStadion.WebAPI.Services
         public override List<Tribina> Get(TribineSearchRequest search)
         {
             var q = _context.Set<Database.Tribine>().AsQueryable();
-           
-            if (!string.IsNullOrEmpty(search?.Naziv))
+
+            if (!string.IsNullOrEmpty(search?.Naziv) && search?.StadionID.HasValue == true)
             {
-                q = q.Where(s => (s.Naziv.StartsWith(search.Naziv)));
+                q = q.Where(s => (s.Naziv.StartsWith(search.Naziv)) && s.StadionID == search.StadionID);
             }
-            if (search?.StadionID.HasValue == true)
+            else
             {
-                q = q.Where(s => s.StadionID == search.StadionID);
+                if (!string.IsNullOrEmpty(search?.Naziv))
+                {
+                    q = q.Where(s => (s.Naziv.StartsWith(search.Naziv)));
+                }
+                if (search?.StadionID.HasValue == true)
+                {
+                    q = q.Where(s => s.StadionID == search.StadionID);
+                }
             }
             var list = q.ToList();
             return _mapper.Map<List<Tribina>>(list);
-            
+
         }
     }
 }

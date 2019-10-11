@@ -124,7 +124,6 @@ namespace ISNogometniStadion.WinUI.Tribine
                 else
                 {
                     MessageBox.Show("Unesena tribina za taj stadion već postoji!");
-                    this.Close();
                 }
             }
             else
