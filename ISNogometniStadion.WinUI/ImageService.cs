@@ -20,7 +20,7 @@ public class ImageService
         }
         public Image GetNoImage()
         {
-            var filename = "C:\\Users\\anton\\Desktop\\RSII\\slike\\noimage.jpg";
+            var filename = "C:\\Users\\Antonela Gagro\\Desktop\\RSII\\slike\\noimage.jpg";
             return Image.FromFile(filename);
         }
 

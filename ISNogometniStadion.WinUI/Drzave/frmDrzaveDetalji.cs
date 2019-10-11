@@ -1,4 +1,5 @@
-﻿using ISNogometniStadion.Model.Requests;
+﻿using ISNogometniStadion.Model;
+using ISNogometniStadion.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,22 +18,28 @@ namespace ISNogometniStadion.WinUI.Drzave
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Drzave");
 
-        public frmDrzaveDetalji(int? id=null)
+        public frmDrzaveDetalji(int? id = null)
         {
             InitializeComponent();
             _id = id;
         }
 
-
+        private const int WM_CLOSE = 0x0010;
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_CLOSE)
+                AutoValidate = AutoValidate.Disable;
+            base.WndProc(ref m);
+        }
         private void TextBox1_Validating(object sender, CancelEventArgs e)
         {
-            
+
             if (string.IsNullOrEmpty(txtNaziv.Text))
             {
                 errorProvider1.SetError(txtNaziv, Properties.Resources.ObaveznoPolje);
-                e.Cancel=true;
+                e.Cancel = true;
             }
-            else if(!Regex.IsMatch(txtNaziv.Text, @"^[a-zA-Z ]+$"))
+            else if (!Regex.IsMatch(txtNaziv.Text, @"^[a-zA-Z ]+$"))
             {
                 errorProvider1.SetError(txtNaziv, Properties.Resources.NeispravanFormat);
                 e.Cancel = true;
@@ -45,23 +52,49 @@ namespace ISNogometniStadion.WinUI.Drzave
         {
             if (this.ValidateChildren())
             {
-                var req = new DrzaveInsertRequest()
+                List<Drzava> lista = await _apiService.Get<List<Drzava>>(new DrzaveSearchRequest() { Naziv = txtNaziv.Text });
+                if (lista.Count == 0)
                 {
-                    Naziv = txtNaziv.Text
-                };
-                if (_id.HasValue)
-                {
-                    int i = (int)_id;
-                    await _apiService.Update<dynamic>(i,req);
+                    var req = new DrzaveInsertRequest()
+                    {
+                        Naziv = txtNaziv.Text
+                    };
+                    if (_id.HasValue)
+                    {
+                        int i = (int)_id;
+                        try
+                        {
+                            await _apiService.Update<dynamic>(i, req);
+                            MessageBox.Show("Operacija je uspjela!");
+                            this.Close();
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            await _apiService.Insert<dynamic>(req);
+                            MessageBox.Show("Operacija je uspjela!");
+                            this.Close();
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+
                 }
                 else
-                    await _apiService.Insert<dynamic>(req);
+                {
+                    MessageBox.Show("Unesena država već postoji!");
+                    this.Close();
 
-                MessageBox.Show("Operacija je uspjela!");
-                this.Refresh();
-                this.Close();
+                }
             }
-            else {
+            else
+            {
                 MessageBox.Show("Operacija nije uspjela!");
                 this.Close();
             }

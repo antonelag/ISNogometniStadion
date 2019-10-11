@@ -28,6 +28,13 @@ namespace ISNogometniStadion.WinUI.Timovi
             _id = id;
         }
 
+        private const int WM_CLOSE = 0x0010;
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_CLOSE)
+                AutoValidate = AutoValidate.Disable;
+            base.WndProc(ref m);
+        }
         private async void FrmTimoviDetalji_Load(object sender, EventArgs e)
         {
             await LoadStadioni();
@@ -116,41 +123,70 @@ namespace ISNogometniStadion.WinUI.Timovi
         {
             if (this.ValidateChildren())
             {
-                res.Naziv = txtNaziv.Text;
-                res.Opis = txtOpis.Text;
-                res.StadionID = int.Parse(cbTimovi.SelectedValue.ToString());
-                res.LigaID = int.Parse(cbLige.SelectedValue.ToString());
-                //spremanje slike u request se radi prilikom klika na dodaj 
-                //ako nije dodao novu sliku(UPDATE), samim time nije kliknuo na dodaj, trebala bi slika ostati nepromijenjena
-                if (res.Slika == null && _id.HasValue)
+                List<Tim> lista = await _apiService.Get<List<Tim>>(new TimoviSearchRequest() { Naziv = txtNaziv.Text, LigaID = int.Parse(cbLige.SelectedValue.ToString()) });
+                if (lista.Count == 0)
                 {
-                    Tim a = await _apiService.GetById<Tim>(_id);
-                    res.Slika = a.Slika;
-                    res.SlikaThumb = a.SlikaThumb;
-                }
 
-                //za slucaj da korisnik ne unese sliku
-                if (res.Slika == null && !_id.HasValue)
-                {
-                    var img = _imageService.GetNoImage();
-                    res.Slika = _imageService.ImageToBytes(img);
-                    var th = _imageService.ImageToThumbnail(img);
-                    res.SlikaThumb = _imageService.ImageToBytes(th);
-                }
+                    res.Naziv = txtNaziv.Text;
+                    res.Opis = txtOpis.Text;
+                    res.StadionID = int.Parse(cbTimovi.SelectedValue.ToString());
+                    res.LigaID = int.Parse(cbLige.SelectedValue.ToString());
+                    //spremanje slike u request se radi prilikom klika na dodaj 
+                    //ako nije dodao novu sliku(UPDATE), samim time nije kliknuo na dodaj, trebala bi slika ostati nepromijenjena
+                    if (res.Slika == null && _id.HasValue)
+                    {
+                        Tim a = await _apiService.GetById<Tim>(_id);
+                        res.Slika = a.Slika;
+                        res.SlikaThumb = a.SlikaThumb;
+                    }
 
-                if (_id.HasValue)
-                {
-                    int i = (int)_id;
-                    await _apiService.Update<dynamic>(i, res);
+                    //za slucaj da korisnik ne unese sliku
+                    if (res.Slika == null && !_id.HasValue)
+                    {
+                        var img = _imageService.GetNoImage();
+                        res.Slika = _imageService.ImageToBytes(img);
+                        var th = _imageService.ImageToThumbnail(img);
+                        res.SlikaThumb = _imageService.ImageToBytes(th);
+                    }
+
+                    if (_id.HasValue)
+                    {
+                        int i = (int)_id;
+                        try
+                        {
+                            await _apiService.Update<dynamic>(i, res);
+                            MessageBox.Show("Operacija je uspjela.");
+                            this.Close();
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            await _apiService.Insert<dynamic>(res);
+                            MessageBox.Show("Operacija je uspjela.");
+                            this.Close();
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
                 }
                 else
-                    await _apiService.Insert<dynamic>(res);
-                MessageBox.Show("Operacija je uspjela.");
-                this.Close();
+                {
+                    MessageBox.Show("Uneseni tim za tu ligu već postoji!");
+                    this.Close();
+                }
             }
 
             else
+            {
                 MessageBox.Show("Operacija nije uspjela");
+                this.Close();
+            }
         }
         public bool ThumbnailCallback()
         {

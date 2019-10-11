@@ -27,6 +27,10 @@ namespace ISNogometniStadion.WebAPI.Services
             {
                 q = q.Where(s => (s.Oznaka.StartsWith(search.Oznaka)));
             }
+            if (search?.SektorID.HasValue == true)
+            {
+                q = q.Where(s => s.SektorID == search.SektorID);
+            }
             var list = q.ToList();
             return _mapper.Map<List<Sjedalo>>(list);
             

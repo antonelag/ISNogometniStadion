@@ -23,7 +23,10 @@ namespace ISNogometniStadion.WebAPI.Services
         public override List<Liga> Get(LigaSearchRequest search)
         {
             var q = _context.Set<Database.Lige>().AsQueryable();
-
+            if (!string.IsNullOrEmpty(search?.Naziv))
+            {
+                q = q.Where(s => s.Naziv.StartsWith(search.Naziv));
+            }
             if (search?.DrzavaID.HasValue==true)
             {
                 q = q.Where(s => s.Drzava.DrzavaID == search.DrzavaID);

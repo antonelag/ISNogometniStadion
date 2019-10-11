@@ -9,6 +9,6 @@ namespace ISNogometniStadion.Model
 
     {
         public string Naziv { get; set; }
-        public int StadionID { get; set; }
+        public int? StadionID { get; set; }
     }
 }

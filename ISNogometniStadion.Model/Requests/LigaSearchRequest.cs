@@ -8,5 +8,6 @@ namespace ISNogometniStadion.Model
     public class LigaSearchRequest
     {
         public int? DrzavaID { get; set; }
+        public string Naziv { get; set; }
     }
 }

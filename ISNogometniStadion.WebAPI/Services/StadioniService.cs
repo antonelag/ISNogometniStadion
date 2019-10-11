@@ -23,8 +23,11 @@ namespace ISNogometniStadion.WebAPI.Services
         public override List<Stadion> Get(StadioniSearchRequest search)
         {
             var q = _context.Set<Database.Stadioni>().AsQueryable();
-
-            if (search.GradID.HasValue)
+            if (!string.IsNullOrWhiteSpace(search?.Naziv))
+            {
+                q = q.Where(s => s.Naziv.StartsWith(search.Naziv));
+            }
+            if (search?.GradID.HasValue==true)
             {
                 q = q.Where(s => (s.GradID==search.GradID));
             }

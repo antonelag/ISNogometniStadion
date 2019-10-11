@@ -9,7 +9,7 @@ using ISNogometniStadion.WebAPI.Database;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
-    public class GradService : BaseCRUDService<Model.Grad, Model.GradoviSearchRequest, Database.Gradovi,GradoviInsertRequest, GradoviInsertRequest>
+    public class GradService : BaseCRUDService<Model.Grad, Model.GradoviSearchRequest, Database.Gradovi, GradoviInsertRequest, GradoviInsertRequest>
     {
         private readonly ISNogometniStadionContext _context;
         private readonly IMapper _mapper;
@@ -28,9 +28,14 @@ namespace ISNogometniStadion.WebAPI.Services
             {
                 q = q.Where(s => s.Naziv.StartsWith(search.Naziv));
             }
+            if (search?.DrzavaID.HasValue == true)
+            {
+                q = q.Where(s => s.DrzavaID == search.DrzavaID);
+            }
             var list = q.ToList();
+
             return _mapper.Map<List<Grad>>(list);
-            
+
         }
     }
 }

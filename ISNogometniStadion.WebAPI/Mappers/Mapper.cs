@@ -66,14 +66,12 @@ namespace ISNogometniStadion.WebAPI.Mappers
               .ForMember(s => s.Grad, a =>
               a.MapFrom(b => new Database.ISNogometniStadionContext().Gradovi.Find(b.GradID).Naziv));
 
-            CreateMap<Database.Timovi, Model.Tim>()
-              .ForMember(s => s.Stadion, a =>
-              a.MapFrom(b => new Database.ISNogometniStadionContext().Stadioni.Find(b.StadionID).Naziv));
-
 
             CreateMap<Database.Timovi, Model.Tim>()
              .ForMember(s => s.Liga, a =>
-             a.MapFrom(b => new Database.ISNogometniStadionContext().Lige.Find(b.LigaID).Naziv));
+             a.MapFrom(b => new Database.ISNogometniStadionContext().Lige.Find(b.LigaID).Naziv))
+             .ForMember(s => s.Stadion, a =>
+              a.MapFrom(b => new Database.ISNogometniStadionContext().Stadioni.Find(b.StadionID).Naziv));
             CreateMap<Database.Lige, Model.Liga>()
          .ForMember(s => s.Drzava, a =>
          a.MapFrom(b => new Database.ISNogometniStadionContext().Drzave.Find(b.DrzavaID).Naziv));

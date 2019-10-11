@@ -1,4 +1,5 @@
-﻿using ISNogometniStadion.Model.Requests;
+﻿using ISNogometniStadion.Model;
+using ISNogometniStadion.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,13 +19,20 @@ namespace ISNogometniStadion.WinUI.Lige
         private readonly APIService _apiService = new APIService("Lige");
 
         private readonly APIService _apiServiceDrzave = new APIService("Drzave");
-        public frmLigeDetalji(int? id=null)
+        public frmLigeDetalji(int? id = null)
         {
 
             InitializeComponent();
             _id = id;
         }
 
+        private const int WM_CLOSE = 0x0010;
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_CLOSE)
+                AutoValidate = AutoValidate.Disable;
+            base.WndProc(ref m);
+        }
         private async Task LoadDrzave()
         {
             var result = await _apiServiceDrzave.Get<List<Model.Drzava>>(null);
@@ -75,24 +83,52 @@ namespace ISNogometniStadion.WinUI.Lige
         {
             if (this.ValidateChildren())
             {
-                var req = new LigaInsertRequest()
+                List<Liga> lista = await _apiService.Get<List<Liga>>(new LigaSearchRequest() { Naziv = txtNaziv.Text, DrzavaID = int.Parse(cbDrzave.SelectedValue.ToString()) });
+                if (lista.Count == 0)
                 {
-                    Naziv=txtNaziv.Text,
-                    DrzavaID= int.Parse(cbDrzave.SelectedValue.ToString())
-                };
-                if (_id.HasValue)
-                {
-                    int i = (int)_id;
-                    await _apiService.Update<dynamic>(i, req);
+                    var req = new LigaInsertRequest()
+                    {
+                        Naziv = txtNaziv.Text,
+                        DrzavaID = int.Parse(cbDrzave.SelectedValue.ToString())
+                    };
+                    if (_id.HasValue)
+                    {
+                        int i = (int)_id;
+                        try
+                        {
+                            await _apiService.Update<dynamic>(i, req);
+                            MessageBox.Show("Operacija uspjela");
+                            this.Close();
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            await _apiService.Insert<dynamic>(req);
+                            MessageBox.Show("Operacija uspjela");
+                            this.Close();
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+
                 }
                 else
-                    await _apiService.Insert<dynamic>(req);
-
-                MessageBox.Show("Operacija uspjela");
-                this.Close();
+                {
+                    MessageBox.Show("Unesena liga već postoji!");
+                    this.Close();
+                }
             }
             else
+            {
                 MessageBox.Show("Operacija nije uspjela!");
+                this.Close();
+            }
         }
     }
 }

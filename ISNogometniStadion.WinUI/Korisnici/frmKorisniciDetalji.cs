@@ -1,4 +1,5 @@
-﻿using ISNogometniStadion.Model.Requests;
+﻿using ISNogometniStadion.Model;
+using ISNogometniStadion.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,42 +19,77 @@ namespace ISNogometniStadion.WinUI.Korisnici
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Korisnici");
         private readonly APIService _apiServiceGradovi = new APIService("Gradovi");
-        public frmKorisniciDetalji(int? KorisnikID=null)
+        public frmKorisniciDetalji(int? KorisnikID = null)
         {
             _id = KorisnikID;
             InitializeComponent();
         }
 
-        private async void  BtnSacuvaj_Click(object sender, EventArgs e)
+        private const int WM_CLOSE = 0x0010;
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_CLOSE)
+                AutoValidate = AutoValidate.Disable;
+            base.WndProc(ref m);
+        }
+
+        private async void BtnSacuvaj_Click(object sender, EventArgs e)
         {
             if (this.ValidateChildren())
             {
-
-                var request = new KorisniciInsertRequest()
+                List<Korisnik> lista = await _apiService.Get<List<Korisnik>>(new KorisniciSearchRequest() { KorisnickoIme = txtKorisnickoIme.Text });
+                if (lista.Count == 0)
                 {
-                    Ime = txtIme.Text,
-                    Prezime = txtPrezime.Text,
-                    email = txtEmail.Text,
-                    DatumRodjenja = dpdatumRodjenja.Value,
-                    telefon = txtTelefon.Text,
-                    korisnickoIme = txtKorisnickoIme.Text,
-                    lozinka = txtLozinka.Text,
-                    potvrdaLozinke = txtPotvrdaLozinke.Text,
-                    GradID = (int)comboBox.SelectedValue
-                };
-                if (_id.HasValue)
-                {
-                    int i = (int)_id;
-                    await _apiService.Update<dynamic>(i, request);
+                    var request = new KorisniciInsertRequest()
+                    {
+                        Ime = txtIme.Text,
+                        Prezime = txtPrezime.Text,
+                        email = txtEmail.Text,
+                        DatumRodjenja = dpdatumRodjenja.Value,
+                        telefon = txtTelefon.Text,
+                        korisnickoIme = txtKorisnickoIme.Text,
+                        lozinka = txtLozinka.Text,
+                        potvrdaLozinke = txtPotvrdaLozinke.Text,
+                        GradID = (int)comboBox.SelectedValue
+                    };
+                    if (_id.HasValue)
+                    {
+                        int i = (int)_id;
+                        try
+                        {
+                            await _apiService.Update<dynamic>(i, request);
+                            MessageBox.Show("Operacija uspjesna!");
+                            this.Close();
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            await _apiService.Insert<dynamic>(request);
+                            MessageBox.Show("Operacija uspjesna!");
+                            this.Close();
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
                 }
                 else
-                    await _apiService.Insert<dynamic>(request);
-                MessageBox.Show("Operacija uspjesna!");
-                this.Close();
+                {
+                    MessageBox.Show("Zauzeto korisnicko ime!");
+                    this.Close();
+                }
             }
             else
+            {
                 MessageBox.Show("Operacija nije uspjela");
-            
+                this.Close();
+            }
+
         }
 
         private async void FrmKorisniciDetalji_Load(object sender, EventArgs e)
@@ -69,7 +105,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
                 txtKorisnickoIme.Text = korisnik.korisnickoIme;
                 txtTelefon.Text = korisnik.telefon;
                 comboBox.SelectedValue = int.Parse(korisnik.gradID.ToString());
-                
+
             }
         }
         private async Task LoadGradovi()
@@ -102,20 +138,20 @@ namespace ISNogometniStadion.WinUI.Korisnici
 
         private void TxtPrezime_Validating(object sender, CancelEventArgs e)
         {
-                if (string.IsNullOrEmpty(txtPrezime.Text))
-                {
-                    errorProvider.SetError(txtPrezime, Properties.Resources.ObaveznoPolje);
-                    e.Cancel = true;//zaustaviti procesiranje forme
-                }
+            if (string.IsNullOrEmpty(txtPrezime.Text))
+            {
+                errorProvider.SetError(txtPrezime, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;//zaustaviti procesiranje forme
+            }
             else if (!Regex.IsMatch(txtPrezime.Text, @"^[a-zA-Z -]+$"))
             {
                 errorProvider.SetError(txtPrezime, Properties.Resources.NeispravanFormat);
                 e.Cancel = true;
             }
             else
-                {
-                    errorProvider.SetError(txtPrezime, null);
-                }
+            {
+                errorProvider.SetError(txtPrezime, null);
+            }
         }
 
         private void TxtTelefon_Validating(object sender, CancelEventArgs e)
@@ -125,7 +161,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
                 errorProvider.SetError(txtTelefon, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
-            else if(!Regex.IsMatch(txtTelefon.Text, @"^[+]{1}\d{3}[ ]?\d{2}[ ]?\d{3}[ ]?\d{3}"))
+            else if (!Regex.IsMatch(txtTelefon.Text, @"^[+]{1}\d{3}[ ]?\d{2}[ ]?\d{3}[ ]?\d{3}"))
             {
                 errorProvider.SetError(txtTelefon, Properties.Resources.NeispravanFormat);
                 e.Cancel = true;//zaustaviti procesiranje forme
@@ -138,7 +174,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
 
         private void ComboBox_Validating(object sender, CancelEventArgs e)
         {
-            if (comboBox.SelectedItem==null)
+            if (comboBox.SelectedItem == null)
             {
                 errorProvider.SetError(comboBox, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;//zaustaviti procesiranje forme
@@ -158,7 +194,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
             }
             else if (!Regex.IsMatch(txtEmail.Text, @"^[a-z0-9][-a-z0-9.!#$%&'*+-=?^_`{|}~\/]+@([-a-z0-9]+\.)+[a-z]{2,5}$"))
             {
-                errorProvider.SetError(txtTelefon, Properties.Resources.NeispravanFormat);
+                errorProvider.SetError(txtEmail, Properties.Resources.NeispravanFormat);
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
             else
@@ -169,12 +205,12 @@ namespace ISNogometniStadion.WinUI.Korisnici
 
         private void TxtKorisnickoIme_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtKorisnickoIme.Text) || txtKorisnickoIme.Text.Length<4)
+            if (string.IsNullOrEmpty(txtKorisnickoIme.Text) || txtKorisnickoIme.Text.Length < 4)
             {
-                errorProvider.SetError(txtKorisnickoIme,Properties.Resources.ObaveznoPolje);
+                errorProvider.SetError(txtKorisnickoIme, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
-        
+
             else if (!Regex.IsMatch(txtKorisnickoIme.Text, @"^(?=.{8,40}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"))
             {
 
@@ -193,7 +229,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
                 errorProvider.SetError(txtLozinka, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
-            else if (txtLozinka.Text.Length<8)
+            else if (txtLozinka.Text.Length < 8)
             {
 
                 errorProvider.SetError(txtLozinka, "Lozinka mora sadrzavati minimalno 8 znakova.");
@@ -212,7 +248,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
                 errorProvider.SetError(txtPotvrdaLozinke, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
-            else if(txtPotvrdaLozinke.Text != txtLozinka.Text)
+            else if (txtPotvrdaLozinke.Text != txtLozinka.Text)
             {
                 errorProvider.SetError(txtPotvrdaLozinke, "Lozinke se ne poklapaju!");
                 e.Cancel = true;
@@ -223,6 +259,6 @@ namespace ISNogometniStadion.WinUI.Korisnici
             }
         }
 
-       
+
     }
 }

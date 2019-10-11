@@ -23,8 +23,11 @@ namespace ISNogometniStadion.WebAPI.Services
         public override List<Tim> Get(TimoviSearchRequest search)
         {
             var q = _context.Set<Database.Timovi>().AsQueryable();
-
-            if (search.LigaID.HasValue)
+            if (string.IsNullOrWhiteSpace(search?.Naziv))
+            {
+                q = q.Where(s => s.Naziv.StartsWith(search.Naziv));
+            }
+            if (search?.LigaID.HasValue==true)
             {
                 q = q.Where(s => s.LigaID==search.LigaID);
             }

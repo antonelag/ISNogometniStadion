@@ -1,4 +1,5 @@
-﻿using ISNogometniStadion.Model.Requests;
+﻿using ISNogometniStadion.Model;
+using ISNogometniStadion.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,13 @@ namespace ISNogometniStadion.WinUI.Gradovi
             InitializeComponent();
         }
 
+        private const int WM_CLOSE = 0x0010;
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_CLOSE)
+                AutoValidate = AutoValidate.Disable;
+            base.WndProc(ref m);
+        }
         private async void FrmGradoviDetalji_Load(object sender, EventArgs e)
         {
             await LoadDrzave();
@@ -39,26 +47,52 @@ namespace ISNogometniStadion.WinUI.Gradovi
         {
             if (this.ValidateChildren())
             {
-                var req = new GradoviInsertRequest
+                List<Grad> lista = await _apiService.Get<List<Grad>>(new GradoviSearchRequest() { Naziv = txtNaziv.Text, DrzavaID=(int)cbDrzave.SelectedValue });
+                if (lista.Count == 0)
                 {
-                    Naziv = txtNaziv.Text,
-                    DrzavaID = (int)cbDrzave.SelectedValue
-                };
-                if (_id.HasValue)
-                {
-                    int i =(int) _id;
-                    await _apiService.Update<dynamic>(i, req);
+
+                    var req = new GradoviInsertRequest
+                    {
+                        Naziv = txtNaziv.Text,
+                        DrzavaID = (int)cbDrzave.SelectedValue
+                    };
+                    if (_id.HasValue)
+                    {
+                        int i = (int)_id;
+                        try
+                        {
+                            await _apiService.Update<dynamic>(i, req);
+                            MessageBox.Show("Operacija uspjela!");
+                            this.Close();
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            await _apiService.Insert<dynamic>(req);
+                            MessageBox.Show("Operacija uspjela!");
+                            this.Close();
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
                 }
                 else
-                    await _apiService.Insert<dynamic>(req);
+                {
+                    MessageBox.Show("Uneseni grad već postoji u unesenoj državi!");
+                    this.Close();
 
-                MessageBox.Show("Operacija uspjela!");
-                this.Close();
-
+                }
             }
             else
             {
                 MessageBox.Show("Operacija nije uspjela!");
+                this.Close();
             }
         }
 
@@ -80,7 +114,7 @@ namespace ISNogometniStadion.WinUI.Gradovi
 
         private void CbDrzave_Validating(object sender, CancelEventArgs e)
         {
-            if (cbDrzave.SelectedItem==null)
+            if (cbDrzave.SelectedItem == null)
             {
                 errorProvider1.SetError(cbDrzave, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;
@@ -99,4 +133,4 @@ namespace ISNogometniStadion.WinUI.Gradovi
         }
     }
 }
-    
+

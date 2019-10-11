@@ -28,6 +28,14 @@ namespace ISNogometniStadion.WinUI.Stadioni
             InitializeComponent();
         }
 
+        private const int WM_CLOSE = 0x0010;
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_CLOSE)
+                AutoValidate = AutoValidate.Disable;
+            base.WndProc(ref m);
+        }
+
         private async void FrmStadionDetalji_Load(object sender, EventArgs e)
         {
             await LoadGradovi();
@@ -85,7 +93,7 @@ namespace ISNogometniStadion.WinUI.Stadioni
 
         private void CbStadioni_Validating(object sender, CancelEventArgs e)
         {
-            if (cbStadioni.SelectedItem==null)
+            if (cbStadioni.SelectedItem == null)
             {
                 errorProvider1.SetError(cbStadioni, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;
@@ -99,42 +107,72 @@ namespace ISNogometniStadion.WinUI.Stadioni
         {
             if (this.ValidateChildren())
             {
-                req.Naziv = txtNaziv.Text;
-                req.Opis = txtOpis.Text;
-                req.GradID = int.Parse(cbStadioni.SelectedValue.ToString());
-                req.lat = txtlat.Text;
-                req.lng = txtlng.Text;
-               
-                //spremanje slike u request se radi prilikom klika na dodaj 
-                //ako nije dodao novu sliku(UPDATE), samim time nije kliknuo na dodaj, trebala bi slika ostati nepromijenjena
-                if (req.Slika == null && _id.HasValue)
+                List<Stadion> lista = await _apiService.Get<List<Stadion>>(new StadioniSearchRequest() { Naziv = txtNaziv.Text, GradID = int.Parse(cbStadioni.SelectedValue.ToString()) });
+                if (lista.Count == 0)
                 {
-                    Stadion a = await _apiService.GetById<Stadion>(_id);
-                    req.Slika = a.Slika;
-                    req.SlikaThumb = a.SlikaThumb;
-                }
 
-                //za slucaj da korisnik ne unese sliku
-                if (req.Slika == null && !_id.HasValue)
-                {
-                    var img = _imageService.GetNoImage();
-                    req.Slika = _imageService.ImageToBytes(img);
-                    var th = _imageService.ImageToThumbnail(img);
-                    req.SlikaThumb = _imageService.ImageToBytes(th);
-                }
+                    req.Naziv = txtNaziv.Text;
+                    req.Opis = txtOpis.Text;
+                    req.GradID = int.Parse(cbStadioni.SelectedValue.ToString());
+                    req.lat = txtlat.Text;
+                    req.lng = txtlng.Text;
 
-                if (_id.HasValue)
-                {
-                    int i = (int)_id;
-                    await _apiService.Update<dynamic>(i, req);
+                    //spremanje slike u request se radi prilikom klika na dodaj 
+                    //ako nije dodao novu sliku(UPDATE), samim time nije kliknuo na dodaj, trebala bi slika ostati nepromijenjena
+                    if (req.Slika == null && _id.HasValue)
+                    {
+                        Stadion a = await _apiService.GetById<Stadion>(_id);
+                        req.Slika = a.Slika;
+                        req.SlikaThumb = a.SlikaThumb;
+                    }
+
+                    //za slucaj da korisnik ne unese sliku
+                    if (req.Slika == null && !_id.HasValue)
+                    {
+                        var img = _imageService.GetNoImage();
+                        req.Slika = _imageService.ImageToBytes(img);
+                        var th = _imageService.ImageToThumbnail(img);
+                        req.SlikaThumb = _imageService.ImageToBytes(th);
+                    }
+
+                    if (_id.HasValue)
+                    {
+                        try
+                        {
+                            int i = (int)_id;
+                            await _apiService.Update<dynamic>(i, req);
+                            MessageBox.Show("Operacija uspjesna!");
+                            this.Close();
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            await _apiService.Insert<dynamic>(req);
+                            MessageBox.Show("Operacija uspjesna!");
+                            this.Close();
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
                 }
                 else
-                    await _apiService.Insert<dynamic>(req);
-                MessageBox.Show("Operacija uspjesna!");
+                {
+                    MessageBox.Show("Uneseni stadion već postoji");
+                    this.Close();
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("Operacija nije uspjela");
                 this.Close();
             }
-            else
-                MessageBox.Show("Operacija nije uspjela");
         }
 
         private void TxtOpis_Validating(object sender, CancelEventArgs e)
@@ -195,5 +233,5 @@ namespace ISNogometniStadion.WinUI.Stadioni
                     , null);
         }
     }
-    }
+}
 

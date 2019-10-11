@@ -29,6 +29,14 @@ namespace ISNogometniStadion.WinUI.Ulaznice
             InitializeComponent();
             _id = id;
         }
+
+        private const int WM_CLOSE = 0x0010;
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_CLOSE)
+                AutoValidate = AutoValidate.Disable;
+            base.WndProc(ref m);
+        }
         private async void FrmUlazniceDetalji_Load(object sender, EventArgs e)
         {
             await LoadUtakmica();
@@ -319,7 +327,10 @@ namespace ISNogometniStadion.WinUI.Ulaznice
                 this.Close();
             }
             else
+            {
                 MessageBox.Show("Operacija nije uspjela!");
+                this.Close();
+            }
         }
 
 

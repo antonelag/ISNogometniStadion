@@ -18,15 +18,22 @@ namespace ISNogometniStadion.WinUI.Utakmice
         private readonly APIService _apiServiceSektori = new APIService("Sektori");
         private readonly APIService _apiServiceTribine = new APIService("Tribine");
         private readonly int? _id = null;
-        public frmSektoriDetalji(int? id=null)
+        public frmSektoriDetalji(int? id = null)
         {
             InitializeComponent();
             _id = id;
         }
 
+        private const int WM_CLOSE = 0x0010;
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_CLOSE)
+                AutoValidate = AutoValidate.Disable;
+            base.WndProc(ref m);
+        }
         private async void FrmSektoriDetalji_Load(object sender, EventArgs e)
         {
-           await LoadTribine();
+            await LoadTribine();
             if (_id.HasValue)
             {
                 Sektor a = await _apiServiceSektori.GetById<Sektor>(_id);
@@ -48,6 +55,9 @@ namespace ISNogometniStadion.WinUI.Utakmice
         {
             if (this.ValidateChildren())
             {
+                List<Sektor> lista = await _apiServiceSektori.Get<List<Sektor>>(new SektoriSearchRequest() { Naziv = txtNaziv.Text, TribinaID = int.Parse(cbTribine.SelectedValue.ToString()) });
+                if (lista.Count == 0)
+                {
                 var req = new SektoriInsertRequest()
                 {
                     Naziv = txtNaziv.Text,
@@ -56,15 +66,40 @@ namespace ISNogometniStadion.WinUI.Utakmice
                 if (_id.HasValue)
                 {
                     int i = (int)_id;
-                    await _apiServiceSektori.Update<dynamic>(i, req);
+                    try
+                    {
+                        await _apiServiceSektori.Update<dynamic>(i, req);
+                        MessageBox.Show("Operacija uspjesna!");
+                        this.Close();
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
                 else
-                    await _apiServiceSektori.Insert<dynamic>(req);
-                MessageBox.Show("Operacija uspjesna!");
-                this.Close();
+                {
+                    try
+                    {
+                        await _apiServiceSektori.Insert<dynamic>(req);
+                        MessageBox.Show("Operacija uspjesna!");
+                        this.Close();
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+                }
+                else
+                {
+                    MessageBox.Show("Već postoji isti sektor za istu tribinu!");
+                    this.Close();
+                }
             }
             else
+            {
                 MessageBox.Show("Operacija nije uspjela!");
+                this.Close();
+            }
         }
 
         private void TxtNaziv_Validating(object sender, CancelEventArgs e)

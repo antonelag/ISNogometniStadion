@@ -24,6 +24,14 @@ namespace ISNogometniStadion.WinUI.Sjedala
             _id = id;
         }
 
+        private const int WM_CLOSE = 0x0010;
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_CLOSE)
+                AutoValidate = AutoValidate.Disable;
+            base.WndProc(ref m);
+        }
+
         private async void FrmSjedalaDetalji_Load(object sender, EventArgs e)
         {
             await LoadSektori();
@@ -40,7 +48,7 @@ namespace ISNogometniStadion.WinUI.Sjedala
             var result = await _apiServiceSektori.Get<List<Model.Sektor>>(null);
             cbSektori.DisplayMember = "SektorPodaci";
             cbSektori.ValueMember = "SektorID";
-            
+
             cbSektori.DataSource = result;
             cbSektori.SelectedItem = null;
             cbSektori.SelectedText = "--Odaberite--";
@@ -50,43 +58,55 @@ namespace ISNogometniStadion.WinUI.Sjedala
         {
             if (this.ValidateChildren())
             {
-                bool isti = false;
-                List<Sjedalo> sjedala = await _apiService.Get<List<Sjedalo>>(null);
-               
-                var req = new SjedalaInsertRequest()
+                List<Sjedalo> lista = await _apiService.Get<List<Sjedalo>>(new SjedalaSearchRequest() { Oznaka = txtOznaka.Text, SektorID = int.Parse(cbSektori.SelectedValue.ToString()) });
+                if (lista.Count == 0)
                 {
-                    Oznaka = txtOznaka.Text,
-                    SektorID = int.Parse(cbSektori.SelectedValue.ToString()),
-                    Status=cbxStatus.Checked
-                };
-                foreach (var s in sjedala)
-                {
-                    if (s.Oznaka ==req.Oznaka && s.SektorID == req.SektorID)
+                    var req = new SjedalaInsertRequest()
                     {
-                        isti = true;
-                        break;
+                        Oznaka = txtOznaka.Text,
+                        SektorID = int.Parse(cbSektori.SelectedValue.ToString()),
+                        Status = cbxStatus.Checked
+                    };
+
+                    if (_id.HasValue)
+                    {
+                        try
+                        {
+                            int i = (int)_id;
+                            await _apiService.Update<dynamic>(i, req);
+                            MessageBox.Show("Operacija uspjesna!");
+                            this.Close();
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            await _apiService.Insert<dynamic>(req);
+                            MessageBox.Show("Operacija uspjesna!");
+                            this.Close();
+                        }
+                        catch (Exception)
+                        {
+                        }
                     }
                 }
-                if (!isti)
+                else
                 {
+                    MessageBox.Show("Uneseno sjedalo već postoji za isti sektor!");
+                    this.Close();
+                }
 
-                if (_id.HasValue)
-                {
-                    int i = (int)_id;
-                    await _apiService.Update<dynamic>(i, req);
-                }
-                else
-                    await _apiService.Insert<dynamic>(req);
-                MessageBox.Show("Operacija uspjesna!");
-                this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Operacija nije uspjela");
-                }
             }
             else
-                MessageBox.Show("Operacija nije uspjela!");
+            {
+                MessageBox.Show("Operacija nije uspjela");
+                this.Close();
+            }
+
         }
 
         private void TxtOznaka_Validating(object sender, CancelEventArgs e)
@@ -107,7 +127,7 @@ namespace ISNogometniStadion.WinUI.Sjedala
 
         private void CbSjedala_Validating(object sender, CancelEventArgs e)
         {
-            if(cbSektori.SelectedItem==null)
+            if (cbSektori.SelectedItem == null)
             {
                 errorProvider1.SetError(cbSektori, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;
@@ -117,6 +137,6 @@ namespace ISNogometniStadion.WinUI.Sjedala
         }
 
 
-      
+
     }
 }

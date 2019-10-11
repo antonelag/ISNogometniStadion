@@ -17,6 +17,13 @@ namespace ISNogometniStadion.WinUI
         {
             InitializeComponent();
         }
+        private const int WM_CLOSE = 0x0010;
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_CLOSE)
+                AutoValidate = AutoValidate.Disable;
+            base.WndProc(ref m);
+        }
 
         private void TxtKorisnickoIme_Validating(object sender, CancelEventArgs e)
         {
@@ -45,16 +52,16 @@ namespace ISNogometniStadion.WinUI
             APIService.KorisnickoIme = txtKorisnickoIme.Text;
             APIService.Lozinka = txtLozinka.Text;
 
-            try
-            {
                 await _apiService.Get<dynamic>(null);
                 var frm = new frmIndex();
                 frm.Show();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
+        }
+
+        private void Label3_Click(object sender, EventArgs e)
+        {
+            var frm = new frmRegistracija();
+            frm.Show();
         }
     }
 }

@@ -8,5 +8,6 @@ namespace ISNogometniStadion.Model
     public class GradoviSearchRequest
     {
         public string Naziv { get; set; }
+        public int? DrzavaID { get; set; }
     }
 }
