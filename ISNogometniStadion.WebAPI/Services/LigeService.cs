@@ -25,7 +25,7 @@ namespace ISNogometniStadion.WebAPI.Services
             var q = _context.Set<Database.Lige>().AsQueryable();
             if (!string.IsNullOrEmpty(search?.Naziv) && search?.DrzavaID.HasValue == true)
             {
-                q = q.Where(s => s.Naziv.StartsWith(search.Naziv) && s.DrzavaID == search.DrzavaID);
+                q = q.Where(s => s.Naziv.Equals(search.Naziv) && s.DrzavaID == search.DrzavaID);
             }
             else
             {

@@ -25,7 +25,7 @@ namespace ISNogometniStadion.WebAPI.Services
             var q = _context.Set<Database.Sjedala>().AsQueryable();
             if (!string.IsNullOrEmpty(search?.Oznaka) && search?.SektorID.HasValue == true)
             {
-                q = q.Where(s => (s.Oznaka.StartsWith(search.Oznaka)) && s.SektorID == search.SektorID);
+                q = q.Where(s => (s.Oznaka.Equals(search.Oznaka)) && s.SektorID == search.SektorID);
             }
             else
             {

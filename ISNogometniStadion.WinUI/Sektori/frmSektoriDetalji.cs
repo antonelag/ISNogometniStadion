@@ -56,7 +56,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
             if (this.ValidateChildren())
             {
                 List<Sektor> lista = await _apiServiceSektori.Get<List<Sektor>>(new SektoriSearchRequest() { Naziv = txtNaziv.Text, TribinaID = int.Parse(cbTribine.SelectedValue.ToString()) });
-                if (lista.Count == 0)
+                if (lista.Count == 0 || (lista.Count == 1 && lista[0].SektorID == _id))
                 {
                 var req = new SektoriInsertRequest()
                 {

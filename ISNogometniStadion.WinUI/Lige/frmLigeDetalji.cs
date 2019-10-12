@@ -84,7 +84,7 @@ namespace ISNogometniStadion.WinUI.Lige
             if (this.ValidateChildren())
             {
                 List<Liga> lista = await _apiService.Get<List<Liga>>(new LigaSearchRequest() { Naziv = txtNaziv.Text, DrzavaID = int.Parse(cbDrzave.SelectedValue.ToString()) });
-                if (lista.Count == 0)
+                if (lista.Count == 0 || (lista.Count == 1 && lista[0].LigaID == _id))
                 {
                     var req = new LigaInsertRequest()
                     {

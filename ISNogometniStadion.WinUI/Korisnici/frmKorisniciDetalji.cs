@@ -38,7 +38,9 @@ namespace ISNogometniStadion.WinUI.Korisnici
             if (this.ValidateChildren())
             {
                 List<Korisnik> lista = await _apiService.Get<List<Korisnik>>(new KorisniciSearchRequest() { KorisnickoIme = txtKorisnickoIme.Text });
-                if (lista.Count == 0)
+                lista = lista.Where(s => s.korisnickoIme.Equals(txtKorisnickoIme.Text)).ToList();
+                //slican razlog i ovdje kao za drzave
+                if (lista.Count == 0 || (lista.Count == 1 && lista[0].KorisnikID == _id))
                 {
                     var request = new KorisniciInsertRequest()
                     {

@@ -124,7 +124,7 @@ namespace ISNogometniStadion.WinUI.Timovi
             if (this.ValidateChildren())
             {
                 List<Tim> lista = await _apiService.Get<List<Tim>>(new TimoviSearchRequest() { Naziv = txtNaziv.Text, LigaID = int.Parse(cbLige.SelectedValue.ToString()) });
-                if (lista.Count == 0)
+                if (lista.Count == 0 || (lista.Count == 1 && lista[0].TimID == _id))
                 {
 
                     res.Naziv = txtNaziv.Text;

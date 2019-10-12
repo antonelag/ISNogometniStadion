@@ -53,7 +53,11 @@ namespace ISNogometniStadion.WinUI.Drzave
             if (this.ValidateChildren())
             {
                 List<Drzava> lista = await _apiService.Get<List<Drzava>>(new DrzaveSearchRequest() { Naziv = txtNaziv.Text });
-                if (lista.Count == 0)
+                //zbog nemogucnosti drugacije pretrage drzava dobit cemo i one koje pocinju na isto slovo
+                //provjeriti cemo one koje nose isti naziv
+                //kod ostalih je provjereno na service jer sve ostale salju vise parametara od samog naziva....
+                lista = lista.Where(s => s.Naziv.Equals(txtNaziv.Text)).ToList();
+                if (lista.Count == 0 || (lista.Count==1 && lista[0].DrzavaID==_id))
                 {
                     var req = new DrzaveInsertRequest()
                     {

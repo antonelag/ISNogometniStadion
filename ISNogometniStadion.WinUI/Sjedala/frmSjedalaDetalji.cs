@@ -59,7 +59,7 @@ namespace ISNogometniStadion.WinUI.Sjedala
             if (this.ValidateChildren())
             {
                 List<Sjedalo> lista = await _apiService.Get<List<Sjedalo>>(new SjedalaSearchRequest() { Oznaka = txtOznaka.Text, SektorID = int.Parse(cbSektori.SelectedValue.ToString()) });
-                if (lista.Count == 0)
+                if (lista.Count == 0 || (lista.Count == 1 && lista[0].SjedaloID == _id))
                 {
                     var req = new SjedalaInsertRequest()
                     {

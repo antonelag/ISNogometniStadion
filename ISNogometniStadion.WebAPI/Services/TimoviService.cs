@@ -23,13 +23,13 @@ namespace ISNogometniStadion.WebAPI.Services
         public override List<Tim> Get(TimoviSearchRequest search)
         {
             var q = _context.Set<Database.Timovi>().AsQueryable();
-            if (string.IsNullOrWhiteSpace(search?.Naziv) && search?.LigaID.HasValue == true)
+            if (!string.IsNullOrWhiteSpace(search?.Naziv) && search?.LigaID.HasValue == true)
             {
-                q = q.Where(s => s.Naziv.StartsWith(search.Naziv) && s.LigaID == search.LigaID);
+                q = q.Where(s => s.Naziv.Equals(search.Naziv) && s.LigaID == search.LigaID);
             }
             else
             {
-                if (string.IsNullOrWhiteSpace(search?.Naziv))
+                if (!string.IsNullOrWhiteSpace(search?.Naziv))
                 {
                     q = q.Where(s => s.Naziv.StartsWith(search.Naziv));
                 }

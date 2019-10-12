@@ -48,7 +48,7 @@ namespace ISNogometniStadion.WinUI.Gradovi
             if (this.ValidateChildren())
             {
                 List<Grad> lista = await _apiService.Get<List<Grad>>(new GradoviSearchRequest() { Naziv = txtNaziv.Text, DrzavaID=(int)cbDrzave.SelectedValue });
-                if (lista.Count == 0)
+                if (lista.Count == 0 || (lista.Count == 1 && lista[0].GradID == _id))
                 {
 
                     var req = new GradoviInsertRequest

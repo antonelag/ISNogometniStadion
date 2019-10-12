@@ -85,7 +85,7 @@ namespace ISNogometniStadion.WinUI.Tribine
             if (this.ValidateChildren())
             {
                 List<Tribina> lista = await _apiService.Get<List<Tribina>>(new TribineSearchRequest() { Naziv = txtNaziv.Text, StadionID = int.Parse(cbTribine.SelectedValue.ToString()) });
-                if (lista.Count == 0)
+                if (lista.Count == 0 || (lista.Count == 1 && lista[0].TribinaID == _id))
                 {
                     var req = new TribineInsertRequest()
                     {

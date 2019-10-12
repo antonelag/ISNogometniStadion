@@ -49,6 +49,7 @@ namespace ISNogometniStadion.WinUI.Drzave
             if (this.ValidateChildren())
             {
                 List<Drzava> lista = await drzaveApiService.Get<List<Drzava>>(new DrzaveSearchRequest() { Naziv = txtNaziv.Text });
+                lista = lista.Where(s => s.Naziv.Equals(txtNaziv.Text)).ToList();
                 if (lista.Count == 0)
                 {
                     DrzaveInsertRequest req = new DrzaveInsertRequest() { Naziv = txtNaziv.Text };

@@ -108,7 +108,7 @@ namespace ISNogometniStadion.WinUI.Stadioni
             if (this.ValidateChildren())
             {
                 List<Stadion> lista = await _apiService.Get<List<Stadion>>(new StadioniSearchRequest() { Naziv = txtNaziv.Text, GradID = int.Parse(cbStadioni.SelectedValue.ToString()) });
-                if (lista.Count == 0)
+                if (lista.Count == 0 || (lista.Count == 1 && lista[0].StadionID == _id))
                 {
 
                     req.Naziv = txtNaziv.Text;
