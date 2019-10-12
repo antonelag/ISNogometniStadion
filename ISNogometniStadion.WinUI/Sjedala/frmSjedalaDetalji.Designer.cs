@@ -45,36 +45,40 @@
             // 
             // txtOznaka
             // 
-            this.txtOznaka.Location = new System.Drawing.Point(47, 83);
+            this.txtOznaka.Location = new System.Drawing.Point(63, 102);
+            this.txtOznaka.Margin = new System.Windows.Forms.Padding(4);
             this.txtOznaka.Name = "txtOznaka";
-            this.txtOznaka.Size = new System.Drawing.Size(100, 20);
+            this.txtOznaka.Size = new System.Drawing.Size(221, 22);
             this.txtOznaka.TabIndex = 0;
             this.txtOznaka.Validating += new System.ComponentModel.CancelEventHandler(this.TxtOznaka_Validating);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 67);
+            this.label1.Location = new System.Drawing.Point(57, 82);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.Size = new System.Drawing.Size(106, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Oznaka sjedala";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 156);
+            this.label2.Location = new System.Drawing.Point(59, 168);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(49, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Sektor";
             // 
             // btnSnimi
             // 
-            this.btnSnimi.Location = new System.Drawing.Point(48, 223);
+            this.btnSnimi.Location = new System.Drawing.Point(63, 258);
+            this.btnSnimi.Margin = new System.Windows.Forms.Padding(4);
             this.btnSnimi.Name = "btnSnimi";
-            this.btnSnimi.Size = new System.Drawing.Size(75, 23);
-            this.btnSnimi.TabIndex = 4;
+            this.btnSnimi.Size = new System.Drawing.Size(319, 46);
+            this.btnSnimi.TabIndex = 3;
             this.btnSnimi.Text = "Sačuvaj";
             this.btnSnimi.UseVisualStyleBackColor = true;
             this.btnSnimi.Click += new System.EventHandler(this.BtnSnimi_Click);
@@ -86,32 +90,35 @@
             // cbSektori
             // 
             this.cbSektori.FormattingEnabled = true;
-            this.cbSektori.Location = new System.Drawing.Point(47, 172);
+            this.cbSektori.Location = new System.Drawing.Point(63, 188);
+            this.cbSektori.Margin = new System.Windows.Forms.Padding(4);
             this.cbSektori.Name = "cbSektori";
-            this.cbSektori.Size = new System.Drawing.Size(177, 21);
-            this.cbSektori.TabIndex = 5;
+            this.cbSektori.Size = new System.Drawing.Size(319, 24);
+            this.cbSektori.TabIndex = 2;
             // 
             // cbxStatus
             // 
             this.cbxStatus.AutoSize = true;
-            this.cbxStatus.Location = new System.Drawing.Point(153, 86);
+            this.cbxStatus.Location = new System.Drawing.Point(292, 102);
+            this.cbxStatus.Margin = new System.Windows.Forms.Padding(4);
             this.cbxStatus.Name = "cbxStatus";
-            this.cbxStatus.Size = new System.Drawing.Size(71, 17);
+            this.cbxStatus.Size = new System.Drawing.Size(90, 21);
             this.cbxStatus.TabIndex = 7;
             this.cbxStatus.Text = "Zauzeto?";
             this.cbxStatus.UseVisualStyleBackColor = true;
             // 
             // frmSjedalaDetalji
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 450);
+            this.ClientSize = new System.Drawing.Size(474, 371);
             this.Controls.Add(this.cbxStatus);
             this.Controls.Add(this.cbSektori);
             this.Controls.Add(this.btnSnimi);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtOznaka);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmSjedalaDetalji";
             this.Text = "frmSjedalaDetalji";
             this.Load += new System.EventHandler(this.FrmSjedalaDetalji_Load);

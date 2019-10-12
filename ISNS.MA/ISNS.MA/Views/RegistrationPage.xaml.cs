@@ -20,14 +20,12 @@ namespace ISNS.MA.Views
         public RegistrationPage()
         {
             InitializeComponent();
-            BindingContext= vm = new RegistrationViewModel();
+            BindingContext = vm = new RegistrationViewModel();
         }
-        protected async  override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
             await vm.Init();
-     
-
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
@@ -85,9 +83,9 @@ namespace ISNS.MA.Views
             }
         }
 
-        private  void Button_Clicked_1(object sender, EventArgs e)
+        private void Button_Clicked_1(object sender, EventArgs e)
         {
-             Application.Current.MainPage = new LoginPage();
+            Application.Current.MainPage = new LoginPage();
         }
     }
 }

@@ -7,7 +7,6 @@ namespace ISNogometniStadion.Model
 {
     public class Uplata
     {
-        [Key]
         public int UplataID { get; set; }
         public int UlaznicaID { get; set; }
         public Ulaznica Ulaznica { get; set; }

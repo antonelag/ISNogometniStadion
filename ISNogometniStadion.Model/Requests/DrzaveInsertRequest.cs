@@ -7,7 +7,6 @@ namespace ISNogometniStadion.Model.Requests
 {
     public class DrzaveInsertRequest
     {
-        [DataType(DataType.Text)]
         public string Naziv { get; set; }
     }
 }

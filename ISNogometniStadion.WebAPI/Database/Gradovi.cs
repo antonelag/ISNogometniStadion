@@ -10,6 +10,7 @@ namespace ISNogometniStadion.WebAPI.Database
     {
         [Key]
         public int GradID { get; set; }
+        [RegularExpression(@"^[a-zA-Z -]+$")]
         public string Naziv { get; set; }
 
 

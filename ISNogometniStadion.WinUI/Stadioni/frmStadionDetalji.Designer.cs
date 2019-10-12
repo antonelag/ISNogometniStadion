@@ -50,27 +50,30 @@
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(13, 76);
+            this.txtNaziv.Location = new System.Drawing.Point(17, 94);
+            this.txtNaziv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(224, 20);
+            this.txtNaziv.Size = new System.Drawing.Size(297, 22);
             this.txtNaziv.TabIndex = 0;
             this.txtNaziv.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNaziv_Validating);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 49);
+            this.label1.Location = new System.Drawing.Point(16, 60);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.Size = new System.Drawing.Size(101, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Naziv stadiona";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 369);
+            this.label2.Location = new System.Drawing.Point(13, 454);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.Size = new System.Drawing.Size(84, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Naziv grada";
             // 
@@ -82,18 +85,20 @@
             // 
             this.cbStadioni.DisplayMember = "Naziv";
             this.cbStadioni.FormattingEnabled = true;
-            this.cbStadioni.Location = new System.Drawing.Point(12, 394);
+            this.cbStadioni.Location = new System.Drawing.Point(16, 485);
+            this.cbStadioni.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbStadioni.Name = "cbStadioni";
-            this.cbStadioni.Size = new System.Drawing.Size(225, 21);
+            this.cbStadioni.Size = new System.Drawing.Size(299, 24);
             this.cbStadioni.TabIndex = 3;
             this.cbStadioni.ValueMember = "GradID";
             this.cbStadioni.Validating += new System.ComponentModel.CancelEventHandler(this.CbStadioni_Validating);
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(113, 441);
+            this.btnSacuvaj.Location = new System.Drawing.Point(13, 531);
+            this.btnSacuvaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSacuvaj.Name = "btnSacuvaj";
-            this.btnSacuvaj.Size = new System.Drawing.Size(75, 23);
+            this.btnSacuvaj.Size = new System.Drawing.Size(303, 44);
             this.btnSacuvaj.TabIndex = 4;
             this.btnSacuvaj.Text = "Sačuvaj";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
@@ -102,17 +107,19 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 132);
+            this.label3.Location = new System.Drawing.Point(16, 162);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 13);
+            this.label3.Size = new System.Drawing.Size(37, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Opis";
             // 
             // txtOpis
             // 
-            this.txtOpis.Location = new System.Drawing.Point(13, 148);
+            this.txtOpis.Location = new System.Drawing.Point(17, 182);
+            this.txtOpis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtOpis.Name = "txtOpis";
-            this.txtOpis.Size = new System.Drawing.Size(224, 48);
+            this.txtOpis.Size = new System.Drawing.Size(297, 58);
             this.txtOpis.TabIndex = 6;
             this.txtOpis.Text = "";
             this.txtOpis.Validating += new System.ComponentModel.CancelEventHandler(this.TxtOpis_Validating);
@@ -120,17 +127,19 @@
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 215);
+            this.pictureBox1.Location = new System.Drawing.Point(17, 265);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(103, 66);
+            this.pictureBox1.Size = new System.Drawing.Size(137, 81);
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(171, 229);
+            this.btnDodaj.Location = new System.Drawing.Point(228, 282);
+            this.btnDodaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(66, 34);
+            this.btnDodaj.Size = new System.Drawing.Size(88, 42);
             this.btnDodaj.TabIndex = 8;
             this.btnDodaj.Text = "Dodaj";
             this.btnDodaj.UseVisualStyleBackColor = true;
@@ -142,43 +151,47 @@
             // 
             // txtlat
             // 
-            this.txtlat.Location = new System.Drawing.Point(12, 319);
+            this.txtlat.Location = new System.Drawing.Point(16, 393);
+            this.txtlat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtlat.Name = "txtlat";
-            this.txtlat.Size = new System.Drawing.Size(100, 20);
+            this.txtlat.Size = new System.Drawing.Size(132, 22);
             this.txtlat.TabIndex = 9;
             this.txtlat.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox1_Validating);
             // 
             // txtlng
             // 
-            this.txtlng.Location = new System.Drawing.Point(137, 319);
+            this.txtlng.Location = new System.Drawing.Point(183, 393);
+            this.txtlng.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtlng.Name = "txtlng";
-            this.txtlng.Size = new System.Drawing.Size(100, 20);
+            this.txtlng.Size = new System.Drawing.Size(132, 22);
             this.txtlng.TabIndex = 10;
             this.txtlng.Validating += new System.ComponentModel.CancelEventHandler(this.Txtlng_Validating);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 303);
+            this.label4.Location = new System.Drawing.Point(13, 373);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.Size = new System.Drawing.Size(59, 17);
             this.label4.TabIndex = 11;
-            this.label4.Text = "Lattitude";
+            this.label4.Text = "Latituda";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(134, 303);
+            this.label5.Location = new System.Drawing.Point(179, 373);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.Size = new System.Drawing.Size(71, 17);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Longitude";
+            this.label5.Text = "Longituda";
             // 
             // frmStadionDetalji
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(262, 478);
+            this.ClientSize = new System.Drawing.Size(349, 588);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtlng);
@@ -192,6 +205,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNaziv);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmStadionDetalji";
             this.Text = "frmStadionDetalji";
             this.Load += new System.EventHandler(this.FrmStadionDetalji_Load);

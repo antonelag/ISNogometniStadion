@@ -8,7 +8,6 @@ namespace ISNogometniStadion.Model
 {
     public class Korisnik
     {
-        [Key]
         public int KorisnikID { get; set; }
         public string ime { get; set; }
         public string prezime { get; set; }

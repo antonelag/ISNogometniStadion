@@ -11,6 +11,7 @@ namespace ISNogometniStadion.WebAPI.Database
     {
         [Key]
         public int TimID { get; set; }
+        [RegularExpression(@"^[a-zA-Z ]+$")]
         public string Naziv { get; set; }
         public string Opis { get; set; }
       

@@ -12,8 +12,7 @@ namespace ISNogometniStadion.Model
         public string Naziv { get; set; }
         public int StadionID { get; set; }
         public string Stadion { get; set; }
-        public 
-           int Cijena { get; set; }
+        public decimal Cijena { get; set; }
 
     }
 }

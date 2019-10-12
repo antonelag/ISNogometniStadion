@@ -47,7 +47,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
                         Ime = txtIme.Text,
                         Prezime = txtPrezime.Text,
                         email = txtEmail.Text,
-                        DatumRodjenja = dpdatumRodjenja.Value,
+                        DatumRodjenja = dpdatumRodjenja.Value.Date,
                         telefon = txtTelefon.Text,
                         korisnickoIme = txtKorisnickoIme.Text,
                         lozinka = txtLozinka.Text,
@@ -193,7 +193,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
                 errorProvider.SetError(txtEmail, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
-            else if (!Regex.IsMatch(txtEmail.Text, @"^[a-z0-9][-a-z0-9.!#$%&'*+-=?^_`{|}~\/]+@([-a-z0-9]+\.)+[a-z]{2,5}$"))
+            else if (!Regex.IsMatch(txtEmail.Text, @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"))
             {
                 errorProvider.SetError(txtEmail, Properties.Resources.NeispravanFormat);
                 e.Cancel = true;//zaustaviti procesiranje forme

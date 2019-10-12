@@ -91,7 +91,7 @@ namespace ISNogometniStadion.WinUI.Tribine
                     {
                         Naziv = txtNaziv.Text,
                         StadionID = int.Parse(cbTribine.SelectedValue.ToString()),
-                        Cijena = int.Parse(txtCijena.Text)
+                        Cijena = decimal.Parse(txtCijena.Text)
                     };
 
                     if (_id.HasValue)

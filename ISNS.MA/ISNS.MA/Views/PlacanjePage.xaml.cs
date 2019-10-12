@@ -57,14 +57,14 @@ namespace ISNS.MA.Views
                     validExpDate = true;
                 }
 
-                if ( validExpDate)
+                if (validExpDate)
                 {
                     CreditCardVM.CreditCardNumber = this.ccn.Text;
                     CreditCardVM.ExpMonth = int.Parse(this.exm.Text);
                     CreditCardVM.ExpYear = int.Parse(this.exy.Text);
                     CreditCardVM.CVV = this.cvv.Text;
                     CreditCardVM.amount = decimal.Parse(UlaznicaDetailVM.Sektor.Cijena);
-                    //clear fields
+
                     this.ccn.Text = "";
                     this.exy.Text = "";
                     this.exm.Text = "";

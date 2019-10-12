@@ -105,7 +105,7 @@ namespace ISNogometniStadion.WinUI
                 errorProvider1.SetError(txtEmail, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
-            else if (!Regex.IsMatch(txtEmail.Text, @"^[a-z0-9][-a-z0-9.!#$%&'*+-=?^_`{|}~\/]+@([-a-z0-9]+\.)+[a-z]{2,5}$"))
+            else if (!Regex.IsMatch(txtEmail.Text, @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"))
             {
                 errorProvider1.SetError(txtEmail, Properties.Resources.NeispravanFormat);
                 e.Cancel = true;//zaustaviti procesiranje forme
@@ -201,7 +201,7 @@ namespace ISNogometniStadion.WinUI
                         Ime = txtIme.Text,
                         Prezime = txtPrezime.Text,
                         email = txtEmail.Text,
-                        DatumRodjenja = dtpDatumRodjenja.Value,
+                        DatumRodjenja = dtpDatumRodjenja.Value.Date,
                         telefon = txtTelefon.Text,
                         korisnickoIme = txtKorisnickoIme.Text,
                         lozinka = txtLozinka.Text,

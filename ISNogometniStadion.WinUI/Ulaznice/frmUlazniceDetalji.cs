@@ -80,20 +80,20 @@ namespace ISNogometniStadion.WinUI.Ulaznice
         private async Task LoadUtakmica()
         {
             var result = await _apiServiceUtakmica.Get<List<Model.Utakmica>>(null);
-            cbUtakmica.DataSource = result;
             cbUtakmica.DisplayMember = "UtakmicaPodaci";
             cbUtakmica.ValueMember = "UtakmicaID";
             cbUtakmica.SelectedItem = null;
             cbUtakmica.SelectedText = "--Odaberite--";
+            cbUtakmica.DataSource = result;
         }
         private async Task LoadKorisnici()
         {
             var result = await _apiServiceKorisnici.Get<List<Model.Korisnik>>(null);
             cbKorisnik.DisplayMember = "KorisnikPodaci";
             cbKorisnik.ValueMember = "KorisnikID";
-            cbKorisnik.DataSource = result;
             cbKorisnik.SelectedItem = null;
             cbKorisnik.SelectedText = "--Odaberite--";
+            cbKorisnik.DataSource = result;
         }
 
         private void CbSjedala_Validating(object sender, CancelEventArgs e)

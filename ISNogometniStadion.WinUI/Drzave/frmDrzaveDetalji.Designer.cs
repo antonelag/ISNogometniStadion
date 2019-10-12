@@ -39,25 +39,28 @@
             // Naziv
             // 
             this.Naziv.AutoSize = true;
-            this.Naziv.Location = new System.Drawing.Point(135, 41);
+            this.Naziv.Location = new System.Drawing.Point(81, 63);
+            this.Naziv.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Naziv.Name = "Naziv";
-            this.Naziv.Size = new System.Drawing.Size(69, 13);
+            this.Naziv.Size = new System.Drawing.Size(90, 17);
             this.Naziv.TabIndex = 0;
             this.Naziv.Text = "Naziv države";
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(63, 78);
+            this.txtNaziv.Location = new System.Drawing.Point(84, 96);
+            this.txtNaziv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(228, 20);
+            this.txtNaziv.Size = new System.Drawing.Size(303, 22);
             this.txtNaziv.TabIndex = 1;
             this.txtNaziv.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox1_Validating);
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(138, 131);
+            this.btnSacuvaj.Location = new System.Drawing.Point(84, 161);
+            this.btnSacuvaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSacuvaj.Name = "btnSacuvaj";
-            this.btnSacuvaj.Size = new System.Drawing.Size(75, 23);
+            this.btnSacuvaj.Size = new System.Drawing.Size(303, 51);
             this.btnSacuvaj.TabIndex = 2;
             this.btnSacuvaj.Text = "Sačuvaj";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
@@ -69,12 +72,13 @@
             // 
             // frmDrzaveDetalji
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(342, 210);
+            this.ClientSize = new System.Drawing.Size(456, 258);
             this.Controls.Add(this.btnSacuvaj);
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.Naziv);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmDrzaveDetalji";
             this.Text = "frmDrzaveDetalji";
             this.Load += new System.EventHandler(this.FrmDrzaveDetalji_Load);

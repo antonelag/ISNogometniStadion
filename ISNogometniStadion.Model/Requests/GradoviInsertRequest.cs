@@ -8,9 +8,7 @@ namespace ISNogometniStadion.Model.Requests
 
     public class GradoviInsertRequest
     {
-        [DataType(DataType.Text)]
         public string Naziv { get; set; }
-        [RegularExpression(@"^[0-9]+$")]
         public int DrzavaID { get; set; }
     }
 }

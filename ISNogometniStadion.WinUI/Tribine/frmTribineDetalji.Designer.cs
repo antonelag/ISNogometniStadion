@@ -42,18 +42,20 @@
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(29, 63);
+            this.txtNaziv.Location = new System.Drawing.Point(60, 69);
+            this.txtNaziv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(206, 20);
+            this.txtNaziv.Size = new System.Drawing.Size(332, 22);
             this.txtNaziv.TabIndex = 0;
             this.txtNaziv.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNaziv_Validating);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 47);
+            this.label1.Location = new System.Drawing.Point(56, 49);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.Size = new System.Drawing.Size(86, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Naziv tribine";
             // 
@@ -61,9 +63,10 @@
             // 
             this.cbTribine.DisplayMember = "Naziv";
             this.cbTribine.FormattingEnabled = true;
-            this.cbTribine.Location = new System.Drawing.Point(29, 130);
+            this.cbTribine.Location = new System.Drawing.Point(60, 151);
+            this.cbTribine.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbTribine.Name = "cbTribine";
-            this.cbTribine.Size = new System.Drawing.Size(206, 21);
+            this.cbTribine.Size = new System.Drawing.Size(332, 24);
             this.cbTribine.TabIndex = 2;
             this.cbTribine.ValueMember = "StadionID";
             this.cbTribine.Validating += new System.ComponentModel.CancelEventHandler(this.CbTribine_Validating);
@@ -71,17 +74,19 @@
             // Stadion
             // 
             this.Stadion.AutoSize = true;
-            this.Stadion.Location = new System.Drawing.Point(26, 105);
+            this.Stadion.Location = new System.Drawing.Point(56, 120);
+            this.Stadion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Stadion.Name = "Stadion";
-            this.Stadion.Size = new System.Drawing.Size(43, 13);
+            this.Stadion.Size = new System.Drawing.Size(56, 17);
             this.Stadion.TabIndex = 3;
             this.Stadion.Text = "Stadion";
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(160, 221);
+            this.btnSacuvaj.Location = new System.Drawing.Point(60, 274);
+            this.btnSacuvaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSacuvaj.Name = "btnSacuvaj";
-            this.btnSacuvaj.Size = new System.Drawing.Size(75, 44);
+            this.btnSacuvaj.Size = new System.Drawing.Size(338, 54);
             this.btnSacuvaj.TabIndex = 4;
             this.btnSacuvaj.Text = "Sačuvaj";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
@@ -93,25 +98,27 @@
             // 
             // txtCijena
             // 
-            this.txtCijena.Location = new System.Drawing.Point(29, 184);
+            this.txtCijena.Location = new System.Drawing.Point(60, 217);
+            this.txtCijena.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCijena.Name = "txtCijena";
-            this.txtCijena.Size = new System.Drawing.Size(206, 20);
+            this.txtCijena.Size = new System.Drawing.Size(332, 22);
             this.txtCijena.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 168);
+            this.label2.Location = new System.Drawing.Point(56, 198);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.Size = new System.Drawing.Size(47, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "Cijena";
             // 
             // frmTribineDetalji
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 277);
+            this.ClientSize = new System.Drawing.Size(457, 372);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCijena);
             this.Controls.Add(this.btnSacuvaj);
@@ -119,6 +126,7 @@
             this.Controls.Add(this.cbTribine);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNaziv);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmTribineDetalji";
             this.Text = "frmTribineDetalji";
             this.Load += new System.EventHandler(this.FrmTribineDetalji_Load);

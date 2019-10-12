@@ -21,8 +21,9 @@ namespace ISNogometniStadion.WebAPI.Database
         [ForeignKey("KorisnikID")]
         public  Korisnici Korisnik { get; set; }
         public int KorisnikID { get; set; }
-
+        [DataType(DataType.Date)]
         public DateTime DatumKupnje { get; set; }
+        [DataType(DataType.Time)]
         public DateTime VrijemeKupnje { get; set; }
         public byte[] barcodeimg { get; set; }
 

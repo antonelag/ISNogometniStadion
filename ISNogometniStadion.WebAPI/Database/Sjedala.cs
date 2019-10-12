@@ -10,6 +10,7 @@ namespace ISNogometniStadion.WebAPI.Database
     {
         [Key]
         public int SjedaloID { get; set; }
+        [RegularExpression(@"^[a-zA-Z0-9 ]+$")]
         public string Oznaka { get; set; }
 
         [ForeignKey("SektorID")]

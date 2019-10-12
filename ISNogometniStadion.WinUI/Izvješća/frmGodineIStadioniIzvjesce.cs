@@ -48,7 +48,7 @@ namespace ISNogometniStadion.WinUI.Izvješća
         {
             var stadioni = await _apiServiceStadioni.Get<List<Model.Stadion>>(null);
             
-            int UkupnaZarada = 0;
+            decimal UkupnaZarada = 0;
             int brojUlaznica = 0;
              List<Stadion> listaStadiona = new List<Stadion>();
             List<Utakmica> listaUtakmica = new List<Utakmica>();

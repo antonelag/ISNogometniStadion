@@ -48,10 +48,10 @@ namespace ISNogometniStadion.WinUI.Sjedala
             var result = await _apiServiceSektori.Get<List<Model.Sektor>>(null);
             cbSektori.DisplayMember = "SektorPodaci";
             cbSektori.ValueMember = "SektorID";
-
-            cbSektori.DataSource = result;
             cbSektori.SelectedItem = null;
             cbSektori.SelectedText = "--Odaberite--";
+            cbSektori.DataSource = result;
+
         }
 
         private async void BtnSnimi_Click(object sender, EventArgs e)

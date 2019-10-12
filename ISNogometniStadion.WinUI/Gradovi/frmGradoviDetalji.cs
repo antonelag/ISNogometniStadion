@@ -126,9 +126,9 @@ namespace ISNogometniStadion.WinUI.Gradovi
             var result = await _apiServiceDrzave.Get<List<Model.Drzava>>(null);
             cbDrzave.DisplayMember = "Naziv";
             cbDrzave.ValueMember = "DrzavaID";
-            cbDrzave.DataSource = result;
             cbDrzave.SelectedItem = null;
             cbDrzave.SelectedText = "--Odaberite--";
+            cbDrzave.DataSource = result;
         }
     }
 }

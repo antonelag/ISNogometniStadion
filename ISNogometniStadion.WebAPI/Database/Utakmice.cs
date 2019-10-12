@@ -24,8 +24,9 @@ namespace ISNogometniStadion.WebAPI.Database
         [ForeignKey("LigaID")]
         public Lige Liga { get; set; }
         public int LigaID { get; set; }
-
+        [DataType(DataType.DateTime)]
         public DateTime DatumOdigravanja { get; set; }
+        [DataType(DataType.Time)]
         public DateTime VrijemeOdigravanja { get; set; }
         [ForeignKey("StadionID")]
         public Stadioni stadion { get; set; }

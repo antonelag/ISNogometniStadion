@@ -34,7 +34,7 @@ namespace ISNogometniStadion.WinUI
 
                 return await url.WithBasicAuth(KorisnickoIme, Lozinka).GetJsonAsync<T>();
             }
-            catch (FlurlHttpException ex)
+            catch (FlurlHttpException)
             {
                 throw;
             }
@@ -65,7 +65,9 @@ namespace ISNogometniStadion.WinUI
                     stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
                 }
 
-                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Operacija nije uspjela", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return default(T);
             }
 

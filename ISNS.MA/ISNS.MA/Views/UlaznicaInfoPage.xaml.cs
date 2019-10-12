@@ -22,10 +22,6 @@ namespace ISNS.MA.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-
-           // await ulaznicaDetailVM.Init();
-
-
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
@@ -33,13 +29,5 @@ namespace ISNS.MA.Views
             await Navigation.PopToRootAsync();
         }
 
-      
-
-        //private void Button_Clicked(object sender, EventArgs e)
-        //{
-        //    //this.barcode.Source = ImageSource.FromStream(()=>new MemoryStream(ulaznicaDetailVM.barcode));
-        //    //this.btn.IsEnabled = false;
-        //    Navigation.PushAsync(new MojeUlaznicePage());
-        //}
     }
 }
