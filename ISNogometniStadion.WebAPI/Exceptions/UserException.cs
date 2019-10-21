@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace ISNogometniStadion.WebAPI.Exceptions
 {
-    public class UserException:Exception
+    public class UserException : Exception
     {
-        public UserException(string msg):base(msg)
+        public UserException(string msg) : base(msg)
         {
 
         }

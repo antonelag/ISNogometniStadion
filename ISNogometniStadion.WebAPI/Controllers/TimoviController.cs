@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ISNogometniStadion.WebAPI.Controllers
 {
-  
+
     public class TimoviController : BaseCRUDController<Tim, TimoviSearchRequest, TimoviInsertRequest, TimoviInsertRequest>
     {
         public TimoviController(ICRUDService<Tim, TimoviSearchRequest, TimoviInsertRequest, TimoviInsertRequest> service) : base(service)

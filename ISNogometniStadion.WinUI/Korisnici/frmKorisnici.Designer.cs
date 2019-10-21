@@ -73,7 +73,6 @@
             this.dgvKorisnici.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvKorisnici.Size = new System.Drawing.Size(770, 368);
             this.dgvKorisnici.TabIndex = 0;
-            this.dgvKorisnici.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             this.dgvKorisnici.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvKorisnici_MouseDoubleClick);
             // 
             // btnPrikazi

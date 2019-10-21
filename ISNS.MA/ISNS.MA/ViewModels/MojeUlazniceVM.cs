@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace ISNS.MA.ViewModels
 {
-    public class MojeUlazniceVM:BaseViewModel
+    public class MojeUlazniceVM : BaseViewModel
     {
         private APIService _apiServiceUlaznice = new APIService("Ulaznica");
         private APIService _apiServiceKorisnici = new APIService("Korisnici");
@@ -21,7 +21,7 @@ namespace ISNS.MA.ViewModels
 
         public Korisnik korisnik { get; set; }
         public ObservableCollection<Ulaznica> UlazniceList { get; set; } = new ObservableCollection<Ulaznica>();
-        
+
         public ICommand InitCommand { get; set; }
 
         public async Task Init()
@@ -36,17 +36,17 @@ namespace ISNS.MA.ViewModels
                     break;
                 }
             }
-            var list = await _apiServiceUlaznice.Get<IEnumerable<Ulaznica>>(new UlazniceSearchRequest() { KorisnikID=korisnik.KorisnikID});
+            var list = await _apiServiceUlaznice.Get<IEnumerable<Ulaznica>>(new UlazniceSearchRequest() { KorisnikID = korisnik.KorisnikID });
             UlazniceList.Clear();
-                foreach (var ulaznica in list)
-                {
-                
-                    UlazniceList.Add(ulaznica);
-                }
-            }
+            foreach (var ulaznica in list)
+            {
 
+                UlazniceList.Add(ulaznica);
+            }
         }
 
-
     }
+
+
+}
 

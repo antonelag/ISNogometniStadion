@@ -21,11 +21,6 @@ namespace ISNogometniStadion.WinUI.Korisnici
             InitializeComponent();
         }
 
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private async void BtnPrikazi_Click(object sender, EventArgs e)
         {
             //pozivamo api
@@ -34,7 +29,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
             {
                 ImePrezime = txtPretraga.Text
             };
-            var result =await _APIService.Get<dynamic>(search);
+            var result = await _APIService.Get<dynamic>(search);
             dgvKorisnici.AutoGenerateColumns = false; // da ne generise sama kontrole
             dgvKorisnici.DataSource = result;
 

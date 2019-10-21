@@ -9,7 +9,7 @@ using ISNogometniStadion.WebAPI.Database;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
-    public class UplateService : BaseCRUDService<Model.Uplata, Model.UplateSearchRequest, Database.Uplate,UplateInsertRequest, UplateInsertRequest>
+    public class UplateService : BaseCRUDService<Model.Uplata, Model.UplateSearchRequest, Database.Uplate, UplateInsertRequest, UplateInsertRequest>
     {
         private readonly ISNogometniStadionContext _context;
         private readonly IMapper _mapper;
@@ -29,7 +29,7 @@ namespace ISNogometniStadion.WebAPI.Services
                 List<Utakmica> lista = _mapper.Map<List<Utakmica>>(_context.Set<Database.Utakmice>().ToList());
 
                 Utakmica utakmica = null;
-                foreach(var u in lista)
+                foreach (var u in lista)
                 {
                     if (u.UtakmicaID == search.UtakmicaID)
                         utakmica = u;

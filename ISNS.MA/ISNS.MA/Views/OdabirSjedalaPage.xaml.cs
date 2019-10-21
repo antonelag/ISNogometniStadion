@@ -46,7 +46,7 @@ namespace ISNS.MA.Views
                     brK = 0;
                 }
                 this.gridSjedala.ColumnDefinitions.Add(new ColumnDefinition { Width=30});
-                Button l = new Button { Text = sjedalaViewModel.SjedalaList[i].Oznaka, TextColor = Color.White, CornerRadius = 50, IsEnabled=!sjedalaViewModel.SjedalaList[i].Status,
+                Button l = new Button { MinimumWidthRequest=50, Text = sjedalaViewModel.SjedalaList[i].Oznaka, TextColor = Color.White, CornerRadius = 25, IsEnabled=!sjedalaViewModel.SjedalaList[i].Status,
                 HeightRequest=30,WidthRequest=30, FontSize=10 };
                 l.Pressed += btn_Clicked;
                 if (sjedalaViewModel.SjedalaList[i].Status == true)

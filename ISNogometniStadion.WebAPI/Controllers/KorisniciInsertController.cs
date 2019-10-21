@@ -20,7 +20,7 @@ namespace ISNogometniStadion.WebAPI.Controllers
         {
             _service = service;
         }
-       [HttpPost]
+        [HttpPost]
         public Model.Korisnik Insert(KorisniciInsertRequest request)
         {
             return _service.Insert(request);

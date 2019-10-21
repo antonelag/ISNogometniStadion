@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ISNogometniStadion.WebAPI.Migrations
 {
-    public partial class baza : Migration
+    public partial class db : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -172,7 +172,7 @@ namespace ISNogometniStadion.WebAPI.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Naziv = table.Column<string>(nullable: true),
                     StadionID = table.Column<int>(nullable: false),
-                    Cijena = table.Column<int>(nullable: false)
+                    Cijena = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -212,7 +212,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
 
-            else if (!Regex.IsMatch(txtKorisnickoIme.Text, @"^(?=.{8,40}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"))
+            else if (!Regex.IsMatch(txtKorisnickoIme.Text, @"^(?=.{6,40}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"))
             {
 
                 errorProvider.SetError(txtKorisnickoIme, "Neispravan format ili dužina imena (8-40)");
@@ -230,10 +230,10 @@ namespace ISNogometniStadion.WinUI.Korisnici
                 errorProvider.SetError(txtLozinka, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
-            else if (txtLozinka.Text.Length < 8)
+            else if (txtLozinka.Text.Length < 4)
             {
 
-                errorProvider.SetError(txtLozinka, "Lozinka mora sadrzavati minimalno 8 znakova.");
+                errorProvider.SetError(txtLozinka, "Lozinka mora sadrzavati minimalno 4 znaka.");
                 e.Cancel = true;
             }
             else

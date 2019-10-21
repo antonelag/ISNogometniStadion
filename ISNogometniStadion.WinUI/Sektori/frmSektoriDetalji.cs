@@ -58,36 +58,36 @@ namespace ISNogometniStadion.WinUI.Utakmice
                 List<Sektor> lista = await _apiServiceSektori.Get<List<Sektor>>(new SektoriSearchRequest() { Naziv = txtNaziv.Text, TribinaID = int.Parse(cbTribine.SelectedValue.ToString()) });
                 if (lista.Count == 0 || (lista.Count == 1 && lista[0].SektorID == _id))
                 {
-                var req = new SektoriInsertRequest()
-                {
-                    Naziv = txtNaziv.Text,
-                    TribinaID = int.Parse(cbTribine.SelectedValue.ToString())
-                };
-                if (_id.HasValue)
-                {
-                    int i = (int)_id;
-                    try
+                    var req = new SektoriInsertRequest()
                     {
-                        await _apiServiceSektori.Update<dynamic>(i, req);
-                        MessageBox.Show("Operacija uspjesna!");
-                        this.Close();
-                    }
-                    catch (Exception)
+                        Naziv = txtNaziv.Text,
+                        TribinaID = int.Parse(cbTribine.SelectedValue.ToString())
+                    };
+                    if (_id.HasValue)
                     {
+                        int i = (int)_id;
+                        try
+                        {
+                            await _apiServiceSektori.Update<dynamic>(i, req);
+                            MessageBox.Show("Operacija uspjesna!");
+                            this.Close();
+                        }
+                        catch (Exception)
+                        {
+                        }
                     }
-                }
-                else
-                {
-                    try
+                    else
                     {
-                        await _apiServiceSektori.Insert<dynamic>(req);
-                        MessageBox.Show("Operacija uspjesna!");
-                        this.Close();
+                        try
+                        {
+                            await _apiServiceSektori.Insert<dynamic>(req);
+                            MessageBox.Show("Operacija uspjesna!");
+                            this.Close();
+                        }
+                        catch (Exception)
+                        {
+                        }
                     }
-                    catch (Exception)
-                    {
-                    }
-                }
                 }
                 else
                 {

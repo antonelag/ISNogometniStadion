@@ -13,7 +13,7 @@ namespace ISNogometniStadion.WebAPI.Controllers
     public class BaseCRUDController<T, TSearch, TInsert, TUpdate> : BaseController<T, TSearch>
     {
         private readonly ICRUDService<T, TSearch, TInsert, TUpdate> _service = null;
-        public BaseCRUDController(ICRUDService<T, TSearch,TInsert,TUpdate> service) : base(service)
+        public BaseCRUDController(ICRUDService<T, TSearch, TInsert, TUpdate> service) : base(service)
         {
             _service = service;
         }

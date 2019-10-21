@@ -39,7 +39,7 @@ namespace ISNogometniStadion.WinUI.Uplate
             dgvUplate.DataSource = result;
         }
 
-       
+
 
         private async void FrmUplate_Load(object sender, EventArgs e)
         {

@@ -65,7 +65,6 @@ namespace ISNogometniStadion.WinUI
                     stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
                 }
 
-                //MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 MessageBox.Show("Operacija nije uspjela", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return default(T);

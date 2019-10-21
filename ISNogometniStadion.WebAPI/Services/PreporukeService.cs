@@ -9,7 +9,7 @@ using ISNogometniStadion.WebAPI.Database;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
-    public class PreporukeService : BaseCRUDService<Model.Preporuka,PreporukaSearchRequest, Database.Preporuke,PreporukaInsertRequest, PreporukaInsertRequest>
+    public class PreporukeService : BaseCRUDService<Model.Preporuka, PreporukaSearchRequest, Database.Preporuke, PreporukaInsertRequest, PreporukaInsertRequest>
     {
         private readonly ISNogometniStadionContext _context;
         private readonly IMapper _mapper;
@@ -26,15 +26,15 @@ namespace ISNogometniStadion.WebAPI.Services
 
             if (search?.KorisnikID.HasValue == true)
             {
-                q = q.Where(s => s.KorisnikID == search.KorisnikID).OrderByDescending(s=>s.BrojKupljenihUlaznica);
+                q = q.Where(s => s.KorisnikID == search.KorisnikID).OrderByDescending(s => s.BrojKupljenihUlaznica);
             }
-            if (search?.KorisnikID.HasValue==true && search?.PrviTimID.HasValue==true && search?.DrugiTimID.HasValue==true)
+            if (search?.KorisnikID.HasValue == true && search?.PrviTimID.HasValue == true && search?.DrugiTimID.HasValue == true)
             {
-                q = q.Where(s => s.KorisnikID==search.KorisnikID &&(s.TimID==search.PrviTimID || s.TimID==search.DrugiTimID));
+                q = q.Where(s => s.KorisnikID == search.KorisnikID && (s.TimID == search.PrviTimID || s.TimID == search.DrugiTimID));
             }
             var list = q.ToList();
             return _mapper.Map<List<Preporuka>>(list);
-            
+
         }
     }
 }

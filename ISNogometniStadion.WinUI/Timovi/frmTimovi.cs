@@ -25,23 +25,8 @@ namespace ISNogometniStadion.WinUI.Timovi
         {
             return false;
         }
-        //private async void BtnPretrazi_Click(object sender, EventArgs e)
-        //{
 
-        //    var search = new TimoviSearchRequest()
-        //    {
-        //        Naziv = txtPretraga.Text
-        //    };
-        //    var res = await _apiService.Get<List<Tim>>(search);
-        //    dgvTimovi.DataSource = res;
-        //    dgvTimovi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-        //    dgvTimovi.AutoResizeColumns();
-        //    for (var j=0;j < res.Count;j++)
-        //    {
-        //            dgvTimovi.Rows[j].Cells["SlikaThumb"].Value = _imageService.BytesToImage(res[j].SlikaThumb);
-        //    }
-        //}
-        private async Task loadloadSveLige()
+        private async Task LoadSveLige()
         {
             var result = await _apiServiceLige.Get<List<Model.Liga>>(null);
             cbLiga.DisplayMember = "Naziv";
@@ -66,7 +51,7 @@ namespace ISNogometniStadion.WinUI.Timovi
 
         private async void FrmTimovi_Load(object sender, EventArgs e)
         {
-            await loadloadSveLige();
+            await LoadSveLige();
         }
 
         private async void CbLiga_SelectedIndexChanged(object sender, EventArgs e)

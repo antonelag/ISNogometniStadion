@@ -63,7 +63,7 @@ namespace ISNogometniStadion.WebAPI.Security
             var principal = new ClaimsPrincipal(identity);
             var ticket = new AuthenticationTicket(principal, Scheme.Name);
 
-            return  AuthenticateResult.Success(ticket);
+            return AuthenticateResult.Success(ticket);
         }
     }
 }

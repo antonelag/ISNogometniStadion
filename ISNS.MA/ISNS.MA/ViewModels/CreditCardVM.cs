@@ -29,22 +29,22 @@ namespace ISNS.MA.ViewModels
         {
             PaymentModel vm = new PaymentModel()
             {
-                CreditCard=new ISNogometniStadion.Model.CreditCardVM()
+                CreditCard = new ISNogometniStadion.Model.CreditCardVM()
                 {
-                amount = amount,
-                CreditCardNumber = CreditCardNumber,
-                CVV = CVV,
-                ExpMonth = ExpMonth,
-                ExpYear = ExpYear
+                    amount = amount,
+                    CreditCardNumber = CreditCardNumber,
+                    CVV = CVV,
+                    ExpMonth = ExpMonth,
+                    ExpYear = ExpYear
                 }
-                
+
             };
             StripeError e = await PaymentAPIService.Post<StripeError>(vm);
             msg = e.Message;
             if (msg == null)
                 msg = "Neuspješna uplata";
 
-            //--
+
             if (msg == "Uspješna uplata")
                 uspjesno = true;
             else

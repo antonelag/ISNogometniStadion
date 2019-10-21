@@ -21,18 +21,6 @@ namespace ISNogometniStadion.WinUI.Ulaznice
             InitializeComponent();
         }
 
-        //private async void BtnPretrazi_Click(object sender, EventArgs e)
-        //{
-        //    var search = new UlazniceSearchRequest
-        //    {
-        //        KorisnikID = int.Parse(cbKorisniciPretraga.SelectedValue.ToString())
-        //    };
-
-        //    var a = await _apiService.Get<List<Model.Ulaznica>>(search);
-        //    dgvUlaznice.DataSource = a;
-
-        //}
-
         private void DgvUlaznice_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var id = dgvUlaznice.SelectedRows[0].Cells[0].Value;
@@ -40,9 +28,6 @@ namespace ISNogometniStadion.WinUI.Ulaznice
             frm.Show();
         }
 
-
-
-        
 
         private async void CbKorisniciPretraga_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -55,7 +40,7 @@ namespace ISNogometniStadion.WinUI.Ulaznice
 
 
         }
-        private async Task loadSviKorisnici()
+        private async Task LoadSviKorisnici()
         {
             var result = await _apiServiceKorisnici.Get<List<Model.Korisnik>>(null);
             cbKorisniciPretraga.DisplayMember = "KorisnikPodaci";
@@ -74,7 +59,7 @@ namespace ISNogometniStadion.WinUI.Ulaznice
 
         private async void FrmUlaznice_Load(object sender, EventArgs e)
         {
-            await loadSviKorisnici();
+            await LoadSviKorisnici();
         }
     }
 }

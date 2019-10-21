@@ -8,7 +8,7 @@ using Xamarin.Forms;
 namespace ISNS.MA.Converters
 {
     public class ImageConverter : IValueConverter //well known interfejs koji sluzi za konverziju razlicitih tipova podataka
-        //ima metode convert i convertback
+                                                  //ima metode convert i convertback
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

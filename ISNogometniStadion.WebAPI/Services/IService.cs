@@ -9,6 +9,6 @@ namespace ISNogometniStadion.WebAPI.Services
     {
         List<T> Get(TSearch search);
         T GetById(int id);
-      
+
     }
 }

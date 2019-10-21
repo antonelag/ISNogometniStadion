@@ -49,7 +49,7 @@ namespace ISNS.MA.Views
             }
             else if (string.IsNullOrWhiteSpace(this.Lozinka.Text))
             {
-                await DisplayAlert("Greška", "Morate unijeti novu ili staru lozinku", "OK");
+                await DisplayAlert("Greška", "Morate unijeti lozinku", "OK");
 
             }
             else if (this.Lozinka.Text != this.PotvrdaLozinke.Text)
@@ -57,9 +57,9 @@ namespace ISNS.MA.Views
                 await DisplayAlert("Greška", "Lozinke moraju biti iste", "OK");
 
             }
-            else if (this.Lozinka.Text.Length < 8)
+            else if (this.Lozinka.Text.Length < 4)
             {
-                await DisplayAlert("Greška", "Lozinka ne smije biti kraća od 8 karaktera", "OK");
+                await DisplayAlert("Greška", "Lozinka ne smije biti kraća od 4 karaktera", "OK");
             }
             else if (this.Gradovi.SelectedItem == null)
             {

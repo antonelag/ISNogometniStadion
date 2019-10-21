@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ISNogometniStadion.WebAPI.Controllers
 {
- 
+
     public class DrzaveController : BaseCRUDController<Drzava, DrzaveSearchRequest, DrzaveInsertRequest, DrzaveInsertRequest>
     { // da nema search ide object
         public DrzaveController(ICRUDService<Drzava, DrzaveSearchRequest, DrzaveInsertRequest, DrzaveInsertRequest> service) : base(service)

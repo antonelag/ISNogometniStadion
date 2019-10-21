@@ -20,18 +20,7 @@ namespace ISNogometniStadion.WinUI.Stadioni
             InitializeComponent();
         }
 
-        //private async void BtnPretrazi_Click(object sender, EventArgs e)
-        //{
-        //    var search = new StadioniSearchRequest()
-        //    {
-        //        Naziv = txtPretraga.Text
-        //    };
-        //    var res = await _apiService.Get<dynamic>(search);
-        //    dgvStadioni.AutoGenerateColumns = false;
-        //    dgvStadioni.DataSource = res;
-
-        //}
-        private async Task loadSviGradovi()
+        private async Task LoadSviGradovi()
         {
             var result = await _apiServiceGradovi.Get<List<Model.Grad>>(null);
             cbGradovi.DisplayMember = "Naziv";
@@ -57,7 +46,7 @@ namespace ISNogometniStadion.WinUI.Stadioni
 
         private async void FrmStadioni_Load(object sender, EventArgs e)
         {
-            await loadSviGradovi();
+            await LoadSviGradovi();
         }
 
         private async void CbGradovi_SelectedIndexChanged(object sender, EventArgs e)

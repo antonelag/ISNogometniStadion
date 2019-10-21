@@ -15,7 +15,7 @@ namespace ISNogometniStadion.WinUI.Sjedala
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Sjedala");
-        public frmSjedala(int? id=null)
+        public frmSjedala(int? id = null)
         {
             InitializeComponent();
             _id = id;
@@ -39,6 +39,6 @@ namespace ISNogometniStadion.WinUI.Sjedala
             frm.Show();
         }
 
-       
+
     }
 }

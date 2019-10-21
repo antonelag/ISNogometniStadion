@@ -13,7 +13,7 @@ namespace ISNogometniStadion.WinUI.Drzave
 {
     public partial class frmDrzave : Form
     {
-        private readonly APIService _apiService=new APIService("Drzave");
+        private readonly APIService _apiService = new APIService("Drzave");
         public frmDrzave()
         {
             InitializeComponent();

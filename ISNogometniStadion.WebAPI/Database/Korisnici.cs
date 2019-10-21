@@ -22,7 +22,7 @@ namespace ISNogometniStadion.WebAPI.Database
         public string telefon { get; set; }
         [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]
         public string email { get; set; }
-        [RegularExpression(@"^(?=.{8,40}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$")]
+        [RegularExpression(@"^(?=.{6,40}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$")]
         public string korisnickoIme { get; set; }
 
         public string LozinkaHash { get; set; }

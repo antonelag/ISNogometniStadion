@@ -61,9 +61,9 @@ namespace ISNS.MA.Views
                 await DisplayAlert("Greška", "Lozinke moraju biti iste", "OK");
 
             }
-            else if (this.Lozinka.Text.Length < 8)
+            else if (this.Lozinka.Text.Length < 4)
             {
-                await DisplayAlert("Greška", "Lozinka ne smije biti kraća od 8 karaktera", "OK");
+                await DisplayAlert("Greška", "Lozinka ne smije biti kraća od 4 karaktera", "OK");
             }
             else if (this.gradovi.SelectedItem == null)
             {

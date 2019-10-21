@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace ISNS.MA.ViewModels
 {
-    public class StadioniViewModel:BaseViewModel
+    public class StadioniViewModel : BaseViewModel
     {
         private APIService _apiServiceStadioni = new APIService("Stadioni");
         private APIService _apiServiceGradovi = new APIService("Gradovi");

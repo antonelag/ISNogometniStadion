@@ -40,8 +40,6 @@ namespace ISNogometniStadion.WinUI.Ulaznice
         private async void FrmUlazniceDetalji_Load(object sender, EventArgs e)
         {
             await LoadUtakmica();
-            //await LoadSektori();
-            //await LoadSjedala();
             await LoadKorisnici();
             if (_id.HasValue)
             {
@@ -55,27 +53,6 @@ namespace ISNogometniStadion.WinUI.Ulaznice
                 dtpDatum.Value = a.DatumKupnje;
                 dtpVrijeme.Value = a.VrijemeKupnje;
             }
-        }
-        private async Task LoadSjedala()
-        {
-            var result = await _apiServiceSjedala.Get<List<Model.Sjedalo>>(null);
-            cbSjedala.DisplayMember = "Oznaka";
-            cbSjedala.ValueMember = "SjedaloID";
-            cbSjedala.DataSource = result;
-            cbSjedala
-                .SelectedItem = null;
-            cbSjedala.SelectedText = "--Odaberite--";
-
-        }
-        private async Task LoadSektori()
-        {
-            var result = await _apiServiceSektori.Get<List<Model.Sektor>>(null);
-            cbSektor
-                .DisplayMember = "SektorPodaci";
-            cbSektor.ValueMember = "SektorID";
-            cbSektor.DataSource = result;
-            cbSektor.SelectedItem = null;
-            cbSektor.SelectedText = "--Odaberite--";
         }
         private async Task LoadUtakmica()
         {
@@ -197,7 +174,7 @@ namespace ISNogometniStadion.WinUI.Ulaznice
                 }
 
 
-              
+
 
 
                 if (_id.HasValue)
@@ -220,7 +197,7 @@ namespace ISNogometniStadion.WinUI.Ulaznice
                 //spremanje u preporuke
 
                 //update
-                if (proslaUtakmica != -1 || prosliKorisnik!=-1)
+                if (proslaUtakmica != -1 || prosliKorisnik != -1)
                 {
                     Utakmica proslaU = await _apiServiceUtakmica.GetById<Utakmica>(proslaUtakmica);
                     List<Preporuka> preporuke = await _apiServicePreporuke.Get<List<Preporuka>>(new PreporukaSearchRequest()

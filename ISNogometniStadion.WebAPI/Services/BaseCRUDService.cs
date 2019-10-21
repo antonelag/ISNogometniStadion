@@ -7,7 +7,7 @@ using ISNogometniStadion.WebAPI.Database;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
-    public class BaseCRUDService<TModel, TSearch, TDatabase, TInsert, TUpdate> : BaseService<TModel, TSearch, TDatabase>, ICRUDService<TModel, TSearch, TInsert, TUpdate> where TDatabase:class
+    public class BaseCRUDService<TModel, TSearch, TDatabase, TInsert, TUpdate> : BaseService<TModel, TSearch, TDatabase>, ICRUDService<TModel, TSearch, TInsert, TUpdate> where TDatabase : class
     {
         private readonly ISNogometniStadionContext _context;
         private readonly IMapper _mapper;

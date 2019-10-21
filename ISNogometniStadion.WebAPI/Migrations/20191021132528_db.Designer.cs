@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ISNogometniStadion.WebAPI.Migrations
 {
     [DbContext(typeof(ISNogometniStadionContext))]
-    [Migration("20191012153751_promjene")]
-    partial class promjene
+    [Migration("20191021132528_db")]
+    partial class db
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

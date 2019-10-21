@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace ISNS.MA.ViewModels
 {
-    public class SektoriViewModel:BaseViewModel
+    public class SektoriViewModel : BaseViewModel
     {
         private APIService _apiServiceSektori = new APIService("Sektori");
         private APIService _apiServiceTribine = new APIService("Tribine");
@@ -25,22 +25,22 @@ namespace ISNS.MA.ViewModels
         public ICommand InitCommand { get; set; }
         public async Task Init()
         {
-            
-            List<Tribina> listTribina =await  _apiServiceTribine.Get<List<Tribina>>(null);
+
+            List<Tribina> listTribina = await _apiServiceTribine.Get<List<Tribina>>(null);
             List<int> listazahtjev = new List<int>();
-           foreach(var tribina in listTribina)
+            foreach (var tribina in listTribina)
             {
-                if(tribina.StadionID==StadionID)
-                listazahtjev.Add(tribina.TribinaID);
+                if (tribina.StadionID == StadionID)
+                    listazahtjev.Add(tribina.TribinaID);
             }
-                
-                var list = await _apiServiceSektori.Get<IEnumerable<Sektor>>(null);
-                SektoriList.Clear();
-                foreach (var sektor in list)
-                {
+
+            var list = await _apiServiceSektori.Get<IEnumerable<Sektor>>(null);
+            SektoriList.Clear();
+            foreach (var sektor in list)
+            {
                 if (listazahtjev.Contains(sektor.TribinaID))
                     SektoriList.Add(sektor);
-                }
+            }
 
         }
 

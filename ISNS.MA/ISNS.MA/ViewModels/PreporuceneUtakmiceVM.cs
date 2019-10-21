@@ -47,21 +47,21 @@ namespace ISNS.MA.ViewModels
             {
                 var n = 5;
                 if (preporuke.Count < 5)
-                    n = preporuke.Count; 
-            for(var i=0;i<n;i++)
-            {
-                foreach(var u in listUtakmice)
+                    n = preporuke.Count;
+                for (var i = 0; i < n; i++)
                 {
-                    if(preporuke[i].TimID==u.DomaciTimID || preporuke[i].TimID == u.GostujuciTimID)
+                    foreach (var u in listUtakmice)
                     {
-                        if(!UtakmiceList.Contains(u))
-                        UtakmiceList.Add(u);
+                        if (preporuke[i].TimID == u.DomaciTimID || preporuke[i].TimID == u.GostujuciTimID)
+                        {
+                            if (!UtakmiceList.Contains(u))
+                                UtakmiceList.Add(u);
+                        }
                     }
                 }
-            }
 
             }
-           
+
         }
     }
 }

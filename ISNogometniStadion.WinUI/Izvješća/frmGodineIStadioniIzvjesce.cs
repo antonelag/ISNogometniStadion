@@ -26,15 +26,15 @@ namespace ISNogometniStadion.WinUI.Izvješća
             InitializeComponent();
         }
 
-        private async void FrmGodineIStadioniIzvjesce_Load(object sender, EventArgs e)
+        private void FrmGodineIStadioniIzvjesce_Load(object sender, EventArgs e)
         {
-            await loadGodine();
+            LoadGodine();
         }
 
-    
 
 
-        private async Task loadGodine()
+
+        private void LoadGodine()
         {
             var gZ = DateTime.Now.Year;
             var gP = 2014;
@@ -42,33 +42,32 @@ namespace ISNogometniStadion.WinUI.Izvješća
             {
                 cbGodina.Items.Add(i);
             }
-           
         }
-        private async Task loadIzvjesce(int idGodina)
+        private async Task LoadIzvjesce(int idGodina)
         {
             var stadioni = await _apiServiceStadioni.Get<List<Model.Stadion>>(null);
-            
+
             decimal UkupnaZarada = 0;
             int brojUlaznica = 0;
-             List<Stadion> listaStadiona = new List<Stadion>();
+            List<Stadion> listaStadiona = new List<Stadion>();
             List<Utakmica> listaUtakmica = new List<Utakmica>();
             List<IzvjesceGodine> lista = new List<IzvjesceGodine>();
-           foreach(var s in stadioni)
+            foreach (var s in stadioni)
             {
                 brojUlaznica = 0;
                 UkupnaZarada = 0;
                 var tribine = await _apiServiceTribine.Get<List<Tribina>>(new TribineSearchRequest() { StadionID = s.StadionID });
                 var utakmice = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { StadionID = s.StadionID });
-                foreach(var ut in utakmice)
+                foreach (var ut in utakmice)
                 {
                     var ulaznice = await _apiServiceUlaznice.Get<List<Ulaznica>>(new UlazniceSearchRequest() { Godina = idGodina, UtakmicaID = ut.UtakmicaID });
-                    foreach(var ul in ulaznice)
+                    foreach (var ul in ulaznice)
                     {
                         brojUlaznica++;
-                       var sektori = await _apiServiceSektori.Get<List<Sektor>>(new SektoriSearchRequest() { Naziv = ul.sektor });
-                        foreach(var sek in sektori)
+                        var sektori = await _apiServiceSektori.Get<List<Sektor>>(new SektoriSearchRequest() { Naziv = ul.sektor });
+                        foreach (var sek in sektori)
                         {
-                            foreach(var t in tribine)
+                            foreach (var t in tribine)
                             {
                                 if (sek.TribinaID == t.TribinaID)
                                     UkupnaZarada += t.Cijena;
@@ -76,12 +75,12 @@ namespace ISNogometniStadion.WinUI.Izvješća
                         }
                     }
                 }
-                lista.Add(new IzvjesceGodine() { Stadion = s.Naziv,Grad=s.Grad, Zarada = UkupnaZarada,BrojProdanihUlaznica=brojUlaznica });
+                lista.Add(new IzvjesceGodine() { Stadion = s.Naziv, Grad = s.Grad, Zarada = UkupnaZarada, BrojProdanihUlaznica = brojUlaznica });
             }
 
             dgvIzvješće.DataSource = lista;
 
-         
+
         }
 
         private async void CbGodina_SelectedIndexChanged(object sender, EventArgs e)
@@ -89,7 +88,7 @@ namespace ISNogometniStadion.WinUI.Izvješća
             var idObj = cbGodina.SelectedItem;
             if (int.TryParse(idObj.ToString(), out int id))
             {
-                await loadIzvjesce(id);
+                await LoadIzvjesce(id);
             }
         }
     }

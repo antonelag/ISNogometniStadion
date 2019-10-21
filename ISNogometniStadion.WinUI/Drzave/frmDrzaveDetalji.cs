@@ -57,7 +57,7 @@ namespace ISNogometniStadion.WinUI.Drzave
                 //provjeriti cemo one koje nose isti naziv
                 //kod ostalih je provjereno na service jer sve ostale salju vise parametara od samog naziva....
                 lista = lista.Where(s => s.Naziv.Equals(txtNaziv.Text)).ToList();
-                if (lista.Count == 0 || (lista.Count==1 && lista[0].DrzavaID==_id))
+                if (lista.Count == 0 || (lista.Count == 1 && lista[0].DrzavaID == _id))
                 {
                     var req = new DrzaveInsertRequest()
                     {

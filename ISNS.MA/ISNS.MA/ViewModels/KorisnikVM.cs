@@ -12,9 +12,8 @@ namespace ISNS.MA.ViewModels
 {
     public class KorisnikVM
     {
-        private APIService _apiServiceGradovi= new APIService("Gradovi");
+        private APIService _apiServiceGradovi = new APIService("Gradovi");
         public Korisnik korisnik { get; set; }
-        //lista gradova
         public ObservableCollection<Grad> GradoviList { get; set; } = new ObservableCollection<Grad>();
 
         public ICommand InitCommand { get; set; }
@@ -29,7 +28,7 @@ namespace ISNS.MA.ViewModels
 
             var list = await _apiServiceGradovi.Get<List<Grad>>(null);
             GradoviList.Clear();
-            foreach(var g in list)
+            foreach (var g in list)
             {
                 GradoviList.Add(g);
             }

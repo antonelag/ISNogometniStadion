@@ -124,10 +124,10 @@ namespace ISNogometniStadion.WinUI
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
 
-            else if (!Regex.IsMatch(txtKorisnickoIme.Text, @"^(?=.{8,40}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"))
+            else if (!Regex.IsMatch(txtKorisnickoIme.Text, @"^(?=.{6,40}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"))
             {
 
-                errorProvider1.SetError(txtKorisnickoIme, "Neispravan format ili dužina imena (8-40)");
+                errorProvider1.SetError(txtKorisnickoIme, "Neispravan format ili dužina imena (6-40)");
                 e.Cancel = true;
             }
             else
@@ -143,10 +143,10 @@ namespace ISNogometniStadion.WinUI
                 errorProvider1.SetError(txtLozinka, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
-            else if (txtLozinka.Text.Length < 8)
+            else if (txtLozinka.Text.Length < 4)
             {
 
-                errorProvider1.SetError(txtLozinka, "Lozinka mora sadrzavati minimalno 8 znakova.");
+                errorProvider1.SetError(txtLozinka, "Lozinka mora sadrzavati minimalno 4 znaka.");
                 e.Cancel = true;
             }
             else
@@ -209,16 +209,16 @@ namespace ISNogometniStadion.WinUI
                         GradID = (int)comboBox1.SelectedValue
                     };
 
-                        try
-                        {
-                            await _apiServiceKorisnici.Insert<dynamic>(request);
-                            MessageBox.Show("Operacija uspjesna!");
-                            this.Close();
-                        }
-                        catch (Exception)
-                        {
-                        }
-                    
+                    try
+                    {
+                        await _apiServiceKorisnici.Insert<dynamic>(request);
+                        MessageBox.Show("Operacija uspjesna!");
+                        this.Close();
+                    }
+                    catch (Exception)
+                    {
+                    }
+
                 }
                 else
                 {

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
-    public class UtakmiceService : BaseCRUDService<Model.Utakmica, Model.UtakmiceeSearchRequest, Database.Utakmice,UtakmiceInsertRequest, UtakmiceInsertRequest>
+    public class UtakmiceService : BaseCRUDService<Model.Utakmica, Model.UtakmiceeSearchRequest, Database.Utakmice, UtakmiceInsertRequest, UtakmiceInsertRequest>
     {
         private readonly ISNogometniStadionContext _context;
         private readonly IMapper _mapper;
@@ -24,7 +24,7 @@ namespace ISNogometniStadion.WebAPI.Services
         public override List<Utakmica> Get(UtakmiceeSearchRequest search)
         {
             var q = _context.Set<Database.Utakmice>().AsQueryable();
-            q=q.Where(s=>s.DatumOdigravanja.Date>=DateTime.Now.Date);
+            q = q.Where(s => s.DatumOdigravanja.Date >= DateTime.Now.Date);
             if (search?.LigaID.HasValue == true)
             {
                 q = q.Where(s => s.LigaID == search.LigaID);
@@ -35,7 +35,7 @@ namespace ISNogometniStadion.WebAPI.Services
             }
             var list = q.ToList();
             return _mapper.Map<List<Utakmica>>(list);
-            
+
         }
     }
 }

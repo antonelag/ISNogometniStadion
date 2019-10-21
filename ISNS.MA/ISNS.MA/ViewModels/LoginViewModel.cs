@@ -44,7 +44,7 @@ namespace ISNS.MA.ViewModels
                 await _service.Get<dynamic>(null);
                 Application.Current.MainPage = new MainPage();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await Application.Current.MainPage.DisplayAlert("Greška", "Niste autentificirani", "OK");
             }

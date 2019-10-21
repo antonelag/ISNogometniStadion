@@ -18,12 +18,6 @@ namespace ISNS.MA.Views
             NavigationPage.SetHasBackButton(this, false);
         }
 
-
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-        }
-
         private async void Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopToRootAsync();

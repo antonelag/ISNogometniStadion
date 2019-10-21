@@ -21,7 +21,7 @@ namespace ISNogometniStadion.WebAPI.Services
 
         }
         public override List<Grad> Get(GradoviSearchRequest search)
-            {
+        {
             var q = _context.Set<Database.Gradovi>().AsQueryable();
 
             if (!string.IsNullOrEmpty(search?.Naziv) && search?.DrzavaID.HasValue == true)

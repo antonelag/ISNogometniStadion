@@ -7,7 +7,7 @@ namespace ISNogometniStadion.Model
     public class Sektor
     {
 
-      
+
         public int SektorID { get; set; }
         public string Naziv { get; set; }
         public int TribinaID { get; set; }

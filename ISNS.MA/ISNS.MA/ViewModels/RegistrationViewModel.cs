@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace ISNS.MA.ViewModels
 {
-    public class RegistrationViewModel:BaseViewModel
+    public class RegistrationViewModel : BaseViewModel
     {
 
 
@@ -39,7 +39,7 @@ namespace ISNS.MA.ViewModels
                 GradoviList.Add(g);
             }
         }
-    
+
         public async Task Registration()
         {
             IsBusy = true;
@@ -48,26 +48,27 @@ namespace ISNS.MA.ViewModels
             if (response.Count == 0)
             {
 
-            try
-            {//
-                await _service.Insert<Korisnik>(new KorisniciInsertRequest() {
-                    Ime=_ime,
-                    Prezime=_prezime,
-                    DatumRodjenja=_datumRodjenja,
-                    telefon=_telefon,
-                    email=_email,
-                    korisnickoIme=_korisnickoIme,
-                    lozinka=_lozinka,
-                    GradID=_gradID,
-                    potvrdaLozinke=_potvrdaLozinke
-                });
-                
-                Application.Current.MainPage = new LoginPage();
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Greška", "Neispravni podaci", "OK");
-            }
+                try
+                {//
+                    await _service.Insert<Korisnik>(new KorisniciInsertRequest()
+                    {
+                        Ime = _ime,
+                        Prezime = _prezime,
+                        DatumRodjenja = _datumRodjenja,
+                        telefon = _telefon,
+                        email = _email,
+                        korisnickoIme = _korisnickoIme,
+                        lozinka = _lozinka,
+                        GradID = _gradID,
+                        potvrdaLozinke = _potvrdaLozinke
+                    });
+
+                    Application.Current.MainPage = new LoginPage();
+                }
+                catch (Exception)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Neispravni podaci", "OK");
+                }
             }
             else
             {

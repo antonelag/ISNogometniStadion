@@ -50,7 +50,7 @@ namespace ISNogometniStadion.WebAPI.Controllers
 
             var charge = new Stripe.ChargeCreateOptions
             {
-                Amount = Convert.ToInt32(payment.CreditCard.amount *100), // Ocekuje request u najmanjoj jedinici pa *100 da se pretvori
+                Amount = Convert.ToInt32(payment.CreditCard.amount * 100), // Ocekuje request u najmanjoj jedinici pa *100 da se pretvori
                 Currency = "BAM", // or the currency you are dealing with
                 Description = "Informacijski sistem za nogometni stadion",
                 Source = token
@@ -65,7 +65,7 @@ namespace ISNogometniStadion.WebAPI.Controllers
             {
                 StripeError stripeError = ex.StripeError;
                 // Handle error
-                return  stripeError.Message;
+                return stripeError.Message;
             }
             // Ideally you would put in additional information, but you can just return true or false for the moment0
             StripeError stripeError1 = new StripeError() { Message = "Uspješna uplata" };

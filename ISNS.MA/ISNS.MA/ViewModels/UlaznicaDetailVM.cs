@@ -79,7 +79,7 @@ namespace ISNS.MA.ViewModels
             Ulaznica u = null;
             try
             {
-                 u = await _apiServiceUlaznice.Insert<Ulaznica>(req);
+                u = await _apiServiceUlaznice.Insert<Ulaznica>(req);
                 await _apiServiceSjedala.Update<dynamic>(req.SjedaloID, req2);
                 barcode = u.barcodeimg;
 
@@ -87,7 +87,7 @@ namespace ISNS.MA.ViewModels
             catch (Exception)
             {
                 throw;
-                
+
             }
             //SPREMANJE UPLATA
 
@@ -100,7 +100,7 @@ namespace ISNS.MA.ViewModels
             {
                 await _apiServiceUplate.Insert<Uplata>(requestUplate);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

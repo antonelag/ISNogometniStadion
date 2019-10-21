@@ -19,7 +19,6 @@ namespace ISNogometniStadion.WebAPI.Mappers
             CreateMap<Database.Drzave, Model.Requests.DrzaveInsertRequest>().ReverseMap();
             CreateMap<Database.Gradovi, Model.Grad>();
             CreateMap<Database.Gradovi, Model.Requests.GradoviInsertRequest>().ReverseMap();
-            // CreateMap<Database.Korisnici, Model.Korisnik>().ForMember(s => s.Grad, c => c.MapFrom(s => s.Grad.Naziv));
             CreateMap<Database.Timovi, Model.Tim>();
             CreateMap<Database.Timovi, Model.Requests.TimoviInsertRequest>().ReverseMap();
             CreateMap<Database.Stadioni, Model.Stadion>();
@@ -31,12 +30,12 @@ namespace ISNogometniStadion.WebAPI.Mappers
             CreateMap<Database.Preporuke, Model.Preporuka>();
             CreateMap<Database.Preporuke, Model.Requests.PreporukaInsertRequest>().ReverseMap();
             CreateMap<Database.Uplate, Model.Uplata>();
-            CreateMap<Database.Uplate,Model.Uplata>()
+            CreateMap<Database.Uplate, Model.Uplata>()
                 .ForMember(s => s.UplataPodaci, a => a.MapFrom(b => new Database.ISNogometniStadionContext()
-                .Ulaznice.Include(s=>s.Utakmica.DomaciTim).Include(s=>s.Utakmica.GostujuciTim).Include(s=>s.Korisnik).FirstOrDefault(s=>s.UlaznicaID==b.UlaznicaID).UlaznicaPodaci));
+                .Ulaznice.Include(s => s.Utakmica.DomaciTim).Include(s => s.Utakmica.GostujuciTim).Include(s => s.Korisnik).FirstOrDefault(s => s.UlaznicaID == b.UlaznicaID).UlaznicaPodaci));
 
             CreateMap<Database.Uplate, Model.Requests.UplateInsertRequest>().ReverseMap();
-         
+
 
             CreateMap<Database.Ulaznice, Model.Ulaznica>();
             CreateMap<Database.Ulaznice, Model.Requests.UlazniceInsertRequest>().ReverseMap();
@@ -98,7 +97,6 @@ namespace ISNogometniStadion.WebAPI.Mappers
             CreateMap<Database.Ulaznice, Model.Ulaznica>()
                .ForMember(s => s.Oznaka, a =>
                a.MapFrom(b => new Database.ISNogometniStadionContext().Sjedala.Find(b.SjedaloID).Oznaka))
-               //popraviti!!
                .ForMember(s => s.utakmica, a =>
                 a.MapFrom(b => new Database.ISNogometniStadionContext().Utakmice
                 .Include(s => s.DomaciTim).Include(s => s.GostujuciTim)

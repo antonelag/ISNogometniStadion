@@ -9,7 +9,7 @@ using ISNogometniStadion.WebAPI.Database;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
-    public class DrzaveService : BaseCRUDService<Model.Drzava, Model.DrzaveSearchRequest, Database.Drzave,DrzaveInsertRequest, DrzaveInsertRequest>
+    public class DrzaveService : BaseCRUDService<Model.Drzava, Model.DrzaveSearchRequest, Database.Drzave, DrzaveInsertRequest, DrzaveInsertRequest>
     {
         private readonly ISNogometniStadionContext _context;
         private readonly IMapper _mapper;
@@ -30,7 +30,7 @@ namespace ISNogometniStadion.WebAPI.Services
             }
             var list = q.ToList();
             return _mapper.Map<List<Drzava>>(list);
-            
+
         }
     }
 }

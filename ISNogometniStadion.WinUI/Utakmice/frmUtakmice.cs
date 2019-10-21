@@ -20,15 +20,6 @@ namespace ISNogometniStadion.WinUI.Utakmice
             InitializeComponent();
         }
 
-        //private async void BtnPretrazi_Click(object sender, EventArgs e)
-        //{
-        //    var search = new UtakmiceeSearchRequest
-        //    {
-        //        LigaID = cbLiga.Text
-        //    };
-        //    var res = await _apiService.Get<dynamic>(search);
-        //    dgvUtakmice.DataSource = res;
-        //}
         public bool ThumbnailCallback()
         {
             return false;

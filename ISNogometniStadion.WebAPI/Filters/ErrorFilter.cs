@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ISNogometniStadion.WebAPI.Filters
 {
-    public class ErrorFilter:ExceptionFilterAttribute
+    public class ErrorFilter : ExceptionFilterAttribute
     {
         public override void OnException(ExceptionContext context)
         {
