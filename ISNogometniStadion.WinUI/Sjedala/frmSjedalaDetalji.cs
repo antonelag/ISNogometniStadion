@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Sjedala
 {
-    public partial class frmSjedalaDetalji : Form
+    public partial class FrmSjedalaDetalji : Form
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Sjedala");
         private readonly APIService _apiServiceSektori = new APIService("Sektori");
-        public frmSjedalaDetalji(int? id = null)
+        public FrmSjedalaDetalji(int? id = null)
         {
             InitializeComponent();
             _id = id;

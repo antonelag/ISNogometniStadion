@@ -11,7 +11,6 @@ using ISNogometniStadion.Model.Requests;
 using ISNogometniStadion.WebAPI.Database;
 using System.Drawing.Imaging;
 using QRCoder;
-using static Android.Bluetooth.BluetoothClass;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
@@ -19,7 +18,6 @@ namespace ISNogometniStadion.WebAPI.Services
     {
         private readonly ISNogometniStadionContext _context;
         private readonly IMapper _mapper;
-        private readonly ImageService imageService = new ImageService();
         public UlazniceService(IMapper mapper, ISNogometniStadionContext context) : base(mapper, context)
         {
             _context = context;
@@ -87,7 +85,7 @@ namespace ISNogometniStadion.WebAPI.Services
                 return stream.ToArray();
             }
         }
-        private static Random random = new Random();
+        private readonly static Random random = new Random();
 
         public static string GetVoucherNumber(int length)
         {

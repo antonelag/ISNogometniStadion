@@ -13,10 +13,10 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Drzave
 {
-    public partial class frmDrzaveTemp : Form
+    public partial class FrmDrzaveTemp : Form
     {
         public DrzaveApiService drzaveApiService = new DrzaveApiService("DrzaveGet");
-        public frmDrzaveTemp()
+        public FrmDrzaveTemp()
         {
             InitializeComponent();
         }

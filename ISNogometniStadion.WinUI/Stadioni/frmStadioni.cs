@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Stadioni
 {
-    public partial class frmStadioni : Form
+    public partial class FrmStadioni : Form
     {
         private readonly APIService _apiService = new APIService("Stadioni");
         private readonly APIService _apiServiceGradovi = new APIService("Gradovi");
-        public frmStadioni()
+        public FrmStadioni()
         {
             InitializeComponent();
         }
@@ -40,7 +40,7 @@ namespace ISNogometniStadion.WinUI.Stadioni
         {
             //odrediti na dgv full row select na selection mode!!
             var id = dgvStadioni.SelectedRows[0].Cells[0].Value;
-            var frm = new frmStadionDetalji(int.Parse(id.ToString()));
+            var frm = new FrmStadionDetalji(int.Parse(id.ToString()));
             frm.Show();
         }
 

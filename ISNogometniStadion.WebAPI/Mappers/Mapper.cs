@@ -32,7 +32,8 @@ namespace ISNogometniStadion.WebAPI.Mappers
             CreateMap<Database.Uplate, Model.Uplata>();
             CreateMap<Database.Uplate, Model.Uplata>()
                 .ForMember(s => s.UplataPodaci, a => a.MapFrom(b => new Database.ISNogometniStadionContext()
-                .Ulaznice.Include(s => s.Utakmica.DomaciTim).Include(s => s.Utakmica.GostujuciTim).Include(s => s.Korisnik).FirstOrDefault(s => s.UlaznicaID == b.UlaznicaID).UlaznicaPodaci));
+                .Ulaznice.Include(s => s.Utakmica.DomaciTim).Include(s => s.Utakmica.GostujuciTim).Include(s => s.Korisnik).FirstOrDefault(s => s.UlaznicaID == b.UlaznicaID).UlaznicaPodaci))
+                .ForMember(s => s.Iznos, a => a.MapFrom(b => new Database.ISNogometniStadionContext().Uplate.FirstOrDefault(s => s.UplataID == b.UplataID).Iznos / 100));
 
             CreateMap<Database.Uplate, Model.Requests.UplateInsertRequest>().ReverseMap();
 

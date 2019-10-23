@@ -1,6 +1,6 @@
 ﻿namespace ISNogometniStadion.WinUI.Tribine
 {
-    partial class frmTribineDetalji
+    partial class FrmTribineDetalji
     {
         /// <summary>
         /// Required designer variable.

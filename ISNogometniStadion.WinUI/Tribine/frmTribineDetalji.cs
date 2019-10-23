@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Tribine
 {
-    public partial class frmTribineDetalji : Form
+    public partial class FrmTribineDetalji : Form
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Tribine");
         private readonly APIService _apiServiceStadioni = new APIService("Stadioni");
-        public frmTribineDetalji(int? id = null)
+        public FrmTribineDetalji(int? id = null)
         {
             InitializeComponent();
             _id = id;

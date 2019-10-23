@@ -13,9 +13,9 @@ namespace ISNS.MA.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PlacanjeInfoPage : ContentPage
     {
-        CreditCardVM ccvm = null;
-        UlaznicaDetailVM detailVM = null;
-        public PlacanjeInfoPage( CreditCardVM creditCardVM, UlaznicaDetailVM ulaznicaDetailVM)
+        readonly CreditCardVM ccvm = null;
+        readonly UlaznicaDetailVM detailVM = null;
+        public PlacanjeInfoPage(CreditCardVM creditCardVM, UlaznicaDetailVM ulaznicaDetailVM)
         {
             InitializeComponent();
             ccvm = creditCardVM;
@@ -24,14 +24,14 @@ namespace ISNS.MA.Views
 
         protected async override void OnAppearing()
         {
-        
+
             base.OnAppearing();
             await ccvm.Init();
-            if (ccvm.uspjesno)
+            if (ccvm.Uspjesno)
             {
                 try
                 {
-                    detailVM.Iznos = ccvm.amount;
+                    detailVM.Iznos = ccvm.Amount;
                     await detailVM.Init();
 
                 }
@@ -41,14 +41,15 @@ namespace ISNS.MA.Views
                     this.failmsg.Text = "Neuspješna uplata.";
                 }
                 this.success.IsVisible = true;
-                this.successmsg.Text = ccvm.msg;
+                this.successmsg.Text = ccvm.Msg;
 
             }
 
-            else { 
+            else
+            {
                 this.fail.IsVisible = true;
-                this.failmsg.Text = ccvm.msg;
-        }
+                this.failmsg.Text = ccvm.Msg;
+            }
         }
 
         private async void Button_Clicked(object sender, EventArgs e)

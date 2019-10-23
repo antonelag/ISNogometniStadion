@@ -119,7 +119,7 @@ namespace ISNogometniStadion.WinUI
 
         private void PretragaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmKorisnici frm = new frmKorisnici();
+            FrmKorisnici frm = new FrmKorisnici();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
@@ -128,13 +128,13 @@ namespace ISNogometniStadion.WinUI
 
         private void NoviKorisnikToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmKorisniciDetalji();
+            var frm = new FrmKorisniciDetalji();
             frm.Show();
         }
 
         private void PretraziToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmDrzave frm = new frmDrzave();
+            FrmDrzave frm = new FrmDrzave();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
@@ -142,13 +142,13 @@ namespace ISNogometniStadion.WinUI
 
         private void NovaDržavaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmDrzaveDetalji frm = new frmDrzaveDetalji();
+            FrmDrzaveDetalji frm = new FrmDrzaveDetalji();
             frm.Show();
         }
 
         private void PretražiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmGradovi();
+            var frm = new FrmGradovi();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
@@ -156,13 +156,13 @@ namespace ISNogometniStadion.WinUI
 
         private void NoviGradToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmGradoviDetalji();
+            var frm = new FrmGradoviDetalji();
             frm.Show();
         }
 
         private void PretražiToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var frm = new frmSjedala();
+            var frm = new FrmSjedala();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
@@ -170,13 +170,13 @@ namespace ISNogometniStadion.WinUI
 
         private void NovoSjedaloToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmSjedalaDetalji();
+            var frm = new FrmSjedalaDetalji();
             frm.Show();
         }
 
         private void PretražiToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            var frm = new frmStadioni();
+            var frm = new FrmStadioni();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
@@ -184,13 +184,13 @@ namespace ISNogometniStadion.WinUI
 
         private void NoviStadionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmStadionDetalji();
+            var frm = new FrmStadionDetalji();
             frm.Show();
         }
 
         private void PretraćiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmTimovi();
+            var frm = new FrmTimovi();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
@@ -198,13 +198,13 @@ namespace ISNogometniStadion.WinUI
 
         private void NoviTimToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmTimoviDetalji();
+            var frm = new FrmTimoviDetalji();
             frm.Show();
         }
 
         private void PretražiToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            var frm = new frmTribine();
+            var frm = new FrmTribine();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
@@ -212,13 +212,13 @@ namespace ISNogometniStadion.WinUI
 
         private void NovaTribinaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmTribineDetalji();
+            var frm = new FrmTribineDetalji();
             frm.Show();
         }
 
         private void PretražiToolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            var frm = new frmUlaznice();
+            var frm = new FrmUlaznice();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
@@ -227,13 +227,13 @@ namespace ISNogometniStadion.WinUI
 
         private void NovaUlaznicaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmUlazniceDetalji();
+            var frm = new FrmUlazniceDetalji();
             frm.Show();
         }
 
         private void PretražiToolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            var frm = new frmUtakmice();
+            var frm = new FrmUtakmice();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
@@ -241,13 +241,13 @@ namespace ISNogometniStadion.WinUI
 
         private void NovaUtakmicaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmUtakmiceDetalji();
+            var frm = new FrmUtakmiceDetalji();
             frm.Show();
         }
 
         private void NovaLigaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmLige();
+            var frm = new FrmLige();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
@@ -255,13 +255,13 @@ namespace ISNogometniStadion.WinUI
 
         private void NovaLigaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var frm = new frmLigeDetalji();
+            var frm = new FrmLigeDetalji();
             frm.Show();
         }
 
         private void PretražiToolStripMenuItem6_Click(object sender, EventArgs e)
         {
-            var frm = new frmSektori();
+            var frm = new FrmSektori();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
@@ -276,7 +276,7 @@ namespace ISNogometniStadion.WinUI
 
         private void GodineIStadioniToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmGodineIStadioniIzvjesce();
+            var frm = new FrmGodineIStadioniIzvjesce();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
@@ -284,7 +284,7 @@ namespace ISNogometniStadion.WinUI
 
         private void PretražiToolStripMenuItem7_Click(object sender, EventArgs e)
         {
-            var frm = new frmUplate();
+            var frm = new FrmUplate();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();

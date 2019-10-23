@@ -1,6 +1,6 @@
 ﻿namespace ISNogometniStadion.WinUI.Utakmice
 {
-    partial class frmUtakmice
+    partial class FrmUtakmice
     {
         /// <summary>
         /// Required designer variable.

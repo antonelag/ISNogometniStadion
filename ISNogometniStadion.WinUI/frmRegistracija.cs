@@ -234,7 +234,7 @@ namespace ISNogometniStadion.WinUI
 
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var frm = new frmGradoviTemp();
+            var frm = new FrmGradoviTemp();
             frm.Show();
             this.Close();
         }

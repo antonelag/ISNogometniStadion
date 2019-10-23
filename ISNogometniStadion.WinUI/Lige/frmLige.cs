@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Lige
 {
-    public partial class frmLige : Form
+    public partial class FrmLige : Form
     {
         private readonly APIService _apiService = new APIService("Lige");
         private readonly APIService _apiServiceDrzave = new APIService("Drzave");
-        public frmLige()
+        public FrmLige()
         {
             InitializeComponent();
         }
@@ -54,7 +54,7 @@ namespace ISNogometniStadion.WinUI.Lige
         private void DgvLige_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var id = dgvLige.SelectedRows[0].Cells[0].Value;
-            var frm = new frmLigeDetalji(int.Parse(id.ToString()));
+            var frm = new FrmLigeDetalji(int.Parse(id.ToString()));
             frm.Show();
         }
     }

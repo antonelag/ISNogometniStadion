@@ -3,13 +3,8 @@ using ISNogometniStadion.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Drawing;
-using System.IO;
-using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Windows.UI.Xaml.Media.Imaging;
 using Xamarin.Forms;
 
 namespace ISNS.MA.ViewModels
@@ -19,11 +14,11 @@ namespace ISNS.MA.ViewModels
         public string Oznaka { get; set; }
         public Sjedalo Sjedalo { get; set; }
         public Utakmica Utakmica { get; set; }
-        public string utakmica { get; set; }
+        public string UtakmicaPodaci { get; set; }
         public Sektor Sektor { get; set; }
-        public string sektor { get; set; }
+        public string SektorPodaci { get; set; }
         public Korisnik Korisnik { get; set; }
-        public string korisnik { get; set; }
+        public string KorisnikPodaci { get; set; }
         public decimal Iznos { get; set; }
         [DataType(DataType.Date)]
         public DateTime DatumKupnje { get; set; }
@@ -31,21 +26,21 @@ namespace ISNS.MA.ViewModels
         public DateTime VrijemeKupnje { get; set; }
         public string Datum { get { return DatumKupnje.ToShortDateString(); } }
         public string Vrijeme { get { return DatumKupnje.ToShortTimeString(); } }
-        private APIService _apiServiceSjedala = new APIService("Sjedala");
-        private APIService _apiServiceKorisnici = new APIService("Korisnici");
-        private APIService _apiServiceUlaznice = new APIService("Ulaznica");
-        private APIService _apiServicePreporuke = new APIService("Preporuke");
-        private APIService _apiServiceUtakmica = new APIService("Utakmice");
-        private APIService _apiServiceUplate = new APIService("Uplate");
+        private readonly APIService _apiServiceSjedala = new APIService("Sjedala");
+        private readonly APIService _apiServiceKorisnici = new APIService("Korisnici");
+        private readonly APIService _apiServiceUlaznice = new APIService("Ulaznica");
+        private readonly APIService _apiServicePreporuke = new APIService("Preporuke");
+        private readonly APIService _apiServiceUtakmica = new APIService("Utakmice");
+        private readonly APIService _apiServiceUplate = new APIService("Uplate");
 
-        public Ulaznica ulaznica { get; set; }
-        public byte[] barcode { get; set; }
+        public Ulaznica Ulaznica { get; set; }
+        public byte[] Barcode { get; set; }
         public UlaznicaDetailVM()
         {
             InitCommand = new Command(async () => await Init());
         }
 
-        ICommand InitCommand { get; set; }
+        public ICommand InitCommand { get; set; }
         public async Task Init()
         {
 
@@ -76,12 +71,12 @@ namespace ISNS.MA.ViewModels
                 Status = s1.Status
             };
 
-            Ulaznica u = null;
+            Ulaznica u;
             try
             {
                 u = await _apiServiceUlaznice.Insert<Ulaznica>(req);
                 await _apiServiceSjedala.Update<dynamic>(req.SjedaloID, req2);
-                barcode = u.barcodeimg;
+                Barcode = u.barcodeimg;
 
             }
             catch (Exception)
@@ -113,7 +108,7 @@ namespace ISNS.MA.ViewModels
             if (rezultat.Count == 1)
             {
                 rezultat[0].BrojKupljenihUlaznica++;
-                PreporukaInsertRequest reqP = null;
+                PreporukaInsertRequest reqP;
                 if (rezultat[0].TimID == prviTim)
                 {
                     reqP = new PreporukaInsertRequest

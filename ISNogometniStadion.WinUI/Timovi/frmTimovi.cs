@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Timovi
 {
-    public partial class frmTimovi : Form
+    public partial class FrmTimovi : Form
     {
         private readonly APIService _apiService = new APIService("Timovi");
         private readonly APIService _apiServiceLige = new APIService("Lige");
         private readonly ImageService _imageService = new ImageService();
-        public frmTimovi()
+        public FrmTimovi()
         {
             InitializeComponent();
         }
@@ -45,7 +45,7 @@ namespace ISNogometniStadion.WinUI.Timovi
         private void DgvTimovi_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var id = dgvTimovi.SelectedRows[0].Cells[0].Value;
-            var frm = new frmTimoviDetalji(int.Parse(id.ToString()));
+            var frm = new FrmTimoviDetalji(int.Parse(id.ToString()));
             frm.Show();
         }
 

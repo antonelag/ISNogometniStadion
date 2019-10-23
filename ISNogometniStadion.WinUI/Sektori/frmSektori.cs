@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Sektori
 {
-    public partial class frmSektori : Form
+    public partial class FrmSektori : Form
     {
         private readonly APIService _apiServiceSektori = new APIService("Sektori");
         private readonly APIService _apiServiceTribine = new APIService("Tribine");
 
-        public frmSektori()
+        public FrmSektori()
         {
             InitializeComponent();
         }

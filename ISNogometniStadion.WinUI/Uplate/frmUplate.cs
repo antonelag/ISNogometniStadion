@@ -11,17 +11,17 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Uplate
 {
-    public partial class frmUplate : Form
+    public partial class FrmUplate : Form
     {
         private readonly APIService _apiService = new APIService("Uplate");
         private readonly APIService _apiServiceUtakmice = new APIService("Utakmice");
-        public frmUplate()
+        public FrmUplate()
         {
             InitializeComponent();
         }
 
 
-        private async Task loadSveUtakmice()
+        private async Task LoadSveUtakmice()
         {
             List<Utakmica> result = await _apiServiceUtakmice.Get<List<Model.Utakmica>>(null);
             comboBox1.DisplayMember = "UtakmicaPodaci";
@@ -43,7 +43,7 @@ namespace ISNogometniStadion.WinUI.Uplate
 
         private async void FrmUplate_Load(object sender, EventArgs e)
         {
-            await loadSveUtakmice();
+            await LoadSveUtakmice();
         }
 
         private async void ComboBox1_SelectionChangeCommitted(object sender, EventArgs e)

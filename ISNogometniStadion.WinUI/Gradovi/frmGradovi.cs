@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Gradovi
 {
-    public partial class frmGradovi : Form
+    public partial class FrmGradovi : Form
     {
         private readonly APIService _apiService = new APIService("Gradovi");
-        public frmGradovi()
+        public FrmGradovi()
         {
             InitializeComponent();
         }
@@ -34,7 +34,7 @@ namespace ISNogometniStadion.WinUI.Gradovi
         private void DgvGradovi_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var id = dgvGradovi.SelectedRows[0].Cells[0].Value;
-            var frm = new frmGradoviDetalji(int.Parse(id.ToString()));
+            var frm = new FrmGradoviDetalji(int.Parse(id.ToString()));
             frm.Show();
         }
     }

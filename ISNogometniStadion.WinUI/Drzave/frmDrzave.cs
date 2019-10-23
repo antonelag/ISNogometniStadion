@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Drzave
 {
-    public partial class frmDrzave : Form
+    public partial class FrmDrzave : Form
     {
         private readonly APIService _apiService = new APIService("Drzave");
-        public frmDrzave()
+        public FrmDrzave()
         {
             InitializeComponent();
         }
@@ -33,7 +33,7 @@ namespace ISNogometniStadion.WinUI.Drzave
         private void DgvDrzave_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var id = dgvDrzave.SelectedRows[0].Cells[0].Value;
-            var frm = new frmDrzaveDetalji(int.Parse(id.ToString()));
+            var frm = new FrmDrzaveDetalji(int.Parse(id.ToString()));
             frm.Show();
         }
 

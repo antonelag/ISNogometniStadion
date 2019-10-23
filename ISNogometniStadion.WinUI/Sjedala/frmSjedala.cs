@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Sjedala
 {
-    public partial class frmSjedala : Form
+    public partial class FrmSjedala : Form
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Sjedala");
-        public frmSjedala(int? id = null)
+        public FrmSjedala(int? id = null)
         {
             InitializeComponent();
             _id = id;
@@ -35,7 +35,7 @@ namespace ISNogometniStadion.WinUI.Sjedala
         private void DgvSjedala_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var id = dgvSjedala.SelectedRows[0].Cells[0].Value;
-            var frm = new frmSjedalaDetalji(int.Parse(id.ToString()));
+            var frm = new FrmSjedalaDetalji(int.Parse(id.ToString()));
             frm.Show();
         }
 

@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Drzave
 {
-    public partial class frmDrzaveDetalji : Form
+    public partial class FrmDrzaveDetalji : Form
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Drzave");
 
-        public frmDrzaveDetalji(int? id = null)
+        public FrmDrzaveDetalji(int? id = null)
         {
             InitializeComponent();
             _id = id;

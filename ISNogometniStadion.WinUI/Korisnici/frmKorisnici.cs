@@ -13,10 +13,10 @@ using ISNogometniStadion.Model;
 
 namespace ISNogometniStadion.WinUI.Korisnici
 {
-    public partial class frmKorisnici : Form
+    public partial class FrmKorisnici : Form
     {
         private readonly APIService _APIService = new APIService("Korisnici");
-        public frmKorisnici()
+        public FrmKorisnici()
         {
             InitializeComponent();
         }
@@ -38,7 +38,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
         private void DgvKorisnici_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var id = dgvKorisnici.SelectedRows[0].Cells[0].Value;
-            var frm = new frmKorisniciDetalji(int.Parse(id.ToString()));
+            var frm = new FrmKorisniciDetalji(int.Parse(id.ToString()));
             frm.Show();
 
         }

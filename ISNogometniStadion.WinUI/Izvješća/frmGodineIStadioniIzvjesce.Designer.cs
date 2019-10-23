@@ -1,6 +1,6 @@
 ﻿namespace ISNogometniStadion.WinUI.Izvješća
 {
-    partial class frmGodineIStadioniIzvjesce
+    partial class FrmGodineIStadioniIzvjesce
     {
         /// <summary>
         /// Required designer variable.

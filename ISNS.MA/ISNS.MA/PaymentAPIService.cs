@@ -18,7 +18,7 @@ namespace ISNS.MA
         private readonly string _route;
 
 #if DEBUG
-        private string _apiUrl = "http://localhost:50944/api";
+        private readonly string _apiUrl = "http://localhost:50944/api";
 #endif
 #if RELEASE
         private string apiUrl = "https://mywebsite.com/api";

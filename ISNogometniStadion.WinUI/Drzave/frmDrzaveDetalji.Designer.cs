@@ -1,6 +1,6 @@
 ﻿namespace ISNogometniStadion.WinUI.Drzave
 {
-    partial class frmDrzaveDetalji
+    partial class FrmDrzaveDetalji
     {
         /// <summary>
         /// Required designer variable.

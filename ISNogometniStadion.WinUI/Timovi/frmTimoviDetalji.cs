@@ -15,14 +15,14 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Timovi
 {
-    public partial class frmTimoviDetalji : Form
+    public partial class FrmTimoviDetalji : Form
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Timovi");
         private readonly APIService _apiServiceStadioni = new APIService("Stadioni");
         private readonly APIService _apiServiceLige = new APIService("Lige");
         private readonly ImageService _imageService = new ImageService();
-        public frmTimoviDetalji(int? id = null)
+        public FrmTimoviDetalji(int? id = null)
         {
             InitializeComponent();
             _id = id;

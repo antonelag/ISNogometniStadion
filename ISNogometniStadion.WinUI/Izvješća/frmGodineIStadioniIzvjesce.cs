@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Izvješća
 {
-    public partial class frmGodineIStadioniIzvjesce : Form
+    public partial class FrmGodineIStadioniIzvjesce : Form
     {
         public APIService _apiServiceStadioni = new APIService("Stadioni");
         public APIService _apiServiceUlaznice = new APIService("Ulaznica");
@@ -21,7 +21,7 @@ namespace ISNogometniStadion.WinUI.Izvješća
 
 
 
-        public frmGodineIStadioniIzvjesce()
+        public FrmGodineIStadioniIzvjesce()
         {
             InitializeComponent();
         }
@@ -36,7 +36,7 @@ namespace ISNogometniStadion.WinUI.Izvješća
 
         private void LoadGodine()
         {
-            var gZ = DateTime.Now.Year;
+            var gZ = DateTime.Now.Year + 10;
             var gP = 2014;
             for (int i = gP; i <= gZ; i++)
             {
@@ -46,16 +46,13 @@ namespace ISNogometniStadion.WinUI.Izvješća
         private async Task LoadIzvjesce(int idGodina)
         {
             var stadioni = await _apiServiceStadioni.Get<List<Model.Stadion>>(null);
-
-            decimal UkupnaZarada = 0;
-            int brojUlaznica = 0;
             List<Stadion> listaStadiona = new List<Stadion>();
             List<Utakmica> listaUtakmica = new List<Utakmica>();
             List<IzvjesceGodine> lista = new List<IzvjesceGodine>();
             foreach (var s in stadioni)
             {
-                brojUlaznica = 0;
-                UkupnaZarada = 0;
+                int brojUlaznica = 0;
+                decimal UkupnaZarada = 0;
                 var tribine = await _apiServiceTribine.Get<List<Tribina>>(new TribineSearchRequest() { StadionID = s.StadionID });
                 var utakmice = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { StadionID = s.StadionID });
                 foreach (var ut in utakmice)

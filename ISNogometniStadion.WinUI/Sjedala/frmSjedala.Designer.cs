@@ -1,6 +1,6 @@
 ﻿namespace ISNogometniStadion.WinUI.Sjedala
 {
-    partial class frmSjedala
+    partial class FrmSjedala
     {
         /// <summary>
         /// Required designer variable.

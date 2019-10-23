@@ -13,13 +13,13 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Gradovi
 {
-    public partial class frmGradoviDetalji : Form
+    public partial class FrmGradoviDetalji : Form
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Gradovi");
         private readonly APIService _apiServiceDrzave = new APIService("Drzave");
 
-        public frmGradoviDetalji(int? id = null)
+        public FrmGradoviDetalji(int? id = null)
         {
             _id = id;
             InitializeComponent();

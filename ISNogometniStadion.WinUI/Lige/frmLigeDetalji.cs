@@ -13,13 +13,13 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Lige
 {
-    public partial class frmLigeDetalji : Form
+    public partial class FrmLigeDetalji : Form
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Lige");
 
         private readonly APIService _apiServiceDrzave = new APIService("Drzave");
-        public frmLigeDetalji(int? id = null)
+        public FrmLigeDetalji(int? id = null)
         {
 
             InitializeComponent();

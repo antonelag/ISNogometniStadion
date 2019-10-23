@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Stadioni
 {
-    public partial class frmStadionDetalji : Form
+    public partial class FrmStadionDetalji : Form
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Stadioni");
@@ -22,7 +22,7 @@ namespace ISNogometniStadion.WinUI.Stadioni
         private readonly ImageService _imageService = new ImageService();
 
 
-        public frmStadionDetalji(int? id = null)
+        public FrmStadionDetalji(int? id = null)
         {
             _id = id;
             InitializeComponent();

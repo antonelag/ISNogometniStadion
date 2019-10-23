@@ -1,6 +1,6 @@
 ﻿namespace ISNogometniStadion.WinUI.Gradovi
 {
-    partial class frmGradoviTemp
+    partial class FrmGradoviTemp
     {
         /// <summary>
         /// Required designer variable.

@@ -1,6 +1,6 @@
 ﻿namespace ISNogometniStadion.WinUI.Korisnici
 {
-    partial class frmKorisniciDetalji
+    partial class FrmKorisniciDetalji
     {
         /// <summary>
         /// Required designer variable.

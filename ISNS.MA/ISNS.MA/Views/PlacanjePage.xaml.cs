@@ -21,24 +21,24 @@ namespace ISNS.MA.Views
     {
         public CreditCardVM CreditCardVM = null;
         public UlaznicaDetailVM UlaznicaDetailVM = null;
-        public bool validCard { get; set; }
-        public bool validMonth { get; set; }
-        public bool validYear { get; set; }
-        public bool validCVV { get; set; }
-        public bool validExpDate { get; set; }
+        public bool ValidCard { get; set; }
+        public bool ValidMonth { get; set; }
+        public bool ValidYear { get; set; }
+        public bool ValidCVV { get; set; }
+        public bool ValidExpDate { get; set; }
 
 
         public PlacanjePage(Utakmica utakmica, Sektor sektor, string OznakaSjedala, DateTime datum, Korisnik korisnik)
         {
             InitializeComponent();
             CreditCardVM = new CreditCardVM();
-            BindingContext = UlaznicaDetailVM = new UlaznicaDetailVM() { Utakmica = utakmica, Sektor = sektor, Korisnik = korisnik, korisnik = korisnik.KorisnikPodaci, Oznaka = OznakaSjedala, DatumKupnje = datum, VrijemeKupnje = datum, sektor = sektor.SektorPodaci, utakmica = utakmica.UtakmicaPodaci };
+            BindingContext = UlaznicaDetailVM = new UlaznicaDetailVM() { Utakmica = utakmica, Sektor = sektor, Korisnik = korisnik, KorisnikPodaci = korisnik.KorisnikPodaci, Oznaka = OznakaSjedala, DatumKupnje = datum, VrijemeKupnje = datum, SektorPodaci = sektor.SektorPodaci, UtakmicaPodaci = utakmica.UtakmicaPodaci };
         }
 
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            if (checkFields() && validCard && validMonth && validYear && validCVV)
+            if (CheckFields() && ValidCard && ValidMonth && ValidYear && ValidCVV)
             {
                 var year = int.Parse(this.exy.Text);
                 var month = int.Parse(this.exm.Text);
@@ -49,21 +49,21 @@ namespace ISNS.MA.Views
                 {
                     this.greska.IsVisible = true;
                     this.greska.Text = "Datum isteka nije validan.";
-                    validExpDate = false;
+                    ValidExpDate = false;
                 }
                 else
                 {
                     this.greska.IsVisible = false;
-                    validExpDate = true;
+                    ValidExpDate = true;
                 }
 
-                if (validExpDate)
+                if (ValidExpDate)
                 {
                     CreditCardVM.CreditCardNumber = this.ccn.Text;
                     CreditCardVM.ExpMonth = int.Parse(this.exm.Text);
                     CreditCardVM.ExpYear = int.Parse(this.exy.Text);
                     CreditCardVM.CVV = this.cvv.Text;
-                    CreditCardVM.amount = decimal.Parse(UlaznicaDetailVM.Sektor.Cijena);
+                    CreditCardVM.Amount = decimal.Parse(UlaznicaDetailVM.Sektor.Cijena);
 
                     this.ccn.Text = "";
                     this.exy.Text = "";
@@ -96,12 +96,12 @@ namespace ISNS.MA.Views
             {
                 this.greska.IsVisible = true;
                 this.greska.Text = "Broj kartice nije validan";
-                validCard = false;
+                ValidCard = false;
             }
             else
             {
                 this.greska.IsVisible = false;
-                validCard = true;
+                ValidCard = true;
             }
 
 
@@ -114,12 +114,12 @@ namespace ISNS.MA.Views
             {
                 this.greska.IsVisible = true;
                 this.greska.Text = "Mjesec nije validan";
-                validMonth = false;
+                ValidMonth = false;
             }
             else
             {
                 this.greska.IsVisible = false;
-                validMonth = true;
+                ValidMonth = true;
             }
         }
 
@@ -130,12 +130,12 @@ namespace ISNS.MA.Views
             {
                 this.greska.IsVisible = true;
                 this.greska.Text = "Godina nije validna";
-                validYear = false;
+                ValidYear = false;
             }
             else
             {
                 this.greska.IsVisible = false;
-                validYear = true;
+                ValidYear = true;
             }
         }
 
@@ -146,16 +146,16 @@ namespace ISNS.MA.Views
             {
                 this.greska.IsVisible = true;
                 this.greska.Text = "CVV nije validan";
-                validCVV = false;
+                ValidCVV = false;
             }
             else
             {
                 this.greska.IsVisible = false;
-                validCVV = true;
+                ValidCVV = true;
             }
         }
 
-        private bool checkFields()
+        private bool CheckFields()
         {
             return (!string.IsNullOrWhiteSpace(this.ccn.Text) && !string.IsNullOrWhiteSpace(this.exm.Text) &&
                 !string.IsNullOrWhiteSpace(this.exy.Text) && !string.IsNullOrWhiteSpace(this.cvv.Text));

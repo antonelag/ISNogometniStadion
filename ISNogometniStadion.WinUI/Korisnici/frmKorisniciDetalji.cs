@@ -14,12 +14,12 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Korisnici
 {
-    public partial class frmKorisniciDetalji : Form
+    public partial class FrmKorisniciDetalji : Form
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Korisnici");
         private readonly APIService _apiServiceGradovi = new APIService("Gradovi");
-        public frmKorisniciDetalji(int? KorisnikID = null)
+        public FrmKorisniciDetalji(int? KorisnikID = null)
         {
             _id = KorisnikID;
             InitializeComponent();

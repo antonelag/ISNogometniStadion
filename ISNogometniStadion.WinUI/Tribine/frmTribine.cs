@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Tribine
 {
-    public partial class frmTribine : Form
+    public partial class FrmTribine : Form
     {
         private readonly APIService _apiService = new APIService("Tribine");
-        public frmTribine()
+        public FrmTribine()
         {
             InitializeComponent();
         }
@@ -33,7 +33,7 @@ namespace ISNogometniStadion.WinUI.Tribine
         private void DgvTribine_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var id = dgvTribine.SelectedRows[0].Cells[0].Value;
-            var frm = new frmTribineDetalji(int.Parse(id.ToString()));
+            var frm = new FrmTribineDetalji(int.Parse(id.ToString()));
             frm.Show();
         }
     }

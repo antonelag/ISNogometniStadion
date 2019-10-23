@@ -1,6 +1,6 @@
 ﻿namespace ISNogometniStadion.WinUI.Ulaznice
 {
-    partial class frmUlaznice
+    partial class FrmUlaznice
     {
         /// <summary>
         /// Required designer variable.

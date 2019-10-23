@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Ulaznice
 {
-    public partial class frmUlazniceDetalji : Form
+    public partial class FrmUlazniceDetalji : Form
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Ulaznica");
@@ -24,7 +24,7 @@ namespace ISNogometniStadion.WinUI.Ulaznice
 
         private readonly APIService _apiServiceUtakmica = new APIService("Utakmice");
         private readonly APIService _apiServiceKorisnici = new APIService("Korisnici");
-        public frmUlazniceDetalji(int? id = null)
+        public FrmUlazniceDetalji(int? id = null)
         {
             InitializeComponent();
             _id = id;

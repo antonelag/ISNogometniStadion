@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Utakmice
 {
-    public partial class frmUtakmice : Form
+    public partial class FrmUtakmice : Form
     {
         private readonly APIService _apiService = new APIService("Utakmice");
         private readonly APIService _apiServiceLige = new APIService("Lige");
-        public frmUtakmice()
+        public FrmUtakmice()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
         private void DgvUtakmice_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var id = dgvUtakmice.SelectedRows[0].Cells[0].Value;
-            var frm = new frmUtakmiceDetalji(int.Parse(id.ToString()));
+            var frm = new FrmUtakmiceDetalji(int.Parse(id.ToString()));
             frm.Show();
         }
         private async Task loadloadSveLige()

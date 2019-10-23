@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Ulaznice
 {
-    public partial class frmUlaznice : Form
+    public partial class FrmUlaznice : Form
     {
         private readonly APIService _apiService = new APIService("Ulaznica");
         private readonly APIService _apiServiceKorisnici = new APIService("Korisnici");
 
-        public frmUlaznice()
+        public FrmUlaznice()
         {
             InitializeComponent();
         }
@@ -24,7 +24,7 @@ namespace ISNogometniStadion.WinUI.Ulaznice
         private void DgvUlaznice_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var id = dgvUlaznice.SelectedRows[0].Cells[0].Value;
-            var frm = new frmUlazniceDetalji(int.Parse(id.ToString()));
+            FrmUlazniceDetalji frm = new FrmUlazniceDetalji(int.Parse(id.ToString()));
             frm.Show();
         }
 

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Utakmice
 {
-    public partial class frmUtakmiceDetalji : Form
+    public partial class FrmUtakmiceDetalji : Form
     {
         private readonly int? _id = null;
         private readonly APIService _apiService = new APIService("Utakmice");
@@ -22,7 +22,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
         private readonly APIService _apiServiceLige = new APIService("Lige");
         private readonly ImageService _imageService = new ImageService();
 
-        public frmUtakmiceDetalji(int? id = null)
+        public FrmUtakmiceDetalji(int? id = null)
         {
             InitializeComponent();
             _id = id;

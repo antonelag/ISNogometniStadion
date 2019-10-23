@@ -20,7 +20,7 @@ public class ImageService
         }
         public Image GetNoImage()
         {
-            var filename = "C:\\Users\\Antonela Gagro\\Desktop\\RSII\\slike\\noimage.jpg";
+            var filename = "C:\\RSII-SeminarskiRad-160125\\Aplikacija-160125\\slike\\noimage.jpg";
             return Image.FromFile(filename);
         }
 

@@ -75,11 +75,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DrzaveApiService.cs" />
-    <Compile Include="Drzave\frmDrzaveTemp.cs">
+    <Compile Include="Drzave\FrmDrzaveTemp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Drzave\frmDrzaveTemp.Designer.cs">
-      <DependentUpon>frmDrzaveTemp.cs</DependentUpon>
+    <Compile Include="Drzave\FrmDrzaveTemp.Designer.cs">
+      <DependentUpon>FrmDrzaveTemp.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -94,25 +94,25 @@
       <DependentUpon>frmRegistracija.cs</DependentUpon>
     </Compile>
     <Compile Include="GradoviApiService.cs" />
-    <Compile Include="Gradovi\frmGradoviTemp.cs">
+    <Compile Include="Gradovi\FrmGradoviTemp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gradovi\frmGradoviTemp.Designer.cs">
-      <DependentUpon>frmGradoviTemp.cs</DependentUpon>
+    <Compile Include="Gradovi\FrmGradoviTemp.Designer.cs">
+      <DependentUpon>FrmGradoviTemp.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageService.cs" />
     <Compile Include="APIService.cs" />
-    <Compile Include="Drzave\frmDrzave.cs">
+    <Compile Include="Drzave\FrmDrzave.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Drzave\frmDrzave.Designer.cs">
-      <DependentUpon>frmDrzave.cs</DependentUpon>
+    <Compile Include="Drzave\FrmDrzave.Designer.cs">
+      <DependentUpon>FrmDrzave.cs</DependentUpon>
     </Compile>
-    <Compile Include="Drzave\frmDrzaveDetalji.cs">
+    <Compile Include="Drzave\FrmDrzaveDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Drzave\frmDrzaveDetalji.Designer.cs">
-      <DependentUpon>frmDrzaveDetalji.cs</DependentUpon>
+    <Compile Include="Drzave\FrmDrzaveDetalji.Designer.cs">
+      <DependentUpon>FrmDrzaveDetalji.cs</DependentUpon>
     </Compile>
     <Compile Include="frmIndex.cs">
       <SubType>Form</SubType>
@@ -120,149 +120,149 @@
     <Compile Include="frmIndex.Designer.cs">
       <DependentUpon>frmIndex.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gradovi\frmGradovi.cs">
+    <Compile Include="Gradovi\FrmGradovi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gradovi\frmGradovi.Designer.cs">
-      <DependentUpon>frmGradovi.cs</DependentUpon>
+    <Compile Include="Gradovi\FrmGradovi.Designer.cs">
+      <DependentUpon>FrmGradovi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gradovi\frmGradoviDetalji.cs">
+    <Compile Include="Gradovi\FrmGradoviDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gradovi\frmGradoviDetalji.Designer.cs">
-      <DependentUpon>frmGradoviDetalji.cs</DependentUpon>
+    <Compile Include="Gradovi\FrmGradoviDetalji.Designer.cs">
+      <DependentUpon>FrmGradoviDetalji.cs</DependentUpon>
     </Compile>
-    <Compile Include="Izvješća\frmGodineIStadioniIzvjesce.cs">
+    <Compile Include="Izvješća\FrmGodineIStadioniIzvjesce.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Izvješća\frmGodineIStadioniIzvjesce.Designer.cs">
-      <DependentUpon>frmGodineIStadioniIzvjesce.cs</DependentUpon>
+    <Compile Include="Izvješća\FrmGodineIStadioniIzvjesce.Designer.cs">
+      <DependentUpon>FrmGodineIStadioniIzvjesce.cs</DependentUpon>
     </Compile>
     <Compile Include="KorisniciApiService.cs" />
-    <Compile Include="Lige\frmLige.cs">
+    <Compile Include="Lige\FrmLige.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lige\frmLige.Designer.cs">
-      <DependentUpon>frmLige.cs</DependentUpon>
+    <Compile Include="Lige\FrmLige.Designer.cs">
+      <DependentUpon>FrmLige.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lige\frmLigeDetalji.cs">
+    <Compile Include="Lige\FrmLigeDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lige\frmLigeDetalji.Designer.cs">
-      <DependentUpon>frmLigeDetalji.cs</DependentUpon>
+    <Compile Include="Lige\FrmLigeDetalji.Designer.cs">
+      <DependentUpon>FrmLigeDetalji.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sektori\frmSektori.cs">
+    <Compile Include="Sektori\FrmSektori.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sektori\frmSektori.Designer.cs">
-      <DependentUpon>frmSektori.cs</DependentUpon>
+    <Compile Include="Sektori\FrmSektori.Designer.cs">
+      <DependentUpon>FrmSektori.cs</DependentUpon>
     </Compile>
-    <Compile Include="Stadioni\frmStadionDetalji.cs">
+    <Compile Include="Stadioni\FrmStadionDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Stadioni\frmStadionDetalji.Designer.cs">
-      <DependentUpon>frmStadionDetalji.cs</DependentUpon>
+    <Compile Include="Stadioni\FrmStadionDetalji.Designer.cs">
+      <DependentUpon>FrmStadionDetalji.cs</DependentUpon>
     </Compile>
-    <Compile Include="Stadioni\frmStadioni.cs">
+    <Compile Include="Stadioni\FrmStadioni.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Stadioni\frmStadioni.Designer.cs">
-      <DependentUpon>frmStadioni.cs</DependentUpon>
+    <Compile Include="Stadioni\FrmStadioni.Designer.cs">
+      <DependentUpon>FrmStadioni.cs</DependentUpon>
     </Compile>
-    <Compile Include="Timovi\frmTimovi.cs">
+    <Compile Include="Timovi\FrmTimovi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Timovi\frmTimovi.Designer.cs">
-      <DependentUpon>frmTimovi.cs</DependentUpon>
+    <Compile Include="Timovi\FrmTimovi.Designer.cs">
+      <DependentUpon>FrmTimovi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Timovi\frmTimoviDetalji.cs">
+    <Compile Include="Timovi\FrmTimoviDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Timovi\frmTimoviDetalji.Designer.cs">
-      <DependentUpon>frmTimoviDetalji.cs</DependentUpon>
+    <Compile Include="Timovi\FrmTimoviDetalji.Designer.cs">
+      <DependentUpon>FrmTimoviDetalji.cs</DependentUpon>
     </Compile>
-    <Compile Include="Korisnici\frmKorisnici.cs">
+    <Compile Include="Korisnici\FrmKorisnici.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Korisnici\frmKorisnici.Designer.cs">
-      <DependentUpon>frmKorisnici.cs</DependentUpon>
+    <Compile Include="Korisnici\FrmKorisnici.Designer.cs">
+      <DependentUpon>FrmKorisnici.cs</DependentUpon>
     </Compile>
-    <Compile Include="Korisnici\frmKorisniciDetalji.cs">
+    <Compile Include="Korisnici\FrmKorisniciDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Korisnici\frmKorisniciDetalji.Designer.cs">
-      <DependentUpon>frmKorisniciDetalji.cs</DependentUpon>
+    <Compile Include="Korisnici\FrmKorisniciDetalji.Designer.cs">
+      <DependentUpon>FrmKorisniciDetalji.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sjedala\frmSjedala.cs">
+    <Compile Include="Sjedala\FrmSjedala.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sjedala\frmSjedala.Designer.cs">
-      <DependentUpon>frmSjedala.cs</DependentUpon>
+    <Compile Include="Sjedala\FrmSjedala.Designer.cs">
+      <DependentUpon>FrmSjedala.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sjedala\frmSjedalaDetalji.cs">
+    <Compile Include="Sjedala\FrmSjedalaDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sjedala\frmSjedalaDetalji.Designer.cs">
-      <DependentUpon>frmSjedalaDetalji.cs</DependentUpon>
+    <Compile Include="Sjedala\FrmSjedalaDetalji.Designer.cs">
+      <DependentUpon>FrmSjedalaDetalji.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tribine\frmTribine.cs">
+    <Compile Include="Tribine\FrmTribine.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tribine\frmTribine.Designer.cs">
-      <DependentUpon>frmTribine.cs</DependentUpon>
+    <Compile Include="Tribine\FrmTribine.Designer.cs">
+      <DependentUpon>FrmTribine.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tribine\frmTribineDetalji.cs">
+    <Compile Include="Tribine\FrmTribineDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tribine\frmTribineDetalji.Designer.cs">
-      <DependentUpon>frmTribineDetalji.cs</DependentUpon>
+    <Compile Include="Tribine\FrmTribineDetalji.Designer.cs">
+      <DependentUpon>FrmTribineDetalji.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ulaznice\frmUlaznice.cs">
+    <Compile Include="Ulaznice\FrmUlaznice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ulaznice\frmUlaznice.Designer.cs">
-      <DependentUpon>frmUlaznice.cs</DependentUpon>
+    <Compile Include="Ulaznice\FrmUlaznice.Designer.cs">
+      <DependentUpon>FrmUlaznice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ulaznice\frmUlazniceDetalji.cs">
+    <Compile Include="Ulaznice\FrmUlazniceDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ulaznice\frmUlazniceDetalji.Designer.cs">
-      <DependentUpon>frmUlazniceDetalji.cs</DependentUpon>
+    <Compile Include="Ulaznice\FrmUlazniceDetalji.Designer.cs">
+      <DependentUpon>FrmUlazniceDetalji.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sektori\frmSektoriDetalji.cs">
+    <Compile Include="Sektori\FrmSektoriDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sektori\frmSektoriDetalji.Designer.cs">
-      <DependentUpon>frmSektoriDetalji.cs</DependentUpon>
+    <Compile Include="Sektori\FrmSektoriDetalji.Designer.cs">
+      <DependentUpon>FrmSektoriDetalji.cs</DependentUpon>
     </Compile>
-    <Compile Include="Uplate\frmUplate.cs">
+    <Compile Include="Uplate\FrmUplate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Uplate\frmUplate.Designer.cs">
-      <DependentUpon>frmUplate.cs</DependentUpon>
+    <Compile Include="Uplate\FrmUplate.Designer.cs">
+      <DependentUpon>FrmUplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utakmice\frmUtakmice.cs">
+    <Compile Include="Utakmice\FrmUtakmice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utakmice\frmUtakmice.Designer.cs">
-      <DependentUpon>frmUtakmice.cs</DependentUpon>
+    <Compile Include="Utakmice\FrmUtakmice.Designer.cs">
+      <DependentUpon>FrmUtakmice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utakmice\frmUtakmiceDetalji.cs">
+    <Compile Include="Utakmice\FrmUtakmiceDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utakmice\frmUtakmiceDetalji.Designer.cs">
-      <DependentUpon>frmUtakmiceDetalji.cs</DependentUpon>
+    <Compile Include="Utakmice\FrmUtakmiceDetalji.Designer.cs">
+      <DependentUpon>FrmUtakmiceDetalji.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Drzave\frmDrzave.resx">
-      <DependentUpon>frmDrzave.cs</DependentUpon>
+    <EmbeddedResource Include="Drzave\FrmDrzave.resx">
+      <DependentUpon>FrmDrzave.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Drzave\frmDrzaveDetalji.resx">
-      <DependentUpon>frmDrzaveDetalji.cs</DependentUpon>
+    <EmbeddedResource Include="Drzave\FrmDrzaveDetalji.resx">
+      <DependentUpon>FrmDrzaveDetalji.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Drzave\frmDrzaveTemp.resx">
-      <DependentUpon>frmDrzaveTemp.cs</DependentUpon>
+    <EmbeddedResource Include="Drzave\FrmDrzaveTemp.resx">
+      <DependentUpon>FrmDrzaveTemp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIndex.resx">
       <DependentUpon>frmIndex.cs</DependentUpon>
@@ -273,29 +273,29 @@
     <EmbeddedResource Include="frmRegistracija.resx">
       <DependentUpon>frmRegistracija.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gradovi\frmGradovi.resx">
-      <DependentUpon>frmGradovi.cs</DependentUpon>
+    <EmbeddedResource Include="Gradovi\FrmGradovi.resx">
+      <DependentUpon>FrmGradovi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gradovi\frmGradoviDetalji.resx">
-      <DependentUpon>frmGradoviDetalji.cs</DependentUpon>
+    <EmbeddedResource Include="Gradovi\FrmGradoviDetalji.resx">
+      <DependentUpon>FrmGradoviDetalji.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gradovi\frmGradoviTemp.resx">
-      <DependentUpon>frmGradoviTemp.cs</DependentUpon>
+    <EmbeddedResource Include="Gradovi\FrmGradoviTemp.resx">
+      <DependentUpon>FrmGradoviTemp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Izvješća\frmGodineIStadioniIzvjesce.resx">
-      <DependentUpon>frmGodineIStadioniIzvjesce.cs</DependentUpon>
+    <EmbeddedResource Include="Izvješća\FrmGodineIStadioniIzvjesce.resx">
+      <DependentUpon>FrmGodineIStadioniIzvjesce.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Korisnici\frmKorisnici.resx">
-      <DependentUpon>frmKorisnici.cs</DependentUpon>
+    <EmbeddedResource Include="Korisnici\FrmKorisnici.resx">
+      <DependentUpon>FrmKorisnici.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Korisnici\frmKorisniciDetalji.resx">
-      <DependentUpon>frmKorisniciDetalji.cs</DependentUpon>
+    <EmbeddedResource Include="Korisnici\FrmKorisniciDetalji.resx">
+      <DependentUpon>FrmKorisniciDetalji.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lige\frmLige.resx">
-      <DependentUpon>frmLige.cs</DependentUpon>
+    <EmbeddedResource Include="Lige\FrmLige.resx">
+      <DependentUpon>FrmLige.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lige\frmLigeDetalji.resx">
-      <DependentUpon>frmLigeDetalji.cs</DependentUpon>
+    <EmbeddedResource Include="Lige\FrmLigeDetalji.resx">
+      <DependentUpon>FrmLigeDetalji.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -307,50 +307,50 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Sektori\frmSektori.resx">
-      <DependentUpon>frmSektori.cs</DependentUpon>
+    <EmbeddedResource Include="Sektori\FrmSektori.resx">
+      <DependentUpon>FrmSektori.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sjedala\frmSjedala.resx">
-      <DependentUpon>frmSjedala.cs</DependentUpon>
+    <EmbeddedResource Include="Sjedala\FrmSjedala.resx">
+      <DependentUpon>FrmSjedala.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sjedala\frmSjedalaDetalji.resx">
-      <DependentUpon>frmSjedalaDetalji.cs</DependentUpon>
+    <EmbeddedResource Include="Sjedala\FrmSjedalaDetalji.resx">
+      <DependentUpon>FrmSjedalaDetalji.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Stadioni\frmStadionDetalji.resx">
-      <DependentUpon>frmStadionDetalji.cs</DependentUpon>
+    <EmbeddedResource Include="Stadioni\FrmStadionDetalji.resx">
+      <DependentUpon>FrmStadionDetalji.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Stadioni\frmStadioni.resx">
-      <DependentUpon>frmStadioni.cs</DependentUpon>
+    <EmbeddedResource Include="Stadioni\FrmStadioni.resx">
+      <DependentUpon>FrmStadioni.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Timovi\frmTimovi.resx">
-      <DependentUpon>frmTimovi.cs</DependentUpon>
+    <EmbeddedResource Include="Timovi\FrmTimovi.resx">
+      <DependentUpon>FrmTimovi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Timovi\frmTimoviDetalji.resx">
-      <DependentUpon>frmTimoviDetalji.cs</DependentUpon>
+    <EmbeddedResource Include="Timovi\FrmTimoviDetalji.resx">
+      <DependentUpon>FrmTimoviDetalji.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tribine\frmTribine.resx">
-      <DependentUpon>frmTribine.cs</DependentUpon>
+    <EmbeddedResource Include="Tribine\FrmTribine.resx">
+      <DependentUpon>FrmTribine.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tribine\frmTribineDetalji.resx">
-      <DependentUpon>frmTribineDetalji.cs</DependentUpon>
+    <EmbeddedResource Include="Tribine\FrmTribineDetalji.resx">
+      <DependentUpon>FrmTribineDetalji.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ulaznice\frmUlaznice.resx">
-      <DependentUpon>frmUlaznice.cs</DependentUpon>
+    <EmbeddedResource Include="Ulaznice\FrmUlaznice.resx">
+      <DependentUpon>FrmUlaznice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ulaznice\frmUlazniceDetalji.resx">
-      <DependentUpon>frmUlazniceDetalji.cs</DependentUpon>
+    <EmbeddedResource Include="Ulaznice\FrmUlazniceDetalji.resx">
+      <DependentUpon>FrmUlazniceDetalji.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sektori\frmSektoriDetalji.resx">
-      <DependentUpon>frmSektoriDetalji.cs</DependentUpon>
+    <EmbeddedResource Include="Sektori\FrmSektoriDetalji.resx">
+      <DependentUpon>FrmSektoriDetalji.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Uplate\frmUplate.resx">
-      <DependentUpon>frmUplate.cs</DependentUpon>
+    <EmbeddedResource Include="Uplate\FrmUplate.resx">
+      <DependentUpon>FrmUplate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utakmice\frmUtakmice.resx">
-      <DependentUpon>frmUtakmice.cs</DependentUpon>
+    <EmbeddedResource Include="Utakmice\FrmUtakmice.resx">
+      <DependentUpon>FrmUtakmice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utakmice\frmUtakmiceDetalji.resx">
-      <DependentUpon>frmUtakmiceDetalji.cs</DependentUpon>
+    <EmbeddedResource Include="Utakmice\FrmUtakmiceDetalji.resx">
+      <DependentUpon>FrmUtakmiceDetalji.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

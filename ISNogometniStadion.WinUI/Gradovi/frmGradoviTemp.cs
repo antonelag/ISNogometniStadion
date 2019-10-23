@@ -14,11 +14,11 @@ using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI.Gradovi
 {
-    public partial class frmGradoviTemp : Form
+    public partial class FrmGradoviTemp : Form
     {
         public DrzaveApiService _apiServiceDrzave = new DrzaveApiService("DrzaveGet");
         public GradoviApiService _apiServiceGradovi = new GradoviApiService("GradoviGet");
-        public frmGradoviTemp()
+        public FrmGradoviTemp()
         {
             InitializeComponent();
         }
@@ -98,7 +98,7 @@ namespace ISNogometniStadion.WinUI.Gradovi
 
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var frm = new frmDrzaveTemp();
+            var frm = new FrmDrzaveTemp();
             frm.Show();
             this.Close();
         }

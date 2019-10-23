@@ -1,6 +1,6 @@
 ﻿namespace ISNogometniStadion.WinUI.Uplate
 {
-    partial class frmUplate
+    partial class FrmUplate
     {
         /// <summary>
         /// Required designer variable.

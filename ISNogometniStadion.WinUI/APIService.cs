@@ -67,7 +67,7 @@ namespace ISNogometniStadion.WinUI
 
                 MessageBox.Show("Operacija nije uspjela", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                return default(T);
+                return default;
             }
 
         }
@@ -91,7 +91,7 @@ namespace ISNogometniStadion.WinUI
                 }
 
                 MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return default(T);
+                return default;
             }
 
         }

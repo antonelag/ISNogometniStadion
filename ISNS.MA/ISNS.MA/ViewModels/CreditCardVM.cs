@@ -15,10 +15,10 @@ namespace ISNS.MA.ViewModels
         public long ExpYear { get; set; }
         public long ExpMonth { get; set; }
         public string CVV { get; set; }
-        public decimal amount { get; set; }
-        public bool uspjesno { get; set; }
-        public string msg { get; set; }
-        PaymentAPIService PaymentAPIService = new PaymentAPIService("Payment");
+        public decimal Amount { get; set; }
+        public bool Uspjesno { get; set; }
+        public string Msg { get; set; }
+        readonly PaymentAPIService PaymentAPIService = new PaymentAPIService("Payment");
         public CreditCardVM()
         {
             InitCommand = new Command(async () => await Init());
@@ -31,7 +31,7 @@ namespace ISNS.MA.ViewModels
             {
                 CreditCard = new ISNogometniStadion.Model.CreditCardVM()
                 {
-                    amount = amount,
+                    amount = Amount,
                     CreditCardNumber = CreditCardNumber,
                     CVV = CVV,
                     ExpMonth = ExpMonth,
@@ -40,15 +40,15 @@ namespace ISNS.MA.ViewModels
 
             };
             StripeError e = await PaymentAPIService.Post<StripeError>(vm);
-            msg = e.Message;
-            if (msg == null)
-                msg = "Neuspješna uplata";
+            Msg = e.Message;
+            if (Msg == null)
+                Msg = "Neuspješna uplata";
 
 
-            if (msg == "Uspješna uplata")
-                uspjesno = true;
+            if (Msg == "Uspješna uplata")
+                Uspjesno = true;
             else
-                uspjesno = false;
+                Uspjesno = false;
         }
     }
 

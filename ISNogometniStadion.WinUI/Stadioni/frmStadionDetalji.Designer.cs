@@ -1,6 +1,6 @@
 ﻿namespace ISNogometniStadion.WinUI.Stadioni
 {
-    partial class frmStadionDetalji
+    partial class FrmStadionDetalji
     {
         /// <summary>
         /// Required designer variable.
