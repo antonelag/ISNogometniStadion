@@ -20,12 +20,12 @@
         <StackLayout BackgroundColor="LightGray" HeightRequest="40">
         </StackLayout>
             <StackLayout VerticalOptions="Start" BackgroundColor="White"  >
-                <Label Text="{Binding utakmica}" FontAttributes="Bold" HorizontalOptions="Center" FontSize="Medium"/>
+                <Label Text="{Binding UtakmicaPodaci}" FontAttributes="Bold" HorizontalOptions="Center" FontSize="Medium"/>
                 <Label Text="Ime i prezime: " FontAttributes="Bold" FontSize="Small"/>
-                <Label Text="{ Binding korisnik}"/>
+                <Label Text="{ Binding KorisnikPodaci}"/>
 
                 <Label Text="Sektor: " FontAttributes="Bold" FontSize="Small"/>
-                <Label Text="{Binding sektor}"/>
+                <Label Text="{Binding SektorPodaci}"/>
                 <Label Text="Sjedalo: " FontAttributes="Bold" FontSize="Small"/>
                 <Label Text="{ Binding Oznaka}"/>
                 <Label Text="Datum kupnje: " FontAttributes="Bold" FontSize="Small"/>
@@ -39,7 +39,6 @@
             </StackLayout>
             <StackLayout>
                 <Label HorizontalOptions="CenterAndExpand">Ulaznica sa bar kodom se nalazi u vašim ulaznicama.</Label>
-                <!--<Button x:Name="btn" Text="Idi u moje ulaznice" Clicked="Button_Clicked"></Button>-->
             </StackLayout>
             <StackLayout>
                 <Button Text="Natrag na početnu" Clicked="Button_Clicked" BackgroundColor="LightGreen"></Button>
