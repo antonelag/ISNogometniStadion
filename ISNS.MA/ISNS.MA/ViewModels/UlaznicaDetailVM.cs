@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace ISNS.MA.ViewModels
 {
-    public class UlaznicaDetailVM
+    public class UlaznicaDetailVM:BaseViewModel
     {
         public string Oznaka { get; set; }
         public Sjedalo Sjedalo { get; set; }
@@ -43,7 +43,7 @@ namespace ISNS.MA.ViewModels
         public ICommand InitCommand { get; set; }
         public async Task Init()
         {
-
+            IsBusy = true;
             List<Sjedalo> listSjedala = await _apiServiceSjedala.Get<List<Sjedalo>>(null);
             foreach (var sjedalo in listSjedala)
             {

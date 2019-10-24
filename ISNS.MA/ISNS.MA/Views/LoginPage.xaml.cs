@@ -17,17 +17,6 @@ namespace ISNS.MA.Views
             InitializeComponent();
         }
 
-        private void Entry_OnTextChanged(object sender, TextChangedEventArgs e)
-        {
-
-
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-        }
-
         private void Button_Clicked(object sender, EventArgs e)
         {
             Application.Current.MainPage = new NavigationPage(new RegistrationPage());

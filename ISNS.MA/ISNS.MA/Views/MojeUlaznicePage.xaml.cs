@@ -25,6 +25,7 @@ namespace ISNS.MA.Views
         {
             base.OnAppearing();
             await mojeUlazniceVM.Init();
+            
         }
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

@@ -23,7 +23,7 @@
 
                 <StackLayout Margin="0,20,0,0">
                 <Button Command="{Binding LoginCommand}"  HorizontalOptions="FillAndExpand" Text="Login"></Button>
-            <Label IsVisible="{Binding IsBusy}" Text="..."></Label>
+                    <ActivityIndicator IsRunning="{Binding IsBusy}"></ActivityIndicator>
             <Button Text="Registriraj se" Clicked="Button_Clicked"
                     BackgroundColor="LightGreen" ></Button>
         </StackLayout>

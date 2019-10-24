@@ -25,8 +25,10 @@ namespace ISNS.MA.Views
 
         protected async override void OnAppearing()
         {
+
             base.OnAppearing();
             await sjedalaViewModel.Init();
+            sjedalaViewModel.IsBusy = false;
             var brSjedala = sjedalaViewModel.BrojSjedala;
             this.gridSjedala.Children.Clear();
             this.gridSjedala.RowDefinitions = new RowDefinitionCollection();

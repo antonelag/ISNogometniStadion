@@ -17,7 +17,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout BackgroundColor="Red" HeightRequest="40">
+            <StackLayout BackgroundColor="{Binding ulaznica.color}" HeightRequest="40">
             </StackLayout>
             <StackLayout VerticalOptions="Start" BackgroundColor="White"  >
                 <Label Text="{Binding ulaznica.utakmica}" FontAttributes="Bold" HorizontalOptions="Center" FontSize="Medium"/>
@@ -34,7 +34,7 @@
                 <Label Text="{ Binding ulaznica.VrijemeKupnje}"/>
 
             </StackLayout>
-            <StackLayout BackgroundColor="red" HeightRequest="40">
+            <StackLayout BackgroundColor="{Binding ulaznica.color}" HeightRequest="40">
 
             </StackLayout>
 

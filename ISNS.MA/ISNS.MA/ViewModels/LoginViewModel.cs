@@ -46,7 +46,7 @@ namespace ISNS.MA.ViewModels
             }
             catch (Exception)
             {
-                await Application.Current.MainPage.DisplayAlert("Greška", "Niste autentificirani", "OK");
+                IsBusy = false;
             }
         }
     }

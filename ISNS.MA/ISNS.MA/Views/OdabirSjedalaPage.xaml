@@ -12,6 +12,9 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Padding="10">
+                <Grid x:Name="loadingOverlay" IsVisible="{Binding IsBusy}">
+                    <ActivityIndicator IsRunning="{Binding IsBusy}" />
+                </Grid>
                 <Label Text="Odaberite sjedalo" HorizontalOptions="CenterAndExpand"  FontSize="Medium"></Label>
             </StackLayout>
         <ScrollView VerticalScrollBarVisibility="Default" HorizontalScrollBarVisibility="Default">

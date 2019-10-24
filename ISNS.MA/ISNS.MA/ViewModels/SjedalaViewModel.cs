@@ -31,6 +31,7 @@ namespace ISNS.MA.ViewModels
 
         public async Task Init()
         {
+            IsBusy = true;
             var korisnicko = APIService.KorisnickoIme;
             List<Korisnik> listKorisnici = await _apiServiceKorisnici.Get<List<Korisnik>>(null);
             foreach (var korisnik in listKorisnici)

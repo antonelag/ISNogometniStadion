@@ -3,11 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:ISNS.MA.ViewModels"
              mc:Ignorable="d"
              x:Class="ISNS.MA.Views.PlacanjeInfoPage">
+    <ContentPage.BindingContext>
+        <viewModels:CreditCardVM></viewModels:CreditCardVM>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-       
+            <Grid x:Name="loadingOverlay">
+                <ActivityIndicator IsRunning="{Binding IsBusy}" />
+            </Grid>
             <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="success" IsVisible="False">
                 <StackLayout>
                     <Image Source="success.png"></Image>

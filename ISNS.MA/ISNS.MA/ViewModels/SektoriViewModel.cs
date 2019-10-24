@@ -25,7 +25,7 @@ namespace ISNS.MA.ViewModels
         public ICommand InitCommand { get; set; }
         public async Task Init()
         {
-
+            IsBusy = true;
             List<Tribina> listTribina = await _apiServiceTribine.Get<List<Tribina>>(null);
             List<int> listazahtjev = new List<int>();
             foreach (var tribina in listTribina)

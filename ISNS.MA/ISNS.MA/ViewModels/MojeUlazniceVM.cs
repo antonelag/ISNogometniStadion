@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -13,6 +14,7 @@ namespace ISNS.MA.ViewModels
     {
         private APIService _apiServiceUlaznice = new APIService("Ulaznica");
         private APIService _apiServiceKorisnici = new APIService("Korisnici");
+        private APIService _apiServiceUtakmice = new APIService("Utakmice");
 
         public MojeUlazniceVM()
         {
@@ -21,7 +23,7 @@ namespace ISNS.MA.ViewModels
 
         public Korisnik korisnik { get; set; }
         public ObservableCollection<Ulaznica> UlazniceList { get; set; } = new ObservableCollection<Ulaznica>();
-
+        
         public ICommand InitCommand { get; set; }
 
         public async Task Init()
@@ -40,8 +42,13 @@ namespace ISNS.MA.ViewModels
             UlazniceList.Clear();
             foreach (var ulaznica in list)
             {
-
+                Utakmica u = await _apiServiceUtakmice.GetById<Utakmica>(ulaznica.UtakmicaID);
+                if (u.DatumOdigravanja < DateTime.Now)
+                    ulaznica.color = "LightGray";
+                else
+                    ulaznica.color = "LightGreen";
                 UlazniceList.Add(ulaznica);
+                
             }
         }
 

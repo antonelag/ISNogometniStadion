@@ -23,6 +23,10 @@ namespace ISNS.MA.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            if (ulaznicaSimpleDetailVM.ulaznica.DatumKupnje < DateTime.Now)
+                ulaznicaSimpleDetailVM.ulaznica.color = "LightGray";
+            else
+                ulaznicaSimpleDetailVM.ulaznica.color = "LightGreen";
         }
     }
 }

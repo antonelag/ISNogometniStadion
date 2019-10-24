@@ -33,6 +33,7 @@ namespace ISNS.MA.Views
                 {
                     detailVM.Iznos = ccvm.Amount;
                     await detailVM.Init();
+                    this.loadingOverlay.IsVisible = false;
 
                 }
                 catch (Exception)
@@ -47,6 +48,7 @@ namespace ISNS.MA.Views
 
             else
             {
+                this.loadingOverlay.IsVisible = false;
                 this.fail.IsVisible = true;
                 this.failmsg.Text = ccvm.Msg;
             }

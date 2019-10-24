@@ -18,10 +18,12 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
+                
                 <StackLayout>
-                    <Image HeightRequest="300" WidthRequest="300" Source="{Binding Utakmica.Slika, Converter={StaticResource imgConv}}"></Image>
+                    <Image  HeightRequest="300" WidthRequest="300" Source="{Binding Utakmica.Slika, Converter={StaticResource imgConv}}"></Image>
                 </StackLayout>
         <StackLayout HeightRequest="300" Padding="20" BackgroundColor="WhiteSmoke">
+                    <ActivityIndicator IsRunning="{Binding IsBusy}"></ActivityIndicator>
                     <Label FontSize="Title" Text="Odaberite ulaznicu" HorizontalOptions="CenterAndExpand"></Label>
 
                     <ListView ItemsSource="{Binding SektoriList}" ItemSelected="ListView_ItemSelected" 
@@ -44,7 +46,7 @@
                                 FontSize="13" />
                                         </StackLayout>
                                         <StackLayout  HorizontalOptions="EndAndExpand" >
-                                            <Button  Padding="10" CornerRadius="2" BackgroundColor="Blue" TextColor="White" Text="Sjedalo"></Button>
+                                            <Button IsEnabled="False"  Padding="10" CornerRadius="2" BackgroundColor="Blue" TextColor="White" Text="Sjedalo"></Button>
                                         </StackLayout>
                                     </StackLayout>
                                 </ViewCell>

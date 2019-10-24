@@ -27,7 +27,7 @@ namespace ISNS.MA.Views
         public bool ValidCVV { get; set; }
         public bool ValidExpDate { get; set; }
 
-
+        
         public PlacanjePage(Utakmica utakmica, Sektor sektor, string OznakaSjedala, DateTime datum, Korisnik korisnik)
         {
             InitializeComponent();

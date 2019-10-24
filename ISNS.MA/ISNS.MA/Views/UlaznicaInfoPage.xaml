@@ -17,7 +17,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-        <StackLayout BackgroundColor="LightGray" HeightRequest="40">
+        <StackLayout BackgroundColor="LightGreen" HeightRequest="40">
         </StackLayout>
             <StackLayout VerticalOptions="Start" BackgroundColor="White"  >
                 <Label Text="{Binding UtakmicaPodaci}" FontAttributes="Bold" HorizontalOptions="Center" FontSize="Medium"/>
@@ -34,7 +34,7 @@
                 <Label Text="{ Binding Vrijeme}"/>
 
             </StackLayout>
-            <StackLayout BackgroundColor="LightGray" HeightRequest="40">
+            <StackLayout BackgroundColor="LightGreen" HeightRequest="40">
                 
             </StackLayout>
             <StackLayout>

@@ -40,7 +40,7 @@ namespace ISNogometniStadion.WebAPI.Services
             {
                 q = q.Where(s => s.UtakmicaID == search.UtakmicaID);
             }
-            var list = q.ToList();
+            var list = q.ToList().OrderByDescending(s=>s.DatumKupnje);
             return _mapper.Map<List<Ulaznica>>(list);
 
         }

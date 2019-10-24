@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace ISNS.MA.ViewModels
 {
-    public class CreditCardVM
+    public class CreditCardVM:BaseViewModel 
     {
         public string CreditCardNumber { get; set; }
         public long ExpYear { get; set; }
@@ -18,15 +18,17 @@ namespace ISNS.MA.ViewModels
         public decimal Amount { get; set; }
         public bool Uspjesno { get; set; }
         public string Msg { get; set; }
+        
         readonly PaymentAPIService PaymentAPIService = new PaymentAPIService("Payment");
         public CreditCardVM()
         {
             InitCommand = new Command(async () => await Init());
-
+            IsBusy = true;
         }
         public ICommand InitCommand { get; set; }
         public async Task Init()
         {
+            IsBusy = true;
             PaymentModel vm = new PaymentModel()
             {
                 CreditCard = new ISNogometniStadion.Model.CreditCardVM()

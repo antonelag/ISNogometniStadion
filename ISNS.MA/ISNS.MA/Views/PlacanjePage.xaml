@@ -6,9 +6,7 @@
              xmlns:viewModels="clr-namespace:ISNS.MA.ViewModels"
              mc:Ignorable="d"
              x:Class="ISNS.MA.Views.PlacanjePage">
-    <ContentPage.BindingContext>
-        <viewModels:CreditCardVM></viewModels:CreditCardVM>
-    </ContentPage.BindingContext>
+   
     <ContentPage.Content>
         <StackLayout Padding="20">
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">

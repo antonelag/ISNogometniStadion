@@ -26,7 +26,9 @@ namespace ISNS.MA.Views
             //pozivanje init metode u samom kodu
             //kada se pojavi utakmice page na uredjaju ova ce se metoda pokrenuti
             base.OnAppearing();
+
             await sektoriViewModel.Init();
+            sektoriViewModel.IsBusy = false;
         }
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
