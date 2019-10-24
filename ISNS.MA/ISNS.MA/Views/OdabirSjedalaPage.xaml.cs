@@ -15,11 +15,11 @@ namespace ISNS.MA.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OdabirSjedalaPage : ContentPage
     {
-        SjedalaViewModel sjedalaViewModel = null;
+        readonly SjedalaViewModel SjedalaViewModel = null;
         public OdabirSjedalaPage(Sektor sektor, Utakmica utakmica)
         {
             InitializeComponent();
-            BindingContext = sjedalaViewModel = new SjedalaViewModel() { sektor = sektor, utakmica=utakmica };
+            BindingContext = SjedalaViewModel = new SjedalaViewModel() { sektor = sektor, utakmica=utakmica };
 
         }
 
@@ -27,9 +27,9 @@ namespace ISNS.MA.Views
         {
 
             base.OnAppearing();
-            await sjedalaViewModel.Init();
-            sjedalaViewModel.IsBusy = false;
-            var brSjedala = sjedalaViewModel.BrojSjedala;
+            await SjedalaViewModel.Init();
+            SjedalaViewModel.IsBusy = false;
+            var brSjedala = SjedalaViewModel.BrojSjedala;
             this.gridSjedala.Children.Clear();
             this.gridSjedala.RowDefinitions = new RowDefinitionCollection();
             this.gridSjedala.ColumnDefinitions = new ColumnDefinitionCollection();
@@ -47,11 +47,11 @@ namespace ISNS.MA.Views
                     this.gridSjedala.RowDefinitions.Add(new RowDefinition { Height=30});
                     brK = 0;
                 }
-                this.gridSjedala.ColumnDefinitions.Add(new ColumnDefinition { Width=30});
-                Button l = new Button { MinimumWidthRequest=50, Text = sjedalaViewModel.SjedalaList[i].Oznaka, TextColor = Color.White, CornerRadius = 25, IsEnabled=!sjedalaViewModel.SjedalaList[i].Status,
-                HeightRequest=30,WidthRequest=30, FontSize=10 };
+                this.gridSjedala.ColumnDefinitions.Add(new ColumnDefinition { Width=40});
+                Button l = new Button { MinimumWidthRequest=40, Text = SjedalaViewModel.SjedalaList[i].Oznaka, TextColor = Color.White, CornerRadius = 10, IsEnabled=!SjedalaViewModel.SjedalaList[i].Status,
+                HeightRequest=30,WidthRequest=40, FontSize=10 };
                 l.Pressed += btn_Clicked;
-                if (sjedalaViewModel.SjedalaList[i].Status == true)
+                if (SjedalaViewModel.SjedalaList[i].Status == true)
                     l.BackgroundColor = Color.Gray;
                 else
                     l.BackgroundColor = Color.Green;
@@ -88,7 +88,7 @@ namespace ISNS.MA.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PlacanjePage(sjedalaViewModel.utakmica, sjedalaViewModel.sektor, this.odabranoSjedalo.Text,DateTime.Now, sjedalaViewModel.Korisnik));
+            await Navigation.PushAsync(new PlacanjePage(SjedalaViewModel.utakmica, SjedalaViewModel.sektor, this.odabranoSjedalo.Text,DateTime.Now, SjedalaViewModel.Korisnik));
             this.nastavidalje.IsVisible = false;
         }
     }

@@ -14,19 +14,19 @@ namespace ISNS.MA.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UlazniceInfoPage2 : ContentPage
     {
-        public UlaznicaSimpleDetailVM ulaznicaSimpleDetailVM { get; set; }
+        public UlaznicaSimpleDetailVM UlaznicaSimpleDetailVM { get; set; }
         public UlazniceInfoPage2(Ulaznica ulaznica)
         {
             InitializeComponent();
-            BindingContext = ulaznicaSimpleDetailVM = new UlaznicaSimpleDetailVM() { ulaznica = ulaznica };
+            BindingContext = UlaznicaSimpleDetailVM = new UlaznicaSimpleDetailVM() { ulaznica = ulaznica };
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (ulaznicaSimpleDetailVM.ulaznica.DatumKupnje < DateTime.Now)
-                ulaznicaSimpleDetailVM.ulaznica.color = "LightGray";
+            if (UlaznicaSimpleDetailVM.ulaznica.DatumKupnje < DateTime.Now)
+                UlaznicaSimpleDetailVM.ulaznica.color = "LightGray";
             else
-                ulaznicaSimpleDetailVM.ulaznica.color = "LightGreen";
+                UlaznicaSimpleDetailVM.ulaznica.color = "LightGreen";
         }
     }
 }

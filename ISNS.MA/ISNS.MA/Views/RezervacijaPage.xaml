@@ -16,13 +16,13 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView >
             <StackLayout>
-                
+
                 <StackLayout>
-                    <Image  HeightRequest="300" WidthRequest="300" Source="{Binding Utakmica.Slika, Converter={StaticResource imgConv}}"></Image>
+                            <Image   HeightRequest="300" WidthRequest="300" Source="{Binding Utakmica.Slika, Converter={StaticResource imgConv}}"></Image>
                 </StackLayout>
-        <StackLayout HeightRequest="300" Padding="20" BackgroundColor="WhiteSmoke">
+                <StackLayout HeightRequest="300" Padding="20" BackgroundColor="WhiteSmoke">
                     <ActivityIndicator IsRunning="{Binding IsBusy}"></ActivityIndicator>
                     <Label FontSize="Title" Text="Odaberite ulaznicu" HorizontalOptions="CenterAndExpand"></Label>
 
@@ -31,30 +31,30 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                <StackLayout Padding="10" Orientation="Horizontal">
-                                        
+                                    <StackLayout Padding="10" Orientation="Horizontal">
+
                                         <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
-                                        <Label Text="{Binding SektorPodaci}" 
+                                            <Label Text="{Binding SektorPodaci}" 
                                 d:Text="{Binding .}"
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="16" />
-                                    <Label Text="{Binding CijenaPodaci}" 
+                                            <Label Text="{Binding CijenaPodaci}" 
                                 d:Text="Item descripton"
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
                                         </StackLayout>
-                                        <StackLayout  HorizontalOptions="EndAndExpand" >
-                                            <Button IsEnabled="False"  Padding="10" CornerRadius="2" BackgroundColor="Blue" TextColor="White" Text="Sjedalo"></Button>
-                                        </StackLayout>
+                                        <Frame HeightRequest="40" WidthRequest="80" CornerRadius="7" HorizontalOptions="End" VerticalOptions="End" Margin="0" Padding="0" BackgroundColor="Blue">
+                                            <Label Text="SJEDALO" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                        </Frame>
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
 
-            </StackLayout>
+                </StackLayout>
             </StackLayout>
 
         </ScrollView>
