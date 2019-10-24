@@ -16,6 +16,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
         <StackLayout BackgroundColor="LightGreen" HeightRequest="40">
         </StackLayout>
@@ -51,5 +52,6 @@
         
          
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

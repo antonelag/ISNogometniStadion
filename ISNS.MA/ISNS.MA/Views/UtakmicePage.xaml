@@ -10,6 +10,7 @@
         <viewModels:UtakmiceViewModel></viewModels:UtakmiceViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
             <Label Text="Utakmice"
                 VerticalOptions="CenterAndExpand" 
@@ -37,6 +38,6 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

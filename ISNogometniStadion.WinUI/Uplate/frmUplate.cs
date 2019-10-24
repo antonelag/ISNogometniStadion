@@ -23,7 +23,7 @@ namespace ISNogometniStadion.WinUI.Uplate
 
         private async Task LoadSveUtakmice()
         {
-            List<Utakmica> result = await _apiServiceUtakmice.Get<List<Model.Utakmica>>(null);
+            List<Utakmica> result = await _apiServiceUtakmice.Get<List<Model.Utakmica>>(new UtakmiceeSearchRequest() { sveUtakmice=true});
             comboBox1.DisplayMember = "UtakmicaPodaci";
             comboBox1.ValueMember = "UtakmicaID";
             comboBox1.DataSource = result;

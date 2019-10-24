@@ -80,10 +80,10 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 532);
+            this.statusStrip.Location = new System.Drawing.Point(0, 668);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip.Size = new System.Drawing.Size(1122, 26);
+            this.statusStrip.Size = new System.Drawing.Size(1282, 26);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -113,7 +113,7 @@
             this.toolStripMenuItem1});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1122, 28);
+            this.menuStrip.Size = new System.Drawing.Size(1282, 28);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -381,7 +381,7 @@
             // pretražiToolStripMenuItem7
             // 
             this.pretražiToolStripMenuItem7.Name = "pretražiToolStripMenuItem7";
-            this.pretražiToolStripMenuItem7.Size = new System.Drawing.Size(224, 26);
+            this.pretražiToolStripMenuItem7.Size = new System.Drawing.Size(142, 26);
             this.pretražiToolStripMenuItem7.Text = "Pretraži";
             this.pretražiToolStripMenuItem7.Click += new System.EventHandler(this.PretražiToolStripMenuItem7_Click);
             // 
@@ -396,7 +396,7 @@
             // godineIStadioniToolStripMenuItem
             // 
             this.godineIStadioniToolStripMenuItem.Name = "godineIStadioniToolStripMenuItem";
-            this.godineIStadioniToolStripMenuItem.Size = new System.Drawing.Size(205, 26);
+            this.godineIStadioniToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.godineIStadioniToolStripMenuItem.Text = "Godišnje izvješće";
             this.godineIStadioniToolStripMenuItem.Click += new System.EventHandler(this.GodineIStadioniToolStripMenuItem_Click);
             // 
@@ -409,7 +409,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1122, 558);
+            this.ClientSize = new System.Drawing.Size(1282, 694);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;

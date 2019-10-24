@@ -37,7 +37,7 @@ namespace ISNogometniStadion.WinUI.Izvješća
         private void LoadGodine()
         {
             var gZ = DateTime.Now.Year + 10;
-            var gP = 2014;
+            var gP = 2010;
             for (int i = gP; i <= gZ; i++)
             {
                 cbGodina.Items.Add(i);
@@ -54,7 +54,7 @@ namespace ISNogometniStadion.WinUI.Izvješća
                 int brojUlaznica = 0;
                 decimal UkupnaZarada = 0;
                 var tribine = await _apiServiceTribine.Get<List<Tribina>>(new TribineSearchRequest() { StadionID = s.StadionID });
-                var utakmice = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { StadionID = s.StadionID });
+                var utakmice = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { StadionID = s.StadionID,sveUtakmice=true });
                 foreach (var ut in utakmice)
                 {
                     var ulaznice = await _apiServiceUlaznice.Get<List<Ulaznica>>(new UlazniceSearchRequest() { Godina = idGodina, UtakmicaID = ut.UtakmicaID });

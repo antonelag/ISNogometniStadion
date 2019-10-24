@@ -42,7 +42,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
         {
             var result = await _apiService.Get<List<Model.Utakmica>>(new UtakmiceeSearchRequest()
             {
-                LigaID = id
+                LigaID = id,sveUtakmice=true
             });
             dgvUtakmice.DataSource = result;
         }

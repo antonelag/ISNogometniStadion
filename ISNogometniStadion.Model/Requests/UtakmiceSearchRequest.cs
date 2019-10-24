@@ -9,5 +9,6 @@ namespace ISNogometniStadion.Model
     {
         public int? LigaID { get; set; }
         public int? StadionID { get; set; }
+        public bool sveUtakmice { get; set; }
     }
 }
