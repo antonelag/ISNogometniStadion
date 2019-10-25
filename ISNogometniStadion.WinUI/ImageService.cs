@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ISNogometniStadion.Model;
 using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 
 namespace ISNogometniStadion.WinUI
 {
@@ -20,8 +21,10 @@ public class ImageService
         }
         public Image GetNoImage()
         {
-            var filename = "C:\\RSII-SeminarskiRad-160125\\Aplikacija-160125\\slike\\noimage.jpg";
-            return Image.FromFile(filename);
+            string path = Path.GetDirectoryName(Environment.CurrentDirectory);
+            string[]path2 = path.Split(new[] { "\\" }, StringSplitOptions.None);
+            string p = path2[0] + "\\" + path2[1] + "\\" + path2[2] + "\\slike\\noimage.jpg";
+            return Image.FromFile(p);
         }
 
         public byte[] ImageToBytes(Image img)

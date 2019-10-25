@@ -44,9 +44,11 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvSjedala);
-            this.groupBox1.Location = new System.Drawing.Point(4, 70);
+            this.groupBox1.Location = new System.Drawing.Point(5, 86);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(784, 368);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(1045, 453);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sjedala";
@@ -63,26 +65,30 @@
             this.Sektor,
             this.SektorID});
             this.dgvSjedala.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSjedala.Location = new System.Drawing.Point(3, 16);
+            this.dgvSjedala.Location = new System.Drawing.Point(4, 19);
+            this.dgvSjedala.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvSjedala.Name = "dgvSjedala";
             this.dgvSjedala.ReadOnly = true;
+            this.dgvSjedala.RowHeadersWidth = 51;
             this.dgvSjedala.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSjedala.Size = new System.Drawing.Size(778, 349);
+            this.dgvSjedala.Size = new System.Drawing.Size(1037, 430);
             this.dgvSjedala.TabIndex = 0;
             this.dgvSjedala.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvSjedala_MouseDoubleClick);
             // 
             // txtPretraga
             // 
-            this.txtPretraga.Location = new System.Drawing.Point(12, 33);
+            this.txtPretraga.Location = new System.Drawing.Point(16, 41);
+            this.txtPretraga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(448, 20);
+            this.txtPretraga.Size = new System.Drawing.Size(596, 22);
             this.txtPretraga.TabIndex = 1;
             // 
             // txtPretrazi
             // 
-            this.txtPretrazi.Location = new System.Drawing.Point(692, 31);
+            this.txtPretrazi.Location = new System.Drawing.Point(923, 38);
+            this.txtPretrazi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPretrazi.Name = "txtPretrazi";
-            this.txtPretrazi.Size = new System.Drawing.Size(75, 23);
+            this.txtPretrazi.Size = new System.Drawing.Size(100, 28);
             this.txtPretrazi.TabIndex = 2;
             this.txtPretrazi.Text = "Pretraži";
             this.txtPretrazi.UseVisualStyleBackColor = true;
@@ -92,46 +98,59 @@
             // 
             this.sjedaloID.DataPropertyName = "SjedaloID";
             this.sjedaloID.HeaderText = "SjedaloID";
+            this.sjedaloID.MinimumWidth = 6;
             this.sjedaloID.Name = "sjedaloID";
             this.sjedaloID.ReadOnly = true;
+            this.sjedaloID.Visible = false;
+            this.sjedaloID.Width = 125;
             // 
             // oznaka
             // 
             this.oznaka.DataPropertyName = "Oznaka";
             this.oznaka.HeaderText = "Oznaka sjedala";
+            this.oznaka.MinimumWidth = 6;
             this.oznaka.Name = "oznaka";
             this.oznaka.ReadOnly = true;
+            this.oznaka.Width = 125;
             // 
             // Status
             // 
             this.Status.DataPropertyName = "Status";
             this.Status.HeaderText = "Zauzeto";
+            this.Status.MinimumWidth = 6;
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
+            this.Status.Width = 125;
             // 
             // Sektor
             // 
             this.Sektor.DataPropertyName = "Sektor";
             this.Sektor.HeaderText = "Naziv sektora";
+            this.Sektor.MinimumWidth = 6;
             this.Sektor.Name = "Sektor";
             this.Sektor.ReadOnly = true;
+            this.Sektor.Width = 125;
             // 
             // SektorID
             // 
             this.SektorID.DataPropertyName = "SektorID";
             this.SektorID.HeaderText = "SektorID";
+            this.SektorID.MinimumWidth = 6;
             this.SektorID.Name = "SektorID";
             this.SektorID.ReadOnly = true;
+            this.SektorID.Visible = false;
+            this.SektorID.Width = 125;
             // 
-            // frmSjedala
+            // FrmSjedala
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.txtPretrazi);
             this.Controls.Add(this.txtPretraga);
             this.Controls.Add(this.groupBox1);
-            this.Name = "frmSjedala";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "FrmSjedala";
             this.Text = "frmSjedala";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSjedala)).EndInit();
