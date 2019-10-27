@@ -59,7 +59,7 @@ namespace ISNogometniStadion.WinUI.Tribine
                 errorProvider1.SetError(txtNaziv, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;
             }
-            else if (!Regex.IsMatch(txtNaziv.Text, @"^[a-zA-Z0-9 ]+$"))//brojevi i/ili slova
+            else if (!Regex.IsMatch(txtNaziv.Text, @"^[a-zA-Z0-9 -]+$"))//brojevi i/ili slova
             {
                 errorProvider1.SetError(txtNaziv, Properties.Resources.NeispravanFormat);
                 e.Cancel = true;

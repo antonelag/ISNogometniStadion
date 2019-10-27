@@ -64,6 +64,10 @@ namespace ISNS.MA.Views
                         }
                         MenuPages.Add(id, new NavigationPage(new UrediProfilPage(korisnik)));
                         break;
+                    case (int)MenuItemType.Odjava:
+                        MenuPages.Add(id, new NavigationPage(new LoginPage()));
+                        break;
+
                 }
             }
 

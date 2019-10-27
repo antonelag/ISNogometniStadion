@@ -33,10 +33,10 @@
             this.txtPretraga = new System.Windows.Forms.TextBox();
             this.btnPretrazi = new System.Windows.Forms.Button();
             this.TribinaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StadionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stadion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTribine)).BeginInit();
             this.SuspendLayout();
@@ -44,9 +44,11 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvTribine);
-            this.groupBox1.Location = new System.Drawing.Point(12, 81);
+            this.groupBox1.Location = new System.Drawing.Point(16, 100);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 357);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(1035, 439);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tribine";
@@ -58,31 +60,35 @@
             this.dgvTribine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTribine.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TribinaID,
-            this.Cijena,
             this.Naziv,
             this.StadionID,
-            this.Stadion});
+            this.Stadion,
+            this.Cijena});
             this.dgvTribine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTribine.Location = new System.Drawing.Point(3, 16);
+            this.dgvTribine.Location = new System.Drawing.Point(4, 19);
+            this.dgvTribine.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvTribine.Name = "dgvTribine";
             this.dgvTribine.ReadOnly = true;
+            this.dgvTribine.RowHeadersWidth = 51;
             this.dgvTribine.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTribine.Size = new System.Drawing.Size(770, 338);
+            this.dgvTribine.Size = new System.Drawing.Size(1027, 416);
             this.dgvTribine.TabIndex = 0;
             this.dgvTribine.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvTribine_MouseDoubleClick);
             // 
             // txtPretraga
             // 
-            this.txtPretraga.Location = new System.Drawing.Point(15, 42);
+            this.txtPretraga.Location = new System.Drawing.Point(20, 52);
+            this.txtPretraga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(511, 20);
+            this.txtPretraga.Size = new System.Drawing.Size(680, 22);
             this.txtPretraga.TabIndex = 1;
             // 
             // btnPretrazi
             // 
-            this.btnPretrazi.Location = new System.Drawing.Point(678, 39);
+            this.btnPretrazi.Location = new System.Drawing.Point(904, 48);
+            this.btnPretrazi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPretrazi.Name = "btnPretrazi";
-            this.btnPretrazi.Size = new System.Drawing.Size(75, 23);
+            this.btnPretrazi.Size = new System.Drawing.Size(100, 28);
             this.btnPretrazi.TabIndex = 2;
             this.btnPretrazi.Text = "Pretraži";
             this.btnPretrazi.UseVisualStyleBackColor = true;
@@ -92,49 +98,59 @@
             // 
             this.TribinaID.DataPropertyName = "TribinaID";
             this.TribinaID.HeaderText = "TribinaID";
+            this.TribinaID.MinimumWidth = 6;
             this.TribinaID.Name = "TribinaID";
             this.TribinaID.ReadOnly = true;
             this.TribinaID.Visible = false;
-            // 
-            // Cijena
-            // 
-            this.Cijena.DataPropertyName = "Cijena";
-            this.Cijena.HeaderText = "Cijena";
-            this.Cijena.Name = "Cijena";
-            this.Cijena.ReadOnly = true;
-            this.Cijena.Visible = false;
+            this.TribinaID.Width = 125;
             // 
             // Naziv
             // 
             this.Naziv.DataPropertyName = "Naziv";
             this.Naziv.HeaderText = "Naziv";
+            this.Naziv.MinimumWidth = 6;
             this.Naziv.Name = "Naziv";
             this.Naziv.ReadOnly = true;
+            this.Naziv.Width = 125;
             // 
             // StadionID
             // 
             this.StadionID.DataPropertyName = "StadionID";
             this.StadionID.HeaderText = "StadionID";
+            this.StadionID.MinimumWidth = 6;
             this.StadionID.Name = "StadionID";
             this.StadionID.ReadOnly = true;
             this.StadionID.Visible = false;
+            this.StadionID.Width = 125;
             // 
             // Stadion
             // 
             this.Stadion.DataPropertyName = "Stadion";
             this.Stadion.HeaderText = "Stadion";
+            this.Stadion.MinimumWidth = 6;
             this.Stadion.Name = "Stadion";
             this.Stadion.ReadOnly = true;
+            this.Stadion.Width = 125;
             // 
-            // frmTribine
+            // Cijena
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.Cijena.DataPropertyName = "Cijena";
+            this.Cijena.HeaderText = "Cijena";
+            this.Cijena.MinimumWidth = 6;
+            this.Cijena.Name = "Cijena";
+            this.Cijena.ReadOnly = true;
+            this.Cijena.Width = 125;
+            // 
+            // FrmTribine
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.txtPretraga);
             this.Controls.Add(this.btnPretrazi);
             this.Controls.Add(this.groupBox1);
-            this.Name = "frmTribine";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "FrmTribine";
             this.Text = "frmTribine";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTribine)).EndInit();
@@ -150,9 +166,9 @@
         private System.Windows.Forms.Button btnPretrazi;
         private System.Windows.Forms.DataGridView dgvTribine;
         private System.Windows.Forms.DataGridViewTextBoxColumn TribinaID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewTextBoxColumn StadionID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stadion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
     }
 }

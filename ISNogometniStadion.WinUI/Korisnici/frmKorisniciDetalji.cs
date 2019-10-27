@@ -57,11 +57,29 @@ namespace ISNogometniStadion.WinUI.Korisnici
                     if (_id.HasValue)
                     {
                         int i = (int)_id;
+                        //Da li trenutni korisnik mijenja svoju lozinku
+                        bool izmjena = false;
+                        var korisnicko = APIService.KorisnickoIme;
+                        var lozinka = APIService.Lozinka;
+                        Korisnik k = await _apiService.GetById<Korisnik>(_id);
+                        if (korisnicko == k.korisnickoIme && lozinka!=txtLozinka.Text)
+                            izmjena = true;
                         try
                         {
                             await _apiService.Update<dynamic>(i, request);
                             MessageBox.Show("Operacija uspjesna!");
                             this.Close();
+
+                            if (izmjena)
+                            {
+                                foreach(Form f in Application.OpenForms)
+                                {
+                                    //da se ponovo logira
+                                    if (f.Text != "frmLogin")
+                                        f.Close();
+                                }
+                            }
+
                         }
                         catch (Exception)
                         {
@@ -164,7 +182,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
             }
             else if (!Regex.IsMatch(txtTelefon.Text, @"^[+]{1}\d{3}[ ]?\d{2}[ ]?\d{3}[ ]?\d{3}"))
             {
-                errorProvider.SetError(txtTelefon, Properties.Resources.NeispravanFormat);
+                errorProvider.SetError(txtTelefon, "Format telefona je: +123 45 678 910");
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
             else

@@ -38,9 +38,9 @@ namespace ISNS.MA.Views
             {
                 await DisplayAlert("Greška", "Prezime se sastoji samo od slova", "OK");
             }
-            else if (!Regex.IsMatch(this.Telefon.Text, @"^[0-9]+$"))
+            else if (!Regex.IsMatch(this.Telefon.Text, @"^[+]{1}\d{3}[ ]?\d{2}[ ]?\d{3}[ ]?\d{3}"))
             {
-                await DisplayAlert("Greška", "Telefon se sastoji samo od brojeva", "OK");
+                await DisplayAlert("Greška", "Format telefona je: +123 45 678 910", "OK");
             }
             else if (!Regex.IsMatch(this.Email.Text, @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"))
             {

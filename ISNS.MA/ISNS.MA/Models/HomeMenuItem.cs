@@ -12,7 +12,8 @@ namespace ISNS.MA.Models
         Stadioni,
         Timovi,
         MojeUlaznice,
-        UrediProfil
+        UrediProfil,
+        Odjava
     }
     public class HomeMenuItem
     {

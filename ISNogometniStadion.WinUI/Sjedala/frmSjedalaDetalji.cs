@@ -115,7 +115,7 @@ namespace ISNogometniStadion.WinUI.Sjedala
                 errorProvider1.SetError(txtOznaka, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;
             }
-            else if (!Regex.IsMatch(txtOznaka.Text, @"^[a-zA-Z0-9 ]+$"))//brojevi i/ili slova
+            else if (!Regex.IsMatch(txtOznaka.Text, @"^[a-zA-Z0-9 -]+$"))//brojevi i/ili slova
             {
                 errorProvider1.SetError(txtOznaka, Properties.Resources.NeispravanFormat);
                 e.Cancel = true;

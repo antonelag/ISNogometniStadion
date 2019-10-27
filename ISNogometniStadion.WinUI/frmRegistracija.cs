@@ -76,7 +76,7 @@ namespace ISNogometniStadion.WinUI
             }
             else if (!Regex.IsMatch(txtTelefon.Text, @"^[+]{1}\d{3}[ ]?\d{2}[ ]?\d{3}[ ]?\d{3}"))
             {
-                errorProvider1.SetError(txtTelefon, "Format telefona je: +/// // /// ///");
+                errorProvider1.SetError(txtTelefon, "Format telefona je: +123 45 678 910");
                 e.Cancel = true;//zaustaviti procesiranje forme
             }
             else

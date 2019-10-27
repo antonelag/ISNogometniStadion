@@ -44,7 +44,7 @@ namespace ISNS.MA.Views
             }
             else if (!Regex.IsMatch(this.Telefon.Text, @"^[+]{1}\d{3}[ ]?\d{2}[ ]?\d{3}[ ]?\d{3}"))
             {
-                await DisplayAlert("Greška", "Telefon treba biti u formatu +--- -- --- ---", "OK");
+                await DisplayAlert("Greška", "Format telefona je: +123 45 678 910", "OK");
             }
             else if (!Regex.IsMatch(this.Email.Text, @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"))
             {
@@ -87,8 +87,14 @@ namespace ISNS.MA.Views
                         potvrdaLozinke = this.PotvrdaLozinke.Text,
                         telefon = this.Telefon.Text
                     };
+                    var lozinka = APIService.Lozinka;
+                    var korisnicko = APIService.KorisnickoIme;
                     await _apiServiceKorisnici.Update<dynamic>(korisnikVM.korisnik.KorisnikID, req);
                     await DisplayAlert("OK", "Uspješno uneseni podaci", "OK");
+                    if(lozinka!=this.Lozinka.Text || korisnicko != this.KorisnickoIme.Text)
+                    {
+                        App.Current.MainPage = new LoginPage();
+                    }
                    
                 }
                 catch (Exception err)
