@@ -3,13 +3,13 @@ using ISNogometniStadion.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ISNS.MA.ViewModels
 {
-    public class UlaznicaDetailVM:BaseViewModel
+    public class UlaznicaDetailVM : BaseViewModel
     {
         public string Oznaka { get; set; }
         public Sjedalo Sjedalo { get; set; }
@@ -44,15 +44,8 @@ namespace ISNS.MA.ViewModels
         public async Task Init()
         {
             IsBusy = true;
-            List<Sjedalo> listSjedala = await _apiServiceSjedala.Get<List<Sjedalo>>(null);
-            foreach (var sjedalo in listSjedala)
-            {
-                if (sjedalo.Oznaka == Oznaka && sjedalo.SektorID == Sektor.SektorID)
-                {
-                    Sjedalo = sjedalo;
-                    break;
-                }
-            }
+            List<Sjedalo> list = await _apiServiceSjedala.Get<List<Sjedalo>>(new SjedalaSearchRequest() { Oznaka = Oznaka, SektorID = Sektor.SektorID });
+            Sjedalo = list[0];
             Korisnik k = await _apiServiceKorisnici.GetById<Korisnik>(Korisnik.KorisnikID);
             UlazniceInsertRequest req = new UlazniceInsertRequest()
             {

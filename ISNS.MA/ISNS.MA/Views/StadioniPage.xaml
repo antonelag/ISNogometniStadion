@@ -16,7 +16,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView>
         <StackLayout>
             <Label Text="Stadioni"
                 VerticalOptions="CenterAndExpand" 
@@ -50,6 +49,5 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

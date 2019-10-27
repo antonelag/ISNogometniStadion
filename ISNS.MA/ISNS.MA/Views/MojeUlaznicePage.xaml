@@ -10,11 +10,10 @@
         <viewModels:MojeUlazniceVM></viewModels:MojeUlazniceVM>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-       
-        <ScrollView>
+
             <StackLayout>
                 <StackLayout Margin="10" HorizontalOptions="Center" Padding="10" >
-                    
+
                     <Frame HeightRequest="20" WidthRequest="300" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0" BackgroundColor="LightGreen">
                         <Label Text="AKTIVNO" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                     </Frame>
@@ -22,6 +21,7 @@
                         <Label Text="NEAKTIVNO" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                     </Frame>
                 </StackLayout>
+
                 <StackLayout Padding="5">
                     <ListView ItemsSource="{Binding UlazniceList}" ItemSelected="ListView_ItemSelected">
                         <ListView.ItemTemplate>
@@ -44,7 +44,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
+
             </StackLayout>
-        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -10,6 +10,7 @@
         <viewModel:RegistrationViewModel></viewModel:RegistrationViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout  HorizontalOptions="FillAndExpand" Padding="30" VerticalOptions="CenterAndExpand">
          
             <Label Text="Ime"></Label>
@@ -40,5 +41,6 @@
              
             </StackLayout>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

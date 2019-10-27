@@ -16,7 +16,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView >
             <StackLayout>
 
                 <StackLayout>
@@ -57,6 +56,5 @@
                 </StackLayout>
             </StackLayout>
 
-        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

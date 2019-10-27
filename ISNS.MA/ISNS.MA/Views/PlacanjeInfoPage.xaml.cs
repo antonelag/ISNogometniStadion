@@ -34,15 +34,18 @@ namespace ISNS.MA.Views
                     detailVM.Iznos = ccvm.Amount;
                     await detailVM.Init();
                     this.loadingOverlay.IsVisible = false;
+                    this.success.IsVisible = true;
+                    this.successmsg.Text = ccvm.Msg;
 
                 }
                 catch (Exception)
                 {
                     this.fail.IsVisible = true;
                     this.failmsg.Text = "Neuspješna uplata.";
+                    this.loadingOverlay.IsVisible = false;
+
                 }
-                this.success.IsVisible = true;
-                this.successmsg.Text = ccvm.Msg;
+
 
             }
 

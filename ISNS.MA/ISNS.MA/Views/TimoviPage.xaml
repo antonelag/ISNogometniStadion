@@ -16,7 +16,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView>
         <StackLayout>
             <Label Text="Timovi"
                 VerticalOptions="CenterAndExpand" 
@@ -49,6 +48,5 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
