@@ -51,16 +51,30 @@ namespace ISNogometniStadion.WinUI
         {
             APIService.KorisnickoIme = txtKorisnickoIme.Text;
             APIService.Lozinka = txtLozinka.Text;
-            try
+            bool isOpen = false;
+            foreach (Form f in Application.OpenForms)
             {
-                await _apiService.Get<dynamic>(null);
-                var frm = new frmIndex();
-                frm.Show();
-
+                if (f.Text == "frmIndex")
+                {
+                    isOpen = true;
+                    f.BringToFront();
+                    break;
+                }
             }
-            catch (Exception)
+            if (!isOpen)
             {
-                MessageBox.Show("Niste autentificirani", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    await _apiService.Get<dynamic>(null);
+                    var frm = new frmIndex();
+                    frm.Show();
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Niste autentificirani", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
 
             }
 

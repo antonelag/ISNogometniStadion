@@ -10,33 +10,35 @@
         <vm:KorisnikVM></vm:KorisnikVM>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Padding="20">
-        <StackLayout>
-            <Label Text="Uredi profil" HorizontalOptions="CenterAndExpand" FontSize="Medium" />
-        </StackLayout>
-        <StackLayout>
-            <Label  Text="Ime"></Label>
-            <Entry x:Name="Ime" Text="{Binding korisnik.ime}"></Entry>
-                <Label  Text="Prezime"></Label>
-                <Entry x:Name="Prezime" Text="{Binding korisnik.prezime}"></Entry>
-                <Label  Text="Datum rodjenja"></Label>
-                <DatePicker x:Name="DatumRodjenja" Date="{Binding korisnik.datumRodjenja}"></DatePicker>
-                <Label  Text="Telefon"></Label>
-                <Entry x:Name="Telefon" Text="{Binding korisnik.telefon}"></Entry>
-                <Label  Text="Email"></Label>
-                <Entry x:Name="Email" Text="{Binding korisnik.email}"></Entry>
-                <Label Text="Grad"></Label>
-                <Picker x:Name="gradovi" ItemsSource="{Binding GradoviList}" ItemDisplayBinding="{Binding Naziv}"></Picker>
-                <Label  Text="Korisnicko ime"></Label>
-                <Entry x:Name="KorisnickoIme" Text="{Binding korisnik.korisnickoIme}"></Entry>
-                <Label  Text="Lozinka"></Label>
-                <Entry x:Name="Lozinka" Placeholder="Nova ili stara lozinka" IsPassword="True"></Entry>
-                <Label  Text="Potvrda lozinke"></Label>
-                <Entry x:Name="PotvrdaLozinke" Placeholder="Potvrda lozinke" IsPassword="True"></Entry>
+        <ScrollView>
+            <StackLayout Padding="20">
+                <StackLayout>
+                    <Label Text="Uredi profil" HorizontalOptions="CenterAndExpand" FontSize="Medium" />
+                </StackLayout>
+                <StackLayout>
+                    <Label  Text="Ime"></Label>
+                    <Entry x:Name="Ime" Text="{Binding korisnik.ime}"></Entry>
+                    <Label  Text="Prezime"></Label>
+                    <Entry x:Name="Prezime" Text="{Binding korisnik.prezime}"></Entry>
+                    <Label  Text="Datum rodjenja"></Label>
+                    <DatePicker x:Name="DatumRodjenja" Date="{Binding korisnik.datumRodjenja}"></DatePicker>
+                    <Label  Text="Telefon"></Label>
+                    <Entry x:Name="Telefon" Text="{Binding korisnik.telefon}"></Entry>
+                    <Label  Text="Email"></Label>
+                    <Entry x:Name="Email" Text="{Binding korisnik.email}"></Entry>
+                    <Label Text="Grad"></Label>
+                    <Picker x:Name="gradovi" ItemsSource="{Binding GradoviList}" ItemDisplayBinding="{Binding Naziv}"></Picker>
+                    <Label  Text="Korisnicko ime"></Label>
+                    <Entry x:Name="KorisnickoIme" Text="{Binding korisnik.korisnickoIme}"></Entry>
+                    <Label  Text="Lozinka"></Label>
+                    <Entry x:Name="Lozinka" Placeholder="Nova ili stara lozinka" IsPassword="True"></Entry>
+                    <Label  Text="Potvrda lozinke"></Label>
+                    <Entry x:Name="PotvrdaLozinke" Placeholder="Potvrda lozinke" IsPassword="True"></Entry>
+                </StackLayout>
+                <StackLayout>
+                    <Button Text="Spremi podatke" Clicked="Button_Clicked"></Button>
+                </StackLayout>
             </StackLayout>
-            <StackLayout>
-                <Button Text="Spremi podatke" Clicked="Button_Clicked"></Button>
-            </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
