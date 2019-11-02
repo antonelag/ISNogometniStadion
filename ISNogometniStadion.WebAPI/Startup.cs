@@ -99,7 +99,7 @@ namespace ISNogometniStadion.WebAPI
             services.AddScoped<DrzaveService, DrzaveService>();
 
 
-            var conn = @"data source=.;initial catalog=IB160125; integrated security = True; ";
+            var conn = @"data source=.;initial catalog=160125; integrated security = True; ";
             services.AddDbContext<ISNogometniStadionContext>(options => options.UseSqlServer(conn));
         }
 

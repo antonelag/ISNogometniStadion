@@ -34,7 +34,7 @@ namespace ISNogometniStadion.WebAPI.Database
         public DbSet<Uplate> Uplate { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("data source=.;initial catalog=IB160125; integrated security = True; ");
+            optionsBuilder.UseSqlServer("data source=.;initial catalog=160125; integrated security = True; ");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

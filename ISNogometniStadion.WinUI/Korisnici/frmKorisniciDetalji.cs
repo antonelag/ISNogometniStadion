@@ -233,7 +233,7 @@ namespace ISNogometniStadion.WinUI.Korisnici
             else if (!Regex.IsMatch(txtKorisnickoIme.Text, @"^(?=.{4,40}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"))
             {
 
-                errorProvider.SetError(txtKorisnickoIme, "Neispravan format ili dužina imena (4-40)");
+                errorProvider.SetError(txtKorisnickoIme, "Neispravan format ili dužina korisničkog imena (4-40)");
                 e.Cancel = true;
             }
             else

@@ -47,6 +47,10 @@ namespace ISNS.MA.Views
                 await DisplayAlert("Greška", "Neispravan format email-a!", "OK");
 
             }
+            else if (!Regex.IsMatch(this.KorisnickoIme.Text, @"^(?=.{4,40}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"))
+            {
+                await DisplayAlert("Greška", "Neispravan format ili dužina korisničkog imena (4-40)", "OK");
+            }
             else if (string.IsNullOrWhiteSpace(this.Lozinka.Text))
             {
                 await DisplayAlert("Greška", "Morate unijeti lozinku", "OK");
