@@ -36,7 +36,7 @@ namespace ISNogometniStadion.WinUI.Izvješća
 
         private void LoadGodine()
         {
-            var gZ = DateTime.Now.Year + 10;
+            var gZ = DateTime.Now.Year;
             var gP = 2010;
             for (int i = gP; i <= gZ; i++)
             {
