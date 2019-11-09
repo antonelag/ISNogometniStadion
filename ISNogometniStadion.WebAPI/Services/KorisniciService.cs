@@ -115,7 +115,7 @@ namespace ISNogometniStadion.WebAPI.Services
 
         public Korisnik Authenticiraj(string username, string pass)
         {
-            var user = _context.Korisnici.FirstOrDefault(x => x.korisnickoIme == username);
+            var user = _context.Korisnici.FirstOrDefault(x => x.korisnickoIme.Equals(username,StringComparison.Ordinal));
 
             if (user != null)
             {
