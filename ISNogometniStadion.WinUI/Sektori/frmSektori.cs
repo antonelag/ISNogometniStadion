@@ -28,6 +28,7 @@ namespace ISNogometniStadion.WinUI.Sektori
             cbTribine.ValueMember = "TribinaID";
             result.Insert(0, new Model.Tribina());
             cbTribine.DataSource = result;
+            cbTribine.Text = "--Odaberite tribinu--";
         }
         private async Task LoadTribine(int id)
         {
@@ -35,6 +36,7 @@ namespace ISNogometniStadion.WinUI.Sektori
             {
                 TribinaID = id
             });
+            dgvSektori.AutoGenerateColumns = false;
             dgvSektori.DataSource = result;
         }
 
