@@ -27,6 +27,7 @@ namespace ISNogometniStadion.WinUI.Stadioni
             cbGradovi.ValueMember = "GradID";
             result.Insert(0, new Model.Grad());
             cbGradovi.DataSource = result;
+            cbGradovi.Text = "--Odaberite grad--";
         }
         private async Task LoadGradovi(int id)
         {
@@ -34,6 +35,7 @@ namespace ISNogometniStadion.WinUI.Stadioni
             {
                 GradID = id
             });
+            dgvStadioni.AutoGenerateColumns = false;
             dgvStadioni.DataSource = result;
         }
         private void DgvStadioni_MouseDoubleClick(object sender, MouseEventArgs e)

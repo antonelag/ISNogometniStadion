@@ -26,6 +26,7 @@ namespace ISNogometniStadion.WinUI.Tribine
                 Naziv = txtPretraga.Text
             };
             var res = await _apiService.Get<dynamic>(search);
+            dgvTribine.AutoGenerateColumns = false;
             dgvTribine.DataSource = res;
 
         }

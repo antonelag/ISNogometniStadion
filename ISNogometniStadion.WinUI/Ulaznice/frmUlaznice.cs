@@ -47,6 +47,7 @@ namespace ISNogometniStadion.WinUI.Ulaznice
             cbKorisniciPretraga.ValueMember = "KorisnikID";
             result.Insert(0, new Model.Korisnik());
             cbKorisniciPretraga.DataSource = result;
+            cbKorisniciPretraga.Text = "--Odaberite korisnika--";
         }
         private async Task LoadKorisnici(int id)
         {
@@ -54,6 +55,7 @@ namespace ISNogometniStadion.WinUI.Ulaznice
             {
                 KorisnikID = id
             });
+            dgvUlaznice.AutoGenerateColumns = false;
             dgvUlaznice.DataSource = result;
         }
 

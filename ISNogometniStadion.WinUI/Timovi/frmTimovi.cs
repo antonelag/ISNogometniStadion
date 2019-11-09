@@ -33,6 +33,7 @@ namespace ISNogometniStadion.WinUI.Timovi
             cbLiga.ValueMember = "LigaID";
             result.Insert(0, new Model.Liga());
             cbLiga.DataSource = result;
+            cbLiga.Text = "--Odaberite ligu--";
         }
         private async Task LoadLige(int id)
         {
@@ -40,6 +41,7 @@ namespace ISNogometniStadion.WinUI.Timovi
             {
                 LigaID = id
             });
+            dgvTimovi.AutoGenerateColumns = false;
             dgvTimovi.DataSource = result;
         }
         private void DgvTimovi_MouseDoubleClick(object sender, MouseEventArgs e)

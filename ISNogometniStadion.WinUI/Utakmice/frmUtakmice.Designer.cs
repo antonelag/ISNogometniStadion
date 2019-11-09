@@ -30,6 +30,7 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvUtakmice = new System.Windows.Forms.DataGridView();
+            this.cbLiga = new System.Windows.Forms.ComboBox();
             this.UtakmicaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DomaciTim = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DomaciTimID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,7 +44,6 @@
             this.Liga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Slika = new System.Windows.Forms.DataGridViewImageColumn();
             this.SlikaThumb = new System.Windows.Forms.DataGridViewImageColumn();
-            this.cbLiga = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUtakmice)).BeginInit();
             this.SuspendLayout();
@@ -52,9 +52,9 @@
             // 
             this.groupBox1.Controls.Add(this.dgvUtakmice);
             this.groupBox1.Location = new System.Drawing.Point(16, 89);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1305, 400);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -81,7 +81,7 @@
             this.SlikaThumb});
             this.dgvUtakmice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUtakmice.Location = new System.Drawing.Point(4, 19);
-            this.dgvUtakmice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvUtakmice.Margin = new System.Windows.Forms.Padding(4);
             this.dgvUtakmice.Name = "dgvUtakmice";
             this.dgvUtakmice.ReadOnly = true;
             this.dgvUtakmice.RowHeadersWidth = 51;
@@ -89,6 +89,16 @@
             this.dgvUtakmice.Size = new System.Drawing.Size(1297, 377);
             this.dgvUtakmice.TabIndex = 0;
             this.dgvUtakmice.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvUtakmice_MouseDoubleClick);
+            // 
+            // cbLiga
+            // 
+            this.cbLiga.FormattingEnabled = true;
+            this.cbLiga.Location = new System.Drawing.Point(20, 33);
+            this.cbLiga.Margin = new System.Windows.Forms.Padding(4);
+            this.cbLiga.Name = "cbLiga";
+            this.cbLiga.Size = new System.Drawing.Size(920, 24);
+            this.cbLiga.TabIndex = 3;
+            this.cbLiga.SelectedIndexChanged += new System.EventHandler(this.CbLiga_SelectedIndexChanged);
             // 
             // UtakmicaID
             // 
@@ -207,21 +217,11 @@
             // SlikaThumb
             // 
             this.SlikaThumb.DataPropertyName = "SlikaThumb";
-            this.SlikaThumb.HeaderText = "SlikaThumb";
+            this.SlikaThumb.HeaderText = "Slika";
             this.SlikaThumb.MinimumWidth = 6;
             this.SlikaThumb.Name = "SlikaThumb";
             this.SlikaThumb.ReadOnly = true;
             this.SlikaThumb.Width = 125;
-            // 
-            // cbLiga
-            // 
-            this.cbLiga.FormattingEnabled = true;
-            this.cbLiga.Location = new System.Drawing.Point(20, 33);
-            this.cbLiga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cbLiga.Name = "cbLiga";
-            this.cbLiga.Size = new System.Drawing.Size(920, 24);
-            this.cbLiga.TabIndex = 3;
-            this.cbLiga.SelectedIndexChanged += new System.EventHandler(this.CbLiga_SelectedIndexChanged);
             // 
             // FrmUtakmice
             // 
@@ -230,7 +230,7 @@
             this.ClientSize = new System.Drawing.Size(1334, 554);
             this.Controls.Add(this.cbLiga);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmUtakmice";
             this.Text = "frmUtakmice";
             this.Load += new System.EventHandler(this.FrmUtakmice_Load);

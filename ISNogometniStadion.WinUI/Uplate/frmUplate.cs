@@ -28,7 +28,7 @@ namespace ISNogometniStadion.WinUI.Uplate
             comboBox1.ValueMember = "UtakmicaID";
             comboBox1.DataSource = result;
             comboBox1.SelectedItem = null;
-            comboBox1.SelectedText = "--Odaberite--";
+            comboBox1.Text = "--Odaberite utakmicu--";
         }
         private async Task LoadUplate(int id)
         {
@@ -36,6 +36,7 @@ namespace ISNogometniStadion.WinUI.Uplate
             {
                 UtakmicaID = id
             });
+            dgvUplate.AutoGenerateColumns = false;
             dgvUplate.DataSource = result;
         }
 

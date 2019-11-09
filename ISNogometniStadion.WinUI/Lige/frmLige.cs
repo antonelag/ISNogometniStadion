@@ -27,6 +27,7 @@ namespace ISNogometniStadion.WinUI.Lige
             cbLige.ValueMember = "DrzavaID";
             result.Insert(0, new Model.Drzava());
             cbLige.DataSource = result;
+            cbLige.Text = "--Odaberite državu--";
         }
         private async Task LoadDrzave(int id)
         {
@@ -34,6 +35,7 @@ namespace ISNogometniStadion.WinUI.Lige
             {
                 DrzavaID = id
             });
+            dgvLige.AutoGenerateColumns = false;
             dgvLige.DataSource = result;
         }
 

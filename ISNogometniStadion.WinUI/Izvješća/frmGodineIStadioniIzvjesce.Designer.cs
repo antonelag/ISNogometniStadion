@@ -30,12 +30,11 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvIzvješće = new System.Windows.Forms.DataGridView();
-            this.cbGodina = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.Stadion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Grad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrojProdanihUlaznica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UkupnaZarada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbGodina = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIzvješće)).BeginInit();
             this.SuspendLayout();
@@ -68,24 +67,6 @@
             this.dgvIzvješće.RowTemplate.Height = 24;
             this.dgvIzvješće.Size = new System.Drawing.Size(1266, 530);
             this.dgvIzvješće.TabIndex = 0;
-            // 
-            // cbGodina
-            // 
-            this.cbGodina.FormattingEnabled = true;
-            this.cbGodina.Location = new System.Drawing.Point(15, 42);
-            this.cbGodina.Name = "cbGodina";
-            this.cbGodina.Size = new System.Drawing.Size(280, 24);
-            this.cbGodina.TabIndex = 1;
-            this.cbGodina.SelectedIndexChanged += new System.EventHandler(this.CbGodina_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Godina";
             // 
             // Stadion
             // 
@@ -123,21 +104,28 @@
             this.UkupnaZarada.ReadOnly = true;
             this.UkupnaZarada.Width = 125;
             // 
-            // frmGodineIStadioniIzvjesce
+            // cbGodina
+            // 
+            this.cbGodina.FormattingEnabled = true;
+            this.cbGodina.Location = new System.Drawing.Point(15, 42);
+            this.cbGodina.Name = "cbGodina";
+            this.cbGodina.Size = new System.Drawing.Size(280, 24);
+            this.cbGodina.TabIndex = 1;
+            this.cbGodina.SelectedIndexChanged += new System.EventHandler(this.CbGodina_SelectedIndexChanged);
+            // 
+            // FrmGodineIStadioniIzvjesce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1296, 668);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.cbGodina);
             this.Controls.Add(this.groupBox1);
-            this.Name = "frmGodineIStadioniIzvjesce";
+            this.Name = "FrmGodineIStadioniIzvjesce";
             this.Text = "frmGodineIStadioniIzvjesce";
             this.Load += new System.EventHandler(this.FrmGodineIStadioniIzvjesce_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvIzvješće)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -146,7 +134,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvIzvješće;
         private System.Windows.Forms.ComboBox cbGodina;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stadion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Grad;
         private System.Windows.Forms.DataGridViewTextBoxColumn BrojProdanihUlaznica;

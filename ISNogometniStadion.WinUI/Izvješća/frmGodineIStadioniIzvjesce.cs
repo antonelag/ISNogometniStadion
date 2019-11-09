@@ -42,6 +42,7 @@ namespace ISNogometniStadion.WinUI.Izvješća
             {
                 cbGodina.Items.Add(i);
             }
+            cbGodina.Text = "--Odaberite godinu--";
         }
         private async Task LoadIzvjesce(int idGodina)
         {
@@ -74,7 +75,7 @@ namespace ISNogometniStadion.WinUI.Izvješća
                 }
                 lista.Add(new IzvjesceGodine() { Stadion = s.Naziv, Grad = s.Grad, Zarada = UkupnaZarada, BrojProdanihUlaznica = brojUlaznica });
             }
-
+            dgvIzvješće.AutoGenerateColumns = false;
             dgvIzvješće.DataSource = lista;
 
 

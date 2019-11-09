@@ -37,6 +37,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
             cbLiga.ValueMember = "LigaID";
             result.Insert(0, new Model.Liga());
             cbLiga.DataSource = result;
+            cbLiga.Text = "--Odaberite ligu--";
         }
         private async Task LoadLige(int id)
         {
@@ -44,6 +45,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
             {
                 LigaID = id,sveUtakmice=true
             });
+            dgvUtakmice.AutoGenerateColumns = false;
             dgvUtakmice.DataSource = result;
         }
 
