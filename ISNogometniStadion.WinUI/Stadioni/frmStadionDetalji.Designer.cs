@@ -33,7 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cbStadioni = new System.Windows.Forms.ComboBox();
+            this.cbGradovi = new System.Windows.Forms.ComboBox();
             this.btnSacuvaj = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtOpis = new System.Windows.Forms.RichTextBox();
@@ -51,7 +51,7 @@
             // txtNaziv
             // 
             this.txtNaziv.Location = new System.Drawing.Point(17, 94);
-            this.txtNaziv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNaziv.Margin = new System.Windows.Forms.Padding(4);
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(297, 22);
             this.txtNaziv.TabIndex = 0;
@@ -81,22 +81,22 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // cbStadioni
+            // cbGradovi
             // 
-            this.cbStadioni.DisplayMember = "Naziv";
-            this.cbStadioni.FormattingEnabled = true;
-            this.cbStadioni.Location = new System.Drawing.Point(16, 485);
-            this.cbStadioni.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cbStadioni.Name = "cbStadioni";
-            this.cbStadioni.Size = new System.Drawing.Size(299, 24);
-            this.cbStadioni.TabIndex = 3;
-            this.cbStadioni.ValueMember = "GradID";
-            this.cbStadioni.Validating += new System.ComponentModel.CancelEventHandler(this.CbStadioni_Validating);
+            this.cbGradovi.DisplayMember = "Naziv";
+            this.cbGradovi.FormattingEnabled = true;
+            this.cbGradovi.Location = new System.Drawing.Point(16, 485);
+            this.cbGradovi.Margin = new System.Windows.Forms.Padding(4);
+            this.cbGradovi.Name = "cbGradovi";
+            this.cbGradovi.Size = new System.Drawing.Size(299, 24);
+            this.cbGradovi.TabIndex = 3;
+            this.cbGradovi.ValueMember = "GradID";
+            this.cbGradovi.Validating += new System.ComponentModel.CancelEventHandler(this.CbGradovi_Validating);
             // 
             // btnSacuvaj
             // 
             this.btnSacuvaj.Location = new System.Drawing.Point(13, 531);
-            this.btnSacuvaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSacuvaj.Margin = new System.Windows.Forms.Padding(4);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(303, 44);
             this.btnSacuvaj.TabIndex = 4;
@@ -117,7 +117,7 @@
             // txtOpis
             // 
             this.txtOpis.Location = new System.Drawing.Point(17, 182);
-            this.txtOpis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtOpis.Margin = new System.Windows.Forms.Padding(4);
             this.txtOpis.Name = "txtOpis";
             this.txtOpis.Size = new System.Drawing.Size(297, 58);
             this.txtOpis.TabIndex = 6;
@@ -128,7 +128,7 @@
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(17, 265);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(137, 81);
             this.pictureBox1.TabIndex = 7;
@@ -137,7 +137,7 @@
             // btnDodaj
             // 
             this.btnDodaj.Location = new System.Drawing.Point(228, 282);
-            this.btnDodaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDodaj.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodaj.Name = "btnDodaj";
             this.btnDodaj.Size = new System.Drawing.Size(88, 42);
             this.btnDodaj.TabIndex = 8;
@@ -152,7 +152,7 @@
             // txtlat
             // 
             this.txtlat.Location = new System.Drawing.Point(16, 393);
-            this.txtlat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtlat.Margin = new System.Windows.Forms.Padding(4);
             this.txtlat.Name = "txtlat";
             this.txtlat.Size = new System.Drawing.Size(132, 22);
             this.txtlat.TabIndex = 9;
@@ -161,7 +161,7 @@
             // txtlng
             // 
             this.txtlng.Location = new System.Drawing.Point(183, 393);
-            this.txtlng.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtlng.Margin = new System.Windows.Forms.Padding(4);
             this.txtlng.Name = "txtlng";
             this.txtlng.Size = new System.Drawing.Size(132, 22);
             this.txtlng.TabIndex = 10;
@@ -187,7 +187,7 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Longituda";
             // 
-            // frmStadionDetalji
+            // FrmStadionDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -201,12 +201,12 @@
             this.Controls.Add(this.txtOpis);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSacuvaj);
-            this.Controls.Add(this.cbStadioni);
+            this.Controls.Add(this.cbGradovi);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNaziv);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "frmStadionDetalji";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "FrmStadionDetalji";
             this.Text = "frmStadionDetalji";
             this.Load += new System.EventHandler(this.FrmStadionDetalji_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -221,7 +221,7 @@
         private System.Windows.Forms.TextBox txtNaziv;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbStadioni;
+        private System.Windows.Forms.ComboBox cbGradovi;
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.RichTextBox txtOpis;

@@ -24,11 +24,11 @@ namespace ISNogometniStadion.WinUI.Uplate
         private async Task LoadSveUtakmice()
         {
             List<Utakmica> result = await _apiServiceUtakmice.Get<List<Model.Utakmica>>(new UtakmiceeSearchRequest() { sveUtakmice=true});
-            comboBox1.DisplayMember = "UtakmicaPodaci";
-            comboBox1.ValueMember = "UtakmicaID";
-            comboBox1.DataSource = result;
-            comboBox1.SelectedItem = null;
-            comboBox1.Text = "--Odaberite utakmicu--";
+            cbUtakmice.DisplayMember = "UtakmicaPodaci";
+            cbUtakmice.ValueMember = "UtakmicaID";
+            cbUtakmice.DataSource = result;
+            cbUtakmice.SelectedItem = null;
+            cbUtakmice.Text = "--Odaberite utakmicu--";
         }
         private async Task LoadUplate(int id)
         {
@@ -47,9 +47,9 @@ namespace ISNogometniStadion.WinUI.Uplate
             await LoadSveUtakmice();
         }
 
-        private async void ComboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        private async void CbUtakmice_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            var idObj = comboBox1.SelectedValue;
+            var idObj = cbUtakmice.SelectedValue;
             if (int.TryParse(idObj.ToString(), out int id))
             {
                 await LoadUplate(id);

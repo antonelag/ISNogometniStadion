@@ -30,11 +30,11 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvLige = new System.Windows.Forms.DataGridView();
-            this.cbLige = new System.Windows.Forms.ComboBox();
             this.LigaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DrzavaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Drzava = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbDrzave = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLige)).BeginInit();
             this.SuspendLayout();
@@ -42,9 +42,11 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvLige);
-            this.groupBox1.Location = new System.Drawing.Point(2, 96);
+            this.groupBox1.Location = new System.Drawing.Point(3, 118);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(786, 342);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(1048, 421);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lige";
@@ -60,61 +62,73 @@
             this.DrzavaID,
             this.Drzava});
             this.dgvLige.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLige.Location = new System.Drawing.Point(3, 16);
+            this.dgvLige.Location = new System.Drawing.Point(4, 19);
+            this.dgvLige.Margin = new System.Windows.Forms.Padding(4);
             this.dgvLige.Name = "dgvLige";
             this.dgvLige.ReadOnly = true;
+            this.dgvLige.RowHeadersWidth = 51;
             this.dgvLige.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLige.Size = new System.Drawing.Size(780, 323);
+            this.dgvLige.Size = new System.Drawing.Size(1040, 398);
             this.dgvLige.TabIndex = 0;
             this.dgvLige.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvLige_MouseDoubleClick);
-            // 
-            // cbLige
-            // 
-            this.cbLige.FormattingEnabled = true;
-            this.cbLige.Location = new System.Drawing.Point(12, 40);
-            this.cbLige.Name = "cbLige";
-            this.cbLige.Size = new System.Drawing.Size(160, 21);
-            this.cbLige.TabIndex = 1;
-            this.cbLige.SelectedIndexChanged += new System.EventHandler(this.CbLige_SelectedIndexChanged);
             // 
             // LigaID
             // 
             this.LigaID.DataPropertyName = "LigaID";
             this.LigaID.HeaderText = "LigaID";
+            this.LigaID.MinimumWidth = 6;
             this.LigaID.Name = "LigaID";
             this.LigaID.ReadOnly = true;
             this.LigaID.Visible = false;
+            this.LigaID.Width = 125;
             // 
             // Naziv
             // 
             this.Naziv.DataPropertyName = "Naziv";
             this.Naziv.HeaderText = "Naziv";
+            this.Naziv.MinimumWidth = 6;
             this.Naziv.Name = "Naziv";
             this.Naziv.ReadOnly = true;
+            this.Naziv.Width = 125;
             // 
             // DrzavaID
             // 
             this.DrzavaID.DataPropertyName = "DrzavaID";
             this.DrzavaID.HeaderText = "DrzavaID";
+            this.DrzavaID.MinimumWidth = 6;
             this.DrzavaID.Name = "DrzavaID";
             this.DrzavaID.ReadOnly = true;
             this.DrzavaID.Visible = false;
+            this.DrzavaID.Width = 125;
             // 
             // Drzava
             // 
             this.Drzava.DataPropertyName = "Drzava";
             this.Drzava.HeaderText = "Drzava";
+            this.Drzava.MinimumWidth = 6;
             this.Drzava.Name = "Drzava";
             this.Drzava.ReadOnly = true;
+            this.Drzava.Width = 125;
             // 
-            // frmLige
+            // cbDrzave
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.cbDrzave.FormattingEnabled = true;
+            this.cbDrzave.Location = new System.Drawing.Point(16, 49);
+            this.cbDrzave.Margin = new System.Windows.Forms.Padding(4);
+            this.cbDrzave.Name = "cbDrzave";
+            this.cbDrzave.Size = new System.Drawing.Size(212, 24);
+            this.cbDrzave.TabIndex = 1;
+            this.cbDrzave.SelectedIndexChanged += new System.EventHandler(this.CbDrzave_SelectedIndexChanged);
+            // 
+            // FrmLige
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.cbLige);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.cbDrzave);
             this.Controls.Add(this.groupBox1);
-            this.Name = "frmLige";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "FrmLige";
             this.Text = "frmLige";
             this.Load += new System.EventHandler(this.FrmLige_Load);
             this.groupBox1.ResumeLayout(false);
@@ -127,7 +141,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvLige;
-        private System.Windows.Forms.ComboBox cbLige;
+        private System.Windows.Forms.ComboBox cbDrzave;
         private System.Windows.Forms.DataGridViewTextBoxColumn LigaID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewTextBoxColumn DrzavaID;

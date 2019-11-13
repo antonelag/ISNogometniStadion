@@ -35,7 +35,7 @@ namespace ISNogometniStadion.WinUI.Ulaznice
             var idObj = cbKorisniciPretraga.SelectedValue;
             if (int.TryParse(idObj.ToString(), out int id))
             {
-                await LoadKorisnici(id);
+                await LoadUlaznice(id);
             }
 
 
@@ -49,7 +49,7 @@ namespace ISNogometniStadion.WinUI.Ulaznice
             cbKorisniciPretraga.DataSource = result;
             cbKorisniciPretraga.Text = "--Odaberite korisnika--";
         }
-        private async Task LoadKorisnici(int id)
+        private async Task LoadUlaznice(int id)
         {
             var result = await _apiService.Get<List<Model.Ulaznica>>(new UlazniceSearchRequest()
             {

@@ -29,7 +29,7 @@ namespace ISNogometniStadion.WinUI.Stadioni
             cbGradovi.DataSource = result;
             cbGradovi.Text = "--Odaberite grad--";
         }
-        private async Task LoadGradovi(int id)
+        private async Task LoadStadioni(int id)
         {
             var result = await _apiService.Get<List<Model.Stadion>>(new StadioniSearchRequest()
             {
@@ -57,7 +57,7 @@ namespace ISNogometniStadion.WinUI.Stadioni
             var idObj = cbGradovi.SelectedValue;
             if (int.TryParse(idObj.ToString(), out int id))
             {
-                await LoadGradovi(id);
+                await LoadStadioni(id);
             }
         }
     }

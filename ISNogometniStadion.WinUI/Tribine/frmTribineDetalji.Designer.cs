@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbTribine = new System.Windows.Forms.ComboBox();
+            this.cbStadioni = new System.Windows.Forms.ComboBox();
             this.Stadion = new System.Windows.Forms.Label();
             this.btnSacuvaj = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -43,7 +43,7 @@
             // txtNaziv
             // 
             this.txtNaziv.Location = new System.Drawing.Point(60, 69);
-            this.txtNaziv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNaziv.Margin = new System.Windows.Forms.Padding(4);
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(332, 22);
             this.txtNaziv.TabIndex = 0;
@@ -59,17 +59,17 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Naziv tribine";
             // 
-            // cbTribine
+            // cbStadioni
             // 
-            this.cbTribine.DisplayMember = "Naziv";
-            this.cbTribine.FormattingEnabled = true;
-            this.cbTribine.Location = new System.Drawing.Point(60, 151);
-            this.cbTribine.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cbTribine.Name = "cbTribine";
-            this.cbTribine.Size = new System.Drawing.Size(332, 24);
-            this.cbTribine.TabIndex = 2;
-            this.cbTribine.ValueMember = "StadionID";
-            this.cbTribine.Validating += new System.ComponentModel.CancelEventHandler(this.CbTribine_Validating);
+            this.cbStadioni.DisplayMember = "Naziv";
+            this.cbStadioni.FormattingEnabled = true;
+            this.cbStadioni.Location = new System.Drawing.Point(60, 151);
+            this.cbStadioni.Margin = new System.Windows.Forms.Padding(4);
+            this.cbStadioni.Name = "cbStadioni";
+            this.cbStadioni.Size = new System.Drawing.Size(332, 24);
+            this.cbStadioni.TabIndex = 2;
+            this.cbStadioni.ValueMember = "StadionID";
+            this.cbStadioni.Validating += new System.ComponentModel.CancelEventHandler(this.CbStadioni_Validating);
             // 
             // Stadion
             // 
@@ -84,7 +84,7 @@
             // btnSacuvaj
             // 
             this.btnSacuvaj.Location = new System.Drawing.Point(60, 274);
-            this.btnSacuvaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSacuvaj.Margin = new System.Windows.Forms.Padding(4);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(338, 54);
             this.btnSacuvaj.TabIndex = 4;
@@ -99,10 +99,11 @@
             // txtCijena
             // 
             this.txtCijena.Location = new System.Drawing.Point(60, 217);
-            this.txtCijena.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCijena.Margin = new System.Windows.Forms.Padding(4);
             this.txtCijena.Name = "txtCijena";
             this.txtCijena.Size = new System.Drawing.Size(332, 22);
             this.txtCijena.TabIndex = 5;
+            this.txtCijena.Validating += new System.ComponentModel.CancelEventHandler(this.TxtCijena_Validating);
             // 
             // label2
             // 
@@ -114,7 +115,7 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Cijena";
             // 
-            // frmTribineDetalji
+            // FrmTribineDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -123,11 +124,11 @@
             this.Controls.Add(this.txtCijena);
             this.Controls.Add(this.btnSacuvaj);
             this.Controls.Add(this.Stadion);
-            this.Controls.Add(this.cbTribine);
+            this.Controls.Add(this.cbStadioni);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNaziv);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "frmTribineDetalji";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "FrmTribineDetalji";
             this.Text = "frmTribineDetalji";
             this.Load += new System.EventHandler(this.FrmTribineDetalji_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -140,7 +141,7 @@
 
         private System.Windows.Forms.TextBox txtNaziv;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbTribine;
+        private System.Windows.Forms.ComboBox cbStadioni;
         private System.Windows.Forms.Label Stadion;
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.ErrorProvider errorProvider1;

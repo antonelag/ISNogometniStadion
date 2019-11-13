@@ -44,7 +44,7 @@ namespace ISNogometniStadion.WinUI.Stadioni
                 Stadion r = await _apiService.GetById<Stadion>(_id);
                 txtNaziv.Text = r.Naziv;
                 txtOpis.Text = r.Opis;
-                cbStadioni.SelectedValue = int.Parse(r.GradID.ToString());
+                cbGradovi.SelectedValue = int.Parse(r.GradID.ToString());
                 txtlat.Text = r.lat;
                 txtlng.Text = r.lng;
 
@@ -67,11 +67,11 @@ namespace ISNogometniStadion.WinUI.Stadioni
         private async Task LoadGradovi()
         {
             var result = await _apiServiceFradovi.Get<List<Model.Grad>>(null);
-            cbStadioni.DisplayMember = "Naziv";
-            cbStadioni.ValueMember = "GradID";
-            cbStadioni.SelectedItem = null;
-            cbStadioni.SelectedText = "--Odaberite--";
-            cbStadioni.DataSource = result;
+            cbGradovi.DisplayMember = "Naziv";
+            cbGradovi.ValueMember = "GradID";
+            cbGradovi.SelectedItem = null;
+            cbGradovi.SelectedText = "--Odaberite--";
+            cbGradovi.DataSource = result;
         }
 
         private void TxtNaziv_Validating(object sender, CancelEventArgs e)
@@ -91,29 +91,19 @@ namespace ISNogometniStadion.WinUI.Stadioni
                 errorProvider1.SetError(txtNaziv, null);
         }
 
-        private void CbStadioni_Validating(object sender, CancelEventArgs e)
-        {
-            if (cbStadioni.SelectedItem == null)
-            {
-                errorProvider1.SetError(cbStadioni, Properties.Resources.ObaveznoPolje);
-                e.Cancel = true;
-
-            }
-            else
-                errorProvider1.SetError(cbStadioni, null);
-        }
+      
         StadioniInsertRequest req = new StadioniInsertRequest();
         private async void BtnSacuvaj_Click(object sender, EventArgs e)
         {
             if (this.ValidateChildren())
             {
-                List<Stadion> lista = await _apiService.Get<List<Stadion>>(new StadioniSearchRequest() { Naziv = txtNaziv.Text, GradID = int.Parse(cbStadioni.SelectedValue.ToString()) });
+                List<Stadion> lista = await _apiService.Get<List<Stadion>>(new StadioniSearchRequest() { Naziv = txtNaziv.Text, GradID = int.Parse(cbGradovi.SelectedValue.ToString()) });
                 if (lista.Count == 0 || (lista.Count == 1 && lista[0].StadionID == _id))
                 {
 
                     req.Naziv = txtNaziv.Text;
                     req.Opis = txtOpis.Text;
-                    req.GradID = int.Parse(cbStadioni.SelectedValue.ToString());
+                    req.GradID = int.Parse(cbGradovi.SelectedValue.ToString());
                     req.lat = txtlat.Text;
                     req.lng = txtlng.Text;
 
@@ -230,6 +220,18 @@ namespace ISNogometniStadion.WinUI.Stadioni
             else
                 errorProvider1.SetError(txtlng
                     , null);
+        }
+
+        private void CbGradovi_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbGradovi.SelectedItem == null)
+            {
+                errorProvider1.SetError(cbGradovi, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+
+            }
+            else
+                errorProvider1.SetError(cbGradovi, null);
         }
     }
 }

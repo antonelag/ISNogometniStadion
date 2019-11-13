@@ -139,6 +139,16 @@ namespace ISNogometniStadion.WinUI.Utakmice
             else
                 errorProvider1.SetError(cbStadion, null);
         }
+        private void CbLiga_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbLiga.SelectedItem == null)
+            {
+                errorProvider1.SetError(cbLiga, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+            }
+            else
+                errorProvider1.SetError(cbLiga, null);
+        }
 
         private void DtpDatum_Validating(object sender, CancelEventArgs e)
         {
@@ -278,10 +288,6 @@ namespace ISNogometniStadion.WinUI.Utakmice
             }
         }
 
-        public bool ThumbnailCallback()
-        {
-            return false;
-        }
 
         private void BtnDodaj_Click(object sender, EventArgs e)
         {
@@ -299,5 +305,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
 
             }
         }
+
+        
     }
 }

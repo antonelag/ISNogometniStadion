@@ -38,18 +38,18 @@ namespace ISNogometniStadion.WinUI.Tribine
             {
                 var a = await _apiService.GetById<dynamic>(_id);
                 txtNaziv.Text = a.naziv;
-                cbTribine.SelectedValue = int.Parse(a.stadionID.ToString());
+                cbStadioni.SelectedValue = int.Parse(a.stadionID.ToString());
                 txtCijena.Text = a.cijena.ToString();
             }
         }
         private async Task LoadStadioni()
         {
             var result = await _apiServiceStadioni.Get<List<Model.Stadion>>(null);
-            cbTribine.DisplayMember = "Naziv";
-            cbTribine.ValueMember = "StadionID";
-            cbTribine.SelectedItem = null;
-            cbTribine.SelectedText = "--Odaberite--";
-            cbTribine.DataSource = result;
+            cbStadioni.DisplayMember = "Naziv";
+            cbStadioni.ValueMember = "StadionID";
+            cbStadioni.SelectedItem = null;
+            cbStadioni.SelectedText = "--Odaberite--";
+            cbStadioni.DataSource = result;
         }
 
         private void TxtNaziv_Validating(object sender, CancelEventArgs e)
@@ -69,28 +69,19 @@ namespace ISNogometniStadion.WinUI.Tribine
 
         }
 
-        private void CbTribine_Validating(object sender, CancelEventArgs e)
-        {
-            if (cbTribine.SelectedItem == null)
-            {
-                errorProvider1.SetError(cbTribine, Properties.Resources.ObaveznoPolje);
-                e.Cancel = true;
-            }
-            else
-                errorProvider1.SetError(cbTribine, null);
-        }
+      
 
         private async void BtnSacuvaj_Click(object sender, EventArgs e)
         {
             if (this.ValidateChildren())
             {
-                List<Tribina> lista = await _apiService.Get<List<Tribina>>(new TribineSearchRequest() { Naziv = txtNaziv.Text, StadionID = int.Parse(cbTribine.SelectedValue.ToString()) });
+                List<Tribina> lista = await _apiService.Get<List<Tribina>>(new TribineSearchRequest() { Naziv = txtNaziv.Text, StadionID = int.Parse(cbStadioni.SelectedValue.ToString()) });
                 if (lista.Count == 0 || (lista.Count == 1 && lista[0].TribinaID == _id))
                 {
                     var req = new TribineInsertRequest()
                     {
                         Naziv = txtNaziv.Text,
-                        StadionID = int.Parse(cbTribine.SelectedValue.ToString()),
+                        StadionID = int.Parse(cbStadioni.SelectedValue.ToString()),
                         Cijena = decimal.Parse(txtCijena.Text)
                     };
 
@@ -131,6 +122,34 @@ namespace ISNogometniStadion.WinUI.Tribine
                 MessageBox.Show("Operacija nije uspjela");
                 this.Close();
             }
+        }
+
+        private void CbStadioni_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbStadioni.SelectedItem == null)
+            {
+                errorProvider1.SetError(cbStadioni, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+            }
+            else
+                errorProvider1.SetError(cbStadioni, null);
+        }
+
+        private void TxtCijena_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCijena.Text))
+            {
+                errorProvider1.SetError(txtCijena, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+            }
+            else if (!Regex.IsMatch(txtCijena.Text, @"^[0-9,]+$"))//brojevi i/ili slova
+            {
+                errorProvider1.SetError(txtCijena, Properties.Resources.NeispravanFormat);
+                e.Cancel = true;
+            }
+            else
+                errorProvider1.SetError(txtCijena, null);
+
         }
     }
 }

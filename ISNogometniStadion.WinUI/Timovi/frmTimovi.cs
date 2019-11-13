@@ -35,7 +35,7 @@ namespace ISNogometniStadion.WinUI.Timovi
             cbLiga.DataSource = result;
             cbLiga.Text = "--Odaberite ligu--";
         }
-        private async Task LoadLige(int id)
+        private async Task LoadTimovi(int id)
         {
             var result = await _apiService.Get<List<Model.Tim>>(new TimoviSearchRequest()
             {
@@ -61,7 +61,7 @@ namespace ISNogometniStadion.WinUI.Timovi
             var idObj = cbLiga.SelectedValue;
             if (int.TryParse(idObj.ToString(), out int id))
             {
-                await LoadLige(id);
+                await LoadTimovi(id);
             }
         }
     }

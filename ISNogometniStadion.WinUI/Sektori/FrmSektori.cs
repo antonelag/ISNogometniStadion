@@ -30,7 +30,7 @@ namespace ISNogometniStadion.WinUI.Sektori
             cbTribine.DataSource = result;
             cbTribine.Text = "--Odaberite tribinu--";
         }
-        private async Task LoadTribine(int id)
+        private async Task LoadSektori(int id)
         {
             var result = await _apiServiceSektori.Get<List<Model.Sektor>>(new SektoriSearchRequest()
             {
@@ -50,7 +50,7 @@ namespace ISNogometniStadion.WinUI.Sektori
             var idObj = cbTribine.SelectedValue;
             if (int.TryParse(idObj.ToString(), out int id))
             {
-                await LoadTribine(id);
+                await LoadSektori(id);
             }
         }
 

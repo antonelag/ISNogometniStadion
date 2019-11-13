@@ -20,16 +20,16 @@ namespace ISNogometniStadion.WinUI.Lige
             InitializeComponent();
         }
 
-        private async Task loadSveDrzave()
+        private async Task LoadSveDrzave()
         {
             var result = await _apiServiceDrzave.Get<List<Model.Drzava>>(null);
-            cbLige.DisplayMember = "Naziv";
-            cbLige.ValueMember = "DrzavaID";
+            cbDrzave.DisplayMember = "Naziv";
+            cbDrzave.ValueMember = "DrzavaID";
             result.Insert(0, new Model.Drzava());
-            cbLige.DataSource = result;
-            cbLige.Text = "--Odaberite državu--";
+            cbDrzave.DataSource = result;
+            cbDrzave.Text = "--Odaberite državu--";
         }
-        private async Task LoadDrzave(int id)
+        private async Task LoadLige(int id)
         {
             var result = await _apiService.Get<List<Model.Liga>>(new LigaSearchRequest()
             {
@@ -41,23 +41,24 @@ namespace ISNogometniStadion.WinUI.Lige
 
         private async void FrmLige_Load(object sender, EventArgs e)
         {
-            await loadSveDrzave();
+            await LoadSveDrzave();
         }
 
-        private async void CbLige_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var idObj = cbLige.SelectedValue;
-            if (int.TryParse(idObj.ToString(), out int id))
-            {
-                await LoadDrzave(id);
-            }
-        }
 
         private void DgvLige_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var id = dgvLige.SelectedRows[0].Cells[0].Value;
             var frm = new FrmLigeDetalji(int.Parse(id.ToString()));
             frm.Show();
+        }
+
+        private async void CbDrzave_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var idObj = cbDrzave.SelectedValue;
+            if (int.TryParse(idObj.ToString(), out int id))
+            {
+                await LoadLige(id);
+            }
         }
     }
 }

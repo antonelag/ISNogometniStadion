@@ -75,7 +75,7 @@
             this.cbDomaci.DisplayMember = "TimID";
             this.cbDomaci.FormattingEnabled = true;
             this.cbDomaci.Location = new System.Drawing.Point(51, 50);
-            this.cbDomaci.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbDomaci.Margin = new System.Windows.Forms.Padding(4);
             this.cbDomaci.Name = "cbDomaci";
             this.cbDomaci.Size = new System.Drawing.Size(407, 24);
             this.cbDomaci.TabIndex = 2;
@@ -87,7 +87,7 @@
             this.cbGosti.DisplayMember = "TimID";
             this.cbGosti.FormattingEnabled = true;
             this.cbGosti.Location = new System.Drawing.Point(51, 142);
-            this.cbGosti.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbGosti.Margin = new System.Windows.Forms.Padding(4);
             this.cbGosti.Name = "cbGosti";
             this.cbGosti.Size = new System.Drawing.Size(407, 24);
             this.cbGosti.TabIndex = 3;
@@ -98,7 +98,7 @@
             // 
             this.dtpDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDatum.Location = new System.Drawing.Point(51, 220);
-            this.dtpDatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpDatum.Margin = new System.Windows.Forms.Padding(4);
             this.dtpDatum.Name = "dtpDatum";
             this.dtpDatum.Size = new System.Drawing.Size(407, 22);
             this.dtpDatum.TabIndex = 4;
@@ -118,7 +118,7 @@
             // 
             this.dtpVrijeme.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpVrijeme.Location = new System.Drawing.Point(51, 295);
-            this.dtpVrijeme.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpVrijeme.Margin = new System.Windows.Forms.Padding(4);
             this.dtpVrijeme.Name = "dtpVrijeme";
             this.dtpVrijeme.ShowUpDown = true;
             this.dtpVrijeme.Size = new System.Drawing.Size(407, 22);
@@ -140,7 +140,7 @@
             this.cbStadion.DisplayMember = "StadionID";
             this.cbStadion.FormattingEnabled = true;
             this.cbStadion.Location = new System.Drawing.Point(51, 370);
-            this.cbStadion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbStadion.Margin = new System.Windows.Forms.Padding(4);
             this.cbStadion.Name = "cbStadion";
             this.cbStadion.Size = new System.Drawing.Size(407, 24);
             this.cbStadion.TabIndex = 8;
@@ -160,7 +160,7 @@
             // btnSacuvaj
             // 
             this.btnSacuvaj.Location = new System.Drawing.Point(54, 609);
-            this.btnSacuvaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSacuvaj.Margin = new System.Windows.Forms.Padding(4);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(404, 38);
             this.btnSacuvaj.TabIndex = 10;
@@ -186,15 +186,16 @@
             // 
             this.cbLiga.FormattingEnabled = true;
             this.cbLiga.Location = new System.Drawing.Point(51, 453);
-            this.cbLiga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbLiga.Margin = new System.Windows.Forms.Padding(4);
             this.cbLiga.Name = "cbLiga";
             this.cbLiga.Size = new System.Drawing.Size(407, 24);
             this.cbLiga.TabIndex = 12;
+            this.cbLiga.Validating += new System.ComponentModel.CancelEventHandler(this.CbLiga_Validating);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(51, 503);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(151, 72);
             this.pictureBox1.TabIndex = 13;
@@ -203,7 +204,7 @@
             // btnDodaj
             // 
             this.btnDodaj.Location = new System.Drawing.Point(340, 520);
-            this.btnDodaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDodaj.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodaj.Name = "btnDodaj";
             this.btnDodaj.Size = new System.Drawing.Size(118, 45);
             this.btnDodaj.TabIndex = 14;
@@ -215,7 +216,7 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // frmUtakmiceDetalji
+            // FrmUtakmiceDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -235,8 +236,8 @@
             this.Controls.Add(this.cbDomaci);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "frmUtakmiceDetalji";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "FrmUtakmiceDetalji";
             this.Text = "frmUtakmiceDetalji";
             this.Load += new System.EventHandler(this.FrmUtakmiceDetalji_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

@@ -30,12 +30,12 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvUplate = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.UplataID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UlaznicaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UplataPodaci = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Iznos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ulaznica = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbUtakmice = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUplate)).BeginInit();
             this.SuspendLayout();
@@ -70,15 +70,6 @@
             this.dgvUplate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUplate.Size = new System.Drawing.Size(1049, 340);
             this.dgvUplate.TabIndex = 0;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 39);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(312, 24);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.ComboBox1_SelectionChangeCommitted);
             // 
             // UplataID
             // 
@@ -128,14 +119,23 @@
             this.Ulaznica.Visible = false;
             this.Ulaznica.Width = 125;
             // 
-            // frmUplate
+            // cbUtakmice
+            // 
+            this.cbUtakmice.FormattingEnabled = true;
+            this.cbUtakmice.Location = new System.Drawing.Point(12, 39);
+            this.cbUtakmice.Name = "cbUtakmice";
+            this.cbUtakmice.Size = new System.Drawing.Size(312, 24);
+            this.cbUtakmice.TabIndex = 1;
+            this.cbUtakmice.SelectionChangeCommitted += new System.EventHandler(this.CbUtakmice_SelectionChangeCommitted);
+            // 
+            // FrmUplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 450);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbUtakmice);
             this.Controls.Add(this.groupBox1);
-            this.Name = "frmUplate";
+            this.Name = "FrmUplate";
             this.Text = "frmUplate";
             this.Load += new System.EventHandler(this.FrmUplate_Load);
             this.groupBox1.ResumeLayout(false);
@@ -148,7 +148,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvUplate;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbUtakmice;
         private System.Windows.Forms.DataGridViewTextBoxColumn UplataID;
         private System.Windows.Forms.DataGridViewTextBoxColumn UlaznicaID;
         private System.Windows.Forms.DataGridViewTextBoxColumn UplataPodaci;

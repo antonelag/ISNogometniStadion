@@ -44,7 +44,7 @@ namespace ISNogometniStadion.WinUI.Timovi
                 Tim a = await _apiService.GetById<Tim>(_id);
                 txtNaziv.Text = a.Naziv;
                 txtOpis.Text = a.Opis;
-                cbTimovi.SelectedValue = int.Parse(a.StadionID.ToString());
+                cbStadioni.SelectedValue = int.Parse(a.StadionID.ToString());
                 cbLige.SelectedValue = int.Parse(a.LigaID.ToString());
 
 
@@ -65,11 +65,11 @@ namespace ISNogometniStadion.WinUI.Timovi
         private async Task LoadStadioni()
         {
             var result = await _apiServiceStadioni.Get<List<Model.Stadion>>(null);
-            cbTimovi.DisplayMember = "Naziv";
-            cbTimovi.ValueMember = "StadionID";
-            cbTimovi.SelectedItem = null;
-            cbTimovi.SelectedText = "--Odaberite--";
-            cbTimovi.DataSource = result;
+            cbStadioni.DisplayMember = "Naziv";
+            cbStadioni.ValueMember = "StadionID";
+            cbStadioni.SelectedItem = null;
+            cbStadioni.SelectedText = "--Odaberite--";
+            cbStadioni.DataSource = result;
         }
         private async Task LoadLige()
         {
@@ -108,16 +108,7 @@ namespace ISNogometniStadion.WinUI.Timovi
                 errorProvider1.SetError(txtOpis, null);
         }
 
-        private void CbTimovi_Validating(object sender, CancelEventArgs e)
-        {
-            if (cbTimovi.SelectedItem == null)
-            {
-                errorProvider1.SetError(cbTimovi, Properties.Resources.ObaveznoPolje);
-                e.Cancel = true;
-            }
-            else
-                errorProvider1.SetError(cbTimovi, null);
-        }
+       
         TimoviInsertRequest res = new TimoviInsertRequest();
         private async void BtnSacuvaj_Click(object sender, EventArgs e)
         {
@@ -129,7 +120,7 @@ namespace ISNogometniStadion.WinUI.Timovi
 
                     res.Naziv = txtNaziv.Text;
                     res.Opis = txtOpis.Text;
-                    res.StadionID = int.Parse(cbTimovi.SelectedValue.ToString());
+                    res.StadionID = int.Parse(cbStadioni.SelectedValue.ToString());
                     res.LigaID = int.Parse(cbLige.SelectedValue.ToString());
                     //spremanje slike u request se radi prilikom klika na dodaj 
                     //ako nije dodao novu sliku(UPDATE), samim time nije kliknuo na dodaj, trebala bi slika ostati nepromijenjena
@@ -187,10 +178,7 @@ namespace ISNogometniStadion.WinUI.Timovi
                 this.Close();
             }
         }
-        public bool ThumbnailCallback()
-        {
-            return false;
-        }
+    
 
         private void BtnDodajSliku_Click(object sender, EventArgs e)
         {
@@ -208,6 +196,17 @@ namespace ISNogometniStadion.WinUI.Timovi
                 pictureBox1.Image = mythumb;
 
             }
+        }
+
+        private void CbStadioni_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbStadioni.SelectedItem == null)
+            {
+                errorProvider1.SetError(cbStadioni, Properties.Resources.ObaveznoPolje);
+                e.Cancel = true;
+            }
+            else
+                errorProvider1.SetError(cbStadioni, null);
         }
     }
 }

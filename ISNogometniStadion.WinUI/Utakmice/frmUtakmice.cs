@@ -20,17 +20,13 @@ namespace ISNogometniStadion.WinUI.Utakmice
             InitializeComponent();
         }
 
-        public bool ThumbnailCallback()
-        {
-            return false;
-        }
         private void DgvUtakmice_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var id = dgvUtakmice.SelectedRows[0].Cells[0].Value;
             var frm = new FrmUtakmiceDetalji(int.Parse(id.ToString()));
             frm.Show();
         }
-        private async Task loadloadSveLige()
+        private async Task LoadSveLige()
         {
             var result = await _apiServiceLige.Get<List<Model.Liga>>(null);
             cbLiga.DisplayMember = "Naziv";
@@ -39,7 +35,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
             cbLiga.DataSource = result;
             cbLiga.Text = "--Odaberite ligu--";
         }
-        private async Task LoadLige(int id)
+        private async Task LoadUtakmice(int id)
         {
             var result = await _apiService.Get<List<Model.Utakmica>>(new UtakmiceeSearchRequest()
             {
@@ -51,7 +47,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
 
         private async void FrmUtakmice_Load(object sender, EventArgs e)
         {
-            await loadloadSveLige();
+            await LoadSveLige();
         }
 
         private async void CbLiga_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,7 +56,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
             var idObj = cbLiga.SelectedValue;
             if (int.TryParse(idObj.ToString(), out int id))
             {
-                await LoadLige(id);
+                await LoadUtakmice(id);
             }
         }
     }

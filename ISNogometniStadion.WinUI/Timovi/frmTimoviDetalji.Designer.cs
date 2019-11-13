@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cbTimovi = new System.Windows.Forms.ComboBox();
+            this.cbStadioni = new System.Windows.Forms.ComboBox();
             this.btnSacuvaj = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDodajSliku = new System.Windows.Forms.Button();
@@ -99,16 +99,17 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // cbTimovi
+            // cbStadioni
             // 
-            this.cbTimovi.DisplayMember = "Naziv";
-            this.cbTimovi.FormattingEnabled = true;
-            this.cbTimovi.Location = new System.Drawing.Point(17, 282);
-            this.cbTimovi.Margin = new System.Windows.Forms.Padding(4);
-            this.cbTimovi.Name = "cbTimovi";
-            this.cbTimovi.Size = new System.Drawing.Size(403, 24);
-            this.cbTimovi.TabIndex = 6;
-            this.cbTimovi.ValueMember = "StadionID";
+            this.cbStadioni.DisplayMember = "Naziv";
+            this.cbStadioni.FormattingEnabled = true;
+            this.cbStadioni.Location = new System.Drawing.Point(17, 282);
+            this.cbStadioni.Margin = new System.Windows.Forms.Padding(4);
+            this.cbStadioni.Name = "cbStadioni";
+            this.cbStadioni.Size = new System.Drawing.Size(403, 24);
+            this.cbStadioni.TabIndex = 6;
+            this.cbStadioni.ValueMember = "StadionID";
+            this.cbStadioni.Validating += new System.ComponentModel.CancelEventHandler(this.CbStadioni_Validating);
             // 
             // btnSacuvaj
             // 
@@ -176,7 +177,7 @@
             this.Controls.Add(this.btnDodajSliku);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSacuvaj);
-            this.Controls.Add(this.cbTimovi);
+            this.Controls.Add(this.cbStadioni);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtOpis);
@@ -201,7 +202,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.ComboBox cbTimovi;
+        private System.Windows.Forms.ComboBox cbStadioni;
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.Button btnDodajSliku;
         private System.Windows.Forms.PictureBox pictureBox1;
