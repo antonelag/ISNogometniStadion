@@ -142,7 +142,7 @@ namespace ISNogometniStadion.WinUI.Tribine
                 errorProvider1.SetError(txtCijena, Properties.Resources.ObaveznoPolje);
                 e.Cancel = true;
             }
-            else if (!Regex.IsMatch(txtCijena.Text, @"^[0-9,]+$"))//brojevi i/ili slova
+            else if (!Regex.IsMatch(txtCijena.Text, @"^[0-9,]+$"))
             {
                 errorProvider1.SetError(txtCijena, Properties.Resources.NeispravanFormat);
                 e.Cancel = true;
