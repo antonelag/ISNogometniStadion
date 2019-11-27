@@ -67,7 +67,9 @@ namespace ISNogometniStadion.WebAPI.Services
         {
             Korisnici k = _context.Korisnici.FirstOrDefault(s => s.KorisnikID == req.KorisnikID);
             Korisnik korisnik = _mapper.Map<Korisnik>(k);
-            string number = korisnik.KorisnikPodaci + "$" + req.UtakmicaID + "$" + req.SjedaloID + "$" + req.DatumKupnje.ToString() + "$" + req.VrijemeKupnje.ToString() + "$" + GetVoucherNumber(8);
+            Sjedalo a = _mapper.Map<Sjedalo>(_context.Sjedala.FirstOrDefault(s => s.SjedaloID == req.SjedaloID));
+            Utakmica u = _mapper.Map<Utakmica>(_context.Utakmice.FirstOrDefault(s => s.UtakmicaID == req.UtakmicaID));
+            string number = "Ime i prezime: " + korisnik.KorisnikPodaci + "---Utakmica: " + u.UtakmicaPodaci + "----Sjedalo/Sektor: " + a.Oznaka + "/" + a.Sektor + "---Datum kupnje: " + req.DatumKupnje.ToString() + "---Vrijeme kupnje:" + req.VrijemeKupnje.ToString() + "$" + GetVoucherNumber(8);
 
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(number, QRCodeGenerator.ECCLevel.Q);

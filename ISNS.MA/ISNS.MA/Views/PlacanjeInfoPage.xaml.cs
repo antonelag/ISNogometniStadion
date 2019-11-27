@@ -15,6 +15,7 @@ namespace ISNS.MA.Views
     {
         readonly CreditCardVM ccvm = null;
         readonly UlaznicaDetailVM detailVM = null;
+        public bool Uspjesno { get; set; }
         public PlacanjeInfoPage(CreditCardVM creditCardVM, UlaznicaDetailVM ulaznicaDetailVM)
         {
             InitializeComponent();
@@ -22,6 +23,12 @@ namespace ISNS.MA.Views
             detailVM = ulaznicaDetailVM;
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+            if (Uspjesno)
+                return true;
+            return false;
+        }
         protected async override void OnAppearing()
         {
 
@@ -36,14 +43,14 @@ namespace ISNS.MA.Views
                     this.loadingOverlay.IsVisible = false;
                     this.success.IsVisible = true;
                     this.successmsg.Text = ccvm.Msg;
-
+                    Uspjesno = true;
                 }
                 catch (Exception)
                 {
                     this.fail.IsVisible = true;
                     this.failmsg.Text = "Neuspješna uplata.";
                     this.loadingOverlay.IsVisible = false;
-
+                    Uspjesno = false;
                 }
 
 
