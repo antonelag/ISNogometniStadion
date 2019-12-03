@@ -26,8 +26,9 @@ namespace ISNS.MA.Views
                   new HomeMenuItem {Id = MenuItemType.Timovi, Title="Timovi" },
                   new HomeMenuItem{Id=MenuItemType.MojeUlaznice, Title="Moje ulaznice"}
                   ,new HomeMenuItem{Id=MenuItemType.UrediProfil, Title="Uredi profil"},
-                  new HomeMenuItem{Id=MenuItemType.Odjava,Title="Odjava"}
-                  
+                  new HomeMenuItem{Id=MenuItemType.Odjava,Title="Odjava"},
+                  new HomeMenuItem{Id=MenuItemType.Pretraga,Title="Pretraga"}
+
 
             };
 

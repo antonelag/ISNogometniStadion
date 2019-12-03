@@ -13,6 +13,7 @@ namespace ISNS.MA.Models
         Timovi,
         MojeUlaznice,
         UrediProfil,
+        Pretraga,
         Odjava
     }
     public class HomeMenuItem

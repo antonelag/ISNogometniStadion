@@ -6,6 +6,7 @@ using AutoMapper;
 using ISNogometniStadion.Model;
 using ISNogometniStadion.Model.Requests;
 using ISNogometniStadion.WebAPI.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace ISNogometniStadion.WebAPI.Services
 {
@@ -29,6 +30,10 @@ namespace ISNogometniStadion.WebAPI.Services
             }
             else
             {
+                if (search?.DrzavaID.HasValue == true)
+                {
+                    q = q.Include(s => s.Grad).Where(s => s.Grad.DrzavaID == search.DrzavaID);
+                }
                 if (!string.IsNullOrWhiteSpace(search?.Naziv))
                 {
                     q = q.Where(s => s.Naziv.StartsWith(search.Naziv));

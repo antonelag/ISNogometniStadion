@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:ISNS.MA.ViewModels"
+             mc:Ignorable="d"
+             x:Class="ISNS.MA.Views.PretragaPoLokacijiPage">
+    <ContentPage.BindingContext>
+        <viewModels:UtakmicePoLokacijiVM></viewModels:UtakmicePoLokacijiVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Picker Title="Odaberite državu" ItemsSource="{Binding drzaveList}" ItemDisplayBinding="{Binding Naziv}" SelectedItem="{Binding OdabranaDrzava}"></Picker>
+                <Picker Title="Odaberite grad" ItemsSource="{Binding gradoviList}" ItemDisplayBinding="{Binding Naziv}" SelectedItem="{Binding OdabraniGrad}"></Picker>
+                <Label Text="Omogućiti pretragu po datumima?"></Label>
+                <CheckBox x:Name="cb" CheckedChanged="Cb_CheckedChanged"></CheckBox>
+                <StackLayout x:Name="datumi">
+                    <DatePicker x:Name="d1"></DatePicker>
+                    <DatePicker x:Name="d2"></DatePicker>
+                    <Button Text="Pretražite po datumima" Clicked="Button_Clicked"></Button>
+                </StackLayout>
+                <Label Text="Omogući pretragu po cijeni?"></Label>
+                <CheckBox x:Name="cbCijena" CheckedChanged="CbCijena_CheckedChanged"></CheckBox>
+                <StackLayout x:Name="cijene" BackgroundColor="LightBlue">
+                    <Slider x:Name="sliderCijene" Minimum="0" Maximum="2000" ValueChanged="SliderCijene_ValueChanged"></Slider>
+                    <StackLayout Orientation="Horizontal">
+                        <Label x:Name="sliderresult"></Label>
+                        <Button Text="Pretraži po cijeni" Clicked="Button_Clicked_1"></Button>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+            <ScrollView>
+                <StackLayout>
+                    <ListView ItemsSource="{Binding utakmiceList}" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="10">
+                                        <Label Text="{Binding UtakmicaPodaci}" 
+                                d:Text="{Binding .}"
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                                        <Label Text="{Binding stadion}" 
+                                d:Text="Item descripton"
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

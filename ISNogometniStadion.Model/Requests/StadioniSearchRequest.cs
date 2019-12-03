@@ -10,5 +10,6 @@ namespace ISNogometniStadion.Model
     {
         public string Naziv { get; set; }
         public int? GradID { get; set; }
+        public int? DrzavaID { get; set; }
     }
 }

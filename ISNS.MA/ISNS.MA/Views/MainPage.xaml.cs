@@ -67,6 +67,9 @@ namespace ISNS.MA.Views
                     case (int)MenuItemType.Odjava:
                         MenuPages.Add(id, new NavigationPage(new LoginPage()));
                         break;
+                    case (int)MenuItemType.Pretraga:
+                        MenuPages.Add(id, new NavigationPage(new PretragaPage()));
+                        break;
 
                 }
             }
