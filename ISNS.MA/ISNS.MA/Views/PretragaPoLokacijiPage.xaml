@@ -33,7 +33,7 @@
             </StackLayout>
             <ScrollView>
                 <StackLayout>
-                    <ListView ItemsSource="{Binding utakmiceList}" >
+                    <ListView ItemsSource="{Binding utakmiceList}" ItemSelected="ListView_ItemSelected" >
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>

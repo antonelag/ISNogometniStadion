@@ -1,4 +1,5 @@
 ﻿using ISNogometniStadion.Model;
+using ISNogometniStadion.Model.Requests;
 using ISNS.MA.Decision;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,12 @@ namespace ISNS.MA.ViewModels
         private APIService _apiServiceDrzave = new APIService("Drzave");
         private APIService _apiServiceGradovi = new APIService("Gradovi");
         private APIService _apiServiceUtakmice = new APIService("Utakmice");
+        private APIService _apiServiceKorisnici = new APIService("Korisnici");
+        private APIService _apiServicePreporukePoLokaciji = new APIService("PreporukePoLokaciji");
         public ObservableCollection<Drzava> drzaveList { get; set; } = new ObservableCollection<Drzava>();
         public ObservableCollection<Grad> gradoviList { get; set; } = new ObservableCollection<Grad>();
         public ObservableCollection<Utakmica> utakmiceList { get; set; } = new ObservableCollection<Utakmica>();
+        public Korisnik Korisnik { get; set; } = new Korisnik();
         public DateTime? d1 { get; set; } = DateTime.MinValue;
         public DateTime? d2 { get; set; } = DateTime.MinValue;
         public decimal? cijena { get; set; } = -1;
@@ -74,47 +78,14 @@ namespace ISNS.MA.ViewModels
                     return lista;
                 },
                 Positive = new DecisionResult() { result = true, utakmice = new List<Utakmica>() },
-                Negative=new DecisionResult() { result=false, utakmice=new List<Utakmica>()}
+                Negative = new DecisionResult() { result = false, utakmice = new List<Utakmica>() }
             };
             var datumi = new DecisionQuery
             {
                 Title = "Datumi",
                 Test = async (z) =>
                 {
-                    UtakmiceeSearchRequest req = new UtakmiceeSearchRequest() { sveUtakmice=true};
-                    if (z.naziv == "lokacija")
-                    {
-                        req.GradID = z.id;
-                        req.PoLokaciji = true;
-                    }
-                    else if (z.naziv == "stadioni")
-                    {
-                        req.StadionID = z.id;
-                        req.PoStadionu = true;
-                    }
-                    else
-                    {
-                        req.TimID = z.id;
-                        req.PoTimu = true;
-                    }
-                    if (z.d1 != DateTime.MinValue && z.d2!=DateTime.MinValue)
-                    {
-                        req.d1 = z.d1;
-                        req.d2 = z.d2;
-                    }
-                    
-                    var lista = await _apiServiceUtakmice.Get<List<Utakmica>>(req);
-                    return lista;
-                },
-                Positive = check,
-                Negative = new DecisionResult() { result = false, utakmice = new List<Utakmica>() }
-            };
-            var cijene = new DecisionQuery
-            {
-                Title = "Cijene",
-                Test = async (z) =>
-                {
-                    UtakmiceeSearchRequest req = new UtakmiceeSearchRequest() { sveUtakmice = true };
+                    UtakmiceeSearchRequest req = new UtakmiceeSearchRequest();
                     if (z.naziv == "lokacija")
                     {
                         req.GradID = z.id;
@@ -135,7 +106,40 @@ namespace ISNS.MA.ViewModels
                         req.d1 = z.d1;
                         req.d2 = z.d2;
                     }
-                    if (z.cijena!=-1)
+
+                    var lista = await _apiServiceUtakmice.Get<List<Utakmica>>(req);
+                    return lista;
+                },
+                Positive = check,
+                Negative = new DecisionResult() { result = false, utakmice = new List<Utakmica>() }
+            };
+            var cijene = new DecisionQuery
+            {
+                Title = "Cijene",
+                Test = async (z) =>
+                {
+                    UtakmiceeSearchRequest req = new UtakmiceeSearchRequest();
+                    if (z.naziv == "lokacija")
+                    {
+                        req.GradID = z.id;
+                        req.PoLokaciji = true;
+                    }
+                    else if (z.naziv == "stadioni")
+                    {
+                        req.StadionID = z.id;
+                        req.PoStadionu = true;
+                    }
+                    else
+                    {
+                        req.TimID = z.id;
+                        req.PoTimu = true;
+                    }
+                    if (z.d1 != DateTime.MinValue && z.d2 != DateTime.MinValue)
+                    {
+                        req.d1 = z.d1;
+                        req.d2 = z.d2;
+                    }
+                    if (z.cijena != -1)
                         req.cijena = z.cijena;
 
                     var lista = await _apiServiceUtakmice.Get<List<Utakmica>>(req);
@@ -156,6 +160,8 @@ namespace ISNS.MA.ViewModels
 
         public async Task Init()
         {
+            if (Korisnik != null)
+                Korisnik = (await _apiServiceKorisnici.Get<List<Korisnik>>(new KorisniciSearchRequest() { KorisnickoIme = APIService.KorisnickoIme }))[0];
 
             if (drzaveList.Count == 0)
             {
@@ -181,25 +187,33 @@ namespace ISNS.MA.ViewModels
             {
 
                 Zahtjev z = new Zahtjev { naziv = "lokacija", id = _odabraniGrad.GradID };
-                if(d1!=DateTime.MinValue && d2 != DateTime.MinValue)
+                if (d1 != DateTime.MinValue && d2 != DateTime.MinValue)
                 {
                     z.d1 = d1;
                     z.d2 = d2;
                 }
-                if (cijena!=-1)
+                if (cijena != -1)
                     z.cijena = cijena;
 
                 var trunk = MainDecisionTree();
                 var lista = new List<Utakmica>();
                 await trunk.Evaluate(z);
-                    lista = trunk.listaUtakmica;
-                   
-                //var req = new UtakmiceeSearchRequest() { GradID = _odabraniGrad.GradID, sveUtakmice = true };
-                //var list = await _apiServiceUtakmice.Get<List<Utakmica>>(req);
+                lista = trunk.listaUtakmica;
+
                 if (utakmiceList.Count != 0)
                     utakmiceList.Clear();
                 foreach (var u in lista)
                     utakmiceList.Add(u);
+
+
+                List<PreporukaPoLokaciji> pr = await _apiServicePreporukePoLokaciji.Get<List<PreporukaPoLokaciji>>(new PreporukaSearchRequest() { KorisnikID = Korisnik.KorisnikID });
+                
+                if (pr.Count == 0)
+                    await _apiServicePreporukePoLokaciji.Insert<PreporukaPoLokaciji>(new PreporukePoLokacijiInsertRequest() { KorisnikID = Korisnik.KorisnikID, GradID = _odabraniGrad.GradID });
+                else
+                    await _apiServicePreporukePoLokaciji.Update<PreporukaPoLokaciji>(pr[0].PreporukaID,new PreporukePoLokacijiInsertRequest() { KorisnikID = Korisnik.KorisnikID, GradID = _odabraniGrad.GradID });
+
+
             }
 
 

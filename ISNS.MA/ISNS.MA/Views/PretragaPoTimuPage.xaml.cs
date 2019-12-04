@@ -1,4 +1,5 @@
-﻿using ISNS.MA.ViewModels;
+﻿using ISNogometniStadion.Model;
+using ISNS.MA.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -105,6 +106,12 @@ namespace ISNS.MA.Views
         {
             model.cijena = decimal.Parse(this.sliderCijene.Value.ToString());
             await model.Init();
+        }
+
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            Utakmica u = e.SelectedItem as Utakmica;
+            await Navigation.PushAsync(new RezervacijaPage(u));
         }
     }
 }

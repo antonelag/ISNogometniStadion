@@ -14,5 +14,6 @@ namespace ISNogometniStadion.Model.Requests
         public DateTime VrijemeKupnje { get; set; }
 
         public byte[] barcodeimg { get; set; }
+        public decimal? cijena { get; set; }
     }
 }

@@ -29,6 +29,16 @@ namespace ISNogometniStadion.WebAPI.Mappers
             CreateMap<Database.Sektori, Model.Requests.SektoriInsertRequest>().ReverseMap();
             CreateMap<Database.Preporuke, Model.Preporuka>();
             CreateMap<Database.Preporuke, Model.Requests.PreporukaInsertRequest>().ReverseMap();
+
+            CreateMap<Database.PreporukePoLokaciji, Model.PreporukaPoLokaciji>();
+            CreateMap<Database.PreporukePoLokaciji, Model.Requests.PreporukePoLokacijiInsertRequest>().ReverseMap();
+
+            CreateMap<Database.PreporukePoStadionu, Model.PreporukaPoStadionu>();
+            CreateMap<Database.PreporukePoStadionu, Model.Requests.PreporukePoStadionuInsertRequest>().ReverseMap();
+
+            CreateMap<Database.PreporukePoTimu, Model.PreporukaPoTimu>();
+            CreateMap<Database.PreporukePoTimu, Model.Requests.PreporukePoTimuInsertRequest>().ReverseMap();
+
             CreateMap<Database.Uplate, Model.Uplata>();
             CreateMap<Database.Uplate, Model.Uplata>()
                 .ForMember(s => s.UplataPodaci, a => a.MapFrom(b => new Database.ISNogometniStadionContext()

@@ -93,6 +93,9 @@ namespace ISNogometniStadion.WebAPI
             services.AddScoped<ICRUDService<Model.Utakmica, UtakmiceeSearchRequest, UtakmiceInsertRequest, UtakmiceInsertRequest>, UtakmiceService>();
             services.AddScoped<ICRUDService<Model.Preporuka, PreporukaSearchRequest, PreporukaInsertRequest, PreporukaInsertRequest>, PreporukeService>();
             services.AddScoped<ICRUDService<Model.Uplata, UplateSearchRequest, UplateInsertRequest, UplateInsertRequest>, UplateService>();
+            services.AddScoped<ICRUDService<Model.PreporukaPoLokaciji, PreporukaSearchRequest, PreporukePoLokacijiInsertRequest, PreporukePoLokacijiInsertRequest>, PreporukePoLokacijiService>();
+            services.AddScoped<ICRUDService<Model.PreporukaPoStadionu, PreporukaSearchRequest, PreporukePoStadionuInsertRequest, PreporukePoStadionuInsertRequest>, PreporukePoStadionuService>();
+            services.AddScoped<ICRUDService<Model.PreporukaPoTimu, PreporukaSearchRequest, PreporukePoTimuInsertRequest, PreporukePoTimuInsertRequest>, PreporukePoTimuService>();
 
             //za registraciju
             services.AddScoped<GradService, GradService>();

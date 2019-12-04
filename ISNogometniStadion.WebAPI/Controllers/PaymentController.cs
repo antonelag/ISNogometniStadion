@@ -51,7 +51,7 @@ namespace ISNogometniStadion.WebAPI.Controllers
             var charge = new Stripe.ChargeCreateOptions
             {
                 Amount = Convert.ToInt32(payment.CreditCard.amount * 100), // Ocekuje request u najmanjoj jedinici pa *100 da se pretvori
-                Currency = "BAM", // or the currency you are dealing with
+                Currency = "EUR", // or the currency you are dealing with
                 Description = "Informacijski sistem za nogometni stadion",
                 Source = token
             };

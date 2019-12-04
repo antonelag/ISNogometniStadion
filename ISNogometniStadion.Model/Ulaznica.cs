@@ -22,6 +22,8 @@ namespace ISNogometniStadion.Model
         public DateTime VrijemeKupnje { get; set; }
         public byte[] barcodeimg { get; set; }
         public string color { get; set; }
+        public decimal cijena { get; set; }
+        public string cijenaPodaci { get { return cijena + " €"; } }
 
     }
 }

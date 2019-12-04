@@ -1,4 +1,5 @@
 ﻿using ISNogometniStadion.Model;
+using ISNogometniStadion.Model.Requests;
 using ISNS.MA.Decision;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,9 @@ namespace ISNS.MA.ViewModels
         private readonly APIService _apiServiceUtakmice = new APIService("Utakmice");
         private readonly APIService _apiServiceTimovi = new APIService("Timovi");
         private readonly APIService _apiServiceLige = new APIService("Lige");
+        private APIService _apiServiceKorisnici = new APIService("Korisnici");
+        private APIService _apiServicePreporukePoTimu = new APIService("PreporukePoTimu");
+        public Korisnik Korisnik { get; set; } = new Korisnik();
         public DateTime? d1 { get; set; } = DateTime.MinValue;
         public DateTime? d2 { get; set; } = DateTime.MinValue;
         public decimal? cijena { get; set; } = -1;
@@ -36,16 +40,16 @@ namespace ISNS.MA.ViewModels
                     List<Utakmica> lista = new List<Utakmica>();
                     if (z.naziv == "lokacija")
                     {
-                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { GradID = z.id, sveUtakmice = true });
+                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { GradID = z.id});
                     }
                     else if (z.naziv == "stadioni")
                     {
-                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { StadionID = z.id, sveUtakmice = true });
+                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { StadionID = z.id});
 
                     }
                     else
                     {
-                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { TimID = z.id, sveUtakmice = true });
+                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { TimID = z.id});
 
                     }
                     return lista;
@@ -58,7 +62,7 @@ namespace ISNS.MA.ViewModels
                 Title = "Datumi",
                 Test = async (z) =>
                 {
-                    UtakmiceeSearchRequest req = new UtakmiceeSearchRequest() { sveUtakmice = true };
+                    UtakmiceeSearchRequest req = new UtakmiceeSearchRequest();
                     if (z.naziv == "lokacija")
                         req.GradID = z.id;
                     else if (z.naziv == "stadioni")
@@ -82,7 +86,7 @@ namespace ISNS.MA.ViewModels
                 Title = "Cijene",
                 Test = async (z) =>
                 {
-                    UtakmiceeSearchRequest req = new UtakmiceeSearchRequest() { sveUtakmice = true };
+                    UtakmiceeSearchRequest req = new UtakmiceeSearchRequest();
                     if (z.naziv == "lokacija")
                     {
                         req.GradID = z.id;
@@ -145,6 +149,9 @@ namespace ISNS.MA.ViewModels
         public ICommand InitCommand { get; set; }
         public async Task Init()
         {
+            if (Korisnik != null)
+                Korisnik = (await _apiServiceKorisnici.Get<List<Korisnik>>(new KorisniciSearchRequest() { KorisnickoIme = APIService.KorisnickoIme }))[0];
+
             if (ligeList.Count == 0)
             {
                 var list = await _apiServiceLige.Get<List<Liga>>(null);
@@ -183,6 +190,12 @@ namespace ISNS.MA.ViewModels
                 foreach (var t in lista)
                     if (!utakmiceList.Contains(t))
                         utakmiceList.Add(t);
+
+                List<PreporukaPoTimu> pr = await _apiServicePreporukePoTimu.Get<List<PreporukaPoTimu>>(new PreporukaSearchRequest() { KorisnikID = Korisnik.KorisnikID });
+                if (pr.Count==0)
+                    await _apiServicePreporukePoTimu.Insert<PreporukaPoTimu>(new PreporukePoTimuInsertRequest() { KorisnikID = Korisnik.KorisnikID,TimID=_odabraniTim.TimID });
+                else
+                    await _apiServicePreporukePoTimu.Update<PreporukaPoTimu>(pr[0].PreporukaID, new PreporukePoTimuInsertRequest() { KorisnikID = Korisnik.KorisnikID, TimID = _odabraniTim.TimID });
             }
         }
     }

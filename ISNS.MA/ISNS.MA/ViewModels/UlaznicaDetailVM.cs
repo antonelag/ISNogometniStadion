@@ -53,7 +53,8 @@ namespace ISNS.MA.ViewModels
                 VrijemeKupnje = VrijemeKupnje,
                 KorisnikID = Korisnik.KorisnikID,
                 SjedaloID = Sjedalo.SjedaloID,
-                UtakmicaID = Utakmica.UtakmicaID
+                UtakmicaID = Utakmica.UtakmicaID,
+                cijena=Iznos
             };
             Sjedalo s1 = await _apiServiceSjedala.GetById<Sjedalo>(req.SjedaloID);
             s1.Status = true;

@@ -11,39 +11,120 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-        <StackLayout>
-            <Image Source="logo.png"></Image>
-        </StackLayout>
             <StackLayout>
-            <Label FontSize="Title" HorizontalOptions="Center" Text="Informacijski sistem za nogometni stadion"/>
-        </StackLayout>
-                <StackLayout x:Name="preporuka" IsVisible="False" >
-                <StackLayout>
-                <Label Margin="30" FontSize="Medium" HorizontalOptions="CenterAndExpand">Preporučene utakmice</Label>
+                <Image Source="logo.png"></Image>
             </StackLayout>
+            <StackLayout>
+                <Label FontAttributes="Bold" FontSize="Title" HorizontalOptions="Center" Text="Informacijski sistem za nogometni stadion"/>
+            </StackLayout>
+            <ScrollView>
                 <StackLayout>
-                    <ListView ItemsSource="{Binding UtakmiceList}" ItemSelected="ListView_ItemSelected_1">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Padding="10">
-                                        <Label Text="{Binding UtakmicaPodaci}" 
+                    <StackLayout  Padding="20" x:Name="preporuka" IsVisible="False">
+                            <Label FontSize="Small" HorizontalOptions="CenterAndExpand">Nadolazeće utakmice timova koje preferirate</Label>
+                        <StackLayout>
+                            <ListView VerticalScrollBarVisibility="Never" RowHeight="70" ItemsSource="{Binding UtakmiceList}" ItemSelected="ListView_ItemSelected_1">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Padding="10">
+                                                <Label Text="{Binding UtakmicaPodaci}" 
                                 d:Text="{Binding .}"
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="16" />
-                                        <Label Text="{Binding stadion}" 
+                                                <Label Text="{Binding stadion}" 
                                 d:Text="Item descripton"
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
-                                    </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </StackLayout>
+                    
+                    <StackLayout  Padding="20" x:Name="lokacije" IsVisible="False" >
+                            <Label FontSize="Small" HorizontalOptions="CenterAndExpand">Nadolazeće utakmice u zadnje traženom gradu</Label>
+                        <StackLayout>
+                            <ListView VerticalScrollBarVisibility="Never" RowHeight="70" ItemsSource="{Binding UtakmicePoLokacijiList}" ItemSelected="ListView_ItemSelected">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Padding="10">
+                                                <Label Text="{Binding UtakmicaPodaci}" 
+                                d:Text="{Binding .}"
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                                                <Label Text="{Binding stadion}" 
+                                d:Text="Item descripton"
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout Padding="20" x:Name="stadioni" IsVisible="False" >
+                        <Label FontSize="Small" HorizontalOptions="CenterAndExpand">Nadolazeće utakmice na zadnje traženom stadionu</Label>
+                        <StackLayout>
+                            <ListView VerticalScrollBarVisibility="Never" RowHeight="70" ItemsSource="{Binding UtakmicePoStadionuList}" ItemSelected="ListView_ItemSelected_2">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Padding="10">
+                                                <Label Text="{Binding UtakmicaPodaci}" 
+                                d:Text="{Binding .}"
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                                                <Label Text="{Binding stadion}" 
+                                d:Text="Item descripton"
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout Padding="20" x:Name="timovi" IsVisible="False" >
+                            <Label FontSize="Small" HorizontalOptions="CenterAndExpand">Nadolazeće utakmice zadnje traženih timova</Label>
+                        <StackLayout>
+                            <ListView VerticalScrollBarVisibility="Never" RowHeight="70" ItemsSource="{Binding UtakmicePoTimuList}" ItemSelected="ListView_ItemSelected_3">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Padding="10">
+                                                <Label Text="{Binding UtakmicaPodaci}" 
+                                d:Text="{Binding .}"
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                                                <Label Text="{Binding stadion}" 
+                                d:Text="Item descripton"
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </StackLayout>
+
                 </StackLayout>
-                </StackLayout>
-            </StackLayout>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -15,6 +15,7 @@ namespace ISNS.MA.ViewModels
         private APIService _apiServiceUlaznice = new APIService("Ulaznica");
         private APIService _apiServiceKorisnici = new APIService("Korisnici");
         private APIService _apiServiceUtakmice = new APIService("Utakmice");
+        private APIService _apiServiceUplate = new APIService("Uplate");
 
         public MojeUlazniceVM()
         {
@@ -43,10 +44,13 @@ namespace ISNS.MA.ViewModels
             foreach (var ulaznica in list)
             {
                 Utakmica u = await _apiServiceUtakmice.GetById<Utakmica>(ulaznica.UtakmicaID);
+                List<Uplata> uplata = await _apiServiceUplate.Get<List<Uplata>>(new UplateSearchRequest() { UlaznicaID = ulaznica.UlaznicaID });
+                ulaznica.cijena = uplata[0].Iznos;
                 if (u.DatumOdigravanja < DateTime.Now)
                     ulaznica.color = "LightGray";
                 else
                     ulaznica.color = "LightGreen";
+                
                 UlazniceList.Add(ulaznica);
                 
             }

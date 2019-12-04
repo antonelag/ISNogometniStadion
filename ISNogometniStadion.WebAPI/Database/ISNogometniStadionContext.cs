@@ -32,6 +32,9 @@ namespace ISNogometniStadion.WebAPI.Database
         public DbSet<Lige> Lige { get; set; }
         public DbSet<Preporuke> Preporuke { get; set; }
         public DbSet<Uplate> Uplate { get; set; }
+        public DbSet<PreporukePoLokaciji> PreporukePoLokaciji { get; set; }
+        public DbSet<PreporukePoStadionu> PreporukePoStadionu { get; set; }
+        public DbSet<PreporukePoTimu> PreporukePoTimu { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("data source=.;initial catalog=160125; integrated security = True; ");

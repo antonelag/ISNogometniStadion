@@ -1,4 +1,5 @@
 ﻿using ISNogometniStadion.Model;
+using ISNogometniStadion.Model.Requests;
 using ISNS.MA.Decision;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,9 @@ namespace ISNS.MA.ViewModels
         private readonly APIService _apiServiceUtakmice = new APIService("Utakmice");
         private readonly APIService _apiServiceDrzave = new APIService("Drzave");
         private readonly APIService _apiServiceStadioni = new APIService("Stadioni");
+        private APIService _apiServiceKorisnici = new APIService("Korisnici");
+        private APIService _apiServicePreporukePoStadionu = new APIService("PreporukePoStadionu");
+        public Korisnik Korisnik { get; set; } = new Korisnik();
         public DateTime? d1 { get; set; } = DateTime.MinValue;
         public DateTime? d2 { get; set; } = DateTime.MinValue;
         public decimal? cijena { get; set; } = -1;
@@ -59,16 +63,16 @@ namespace ISNS.MA.ViewModels
                     List<Utakmica> lista = new List<Utakmica>();
                     if (z.naziv == "lokacija")
                     {
-                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { GradID = z.id, sveUtakmice = true });
+                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { GradID = z.id});
                     }
                     else if (z.naziv == "stadioni")
                     {
-                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { StadionID = z.id, sveUtakmice = true });
+                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { StadionID = z.id});
 
                     }
                     else
                     {
-                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { TimID = z.id, sveUtakmice = true });
+                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { TimID = z.id});
 
                     }
                     return lista;
@@ -81,7 +85,7 @@ namespace ISNS.MA.ViewModels
                 Title = "Datumi",
                 Test = async (z) =>
                 {
-                    UtakmiceeSearchRequest req = new UtakmiceeSearchRequest() { sveUtakmice = true };
+                    UtakmiceeSearchRequest req = new UtakmiceeSearchRequest();
                     if (z.naziv == "lokacija")
                         req.GradID = z.id;
                     else if (z.naziv == "stadioni")
@@ -104,7 +108,7 @@ namespace ISNS.MA.ViewModels
                 Title = "Cijene",
                 Test = async (z) =>
                 {
-                    UtakmiceeSearchRequest req = new UtakmiceeSearchRequest() { sveUtakmice = true };
+                    UtakmiceeSearchRequest req = new UtakmiceeSearchRequest();
                     if (z.naziv == "lokacija")
                     {
                         req.GradID = z.id;
@@ -144,11 +148,13 @@ namespace ISNS.MA.ViewModels
 
 
 
-            return datumi;
         }
 
         public async Task Init()
         {
+            if (Korisnik != null)
+                Korisnik = (await _apiServiceKorisnici.Get<List<Korisnik>>(new KorisniciSearchRequest() { KorisnickoIme = APIService.KorisnickoIme }))[0];
+
             if (DrzaveList.Count == 0)
             {
                 var list = await _apiServiceDrzave.Get<List<Drzava>>(null);
@@ -182,13 +188,17 @@ namespace ISNS.MA.ViewModels
                 var lista = new List<Utakmica>();
                 await trunk.Evaluate(z);
                 lista = trunk.listaUtakmica;
-                //var req = new UtakmiceeSearchRequest() { sveUtakmice = true, StadionID = _odabraniStadion.StadionID };
                
                 if (utakmiceList.Count != 0)
                     utakmiceList.Clear();
-                //var list = await _apiServiceUtakmice.Get<List<Utakmica>>(req);
                 foreach (var t in lista)
                     utakmiceList.Add(t);
+
+                List<PreporukaPoStadionu> pr = await _apiServicePreporukePoStadionu.Get<List<PreporukaPoStadionu>>(new PreporukaSearchRequest() { KorisnikID = Korisnik.KorisnikID });
+                if (pr.Count == 0)
+                    await _apiServicePreporukePoStadionu.Insert<PreporukaPoStadionu>(new PreporukePoStadionuInsertRequest() { KorisnikID = Korisnik.KorisnikID, StadionID = _odabraniStadion.StadionID });
+                else
+                    await _apiServicePreporukePoStadionu.Update<PreporukaPoStadionu>(pr[0].PreporukaID, new PreporukePoStadionuInsertRequest() { KorisnikID = Korisnik.KorisnikID, StadionID = _odabraniStadion.StadionID });
             }
         }
     }

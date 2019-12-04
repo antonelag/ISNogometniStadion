@@ -50,7 +50,7 @@ namespace ISNogometniStadion.WebAPI.Services
             Korisnik korisnik = _mapper.Map<Korisnik>(k);
             Utakmica u = _mapper.Map<Utakmica>(_context.Utakmice.FirstOrDefault(s => s.UtakmicaID == req.UtakmicaID));
             Sjedalo a = _mapper.Map<Sjedalo>(_context.Sjedala.FirstOrDefault(s => s.SjedaloID == req.SjedaloID));
-            string number ="Ime i prezime: "+ korisnik.KorisnikPodaci + "---Utakmica: " + u.UtakmicaPodaci+ "----Sjedalo/Sektor: " + a.Oznaka+"/"+a.Sektor + "---Datum kupnje: " + req.DatumKupnje.ToString() + "---Vrijeme kupnje:" + req.VrijemeKupnje.ToString() + "$" + GetVoucherNumber(8);
+            string number ="Ime i prezime: "+ korisnik.KorisnikPodaci + "---Utakmica: " + u.UtakmicaPodaci+ "----Sjedalo/Sektor: " + a.Oznaka+"/"+a.Sektor + "---Datum kupnje: " + req.DatumKupnje.ToString() + "---Vrijeme kupnje:" + req.VrijemeKupnje.ToString()+ "---Cijena(€):" + req.cijena.ToString() + "$" + GetVoucherNumber(8);
 
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(number, QRCodeGenerator.ECCLevel.Q);
@@ -69,7 +69,7 @@ namespace ISNogometniStadion.WebAPI.Services
             Korisnik korisnik = _mapper.Map<Korisnik>(k);
             Sjedalo a = _mapper.Map<Sjedalo>(_context.Sjedala.FirstOrDefault(s => s.SjedaloID == req.SjedaloID));
             Utakmica u = _mapper.Map<Utakmica>(_context.Utakmice.FirstOrDefault(s => s.UtakmicaID == req.UtakmicaID));
-            string number = "Ime i prezime: " + korisnik.KorisnikPodaci + "---Utakmica: " + u.UtakmicaPodaci + "----Sjedalo/Sektor: " + a.Oznaka + "/" + a.Sektor + "---Datum kupnje: " + req.DatumKupnje.ToString() + "---Vrijeme kupnje:" + req.VrijemeKupnje.ToString() + "$" + GetVoucherNumber(8);
+            string number = "Ime i prezime: " + korisnik.KorisnikPodaci + "---Utakmica: " + u.UtakmicaPodaci + "----Sjedalo/Sektor: " + a.Oznaka + "/" + a.Sektor + "---Datum kupnje: " + req.DatumKupnje.ToString() + "---Vrijeme kupnje:" + req.VrijemeKupnje.ToString() + "---Cijena(€):" + req.cijena.ToString() + "$" + GetVoucherNumber(8);
 
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(number, QRCodeGenerator.ECCLevel.Q);

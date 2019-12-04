@@ -17,41 +17,43 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout>
-        <StackLayout BackgroundColor="LightGreen" HeightRequest="40">
-        </StackLayout>
-            <StackLayout VerticalOptions="Start" BackgroundColor="White"  >
-                <Label Text="{Binding UtakmicaPodaci}" FontAttributes="Bold" HorizontalOptions="Center" FontSize="Medium"/>
-                <Label Text="Ime i prezime: " FontAttributes="Bold" FontSize="Small"/>
-                <Label Text="{ Binding KorisnikPodaci}"/>
+            <StackLayout>
+                <StackLayout BackgroundColor="LightGreen" HeightRequest="40">
+                </StackLayout>
+                <StackLayout VerticalOptions="Start" BackgroundColor="White"  >
+                    <Label Text="{Binding UtakmicaPodaci}" FontAttributes="Bold" HorizontalOptions="Center" FontSize="Medium"/>
+                    <Label Text="Ime i prezime: " FontAttributes="Bold" FontSize="Small"/>
+                    <Label Text="{ Binding KorisnikPodaci}"/>
 
-                <Label Text="Sektor: " FontAttributes="Bold" FontSize="Small"/>
-                <Label Text="{Binding SektorPodaci}"/>
-                <Label Text="Sjedalo: " FontAttributes="Bold" FontSize="Small"/>
-                <Label Text="{ Binding Oznaka}"/>
-                <Label Text="Datum kupnje: " FontAttributes="Bold" FontSize="Small"/>
-                <Label Text="{ Binding Datum}" />
-                <Label Text="Vrijeme kupnje: " FontSize="Small" FontAttributes="Bold"/>
-                <Label Text="{ Binding Vrijeme}"/>
+                    <Label Text="Sektor: " FontAttributes="Bold" FontSize="Small"/>
+                    <Label Text="{Binding SektorPodaci}"/>
+                    <Label Text="Sjedalo: " FontAttributes="Bold" FontSize="Small"/>
+                    <Label Text="{ Binding Oznaka}"/>
+                    <Label Text="Datum kupnje: " FontAttributes="Bold" FontSize="Small"/>
+                    <Label Text="{ Binding Datum}" />
+                    <Label Text="Vrijeme kupnje: " FontSize="Small" FontAttributes="Bold"/>
+                    <Label Text="{ Binding Vrijeme}"/>
+                    <Label Text="Cijena: " FontSize="Small" FontAttributes="Bold"/>
+                    <Label Text="{ Binding Sektor.CijenaPodaci}"/>
+
+                </StackLayout>
+                <StackLayout BackgroundColor="LightGreen" HeightRequest="40">
+
+                </StackLayout>
+                <StackLayout>
+                    <Label HorizontalOptions="CenterAndExpand">Ulaznica sa bar kodom se nalazi u vašim ulaznicama.</Label>
+                </StackLayout>
+                <StackLayout>
+                    <Button Text="Natrag na početnu" Clicked="Button_Clicked" BackgroundColor="LightGreen"></Button>
+                </StackLayout>
+                <StackLayout>
+                    <Image HeightRequest="150" x:Name="barcode"></Image>
+                </StackLayout>
+
+
+
 
             </StackLayout>
-            <StackLayout BackgroundColor="LightGreen" HeightRequest="40">
-                
-            </StackLayout>
-            <StackLayout>
-                <Label HorizontalOptions="CenterAndExpand">Ulaznica sa bar kodom se nalazi u vašim ulaznicama.</Label>
-            </StackLayout>
-            <StackLayout>
-                <Button Text="Natrag na početnu" Clicked="Button_Clicked" BackgroundColor="LightGreen"></Button>
-            </StackLayout>
-            <StackLayout>
-                <Image HeightRequest="150" x:Name="barcode"></Image>
-            </StackLayout>
-         
-            
-        
-         
-        </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

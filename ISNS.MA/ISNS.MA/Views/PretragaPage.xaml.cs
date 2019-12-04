@@ -1,4 +1,5 @@
 ﻿using ISNogometniStadion.Model;
+using ISNS.MA.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,16 @@ namespace ISNS.MA.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PretragaPage : ContentPage
     {
+        public PretragaVM model;
         public PretragaPage()
         {
             InitializeComponent();
+            BindingContext=model = new PretragaVM();
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            model.Init();
         }
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

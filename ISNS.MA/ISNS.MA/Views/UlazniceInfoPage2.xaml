@@ -32,6 +32,8 @@
                 <Label Text="{ Binding ulaznica.DatumKupnje}" />
                 <Label Text="Vrijeme kupnje: " FontSize="Small" FontAttributes="Bold"/>
                 <Label Text="{ Binding ulaznica.VrijemeKupnje}"/>
+                <Label Text="Cijena: " FontSize="Small" FontAttributes="Bold"/>
+                <Label Text="{ Binding ulaznica.cijenaPodaci}"/>
 
             </StackLayout>
             <StackLayout BackgroundColor="{Binding ulaznica.color}" HeightRequest="40">

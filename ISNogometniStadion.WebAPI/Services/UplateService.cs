@@ -38,6 +38,10 @@ namespace ISNogometniStadion.WebAPI.Services
                 var id = utakmica.UtakmicaID;
                 q = q.Where(s => s.Ulaznica.UtakmicaID == id);
             }
+            if (search?.UlaznicaID.HasValue == true)
+            {
+                q = q.Where(s => s.UlaznicaID == search.UlaznicaID);
+            }
 
             var list = q.ToList();
             return _mapper.Map<List<Uplata>>(list);
