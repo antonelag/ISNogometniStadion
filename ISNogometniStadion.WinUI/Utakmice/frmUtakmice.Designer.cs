@@ -55,7 +55,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(1305, 400);
+            this.groupBox1.Size = new System.Drawing.Size(1316, 400);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Utakmice";
@@ -86,7 +86,7 @@
             this.dgvUtakmice.ReadOnly = true;
             this.dgvUtakmice.RowHeadersWidth = 51;
             this.dgvUtakmice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUtakmice.Size = new System.Drawing.Size(1297, 377);
+            this.dgvUtakmice.Size = new System.Drawing.Size(1308, 377);
             this.dgvUtakmice.TabIndex = 0;
             this.dgvUtakmice.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvUtakmice_MouseDoubleClick);
             // 
@@ -96,7 +96,7 @@
             this.cbLiga.Location = new System.Drawing.Point(20, 33);
             this.cbLiga.Margin = new System.Windows.Forms.Padding(4);
             this.cbLiga.Name = "cbLiga";
-            this.cbLiga.Size = new System.Drawing.Size(920, 24);
+            this.cbLiga.Size = new System.Drawing.Size(188, 24);
             this.cbLiga.TabIndex = 3;
             this.cbLiga.SelectedIndexChanged += new System.EventHandler(this.CbLiga_SelectedIndexChanged);
             // 
@@ -113,7 +113,7 @@
             // DomaciTim
             // 
             this.DomaciTim.DataPropertyName = "DomaciTim";
-            this.DomaciTim.HeaderText = "DomaciTim";
+            this.DomaciTim.HeaderText = "Domaci tim";
             this.DomaciTim.MinimumWidth = 6;
             this.DomaciTim.Name = "DomaciTim";
             this.DomaciTim.ReadOnly = true;
@@ -132,7 +132,7 @@
             // GostujuciTim
             // 
             this.GostujuciTim.DataPropertyName = "GostujuciTim";
-            this.GostujuciTim.HeaderText = "GostujuciTim";
+            this.GostujuciTim.HeaderText = "Gostujuci tim";
             this.GostujuciTim.MinimumWidth = 6;
             this.GostujuciTim.Name = "GostujuciTim";
             this.GostujuciTim.ReadOnly = true;
@@ -198,7 +198,7 @@
             // Liga
             // 
             this.Liga.DataPropertyName = "Liga";
-            this.Liga.HeaderText = "Vrsta natjecanja";
+            this.Liga.HeaderText = "Liga";
             this.Liga.MinimumWidth = 6;
             this.Liga.Name = "Liga";
             this.Liga.ReadOnly = true;
@@ -217,7 +217,7 @@
             // SlikaThumb
             // 
             this.SlikaThumb.DataPropertyName = "SlikaThumb";
-            this.SlikaThumb.HeaderText = "Slika";
+            this.SlikaThumb.HeaderText = "Plan stadiona";
             this.SlikaThumb.MinimumWidth = 6;
             this.SlikaThumb.Name = "SlikaThumb";
             this.SlikaThumb.ReadOnly = true;

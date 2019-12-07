@@ -39,7 +39,7 @@ namespace ISNogometniStadion.WinUI.Utakmice
         {
             var result = await _apiService.Get<List<Model.Utakmica>>(new UtakmiceeSearchRequest()
             {
-                LigaID = id,sveUtakmice=true
+                LigaID = id
             });
             dgvUtakmice.AutoGenerateColumns = false;
             dgvUtakmice.DataSource = result;

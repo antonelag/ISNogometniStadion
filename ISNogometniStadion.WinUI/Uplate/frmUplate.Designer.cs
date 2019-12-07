@@ -45,7 +45,7 @@
             this.groupBox1.Controls.Add(this.dgvUplate);
             this.groupBox1.Location = new System.Drawing.Point(0, 87);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1055, 361);
+            this.groupBox1.Size = new System.Drawing.Size(858, 498);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Uplate";
@@ -68,7 +68,7 @@
             this.dgvUplate.RowHeadersWidth = 51;
             this.dgvUplate.RowTemplate.Height = 24;
             this.dgvUplate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUplate.Size = new System.Drawing.Size(1049, 340);
+            this.dgvUplate.Size = new System.Drawing.Size(852, 477);
             this.dgvUplate.TabIndex = 0;
             // 
             // UplataID
@@ -132,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 450);
+            this.ClientSize = new System.Drawing.Size(886, 597);
             this.Controls.Add(this.cbUtakmice);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmUplate";
