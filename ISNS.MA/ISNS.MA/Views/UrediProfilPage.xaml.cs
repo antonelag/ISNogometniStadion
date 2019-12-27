@@ -80,7 +80,13 @@ namespace ISNS.MA.Views
                 {
                     Grad g = this.gradovi.SelectedItem as Grad;
                     List<Korisnik> k = await _apiServiceKorisnici.Get<List<Korisnik>>(new KorisniciSearchRequest() { KorisnickoIme = this.KorisnickoIme.Text });
-                    if (k.Count == 0)
+                    List<Korisnik> k2 = await _apiServiceKorisnici.Get<List<Korisnik>>(new KorisniciSearchRequest() { KorisnickoIme = APIService.KorisnickoIme });
+
+                    if (k.Count>0 && k[0].KorisnikID!=k2[0].KorisnikID)
+                    {
+                        await DisplayAlert("GREŠKA", "Korisnik sa tim korisničkim imenom već postoji", "OK");
+                    }
+                    else
                     {
                         KorisniciInsertRequest req = new KorisniciInsertRequest()
                         {
@@ -102,10 +108,6 @@ namespace ISNS.MA.Views
                         {
                             App.Current.MainPage = new LoginPage();
                         }
-                    }
-                    else
-                    {
-                        await DisplayAlert("GREŠKA", "Korisnik sa tim korisničkim imenom već postoji", "OK");
                     }
                    
 

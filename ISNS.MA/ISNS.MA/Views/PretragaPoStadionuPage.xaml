@@ -27,7 +27,7 @@
                     <Slider x:Name="sliderCijene" Minimum="0" Maximum="2000" ValueChanged="SliderCijene_ValueChanged"></Slider>
                     <StackLayout Orientation="Horizontal">
                         <Label x:Name="sliderresult"></Label>
-                        <Button Text="Pretraži po cijeni" Clicked="Button_Clicked_1"></Button>
+                        <Button Text="Pretraži po cijeni(€)" Clicked="Button_Clicked_1"></Button>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
