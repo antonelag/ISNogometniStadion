@@ -15,11 +15,11 @@
         <ScrollView>
             <StackLayout>
                 <Image HeightRequest="150" Source="{Binding Stadion.Slika,Converter={StaticResource imgConv}}"></Image>
-                <Label FontSize="Title" HorizontalOptions="Center" Text="{Binding Stadion.Naziv}"/>
-                <Label FontSize="Subtitle" Margin="10"  Text="{ Binding Stadion.Opis}"/>
                 <StackLayout Orientation="Vertical">
                     <Button Text="Kako do stadiona?" Clicked="Button_Clicked"></Button>
                 </StackLayout>
+                <Label FontSize="Title" HorizontalOptions="Center" Text="{Binding Stadion.Naziv}"/>
+                <Label FontSize="Subtitle" Margin="10"  Text="{ Binding Stadion.Opis}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -63,16 +63,16 @@ namespace ISNS.MA.ViewModels
                     List<Utakmica> lista = new List<Utakmica>();
                     if (z.naziv == "lokacija")
                     {
-                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { GradID = z.id, sveUtakmice = true });
+                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { GradID = z.id});
                     }
                     else if (z.naziv == "stadioni")
                     {
-                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { StadionID = z.id, sveUtakmice = true });
+                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { StadionID = z.id });
 
                     }
                     else
                     {
-                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { TimID = z.id, sveUtakmice = true });
+                        lista = await _apiServiceUtakmice.Get<List<Utakmica>>(new UtakmiceeSearchRequest() { TimID = z.id});
 
                     }
                     return lista;

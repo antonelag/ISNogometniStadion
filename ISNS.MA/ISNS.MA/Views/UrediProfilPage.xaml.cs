@@ -79,26 +79,35 @@ namespace ISNS.MA.Views
                 try
                 {
                     Grad g = this.gradovi.SelectedItem as Grad;
-                    KorisniciInsertRequest req = new KorisniciInsertRequest()
+                    List<Korisnik> k = await _apiServiceKorisnici.Get<List<Korisnik>>(new KorisniciSearchRequest() { KorisnickoIme = this.KorisnickoIme.Text });
+                    if (k.Count == 0)
                     {
-                        DatumRodjenja = this.DatumRodjenja.Date,
-                        email = this.Email.Text,
-                        GradID = g.GradID,
-                        Ime = this.Ime.Text,
-                        Prezime = this.Prezime.Text,
-                        korisnickoIme = this.KorisnickoIme.Text,
-                        lozinka = this.Lozinka.Text,
-                        potvrdaLozinke = this.PotvrdaLozinke.Text,
-                        telefon = this.Telefon.Text
-                    };
-                    var lozinka = APIService.Lozinka;
-                    var korisnicko = APIService.KorisnickoIme;
-                    await _apiServiceKorisnici.Update<dynamic>(korisnikVM.korisnik.KorisnikID, req);
-                    await DisplayAlert("OK", "Uspješno uneseni podaci", "OK");
-                    if (lozinka != this.Lozinka.Text || korisnicko != this.KorisnickoIme.Text)
-                    {
-                        App.Current.MainPage = new LoginPage();
+                        KorisniciInsertRequest req = new KorisniciInsertRequest()
+                        {
+                            DatumRodjenja = this.DatumRodjenja.Date,
+                            email = this.Email.Text,
+                            GradID = g.GradID,
+                            Ime = this.Ime.Text,
+                            Prezime = this.Prezime.Text,
+                            korisnickoIme = this.KorisnickoIme.Text,
+                            lozinka = this.Lozinka.Text,
+                            potvrdaLozinke = this.PotvrdaLozinke.Text,
+                            telefon = this.Telefon.Text
+                        };
+                        var lozinka = APIService.Lozinka;
+                        var korisnicko = APIService.KorisnickoIme;
+                        await _apiServiceKorisnici.Update<dynamic>(korisnikVM.korisnik.KorisnikID, req);
+                        await DisplayAlert("OK", "Uspješno uneseni podaci", "OK");
+                        if (lozinka != this.Lozinka.Text || korisnicko != this.KorisnickoIme.Text)
+                        {
+                            App.Current.MainPage = new LoginPage();
+                        }
                     }
+                    else
+                    {
+                        await DisplayAlert("GREŠKA", "Korisnik sa tim korisničkim imenom već postoji", "OK");
+                    }
+                   
 
                 }
                 catch (Exception err)

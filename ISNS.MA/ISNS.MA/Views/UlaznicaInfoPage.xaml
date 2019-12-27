@@ -41,7 +41,7 @@
 
                 </StackLayout>
                 <StackLayout>
-                    <Label HorizontalOptions="CenterAndExpand">Ulaznica sa bar kodom se nalazi u vašim ulaznicama.</Label>
+                    <Label HorizontalOptions="CenterAndExpand">Ulaznica sa QR kodom se nalazi u vašim ulaznicama.</Label>
                 </StackLayout>
                 <StackLayout>
                     <Button Text="Natrag na početnu" Clicked="Button_Clicked" BackgroundColor="LightGreen"></Button>
