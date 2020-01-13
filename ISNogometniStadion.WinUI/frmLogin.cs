@@ -70,7 +70,7 @@ namespace ISNogometniStadion.WinUI
                     frm.Show();
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Niste autentificirani", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
